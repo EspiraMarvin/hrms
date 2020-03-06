@@ -35,7 +35,8 @@
 
     <link rel="stylesheet" type="text/css" href="assets/js/plugins/select2/css/core.css">
     <!-- -------------- Favicon -------------- -->
-    <link rel="shortcut icon" href="/assets/img/favicon.png">
+    <link rel="shortcut icon" href="/assets/img/favicon-96x96.png">
+
 
     <!--  Custom css -->
     <link rel="stylesheet" type="text/css" href="/assets/custom.css">
@@ -43,12 +44,26 @@
     <!-- Sweet alert -->
     <link rel="stylesheet" type="text/css" href="/assets/sweetalert.css">
 
+
 @stack('styles')
 
 <!-- -------------- IE8 HTML5 support  -------------- -->
-    <!--[if lt IE 9]>
+    <!--[if lt IE 9]>-->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+
+{{--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />--}}
+
+
+
+   <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/boostrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/boostrap.min.css"/>
+-->
+
     <![endif]-->
 
     <style type="text/css">
@@ -107,49 +122,6 @@
     <!-- -------------- Main Wrapper -------------- -->
     <section id="content_wrapper">
 
-        <!-- -------------- Topbar Menu Wrapper -------------- -->
-        <div id="topbar-dropmenu-wrapper">
-            <div class="topbar-menu row">
-                <div class="col-xs-4 col-sm-2">
-                    <a href="#" class="service-box bg-danger">
-                        <span class="fa fa-music"></span>
-                        <span class="service-title">Audio</span>
-                    </a>
-                </div>
-                <div class="col-xs-4 col-sm-2">
-                    <a href="#" class="service-box bg-success">
-                        <span class="fa fa-picture-o"></span>
-                        <span class="service-title">Images</span>
-                    </a>
-                </div>
-                <div class="col-xs-4 col-sm-2">
-                    <a href="#" class="service-box bg-primary">
-                        <span class="fa fa-video-camera"></span>
-                        <span class="service-title">Videos</span>
-                    </a>
-                </div>
-                <div class="col-xs-4 col-sm-2">
-                    <a href="#" class="service-box bg-alert">
-                        <span class="fa fa-envelope"></span>
-                        <span class="service-title">Messages</span>
-                    </a>
-                </div>
-                <div class="col-xs-4 col-sm-2">
-                    <a href="#" class="service-box bg-system">
-                        <span class="fa fa-cog"></span>
-                        <span class="service-title">Settings</span>
-                    </a>
-                </div>
-                <div class="col-xs-4 col-sm-2">
-                    <a href="#" class="service-box bg-dark">
-                        <span class="fa fa-user"></span>
-                        <span class="service-title">Users</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <!-- -------------- /Topbar Menu Wrapper -------------- -->
-
         <!-- YIELD CONTENT -->
 
     @yield('content')
@@ -163,11 +135,12 @@
         <!-- -------------- Page Footer -------------- -->
             <footer id="content-footer" class="affix">
                 <div class="row">
-                    <div class="col-md-6">
-                    <span class="footer-legal">H.R.M Systems © 2019 All rights reserved. By <a
-                            href="http://jamesshisiah.com" target="_blank">HACKINTECHNOLOGIES</a></span>
+                    <div class="col-md-9" style="text-align: center">
+                    <span class="footer-legal">
+                        H.R.M System  &nbsp;  &copy; <?php echo date("Y");?> All rights reserved. By
+                        <a href="https://github.com/EspiraMarvin" target="_blank">MARVIN</a></span>
                     </div>
-                    <div class="col-md-6 text-right">
+                    <div class="col-md-3 text-right">
                         <span class="footer-meta"></span>
                         <a href="#content" class="footer-return-top">
                             <span class="fa fa-angle-up"></span>

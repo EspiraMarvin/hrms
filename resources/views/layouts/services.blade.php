@@ -1,4 +1,5 @@
-@extends('layouts.app')
+{{--@extends('layouts.app')--}}
+@extends('inc.base')
 
 @section('content')
     <h1>{{$title ?? ''}}</h1>

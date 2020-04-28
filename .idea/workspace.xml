@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="78448d03-970e-4b73-8bed-b4f69eb895b5" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Procfile" beforeDir="false" afterPath="$PROJECT_DIR$/Procfile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -294,6 +295,14 @@
       <workItem from="1588074431901" duration="3899000" />
       <workItem from="1588078690159" duration="17984000" />
     </task>
+    <task id="LOCAL-00001" summary="Procfile commit">
+      <created>1588114826107</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1588114826108</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -312,6 +321,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Procfile commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Procfile commit" />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="36" key="#analytics.js" timestamp="1586390082853">
@@ -339,10 +350,10 @@
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="326" y="17" width="643" height="687" key="#phpunit.xml/0.0.1280.720/1920.0.1920.1080@0.0.1280.720" timestamp="1585002278688" />
-    <state x="111" y="0" key="CommitChangelistDialog2" timestamp="1586716958894">
+    <state x="111" y="0" key="CommitChangelistDialog2" timestamp="1588114825067">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="111" y="0" key="CommitChangelistDialog2/0.0.1280.720@0.0.1280.720" timestamp="1586716958894" />
+    <state x="111" y="0" key="CommitChangelistDialog2/0.0.1280.720@0.0.1280.720" timestamp="1588114825067" />
     <state x="0" y="140" key="EditFileWatcherDialog" timestamp="1581244799360">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
@@ -380,10 +391,10 @@
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="142" y="4" key="SettingsEditor/0.0.1280.720@0.0.1280.720" timestamp="1581353227184" />
-    <state x="233" y="95" key="Vcs.Push.Dialog.v2" timestamp="1588114710656">
+    <state x="233" y="95" key="Vcs.Push.Dialog.v2" timestamp="1588115415523">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="233" y="95" key="Vcs.Push.Dialog.v2/0.0.1280.720@0.0.1280.720" timestamp="1588114710656" />
+    <state x="233" y="95" key="Vcs.Push.Dialog.v2/0.0.1280.720@0.0.1280.720" timestamp="1588115415523" />
     <state x="341" y="186" key="com.intellij.ide.util.TipDialog" timestamp="1581234830948">
       <screen x="0" y="0" width="1280" height="720" />
     </state>

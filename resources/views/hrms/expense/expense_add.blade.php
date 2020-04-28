@@ -19,12 +19,12 @@
                     <li class="breadcrumb-link">
                         <a href=""> Expense </a>
                     </li>
-                    <li class="breadcrumb-current-item"> Assign Expense </li>
+                    <li class="breadcrumb-current-item"> Assign Expense</li>
                 </ol>
             </div>
         </header>
         <!-- -------------- Content -------------- -->
-        <section id="content" class="table-layout animated fadeIn" >
+        <section id="content" class="table-layout animated fadeIn">
             <!-- -------------- Column Center -------------- -->
             <div class="chute-affix" data-offset-top="200">
                 <div class="row">
@@ -38,69 +38,65 @@
 
                                             {!! Form::open(['action' => 'ExpensesController@store','method' => 'POST','class' => 'form-horizontal','enctype'=>'multipart/form-data', 'id'=>"custom-form-wizard"]) !!}
 
-                                            <div class="form-group">
-                                                <label class="col-md-3 control-label"> Region </label>
+                                            <div class="form-group {{ $errors->has('region_id') ? ' has-error' : '' }}">
+                                                <label class="col-md-3 control-label"> Select Region </label>
                                                 <div class="col-md-6">
-                                                    <select class="select2-multiple form-control select-primary"
-                                                            name="region" required>
-                                                        <option value="">Select One</option>
-                                                        {{--                                                        @if(\Route::getFacadeRoot()->current()->uri() == 'asset_assign')--}}
-                                                        {{--                                                            --}}{{----}}{{----}}
-                                                        {{--                                                            @if($asset->region == 'North Rift')--}}
-                                                        {{--                                                                <option value="North Rift" selected>North Rift</option>--}}
-                                                        {{--                                                                <option value="South Rift">South Rift/option>--}}
-                                                        {{--                                                                <option value="Nairobi">Nairobi</option>--}}
-                                                        {{--                                                            @elseif($emps->employee->department == 'Social Media')--}}
-                                                        {{--                                                                <option value="Marketplace">Marketplace</option>--}}
-                                                        {{--                                                                <option value="Social Media" selected>Social Media</option>--}}
-                                                        {{--                                                                <option value="IT">IT</option>--}}
-                                                        {{--                                                            @else--}}
-                                                        {{--                                                                <option value="Marketplace">Marketplace</option>--}}
-                                                        {{--                                                                <option value="Social Media">Social Media</option>--}}
-                                                        {{--                                                                <option value="IT" selected>IT</option>--}}
-                                                        {{--                                                            @endif--}}
-                                                        {{--                                                        @else--}}
-                                                        <option value="North rift">North Rift</option>
-                                                        <option value="South rift">South Rift</option>
-                                                        <option value="Nairobi">Nairobi</option>
-                                                        <option value="Coast">Coast</option>
-                                                        <option value="Western">Western</option>
-                                                        {{--                                                        @endif--}}
+                                                    <select class="selectpicker form-control"
+                                                            name="region_id">
+                                                        <option value="">--- Select Region ---</option>
+                                                        @if(!empty($regions) && count($regions) > 0)
+                                                            @foreach ($regions as $key => $value)
+                                                                <option value="{{ $key }}">{{ $value }}</option>
+                                                            @endforeach
+                                                        @endif
                                                     </select>
                                                 </div>
                                             </div>
 
-                                            <div class="form-group">
-                                                <label class="col-md-3 control-label">  Items </label>
+                                            <div class="form-group {{ $errors->has('county_id') ? ' has-error' : '' }}">
+                                                <label class="col-md-3 control-label"> Select County </label>
+                                                <div class="col-md-6">
+                                                    <select class="select2-multiple form-control select-primary"
+                                                            name="county_id">
+                                                        <option>--Select County--</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group {{ $errors->has('item') ? ' has-error' : '' }}">
+                                                <label class="col-md-3 control-label"> Item(s) </label>
                                                 <div class="col-md-6">
                                                     {{Form::text('item', '',['class' => 'select2-single form-control','placeholder'=>' Item(s)','required'])}}
+                                                    <small class="text-danger">{{ $errors->first('item') }}</small>
                                                 </div>
                                             </div>
 
-
-                                            <div class="form-group">
-                                                <label class="col-md-3 control-label">  Expense(Amount) </label>
+                                            <div class="form-group {{ $errors->has('expense') ? ' has-error' : '' }}">
+                                                <label class="col-md-3 control-label"> Expense(Amount) in KES</label>
                                                 <div class="col-md-6">
                                                     {{Form::number('expense', '',['class' => 'select2-single form-control','placeholder'=>' Expense','required'])}}
+                                                    <small class="text-danger">{{ $errors->first('expense') }}</small>
                                                 </div>
                                             </div>
 
-
-                                            <div class="form-group">
-                                                <label class="col-md-3 control-label">  Date of Assignment </label>
+                                            <div class="form-group {{ $errors->has('assigned_date') ? ' has-error' : '' }}">
+                                                <label class="col-md-3 control-label"> Date of Assignment </label>
                                                 <div class="col-md-6">
                                                     {{Form::date('assigned_date', '',['class' => 'select2-single form-control','placeholder'=>' Date of Assignment','required'])}}
+                                                    <small class="text-danger">{{ $errors->first('assigned_date') }}</small>
                                                 </div>
                                             </div>
-
 
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label"></label>
                                                 <div class="col-md-2">
-                                                    {{Form::submit('Submit', ['class'=>'btn btn-bordered btn-info btn-block'])}}
+                                                    <input class="btn btn-bordered btn-info btn-block" type="submit" name="SUBMIT" value="Submit" onclick="this.value='Submitting ..';this.disabled='disabled'; this.form.submit();" />
+{{--                                                    {{Form::submit('Submit', ['class'=>'btn btn-bordered btn-info btn-block'])}}--}}
                                                 </div>
-                                                <div class="col-md-2"><a href="/assign-project" >
-                                                        <input type="button" class="btn btn-bordered btn-success btn-block" value="Reset"></a></div>
+                                                <div class="col-md-2"><a href="/assign-project">
+                                                        <input type="button"
+                                                               class="btn btn-bordered btn-success btn-block"
+                                                               value="Reset"></a></div>
                                             </div>
                                         </div>
 
@@ -116,9 +112,29 @@
         </section>
     </div>
 
-    <script src="assets/js/pages/forms-widgets.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            jQuery('select[name="region_id"]').on('change', function () {
+                var regionID = jQuery(this).val();
+                if (regionID) {
+                    jQuery.ajax({
+                        url: 'asset_assign/getcounties/' + regionID,
+                        type: "GET",
+                        dataType: "json",
+                        success: function (data) {
+                            console.log(data);
+                            jQuery('select[name="county_id"]').empty();
+                            jQuery.each(data, function (key, value) {
+                                $('select[name="county_id"]').append('<option value="' + key + '">' + value + '</option>');
+                            });
+                        }
+                    });
+                } else {
+                    $('select[name="county_id"]').empty();
+                }
+            });
+        });
+    </script>
+
 @endsection
-@push('scripts')
-    <script src="/assets/js/pages/forms-widgets.js"></script>
-    <script src="/assets/js/custom.js"></script>
-@endpush
+

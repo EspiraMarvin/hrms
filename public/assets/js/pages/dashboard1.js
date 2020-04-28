@@ -399,15 +399,7 @@
         });
 
         // Link MonthPicker to Calendar after init
-        Picker.monthpicker({
-            prevText: '<i class="fa fa-chevron-left"></i>',
-            nextText: '<i class="fa fa-chevron-right"></i>',
-            showButtonPanel: false,
-            onSelect: function(selectedDate) {
-                var formatted = moment(selectedDate, 'MM/YYYY').format('MM/DD/YYYY');
-                Calendar.fullCalendar('gotoDate', formatted)
-            }
-        });
+
 
 
         // Init Calendar Modal

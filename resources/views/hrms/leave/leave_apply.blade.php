@@ -33,40 +33,53 @@
                                 <div class="panel-heading">
                                     <span class="panel-title hidden-xs"> Apply for Leave</span>
                                 </div>
+
+                                <div>
+{{--                                    <p id="para">Some text here</p>--}}
+{{--                                    <button onclick="disable()">blue</button>--}}
+{{--                                    <button onclick="changeColor('red');">red</button>--}}
+{{--                                    <button onclick="disable()">DISABLED</button>--}}
+
+                                </div>
+
                                 <div class="text-center" id="show-leave-count"></div>
                                 <div class="panel-body pn">
                                     <div class="table-responsive">
                                         <div class="panel-body p25 pb10">
                                             @include('inc.messages')
 
-{{--                                            {!! Form::open(['class' => 'form-horizontal', 'method' => 'post']) !!}--}}
                                             {!! Form::open(['action' => 'LeavesController@apply','method' => 'POST','class' => 'form-horizontal','enctype'=>'multipart/form-data', 'id'=>"custom-form-wizard"]) !!}
-
-                                            <div class="form-group">
+                                            @csrf
+                                            <div class="form-group {{ $errors->has('leave_type_id') ? ' has-error' : '' }}">
                                                 <label class="col-md-2 control-label"> Leave Type </label>
                                                 <div class="col-md-10">
-{{--                                                    <input type="hidden" value="{!! csrf_token() !!}" id="token">--}}
-{{--                                                    <input type="hidden" value="{{$employee->id}}" id="employee_id">--}}
-                                                    <select class="select2-multiple form-control select-primary leave_type"
-                                                            name="leave_type" required>
+                                                    <select class="selectpicker form-control"
+                                                            name="leave_type_id">
                                                         <option value="" selected>Select One</option>
-                                                        @foreach($leave as $lev)
-                                                            <option value="{{$lev->leave_type}}">{{$lev->leave_type}}</option>
-                                                        @endforeach
+                                                        @if(!empty($leave) && count($leave) > 0)
+                                                            @foreach($leave as $lev)
+                                                                <option
+                                                                    value="{{$lev->id}}">{{$lev->leave_type}}</option>
+                                                            @endforeach
+                                                        @endif
                                                     </select>
+                                                    <small class="text-danger">{{ $errors->first('leave_type_id') }}</small>
                                                 </div>
                                             </div>
 
-
-                                            <div class="form-group">
-                                                <label for="date_from" class="col-md-2 control-label"> Date From </label>
+                                            <div class="form-group {{ $errors->has('date_from') ? ' has-error' : '' }}">
+                                                <label for="date_from" class="col-md-2 control-label"> Date
+                                                    From </label>
                                                 <div class="col-md-3">
                                                     <div class="input-group">
                                                         <div class="input-group-addon">
                                                             <i class="fa fa-calendar text-alert pr10"></i>
                                                         </div>
-                                                        <input type="date" id="datepicker1" class="select2-single form-control"
-                                                               name="date_from">
+                                                        <input type="date" id="datepicker1"
+                                                               class="select2-single form-control"
+                                                               name="date_from"><br>
+                                                        <small class="text-danger">{{ $errors->first('date_from') }}</small>
+
                                                     </div>
                                                 </div>
                                                 <label for="date_to" class="col-md-2 control-label"> Date To </label>
@@ -75,22 +88,26 @@
                                                         <div class="input-group-addon">
                                                             <i class="fa fa-calendar text-alert pr10"></i>
                                                         </div>
-                                                        <input type="date" id="datepicker4" class="select2-single form-control"
+                                                        <input type="date" id="datepicker4"
+                                                               class="select2-single form-control"
                                                                name="date_to">
+                                                        <small class="text-danger">{{ $errors->first('date_to') }}</small>
+
                                                     </div>
 
                                                 </div>
                                             </div>
 
-
                                             <div class="form-group">
-                                                <label for="time_from" class=" col-md-2 control-label"> Time From </label>
+                                                <label for="time_from" class=" col-md-2 control-label"> Time
+                                                    From </label>
                                                 <div class="col-md-3">
                                                     <div class="input-group">
                                                         <div class="input-group-addon">
                                                             <i class="imoon imoon-clock text-alert pr10"></i>
                                                         </div>
-                                                        <input type="text" id="" class="select2-single form-control" value="9:30"
+                                                        <input type="text" id="" class="select2-single form-control"
+                                                               value="08:00"
                                                                name="time_from">
                                                     </div>
                                                 </div>
@@ -100,7 +117,8 @@
                                                         <div class="input-group-addon">
                                                             <i class="imoon imoon-clock text-alert pr10"></i>
                                                         </div>
-                                                        <input type="text" id="" class="select2-single form-control" value="18:00"
+                                                        <input type="text" id="" class="select2-single form-control"
+                                                               value="17:00"
                                                                name="time_to">
                                                     </div>
                                                 </div>
@@ -108,28 +126,31 @@
                                             <div class="form-group">
                                                 <label for="input002" class="col-md-2 control-label"> Days </label>
                                                 <div class="col-md-10">
-                                                    <input id="total_days" name="number_of_days" value="" readonly="readonly"
+                                                    <input id="total_days" name="number_of_days" value=""
+                                                           readonly="readonly"
                                                            type="text" size="90" class="select2-single form-control"/>
                                                 </div>
                                             </div>
-                                            <div class="form-group">
+                                            <div class="form-group {{ $errors->has('reason') ? ' has-error' : '' }}">
                                                 <label for="input002" class="col-md-2 control-label"> Reason </label>
                                                 <div class="col-md-10">
-                                                    <input type="text" id="textarea1" class="select2-single form-control"
+                                                    <input type="text" id="textarea1"
+                                                           class="select2-single form-control"
                                                            name="reason" required>
+                                                    <small class="text-danger">{{ $errors->first('reason') }}</small>
+
                                                 </div>
                                             </div>
-
 
                                             <div class="form-group">
                                                 <label class="col-md-2 control-label"></label>
 
                                                 <div class="col-md-2">
-                                                    {{Form::submit('Submit', ['class'=>'btn btn-bordered btn-info btn-block'])}}
-
+                                                    <input class="btn btn-bordered btn-info btn-block" type="submit" name="SUBMIT" value="Submit" onclick="this.value='Submitting ..';this.disabled='disabled'; this.form.submit();" />
                                                 </div>
-                                                <div class="col-md-2">
-                                                    <input type="reset" class="btn btn-bordered btn-success btn-block"  value="Reset" />
+                                                <div class="col-md-2" onclick="disable()">
+                                                    <input type="reset" id="button" class="btn btn-bordered btn-success btn-block"
+                                                           value="Reset"/>
                                                 </div>
 
                                             </div>
@@ -147,8 +168,11 @@
 
     </div>
     </div>
+
+
     @push('scripts')
-        <script src="/assets/js/custom.js"></script>
         <script src="/assets/js/function.js"></script>
     @endpush
+
 @endsection
+

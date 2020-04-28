@@ -1,9 +1,6 @@
 @extends('inc.base')
 
 @section('content')
-{{--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />--}}
-{{--    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>--}}
-{{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>--}}
     <div class="content">
 
         <header id="topbar" class="alt">
@@ -38,35 +35,43 @@
                         <div class="box box-success">
                             <div class="panel">
                                 <div class="panel-heading">
-                                    <span class="panel-title hidden-xs">Employee Lists</span><br />
-                                </div><br />
-                                @include('inc.messages')
+                                    <span class="panel-title hidden-xs">Employee Lists (No. {{$totalEmployee}})</span>
+                                </div>
+                                <br/>
 
                                 <div class="panel-menu allcp-form theme-primary mtn">
                                     <div class="row">
                                         <form action="/employee_search" method="GET" role="search">
                                             {{ csrf_field() }}
                                             <div class="col-md-6">
-                                                <input type="text" class="typeahead form-control" placeholder="Search any column" style="height:40px" value="" name="q" autocomplete="off">
+                                                <input type="text" class="typeahead form-control"
+                                                       placeholder="Search any column" style="height:40px" value=""
+                                                       name="q" autocomplete="off">
                                             </div>
 
                                             <div class="col-md-2">
-                                                <input type="submit" value="Search" name="button" class="btn btn-primary">
+                                                <input type="submit" value="Search" name="button"
+                                                       class="btn btn-primary">
+                                            </div>
+
+                                            <div class="col-md-2 mt-4">
+                                                <input type="reset" value="Reset" class="btn btn-warning">
                                             </div>
 
                                             <div class="col-md-2">
-                                                <input type="submit" value="Export" name="button" class="btn btn-success">
+                                                <a class="btn btn-success" href="employee_manager/export">EXPORT</a>
                                             </div>
                                         </form>
 
-                                            <div class="col-md-2">
-                                                <a href="/employee_manager"><input type="submit" value="Reset" class="btn btn-warning"></a>
-                                            </div>
                                     </div>
                                 </div>
 
 
                                 <div class="panel-body pn">
+                                    @include('inc.messages')
+
+{{--                                    <button onclick="myFunction()" >Click Me</button>--}}
+
                                     <div class="table-responsive">
                                         <table class="table allcp-form theme-warning tc-checkbox-1 fs13">
                                             <thead>
@@ -75,7 +80,6 @@
                                                 <th class="text-center">Code</th>
                                                 <th class="text-center">Name</th>
                                                 <th class="text-center">Role</th>
-                                                <th class="text-center">Date Joined</th>
                                                 <th class="text-center">Supervisor</th>
                                                 <th class="text-center">Mobile Number</th>
                                                 <th class="text-center">Department</th>
@@ -85,45 +89,36 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <?php $i =0;?>
+                                            <?php $i = 0;?>
                                             @if(count($employee ?? '') > 0)
                                                 @foreach($employee ?? '' as $emp)
+                                                    <tr>
+                                                        <td class="text-center">{{$i+=1}}</td>
+                                                        <td class="text-center">{{$emp->code}}</td>
+                                                        <td class="text-center"><a href="/employee/{{$emp->id}}"> {{$emp->name}}</a></td>
+                                                        <td class="text-center">{{$emp->userrole->role->role}}</td>
+                                                        <td class="text-center">{{$emp->supervisor_id}}</td>
+                                                        <td class="text-center">{{$emp->phone_number}}</td>
+                                                        <td class="text-center">{{$emp->department}}</td>
+                                                        <td class="text-center">{{$emp->duty_station}}</td>
+                                                        <td class="text-center">{{date_format(new DateTime($emp->posted_date), 'd-m-Y')}}</td>
+                                                        <td class="text-center">
+                                                                    <a href="/employee/{{$emp->id}}/edit">
+                                                                        <button type="button" class="btn btn-info br2 btn-xs fs12"
+                                                                                 data-toggle="modal" data-target="#edit">Edit
+                                                                         </button></a>
+                                                                          <button type="button" class="btn btn-danger br2 btn-xs fs12"
+                                                                                  data-empid={{$emp->id}} data-name={{$emp->name}} data-code={{$emp->code}}
+                                                                                      data-toggle="modal" data-target="#delete">Delete
+                                                                          </button>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
                                                 <tr>
-                                                    <td class="text-center">{{$i+=1}}</td>
-                                                    <td class="text-center">{{$emp->code}}</td>
-                                                    <td class="text-center"><a href="/employee/{{$emp->id}}"> {{$emp->name}}</a></td>
-{{--                                                    <td class="text-center">{{convertStatusBack($emp->employee['status'])}}</td>--}}
-                                                    <td class="text-center">{{$emp->role}}</td>
-                                                    <td class="text-center">{{$emp->date_of_joining}}</td>
-                                                    <td class="text-center">{{$emp->supervisor}}</td>
-                                                    <td class="text-center">{{$emp->phone_number}}</td>
-                                                    <td class="text-center">{{$emp->department}}</td>
-                                                    <td class="text-center">{{$emp->duty_station}}</td>
-                                                    <td class="text-center">{{$emp->posted_date}}</td>
-                                                    <td class="text-center">
-                                                        <div class="btn-group text-right">
-                                                            <button type="button"
-                                                                    class="btn btn-info br2 btn-xs fs12 dropdown-toggle"
-                                                                    data-toggle="dropdown" aria-expanded="false"> Action
-                                                                <span class="caret ml5"></span>
-                                                            </button>
-                                                            <ul class="dropdown-menu" role="menu">
-                                                                <li>
-                                                                        <a href="/employee/{{$emp->id}}/edit">Edit</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="/delete-emp/{{$emp->id}}">Delete</a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
+                                                    <td colspan="12">
+                                                        {!! $employee->links() !!}
                                                     </td>
                                                 </tr>
-                                            @endforeach
-{{--                                                {{$emp->links}}--}}
-                                            <tr><td colspan="12">
-                                                    {!! $employee->render() !!}
-                                                </td>
-                                            </tr>
                                             @else
                                                 <p style="text-align: center">No Employees Found</p>
                                             @endif
@@ -139,19 +134,67 @@
         </section>
     </div>
 
+    <!-- Modal Delete-->
+    <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div style="background-color: lightpink" class="modal-header">
+                    <h5 class="modal-title text-center" id="exampleModalCenter">
+                        Delete Confirmation
+                    </h5>
+                    <button style="font-size: 30px; margin-top: -30px" type="button" class="close" data-dismiss="modal"
+                            aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div style="text-align: center" class="modal-body">
+                    {!! Form::open(['action' => ['EmployeeController@doDelete',isset($emp->id) ? $emp->id:'' ],'method' => 'POST','class' => 'form-horizontal','enctype'=>'multipart/form-data', 'id'=>"custom-form-wizard"]) !!}
 
-<script type="text/javascript">
-    var path = "{{ route('autocomplete') }}";
-    $('input.typeahead').typeahead({
-        source:  function (query, process) {
-            return $.get(path, { query: query }, function (data) {
-                return process(data);
-            });
-        }
-    });
-</script>
+                    {{Form::hidden('id', isset($emp->id) ? $emp->id:'' ,['value' =>'','name' => 'id','id'=>'emp_id'])}}
+                    <h6>Are you sure you want to delete this ?<br><br>
+                        <input style="border: 0" type="text" disabled class="form-control text-center" name="name" id="name">Code
+                        <input style="border: 0" type="text" disabled class="form-control text-center" id="code">
+                    </h6>
 
+                    <div class="modal-footer text-center">
+                        <button type="button" class="btn btn-success" data-dismiss="modal">Cancel</button> &nbsp;&nbsp;
+                        <input class="btn btn-danger" type="submit" name="SUBMIT" value="Yes Delete" onclick="this.value='Deleting ..';this.disabled='disabled'; this.form.submit();" />
+                    </div>
+                    {{Form::hidden('_method','PUT')}}
+                    {!! Form::close() !!}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Modal -->
 
+    <script>
+        $('#delete').on('show.bs.modal', function (event) {
+
+            console.log('modal opened')
+
+            var button = $(event.relatedTarget)
+            var employee_id = button.data('empid')
+            var name = button.data('name')
+            var code = button.data('code')
+            var modal = $(this)
+
+            modal.find('.modal-body #emp_id').val(employee_id);
+            modal.find('.modal-body #name').val(name);
+            modal.find('.modal-body #code').val(code);
+        })
+    </script>
+    <script type="text/javascript">
+        var path = "{{ route('autocomplete') }}";
+        $('input.typeahead').typeahead({
+            source: function (query, process) {
+                return $.get(path, {query: query}, function (data) {
+                    return process(data);
+                });
+            }
+        });
+    </script>
 @endsection
 
 

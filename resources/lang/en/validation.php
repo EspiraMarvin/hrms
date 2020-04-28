@@ -135,6 +135,13 @@ return [
         ],
     ],
 
+/*    'custom' => [
+        'award' => [
+            'required' => 'Award Already Added',
+        ],
+    ],*/
+
+
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Attributes

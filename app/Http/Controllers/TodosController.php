@@ -13,6 +13,12 @@ class TodosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         return TodosResource::collection(Todo::all());
@@ -31,39 +37,39 @@ class TodosController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store()
     {
 
-      $data = request()->validate([
-          'title' => 'required',
-          'status' => 'required'
-      ]);
+        $data = request()->validate([
+            'title' => 'required',
+            'status' => 'required'
+        ]);
 
-      $todo = Todo::create($data);
-      return response()->json(['data'=>$todo]);
+        $todo = Todo::create($data);
+        return response()->json(['data' => $todo]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
         $todo = Todo::find($id);
 
-        return response()->json(['data'=>new TodosResource($todo)]);
+        return response()->json(['data' => new TodosResource($todo)]);
 
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -74,8 +80,8 @@ class TodosController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update($id)
@@ -88,23 +94,23 @@ class TodosController extends Controller
         $todo = Todo::find($id);
         $todo->update($data);
 
-        return response()->json(['data'=>$todo]);
+        return response()->json(['data' => $todo]);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         $todo = Todo::find($id);
-        if ($todo){
+        if ($todo) {
             $todo->delete();
-            return response()->json(['message'=>"deleted"]);
+            return response()->json(['message' => "deleted"]);
         }
-        return response()->json(['message'=>"not found"]);
+        return response()->json(['message' => "not found"]);
 
     }
 }

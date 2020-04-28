@@ -18,26 +18,35 @@
 use Illuminate\Http\Request;
 use App\Employee;
 use Symfony\Component\Console\Input\Input;
-
+use App\Exports\EmployeesExport;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['middleware' => ['guest']], function ()
+{
 
+Route::get('dashboard', ['as' => 'dashboard', 'uses' => 'AuthController@dashboard']);
+
+});
+
+Route::get('/home', 'HomeController@index')->name('home');
 
 //Route::get('/home', 'HomeController@index');
 
-Route::get('dashboard','AuthController@dashboard');
-
 //Route::get('dashboard', ['as' => 'dashboard', 'uses' => 'AuthController@dashboard']);
+
+Route::get('dashboard', 'AuthController@dashboard');
+
+//Route::get('sidebar', ['as' => 'sidebar', 'uses' => 'LeavesController@sidebarLeave']);
+
 
 //  Employee routes
 
-Route::resource('employee','EmployeeController');
+Route::resource('employee', 'EmployeeController');
 
-Route::get('delete-emp/{id}', ['as' => 'delete-emp', 'uses' => 'EmployeeController@doDelete']);
+Route::put('delete-emp/{id}', ['as' => 'delete-emp', 'uses' => 'EmployeeController@doDelete']);
 
 Route::get('employee_add', ['as' => 'employee_add', 'uses' => 'EmployeeController@employee_add']);
 
@@ -45,32 +54,33 @@ Route::get('employee_manager', ['as' => 'employee_manager', 'uses' => 'EmployeeC
 
 Route::get('employee_bank_details', ['as' => 'employee_bank_details', 'uses' => 'EmployeeController@bankDetails']);
 
-//Route::get('employee_add', ['as' => 'employee_add', 'uses' => 'EmployeeController@EmpAddDir']);
-
 Route::get('employee_add', ['as' => 'employee_add', 'uses' => 'EmployeeController@EmpAddDep']);
 
-Route::get('employee_edit', ['as' => 'employee_edit', 'uses' => 'EmployeeController@EmpEditDep']);
+//   profile route
 
-//Route::get('employee_add', ['as' => 'employee_add', 'uses' => 'EmployeeController@EmpAddRole']);
+Route::get('profile', 'ProfileController@show');
 
+Route::put('profile_bank', ['as' => 'profile_bank', 'uses' => 'ProfileController@editBank']);
+
+Route::put('profile_personal', ['as' => 'profile_personal', 'uses' => 'ProfileController@editPersonal']);
+
+Route::put('profile_employment', ['as' => 'profile_employment', 'uses' => 'ProfileController@editEmployment']);
 
 //   Directorate Routes
 
-Route::resource('directorate','DirectorateController');
+Route::resource('directorate', 'DirectorateController');
 
-Route::get('delete-dir/{id}', ['as' => 'delete-dir', 'uses' => 'DirectorateController@doDelete']);
+Route::put('delete-dir/{id}', ['as' => 'delete-dir', 'uses' => 'DirectorateController@doDelete']);
 
 Route::get('directorate_add', ['as' => 'directorate_add', 'uses' => 'DirectorateController@dirAdd']);
 
 Route::get('directorate_list', ['as' => 'directorate_list', 'uses' => 'DirectorateController@dirList']);
 
-//Route::get('employee_add', ['as' => 'employee_add', 'uses' => 'EmployeeController@EmpAddDir']);
-
 //   Departments Routes
 
-Route::resource('department','DepartmentsController');
+Route::resource('department', 'DepartmentsController');
 
-Route::get('delete-dep/{id}', ['as' => 'delete-dep', 'uses' => 'DepartmentsController@doDelete']);
+Route::put('delete-dep/{id}', ['as' => 'delete-dep', 'uses' => 'DepartmentsController@doDelete']);
 
 Route::get('department_add', ['as' => 'department_add', 'uses' => 'DepartmentsController@depAdd']);
 
@@ -78,40 +88,39 @@ Route::get('department_list', ['as' => 'department_list', 'uses' => 'Departments
 
 //   Leaves Routes
 
-Route::resource('leaves','LeavesController');
-//Route::get('leave_apply', ['as' => 'leave_apply', 'uses' => 'LeavesController@LeaveTypeAdd']);
-//Route::get('leave_apply', ['as' => 'leave_apply', 'uses' => 'LeavesController@apply']);
+Route::resource('leaves', 'LeavesController');
+
+Route::get('delete-leave-type/{id}', ['as' => 'delete-leave-type', 'uses' => 'LeavesController@doDelete']);
+
 Route::post('leave_apply', ['as' => 'leave.leave_apply', 'uses' => 'LeavesController@apply']);
 
 Route::get('leave_apply', ['as' => 'leave_apply', 'uses' => 'LeavesController@applyLeave']);
 
 Route::get('my_leave_list', ['as' => 'my_leave_list', 'uses' => 'LeavesController@myLeaveList']);
 
-Route::get('leave_type_add', ['as' => 'leave_type_add', 'uses' => 'LeavesController@addLeaveType']);
+Route::get('leave_approved', ['as' => 'leave_approved', 'uses' => 'LeavesController@statusApprove']);
 
-Route::get('leave_type_list', ['as' => 'leave_type_list', 'uses' => 'LeavesController@leaveTypeList']);
+Route::get('leave_deny', ['as' => 'leave_deny', 'uses' => 'LeavesController@statusDeny']);
 
-Route::get('total_leave_request', ['as' => 'total_leave_request', 'uses' => 'LeavesController@totalLeaveRequest']);
+Route::get('leave_pending', ['as' => 'leave_pending', 'uses' => 'LeavesController@statusPending']);
 
-//   Leave Routes
+//Route::get('approve_leave', ['as' => 'approve_leave', 'uses' => 'LeavesController@checkLeaves']);
 
-/*Route::get('leave_apply', ['as' => 'leave_apply', 'uses' => 'LeaveController@applyLeave']);
+Route::get('approve_leave', ['as' => 'approve_leave', 'uses' => 'LeavesController@approveLeaveList']);
 
-Route::get('leave_apply', ['as' => 'leave_apply', 'uses' => 'LeaveController@apply']);
-
-Route::get('my_leave_list', ['as' => 'my_leave_list', 'uses' => 'LeavesController@myLeaveList']);
+Route::put('approve_leave', ['as' => 'approve_leave', 'uses' => 'LeavesController@approveLeave']);
 
 Route::get('leave_type_add', ['as' => 'leave_type_add', 'uses' => 'LeavesController@addLeaveType']);
 
 Route::get('leave_type_list', ['as' => 'leave_type_list', 'uses' => 'LeavesController@leaveTypeList']);
 
-Route::get('total_leave_request', ['as' => 'total_leave_request', 'uses' => 'LeavesController@totalLeaveRequest']);*/
+Route::get('total_leave_list', ['as' => 'total_leave_list', 'uses' => 'LeavesController@totalLeaveList']);
 
 //    Role Routes
 
-Route::resource('role','RolesController');
+Route::resource('role', 'RolesController');
 
-Route::get('delete-role/{id}', ['as' => 'delete-role', 'uses' => 'RolesController@doDelete']);
+Route::put('delete-role/{id}', ['as' => 'delete-role', 'uses' => 'RolesController@doDelete']);
 
 Route::get('role_add', ['as' => 'role_add', 'uses' => 'RolesController@addRole']);
 
@@ -119,7 +128,9 @@ Route::get('role_list', ['as' => 'role_list', 'uses' => 'RolesController@roleLis
 
 //    Target Routes
 
-Route::resource('target','TargetsController');
+Route::resource('target', 'TargetsController');
+
+Route::put('delete-target/{id}', ['as' => 'delete-target', 'uses' => 'TargetsController@doDelete']);
 
 Route::get('target_assign', ['as' => 'target_assign', 'uses' => 'TargetsController@targetAdd']);
 
@@ -127,51 +138,111 @@ Route::get('target_assign', ['as' => 'target_assign', 'uses' => 'TargetsControll
 
 Route::get('target_assign_list', ['as' => 'target_assign_list', 'uses' => 'TargetsController@targetList']);
 
+Route::get('my_target_list', ['as' => 'my_target_list', 'uses' => 'TargetsController@showMyTarget']);
+
 //  Expense Routes
-Route::resource('expense','ExpensesController');
+
+Route::resource('expense', 'ExpensesController');
+
+Route::put('delete-expense/{id}', ['as' => 'delete-expense', 'uses' => 'ExpensesController@doDelete']);
 
 Route::get('expense_add', ['as' => 'expense_add', 'uses' => 'ExpensesController@expenseAdd']);
 
 Route::get('expense_list', ['as' => 'expense_list', 'uses' => 'ExpensesController@expenseList']);
 
+//  Drop down list route
+
+Route::get('expense_add', 'ExpensesController@getRegions');
+
+Route::get('expense_add/getcounties/{id}', 'ExpensesController@getCounties');
 
 //    Asset Routes
 
-Route::resource('asset','AssetsController');
+Route::resource('asset', 'AssetsController');
+
+Route::put('delete-asset/{id}', ['as' => 'delete-asset', 'uses' => 'AssetsController@doDelete']);
 
 Route::get('asset_add', ['as' => 'asset_add', 'uses' => 'AssetsController@assetAdd']);
 
 Route::get('asset_assign', ['as' => 'asset_assign', 'uses' => 'AssetAssignController@assignAsset']);
 
-//Route::get('asset_assign', ['as' => 'asset_assign', 'uses' => 'AssetsController@assignAsset']);
-
-//Route::get('asset_assign', ['as' => 'asset_assign', 'uses' => 'AssetsController@assetAssign']);
-
-//Route::get('asset_assign_list', ['as' => 'asset_assign_list', 'uses' => 'AssetsController@assetAssignList']);
-
 Route::get('asset_list', ['as' => 'asset_list', 'uses' => 'AssetsController@assetList']);
 
-//      Asset Assign Routes
+// dropdown list routes
 
-Route::resource('assetassign','AssetAssignController');
+Route::get('asset_assign', 'AssetAssignController@assignAsset');
 
-//Route::get('asset_assign', ['as' => 'asset_assign', 'uses' => 'AssetAssignController@listAsset']);
+Route::get('asset_assign/getcounties/{id}', 'AssetAssignController@getCounties');
 
-Route::get('asset_assign_list', ['as' => 'asset_assign_list', 'uses' => 'AssetAssignController@assetAssignList']);
+//   Asset Assign Routes
 
-//Routes for Promotion.
+Route::resource('assetassign', 'AssetAssignController');
 
-Route::get('promote_add', ['as' => 'promote_add', 'uses' => 'EmployeeController@doPromotion']);
+Route::get('my_assigned_assets', ['as' => 'my_assigned_assets', 'uses' => 'AssetAssignController@myAssets']);
 
-Route::get('promote_list', ['as' => 'promote_list', 'uses' => 'EmployeeController@showPromotion']);
+Route::put('delete-asset-assign/{id}', ['as' => 'delete-asset-assign', 'uses' => 'AssetAssignController@doDelete']);
 
-Route::get('promotion', ['uses'=>'EmployeeController@doPromotion']);
+Route::get('asset_assign_list/{id}', ['as' => 'asset_assign_list', 'uses' => 'AssetAssignController@assetAssignList']);
 
-Route::post('promotion', ['uses'=>'EmployeeController@processPromotion']);
+//  Awards routes
 
-Route::get('show_promotion', ['uses'=>'EmployeeController@showPromotion']);
+//route to update award method
 
-Route::post('get-promotion-data', ['uses' => 'EmployeeController@getPromotionData']);
+Route::get('award_assign/{id}/edit', ['as' => 'award_assign', 'uses' => 'AwardsController@editAssigned']);
+
+Route::put('award_assign/{id}', ['as' => 'award_assign', 'uses' => 'AwardsController@updateAssigned']);
+
+Route::post('award_assign', ['as' => 'award_assign', 'uses' => 'AwardsController@storeAssignedAward']);
+
+Route::get('my_awards', ['as' => 'my_awards', 'uses' => 'AwardsController@myAwards']);
+
+Route::resource('award', 'AwardsController');
+
+Route::put('delete-award/{id}', ['as' => 'delete-award', 'uses' => 'AwardsController@doDelete']);
+
+Route::put('delete-award-assign/{id}', ['as' => 'delete-award', 'uses' => 'AwardsController@doDeleteAssignAward']);
+
+Route::get('award_add', 'AwardsController@addAward');
+
+Route::get('award_assign', 'AwardsController@assingAward');
+
+Route::get('award_list', ['as' => 'award_list', 'uses' => 'AwardsController@awardList']);
+
+Route::get('awardees_listing', ['as' => 'awardees_listing', 'uses' => 'AwardsController@awardeesList']);
+
+//  Training routes
+
+Route::resource('training', 'TrainingsController');
+
+Route::put('delete-train/{id}', ['as' => 'delete-train', 'uses' => 'TrainingsController@doDelete']);
+
+Route::post('train_invite', ['as' => 'train_invite', 'uses' => 'TrainingsController@storeTrainInvite']);
+
+Route::get('train_add', ['as' => 'train_add', 'uses' => 'TrainingsController@addTrain']);
+
+Route::get('train_list', ['as' => 'train_list', 'uses' => 'TrainingsController@trainList']);
+
+Route::get('train_invite', ['as' => 'train_invite', 'uses' => 'TrainingsController@trainInvite']);
+
+Route::get('train_invite_list', ['as' => 'train_invite_list', 'uses' => 'TrainingsController@trainInviteList']);
+
+Route::put('delete-train_invite/{id}', ['as' => 'delete-train_invite', 'uses' => 'TrainingsController@doDeleteInvite']);
+
+Route::get('train_invite/{id}/edit', ['as' => 'train_invite_edit', 'uses' => 'TrainingsController@editInvite']);
+
+Route::put('train_invite/{id}', ['as' => 'train_invite', 'uses' => 'TrainingsController@updateInvite']);
+
+Route::get('my_train_invite', ['as' => 'my_train_invite', 'uses' => 'TrainingsController@myTrainingInvite']);
+
+//  Routes for Promotion.
+
+Route::resource('promote', 'PromoteController');
+
+Route::post('employee_edit', ['as' => 'employee_edit', 'uses' => 'PromoteController@storePromotion']);
+
+Route::get('promote_add', ['as' => 'promote_add', 'uses' => 'PromoteController@doPromotion']);
+
+Route::get('promote_list', ['as' => 'promote_list', 'uses' => 'PromoteController@promoteList']);
 
 // search routes
 
@@ -179,9 +250,17 @@ Route::get('autocomplete', 'EmployeeController@autocomplete')->name('autocomplet
 
 Route::get('employee_search', ['as' => 'employee_search', 'uses' => 'EmployeeController@search']);
 
+Route::get('employee_promote', ['as' => 'employee_promote', 'uses' => 'EmployeeController@searchPromote']);
+
+Route::get('leave_search', ['as' => 'leave_search', 'uses' => 'LeavesController@search']);
+
+// Export routes
+
+route::get('employee_manager/export', function () {
+    return Excel::download(new \App\Exports\EmployeesExport, 'employees.xlsx');
+});
+
 Auth::routes();
-
-
 
 
 

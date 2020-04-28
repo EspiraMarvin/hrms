@@ -20,7 +20,7 @@
                     <li class="breadcrumb-link">
                         <a href=""> Directorate </a>
                     </li>
-                    <li class="breadcrumb-current-item"> Add Directorate </li>
+                    <li class="breadcrumb-current-item"> Edit details of {{$directorate->name}} </li>
                 </ol>
             </div>
         </header>
@@ -41,27 +41,26 @@
                                             </div>
                                             {!! Form::open(['action' => ['DirectorateController@update',$directorate->id],'method' => 'POST','enctype'=>'multipart/form-data','class' => 'form-horizontal','id'=>"custom-form-wizard"]) !!}
 
-{{--                                            {!! Form::open(['action' => 'DirectorateController@store','method' => 'POST','class' => 'form-horizontal','enctype'=>'multipart/form-data', 'id'=>"custom-form-wizard"]) !!}--}}
-
-                                            {{--                                            {!! Form::open(['class' => 'form-horizontal']) !!}--}}
-                                            <div class="form-group">
+                                            <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
                                                 <label class="col-md-3 control-label"> Directorate Name </label>
                                                 <div class="col-md-6">
-                                                    {{Form::text('name',$directorate->name,['class' => 'select2-single form-control','placeholder'=>'Directorate','required'])}}
+                                                    {{Form::text('name', $directorate->name,['class' => 'select2-single form-control','placeholder'=>'Directorate','required'])}}
+                                                    <small class="text-danger">{{ $errors->first('name') }}</small>
                                                 </div>
                                             </div>
 
-                                            <div class="form-group">
+                                            <div class="form-group {{ $errors->has('description') ? ' has-error' : '' }}">
                                                 <label class="col-md-3 control-label"> Description </label>
                                                 <div class="col-md-6">
-                                                    {{Form::textarea('description',$directorate->description,['class' => 'select2-single form-control','rows'=>'3','id'=>'textarea1','placeholder'=>'Directorate Description','required'])}}
+                                                    {{Form::textarea('description', $directorate->description,['class' => 'select2-single form-control','rows'=>'3','id'=>'textarea1','placeholder'=>'Directorate Description','required'])}}
+                                                    <small class="text-danger">{{ $errors->first('description') }}</small>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label"></label>
                                                 <div class="col-md-2">
-                                                    {{Form::submit('Submit', ['class'=>'btn btn-bordered btn-info btn-block'])}}
+                                                    <input class="btn btn-bordered btn-info btn-block" type="submit" name="SUBMIT" value="Submit" onclick="this.value='Submitting ..';this.disabled='disabled'; this.form.submit();" />
                                                 </div>
                                                 <div class="col-md-2">
                                                     <input type="reset" class="btn btn-bordered btn-success btn-block" value="Reset" />

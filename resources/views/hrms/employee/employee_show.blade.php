@@ -1,7 +1,25 @@
 @extends('inc.base')
 
 @section('content')
-    <a href="/employee_manager" class="btn btn-danger">Go Back</a>
+    <div class="container">
+        <div class="row" style="margin-top: 4px">
+            <a style="margin-left: 5px" href="/dashboard" class="btn btn-danger col-4">Go Back</a>
+
+            <a style="background-color: #1fad83;margin-left: 5px;color: white" href="/my_target_list" class="btn btn-success col-4">Check
+                Targets</a>
+
+            <a style="background-color: #06b6ef;margin-left: 5px;color: white" href="/my_leave_list" class="btn btn-default  col-4">Check
+                Leaves</a>
+
+            <a style="background-color: #5c2699;margin-left: 5px; color: white" href="/my_assigned_assets" class="btn btn-default col-4">Assets
+                Assigned</a>
+
+            <a style="background-color: darkmagenta;margin-left: 5px; color: white" href="/my_awards" class="btn btn-default col-4">Awards</a>
+
+            <a style="background-color: #0c373c;margin-left: 5px; color: white" href="/my_train_invite" class="btn btn-default col-4">Program Invites</a>
+
+        </div>
+    </div>
 
     <section id="content" class="animated fadeIn">
         <div class="row">
@@ -14,18 +32,58 @@
                         </div>
                         <div class="panel-body pn pb5 text-center">
                             <hr class="short br-lighter">
-{{--                            <img style="width: 80px" height="80px" class="img-circle img-thumbnail" alt="User Image" src="{{isset($employee->photo) ? $employee->photo: '/public/photos/noimage.jpg'}}">--}}
-                            <img width="50%" height="130" class="img-responsive center-block" alt="User Image" src="/storage/photos/{{$employee->photo}}">
-                            {{--                            <img src="{{isset($employee->photo) ? $employee->photo : '/assets/img/avatars/profile_pic.png'}}" width="80px" height="80px" class="img-circle img-thumbnail" alt="User Image">--}}
+                            {{--   <img style="width: 80px" height="80px" class="img-circle img-thumbnail" alt="User Image" src="{{isset($employee->photo) ? $employee->photo: '/public/photos/noimage.jpg'}}">--}}
+                            <img width="50%" height="130" class="img-responsive center-block" alt="User Image"
+                                 src="/storage/photos/{{$employee->photo}}">
+                            {{--   <img src="{{isset($employee->photo) ? $employee->photo : '/assets/img/avatars/profile_pic.png'}}" width="80px" height="80px" class="img-circle img-thumbnail" alt="User Image">--}}
 
                         </div>
-                        <p class="small text-center no-margin"><span class="text-muted">Employee ID:</span> {{isset($employee->code) ? $employee->code:''}}</p>
-                        <p class="text-center no-margin"><span class="text-muted">Designation:</span>{{isset($employee->role) ? $employee->role:''}}</p>
-                        <p class="small text-center no-margin"><span class="text-muted">Department:</span> {{isset($employee->department) ? $employee->department:'' }}</p>
-                        <p class="small text-center no-margin"><span class="text-muted">Supervisor:</span> {{isset($employee->supervisor) ? $employee->supervisor:'' }}</p>
-                        <p class="small text-center no-margin"><span class="text-muted">Employment Type:</span> {{isset($employee->employment_type) ? $employee->employment_type:'' }}</p>
-                        <p class="small text-center no-margin"><span class="text-muted">Employee Status:</span> {{isset($employee->status) ? $employee->status:'' }}</p>
+                        {{--                        <hr style="margin-top: -3px;border: 1px solid">--}}
+                        <div class="panel-body pn pb5">
+                            <div class="box-body no-padding">
+                                <table class="table" style="margin-top:-4px;text-align: center">
+                                    <tbody>
+                                    <tr>
+                                        <td style="width: 10px" class="text-center"></td>
+                                        <td><strong>Employee ID</strong></td>
+                                        <td style="color: black">{{isset($employee->code) ? $employee->code:''}}</td>
+                                    </tr>
 
+                                    <tr>
+                                        <td style="width: 10px" class="text-center"></td>
+                                        <td><strong>Personal File No</strong></td>
+                                        <td style="color: black">{{isset($employee->pf_number) ? $employee->pf_number:''}}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="width: 10px" class="text-center"></td>
+                                        <td><strong>Role</strong></td>
+                                        <td style="color: black">{{isset($employee->userrole->role->role) ? $employee->userrole->role->role:''}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 10px" class="text-center"></td>
+                                        <td><strong>Department</strong></td>
+                                        <td style="color: black">{{isset($employee->department) ? $employee->department:'' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 10px" class="text-center"></td>
+                                        <td><strong>Supervisor</strong></td>
+                                        <td style="color: black">{{isset($employee->supervisor) ? $employee->supervisor:'' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 10px" class="text-center"></td>
+                                        <td><strong>Employment Type</strong></td>
+                                        <td style="color: black">{{isset($employee->employment_type) ? $employee->employment_type:'' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 10px" class="text-center"></td>
+                                        <td class="offset-2"><strong>Employee Status</strong></td>
+                                        <td style="color: black">{{isset($employee->status) ? $employee->status:'' }}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -41,32 +99,28 @@
                                 <table class="table">
                                     <tbody>
                                     <tr>
-                                        <td style="width: 10px" class="text-center"><i class="fa fa-credit-card"></i></td>
+                                        <td style="width: 10px" class="text-center"><i class="fa fa-credit-card"></i>
+                                        </td>
                                         <td><strong>Account Number</strong></td>
                                         <td>{{isset($employee->account_number) ? $employee->account_number:''}}</td>
-
                                     </tr>
-                                    <tr>
 
-                                        <td style="width: 10px" class="text-center"><i class="fa fa-tags"></i></td>
-                                        <td><strong>Pf Account Number</strong></td>
-                                        <td>{{isset($employee->pf_account_number) ? $employee->pf_account_number:''}}</td>
-                                    </tr>
                                     <tr>
                                         <td style="width: 10px" class="text-center"><i class="fa fa-bank"></i></td>
                                         <td><strong>Bank Name</strong></td>
                                         <td>{{isset($employee->bank_name) ? $employee->bank_name: ''}}</td>
                                     </tr>
+
                                     <tr>
                                         <td style="width: 10px" class="text-center"><i class="fa fa-tags"></i></td>
                                         <td><strong>KRA Pin</strong></td>
                                         <td>{{isset($employee->kra_pin) ? $employee->kra_pin:''}}</td>
                                     </tr>
-                                  {{--  <tr>
-                                        <td style="width: 10px" class="text-center"><i class="fa fa-code"></i></td>
-                                        <td><strong>Ifsc Code</strong></td>
-                                        <td>{{isset($employee->ifsc_code) ? $employee->ifsc_code: ''}} </td>
-                                    </tr>--}}
+                                    {{--  <tr>
+                                          <td style="width: 10px" class="text-center"><i class="fa fa-code"></i></td>
+                                          <td><strong>Ifsc Code</strong></td>
+                                          <td>{{isset($employee->ifsc_code) ? $employee->ifsc_code: ''}} </td>
+                                      </tr>--}}
                                     <tr>
                                         <td style="width: 10px" class="text-center"><i class="fa fa-tags"></i></td>
                                         <td><strong>PF Status</strong></td>
@@ -101,7 +155,7 @@
                                         <td style="width: 10px" class="text-center"><i class="fa fa-birthday-cake"></i>
                                         </td>
                                         <td><strong>Birthday</strong></td>
-                                        <td>{{isset($employee->date_of_birth) ? $employee->date_of_birth:'' }}</td>
+                                        <td>{{date_format(new DateTime($employee->date_of_birth), 'd-m-Y')}}</td>
                                     </tr>
                                     <tr>
                                         <td style="width: 10px" class="text-center"><i class="fa fa-genderless"></i>
@@ -186,13 +240,13 @@
                                     </tr>
                                     <tr>
                                         <td class="text-center"><i class="fa fa-cubes"></i></td>
-                                        <td><strong>Designation</strong></td>
-                                        <td>{{$employee->role}}</td>
+                                        <td><strong>Role</strong></td>
+                                        <td>{{$employee->userrole->role->role}}</td>
                                     </tr>
                                     <tr>
                                         <td class="text-center"><i class="fa fa-calendar"></i></td>
                                         <td><strong>Date Joined</strong></td>
-                                        <td>{{$employee->date_of_joining}}</td>
+                                        <td>{{date_format(new DateTime($employee->date_of_joining), 'd-m-Y')}}</td>
                                     </tr>
                                     <tr>
                                         <td class="text-center"><i class="fa fa-calendar"></i></td>
@@ -202,7 +256,12 @@
                                     <tr>
                                         <td class="text-center"><i class="fa fa-calendar"></i></td>
                                         <td><strong>Posted Date</strong></td>
-                                        <td>{{$employee->posted_date}}</td>
+                                        <td>{{date_format(new DateTime($employee->posted_date), 'd-m-Y')}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center"><i class="fa fa-group"></i></td>
+                                        <td><strong>Job Group</strong></td>
+                                        <td>{{$employee->job_group}}</td>
                                     </tr>
                                     <tr>
                                         <td class="text-center"><i class="fa fa-credit-card"></i></td>
@@ -210,9 +269,14 @@
                                         <td>{{$employee->salary}}</td>
                                     </tr>
                                     <tr>
+                                        <td class="text-center"><i class="fa fa-times"></i></td>
+                                        <td><strong>Notice Period</strong></td>
+                                        <td>{{$employee->notice_period}} Months</td>
+                                    </tr>
+                                    <tr>
                                         <td class="text-center"><i class="fa fa-credit-card"></i></td>
                                         <td><strong>Date of Resignation</strong></td>
-                                        <td>{{$employee->date_of_resignation}}</td>
+                                        <td> {{date_format(new DateTime($employee->date_of_resignation), 'd-m-Y')}}</td>
                                     </tr>
                                     </tbody>
                                 </table>

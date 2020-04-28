@@ -47,7 +47,7 @@
 
 
             <!-- -------------- Login Form -------------- -->
-            <div class="allcp-form theme-primary mw320" id="login">
+            <div class="allcp-form theme-primary mw320 animated zoomIn" id="login">
 
                 <div class="text-center mb20">
                     <div class="bg-primary text-center mb20 br3 pv15">
@@ -56,89 +56,71 @@
                             <b>ICT AUTHORITY</b>
                         </p>
                     </div>
-                    <p style="text-align: center;color: black;font-size: 15px"><b>HUMAN RESOURCE MANAGEMENT SYSTEM</b></p>
+                    <p style="text-align: center;color: black;font-size: 15px"><b>HUMAN RESOURCE MANAGEMENT SYSTEM</b>
+                    </p>
 
                 </div>
 
                 <div class="panel mw320">
 
-{{--                                    <div class="card-header">{{ __('Login') }}</div>--}}
+                    {{--                                    <div class="card-header">{{ __('Login') }}</div>--}}
 
-                                    <div class="card-body">
-                                        <form method="POST" action="{{ route('login') }}">
-                                            @csrf
-                                            @include('inc.messages')
+                    <div class="card-body animated zoomIn">
+                        <form method="POST" action="{{ route('login') }}">
+                            @csrf
+                            @include('inc.messages')
 
-                                            <div class="panel-body pn mv10">
-                                                <div class="section">
-{{--                                                    @include('inc.messages')--}}
-                                                    @error('email')
-                                                    <span class="invalid-feedback" role="alert">
-{{--                                                     <strong>{{ $message }}</strong>--}}
-                                                    </span>
-                                                    @enderror
-                                                    <label for="email" class="field prepend-icon">
-                                                        <input type="text" name="email" id="email" class="gui-input @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="off" autofocus placeholder="Email Address">
-                                                        <label for="email" class="field-icon">
-                                                            <i class="fa fa-user"></i>
-                                                        </label>
-                                                    </label>
-                                                </div>
-                                            </div>
+                            <div class="panel-body pn mv10">
+                                <div class="section">
+                                    <label for="email" class="field prepend-icon">
+                                        <input type="text" name="email" id="email"
+                                               class="gui-input @error('email') is-invalid @enderror" name="email"
+                                               value="{{ old('email') }}" autocomplete="off" autofocus
+                                               placeholder="Email Address">
+                                        <label for="email" class="field-icon">
+                                            <i class="fa fa-user"></i>
+                                        </label>
+                                    </label>
+                                </div>
+                            </div>
 
-                                            <div class="panel-body pn mv10">
-                                                <div class="section">
-                                                    @error('password')
-                                                    <span class="invalid-feedback" role="alert">
-{{--                                                        <strong>{{ $message }}</strong>--}}
-                                                    </span>
-                                                    @enderror
-                                                    <label for="password" class="field prepend-icon">
-                                                        <input type="password" name="password" id="password" class="gui-input @error('password') is-invalid @enderror" name="password" autocomplete="off" autofocus placeholder="Password">
-                                                        <label for="password" class="field-icon">
-                                                            <i class="fa fa-lock"></i>
-                                                        </label>
-                                                    </label>
-                                                </div>
-                                            </div>
+                            <div class="panel-body pn mv10">
+                                <div class="section">
+                                    <label for="password" class="field prepend-icon">
+                                        <input type="password" name="password" id="password"
+                                               class="gui-input @error('password') is-invalid @enderror" name="password"
+                                               autocomplete="off" autofocus placeholder="Password">
+                                        <label for="password" class="field-icon">
+                                            <i class="fa fa-lock"></i>
+                                        </label>
+                                    </label>
+                                </div>
+                            </div>
 
-                       {{--                     <div class="form-group row">
-                                                <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                                                <div class="col-md-6">
-                                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                                    @error('password')
-                                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                                    @enderror
-                                                </div>
-                                            </div>--}}
-
-                                            <div class="form-group row">
-                                                <div class="col-md-8 offset-md-4">
-                                                    <div class="form-check">
-                                                        <input style="color: green !important" class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>&nbsp;&nbsp; {{ __('Remember Me') }}
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group row mb-0">
-                                                <div class=" offset-md-4">
-                                                        <button type="submit" class="btn btn-primary">
-                                                            {{ __('Login') }}
-                                                        </button>
-
-                                                        @if (Route::has('password.request'))
-                                                            <a class="btn btn-link" href="{{ route('password.request') }}">
-                                                                {{ __('Forgot Your Password?') }}
-                                                            </a>
-                                                        @endif
-                                                </div>
-                                            </div>
-                                        </form>
+                            <div class="form-group row">
+                                <div class="col-md-8 offset-md-4">
+                                    <div class="form-check">
+                                        <input style="color: green !important" class="form-check-input" type="checkbox"
+                                               name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>&nbsp;&nbsp; {{ __('Remember Me') }}
                                     </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row mb-0">
+                                <div class=" offset-md-4">
+                                    <button type="submit" class="btn btn-primary">
+                                        {{ __('Login') }}
+                                    </button>
+
+                                    @if (Route::has('password.request'))
+                                        <a class="btn btn-link" href="{{ route('password.request') }}">
+                                            {{ __('Forgot Your Password?') }}
+                                        </a>
+                                    @endif
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
 
                 <!-- -------------- /Panel -------------- -->
@@ -168,6 +150,7 @@
 <script src="assets/js/main.js"></script>
 
 <!-- -------------- Page JS -------------- -->
+
 <script type="text/javascript">
     jQuery(document).ready(function () {
 

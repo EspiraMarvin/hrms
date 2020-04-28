@@ -12,32 +12,69 @@ class Employee extends Model
 
     protected $table = "employees";
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
+    public function role()
+    {
+        return $this->hasOne(Role::class);
+    }
 
-//    protected $table='employees';
-//    public $primaryKey='id';
-//    public $fillable='name';
+    public function userrole()
+    {
+        return $this->hasOne(UserRole::class);
+    }
 
-/*     use Notifiable;
-     use SearchableTrait;
+    public function targets()
+    {
+        return $this->hasMany(Target::class);
+    }
 
-     protected $searchable = [
-       'columns' => [
-           'employees.code' => 10,
-           'employees.name' => 10,
-           'employees.email' => 10,
-           'employees.role' => 10,
-           'employees.joining_date' => 10,
-           'employees.current_address' => 10,
-           'employees.phone_number' => 10,
-           'employees.department' => 10,
-           'employees.duty_station' => 10,
-           'employees.id' => 10,
-       ]
-     ];
+    public function leaves()
+    {
+        return $this->hasMany(Leave::class);
+    }
 
-     protected $fillable = [
-         'code','name','email','role','joining_date',
-         'current_address','phone_number','department','duty_station',
-     ];*/
+    public function ApplyLeave()
+    {
+        return $this->hasMany(ApplyLeave::class);
+    }
+
+    public function assets()
+    {
+        return $this->hasMany(Asset::class);
+    }
+
+    public function AssetAssign()
+    {
+        return $this->hasMany(AssetAssign ::class);
+    }
+
+    public function awards()
+    {
+        return $this->hasMany(Award ::class);
+    }
+
+    public function AwardAssign()
+    {
+        return $this->hasMany(Award ::class);
+    }
+
+    public function training()
+    {
+        return $this->hasMany(Training ::class);
+    }
+
+    public function invitetraining()
+    {
+        return $this->hasMany(InviteTraining ::class);
+    }
+
+    public function Promote()
+    {
+        return $this->hasMany(Promote ::class);
+    }
+
 }

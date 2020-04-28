@@ -36,7 +36,7 @@
                         <div class="box box-success">
                             <div class="panel">
                                 <div class="panel-heading">
-                                    <span class="panel-title hidden-xs"> My Leave Lists </span>
+                                    <span class="panel-title hidden-xs"> Approved Leave Lists </span>
                                 </div>
                                 <div class="panel-body pn">
                                     @include('inc.messages')
@@ -46,54 +46,27 @@
                                             <thead>
                                             <tr class="bg-light">
                                                 <th class="text-center">Id</th>
+                                                <th class="text-center">Employee</th>
                                                 <th class="text-center">Leave Type</th>
                                                 <th class="text-center">Date From</th>
                                                 <th class="text-center">Date To</th>
                                                 <th class="text-center">Days</th>
                                                 <th class="text-center">Reason</th>
                                                 <th class="text-center">Remarks</th>
-                                                <th class="text-center">Status</th>
                                             </tr>
                                             </thead>
                                             <tbody>
                                             <?php $i = 0;?>
-                                            @foreach($apply as $app)
+                                            @foreach($status as $app)
                                                 <tr>
                                                     <td class="text-center">{{$i+=1}}</td>
-                                                    {{--                                                    <td class="text-center">{{(isset($apply))? $app->leave_type : getLeaveType($app->leave_type_id)}}</td>--}}
+                                                    <td class="text-center">{{$app->employee->name}}</td>
                                                     <td class="text-center">{{$app->leaves->leave_type}}</td>
                                                     <td class="text-center">{{date_format(new DateTime($app->date_from), 'd-m-Y')}}</td>
                                                     <td class="text-center">{{date_format(new DateTime($app->date_to), 'd-m-Y')}}</td>
                                                     <td class="text-center">{{$app->number_of_days}}</td>
                                                     <td class="text-center">{{$app->reason}}</td>
                                                     <td class="text-center">{{$app->remarks}}</td>
-                                                    <td class="text-center">
-                                                        <div class="btn-group text-right">
-                                                            @if($app->status==0)
-                                                                <button type="button"
-                                                                        class="btn btn-info br2 btn-xs fs12"
-                                                                        aria-expanded="false"><i
-                                                                        class="fa fa-external-link">
-                                                                        Pending </i>
-
-                                                                </button>
-                                                            @elseif($app->status==1)
-                                                                <button type="button"
-                                                                        class="btn btn-success br2 btn-xs fs12"
-                                                                        aria-expanded="false"><i class="fa fa-check">
-                                                                        Approved </i>
-
-                                                                </button>
-                                                            @else
-                                                                <button type="button"
-                                                                        class="btn btn-danger br2 btn-xs fs12"
-                                                                        aria-expanded="false"><i class="fa fa-times">
-                                                                        Disapproved </i>
-
-                                                                </button>
-                                                            @endif
-                                                        </div>
-                                                    </td>
                                                 </tr>
                                             @endforeach
                                             <tr>
@@ -103,7 +76,7 @@
                                     </div>
                                     {!! Form::close() !!}
                                     <div style="text-align: center">
-                                        {!! $apply->links() !!}
+                                        {!! $status->links() !!}
                                     </div>
                                 </div>
                             </div>

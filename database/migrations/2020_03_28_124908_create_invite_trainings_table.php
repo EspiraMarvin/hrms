@@ -15,6 +15,11 @@ class CreateInviteTrainingsTable extends Migration
     {
         Schema::create('invite_trainings', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('employee_id')->unsigned();
+            $table->integer('training_id');
+            $table->string('description');
+            $table->date('datefrom');
+            $table->date('dateto');
             $table->timestamps();
         });
     }

@@ -51,52 +51,63 @@
                                                 <th class="text-center">Date To</th>
                                                 <th class="text-center">Days</th>
                                                 <th class="text-center">Reason</th>
+                                                <th class="text-center">Applied</th>
+                                                <th class="text-center">Remarks</th>
                                                 <th class="text-center">Status</th>
                                             </tr>
                                             </thead>
                                             <tbody>
-                                                <?php $i =0;?>
+                                            <?php $i = 0;?>
                                             @foreach($apply as $app)
                                                 <tr>
                                                     <td class="text-center">{{$i+=1}}</td>
-                                                    <td class="text-center">{{$app->leave_type}}</td>
-                                                    <td class="text-center">{{$app->date_from}}</td>
-                                                    <td class="text-center">{{$app->date_to}}</td>
+                                                    <td class="text-center">{{$app->leaves->leave_type}}</td>
+                                                    <td class="text-center">{{date_format(new DateTime($app->date_from), 'd-m-Y')}}</td>
+                                                    <td class="text-center">{{date_format(new DateTime($app->date_to), 'd-m-Y')}}</td>
                                                     <td class="text-center">{{$app->number_of_days}}</td>
                                                     <td class="text-center">{{$app->reason}}</td>
+                                                    <td class="text-center">{{date_format(new DateTime($app->created_at), 'd-m-Y')}}</td>
+                                                    <td class="text-center">{{$app->remarks}}</td>
                                                     <td class="text-center">
                                                         <div class="btn-group text-right">
-{{--                                                            @if($leave->status==0)--}}
-                                                                <button type="button"
-                                                                        class="btn btn-info br2 btn-xs fs12"
-                                                                        aria-expanded="false"> <i class="fa fa-external-link"> Pending </i>
+                                                            @if($app->status==0)
+                                                                <button type="button" style="background-color: #06b6ef"
+                                                                        class="btn btn br2 btn-xs fs12"
+                                                                        aria-expanded="false"><i style="color: white"
+                                                                        class="fa fa-external-link">
+                                                                        Pending </i>
 
                                                                 </button>
-{{--                                                            @elseif($leave->status==1)--}}
-                                                                <button type="button"
-                                                                        class="btn btn-success br2 btn-xs fs12"
-                                                                        aria-expanded="false"> <i class="fa fa-check"> Approved </i>
+                                                            @elseif($app->status==1)
+                                                                <button type="button" style="background-color: #1fad83"
+                                                                        class="btn btn br2 btn-xs fs12"
+                                                                        aria-expanded="false"><i style="color: white"
+                                                                        class="fa fa-check">
+                                                                        Approved </i>
 
                                                                 </button>
-{{--                                                            @else--}}
+                                                            @else
                                                                 <button type="button"
-                                                                        class="btn btn-danger br2 btn-xs fs12"
-                                                                        aria-expanded="false"> <i class="fa fa-times"> Disapproved </i>
+                                                                        class="btn btn br2 btn-xs fs12" style="background-color: #f5393d"
+                                                                        aria-expanded="false"><i style="color: white"
+                                                                        class="fa fa-times">
+                                                                        Disapproved </i>
 
                                                                 </button>
-{{--                                                            @endif--}}
-
+                                                            @endif
                                                         </div>
                                                     </td>
                                                 </tr>
                                             @endforeach
                                             <tr>
-{{--                                                {!! $leaves->render() !!}--}}
                                             </tr>
                                             </tbody>
                                         </table>
                                     </div>
                                     {!! Form::close() !!}
+                                    <div style="text-align: center">
+                                        {!! $apply->links() !!}
+                                    </div>
                                 </div>
                             </div>
                         </div>

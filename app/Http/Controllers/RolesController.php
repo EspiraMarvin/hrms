@@ -13,6 +13,11 @@ class RolesController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function addRole()
     {
         return view('hrms.role.role_add');
@@ -20,10 +25,9 @@ class RolesController extends Controller
 
     public function roleList()
     {
+        $roles = Role::orderBy('id', 'asc')->paginate(10);
 
-        $roles = Role::orderBy('id','asc')->paginate(10);
-
-        return view('hrms.role.role_list')->with('roles',$roles);
+        return view('hrms.role.role_list')->with('roles', $roles);
     }
 
     public function index()
@@ -44,15 +48,15 @@ class RolesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $this->validate($request,
             [
-                'role' =>'required',
-                'description'=>'required',
+                'role' => 'required',
+                'description' => 'required',
             ]);
 
         $role = new Role;
@@ -60,13 +64,13 @@ class RolesController extends Controller
         $role->description = $request->input('description');
         $role->save();
 
-        return redirect('/role_add')->with('success','Role Added');
+        return redirect('/role_add')->with('success', 'Role Added');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -77,28 +81,28 @@ class RolesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         $role = Role::find($id);
-        return view('hrms.role.role_edit')->with('role',$role);
+        return view('hrms.role.role_edit')->with('role', $role);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         $this->validate($request,
             [
-                'role' =>'required',
-                'description'=>'required',
+                'role' => 'required',
+                'description' => 'required',
             ]);
 
         $role = Role::find($id);
@@ -106,14 +110,13 @@ class RolesController extends Controller
         $role->description = $request->input('description');
         $role->save();
 
-        return redirect('/role_list')->with('success','Role  Information Updated');
-
+        return redirect('/role_list')->with('success', 'Role  Information Updated');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -121,12 +124,11 @@ class RolesController extends Controller
         //
     }
 
-    public function doDelete($id)
+    public function doDelete(Request $request)
     {
-
-        $role = Role::find($id);
+        $role = Role::findorFail($request->id);
         $role->delete();
 
-        return redirect('/role_list')->with('success','Role Removed Successfully');
+        return redirect('/role_list')->with('success', 'Role Removed Successfully');
     }
 }

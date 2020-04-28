@@ -6,7 +6,20 @@ use Illuminate\Database\Eloquent\Model;
 
 class ApplyLeave extends Model
 {
-    public function user(){
-        return $this->belongsTo('App\User');
+    protected $table = "apply_leaves";
+
+
+    public function employee()
+    {
+        return $this->belongsTo(Employee::class);
     }
+
+    public function leaves()
+    {
+        return $this->belongsTo(Leave::class,'leave_type_id');
+
+    }
+
+
+
 }

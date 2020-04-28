@@ -18,7 +18,7 @@
                     <li class="breadcrumb-link">
                         <a href=""> Asset </a>
                     </li>
-                    <li class="breadcrumb-current-item"> Add Asset </li>
+                    <li class="breadcrumb-current-item"> Add Asset</li>
                 </ol>
             </div>
         </header>
@@ -39,10 +39,20 @@
                                         <div class="panel-body p25 pb10">
                                             @include('inc.messages')
                                             {!! Form::open(['action' => 'AssetsController@store','method' => 'POST','class' => 'form-horizontal','enctype'=>'multipart/form-data', 'id'=>"custom-form-wizard"]) !!}
-                                            <div class="form-group">
+
+                                            <div class="form-group {{ $errors->has('asset') ? ' has-error' : '' }}">
                                                 <label class="col-md-3 control-label"> Asset </label>
                                                 <div class="col-md-6">
-                                                    {{Form::text('name', '',['class' => 'select2-single form-control','placeholder'=>'Asset','required'])}}
+                                                    {{Form::text('asset', '',['class' => 'select2-single form-control','placeholder'=>'Asset','required'])}}
+                                                    <small class="text-danger">{{ $errors->first('asset') }}</small>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group {{ $errors->has('serial_number') ? ' has-error' : '' }}">
+                                                <label class="col-md-3 control-label"> Serial Number </label>
+                                                <div class="col-md-6">
+                                                    {{Form::text('serial_number', '',['class' => 'select2-single form-control','placeholder'=>'Serial Number','required'])}}
+                                                    <small class="text-danger">{{ $errors->first('serial_number') }}</small>
                                                 </div>
                                             </div>
 
@@ -50,16 +60,19 @@
                                                 <label class="col-md-3 control-label"> Description </label>
                                                 <div class="col-md-6">
                                                     {{Form::textarea('description', '',['class' => 'select2-single form-control','rows'=>'3','id'=>'textarea1','placeholder'=>'Asset Description','required'])}}
+                                                    <small class="text-danger">{{ $errors->first('description') }}</small>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label"></label>
                                                 <div class="col-md-2">
-                                                    {{Form::submit('Submit', ['class'=>'btn btn-bordered btn-info btn-block'])}}
+                                                    <input class="btn btn-bordered btn-info btn-block" type="submit" name="SUBMIT" value="Submit" onclick="this.value='Submitting ..';this.disabled='disabled'; this.form.submit();" />
+                                                    {{--                                                    {{Form::submit('Submit', ['class'=>'btn btn-bordered btn-info btn-block'])}}--}}
                                                 </div>
                                                 <div class="col-md-2">
-                                                    <input type="reset" class="btn btn-bordered btn-success btn-block"  value="Reset" />
+                                                    <input type="reset" class="btn btn-bordered btn-success btn-block"
+                                                           value="Reset"/>
                                                 </div>
                                             </div>
                                             {!! Form::close() !!}

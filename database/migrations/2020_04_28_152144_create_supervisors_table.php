@@ -15,6 +15,7 @@ class CreateSupervisorsTable extends Migration
     {
         Schema::create('supervisors', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('supervisor_id');
             $table->timestamps();
         });
     }

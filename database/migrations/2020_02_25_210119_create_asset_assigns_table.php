@@ -15,8 +15,10 @@ class CreateAssetAssignsTable extends Migration
     {
         Schema::create('asset_assigns', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('region');
-            $table->string('name');
+            $table->integer('region_id');
+            $table->integer('county_id');
+            $table->integer('asset_id');
+            $table->integer('employee_id');
             $table->string('authority');
             $table->date('assigned_date');
             $table->date('released_date');

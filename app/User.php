@@ -2,9 +2,12 @@
 
 namespace App;
 
+use App\UserRole;
+use App\ApplyLeave;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable
 {
@@ -37,7 +40,35 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function ApplyLeave(){
-        return $this->hasMany('App\ApplyLeave');
+    public function employee()
+    {
+        return $this->hasOne(Employee::class);
+    }
+
+    public function userrole()
+    {
+        return $this->hasOne('App\UserRole', 'employee_id', 'id');
+    }
+
+
+    public function isAdmin()
+    {
+        $employeeId = Auth::user()->id;
+        $userRole = UserRole::where('employee_id', $employeeId)->first();
+        if($userRole->role_id === 1)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public function leaveApprove()
+    {
+        $leave = ApplyLeave::all();
+        if(count($leave) > 0)
+        {
+            return true;
+        }
+        return false;
     }
 }

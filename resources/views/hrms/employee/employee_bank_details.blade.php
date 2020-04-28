@@ -22,7 +22,6 @@
             </div>
         </header>
 
-
         <!-- -------------- Content -------------- -->
         <section id="content" class="table-layout animated fadeIn">
 
@@ -35,8 +34,9 @@
                         <div class="box box-success">
                             <div class="panel">
                                 <div class="panel-heading">
-                                    <span class="panel-title hidden-xs">Employees Bank Details List</span><br />
-                                </div><br />
+                                    <span class="panel-title hidden-xs">Employees Bank Details List</span><br/>
+                                </div>
+                                <br/>
                                 @include('inc.messages')
 
                                 <div class="panel-body pn">
@@ -48,13 +48,12 @@
                                                 <th class="text-center">Employee</th>
                                                 <th class="text-center">Bank Name</th>
                                                 <th class="text-center">Account Number</th>
-                                                <th class="text-center">PF Account Number</th>
                                                 <th class="text-center">PF Status</th>
                                                 <th class="text-center">Actions</th>
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <?php $i =0;?>
+                                            <?php $i = 0;?>
                                             @if(count($employee) > 0)
                                                 @foreach($employee as $emp)
                                                     <tr>
@@ -62,13 +61,13 @@
                                                         <td class="text-center">{{$emp->name}}</td>
                                                         <td class="text-center">{{$emp->bank_name}}</td>
                                                         <td class="text-center">{{$emp->account_number}}</td>
-                                                        <td class="text-center">{{$emp->pf_account_number}}</td>
                                                         <td class="text-center">{{$emp->pf_status}}</td>
                                                         <td class="text-center">
                                                             <div class="btn-group text-right">
                                                                 <button type="button"
                                                                         class="btn btn-info br2 btn-xs fs12 dropdown-toggle"
-                                                                        data-toggle="dropdown" aria-expanded="false"> Action
+                                                                        data-toggle="dropdown" aria-expanded="false">
+                                                                    Action
                                                                     <span class="caret ml5"></span>
                                                                 </button>
                                                                 <ul class="dropdown-menu" role="menu">
@@ -84,7 +83,8 @@
                                                     </tr>
                                                 @endforeach
 
-                                                <tr><td colspan="10">
+                                                <tr>
+                                                    <td colspan="10">
                                                         {!! $employee->render() !!}
                                                     </td>
                                                 </tr>

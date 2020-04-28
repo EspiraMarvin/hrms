@@ -18,3 +18,24 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('todos', 'TodosController');
+
+
+//creating a quote
+Route::post('/quote', [
+    'uses' => 'QuoteController@postQuote'
+]);
+
+//getting a quote/ viewing
+Route::get('/quotes', [
+    'uses' => 'QuoteController@getQuotes'
+]);
+
+//updating a quote
+Route::put('/quote/{id', [
+    'uses' => 'QuoteController@putQuote'
+]);
+
+//Delete Quote
+Route::delete('/quote/{id}', [
+    'uses' => 'QuoteController@deleteQuote'
+]);

@@ -14,6 +14,24 @@ class ExpensesController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    public function getRegions()
+    {
+        $regions = DB::table('regions')->pluck("region", "id");
+
+        return view('hrms.expense.expense_add', compact('regions', $regions));
+    }
+
+    public function getCounties($id)
+    {
+        $counties = DB::table("counties")->where("region_id", $id)->pluck("county", "id");
+        return json_encode($counties);
+    }
+
     public function expenseAdd()
     {
 
@@ -22,15 +40,10 @@ class ExpensesController extends Controller
 
     public function expenseList()
     {
-//        $expense = Expense::select('region,item,expense')->where('region', 'Nairobi')->value('expense')->get();
 
-//        $expense = Expense::select('region,item,expense,assigned_date')->where('region', 'Nairobi')->paginate(10);
+        $expense = Expense::orderBy('id', 'desc')->paginate(10);
 
-//        return view('hrms.expense.expense_list',compact(['expense','region','item']));
-
-        $expense = Expense::orderBy('id','desc')->paginate(10);
-
-        return view('hrms.expense.expense_list')->with('expense',$expense);
+        return view('hrms.expense.expense_list')->with('expense', $expense);
     }
 
     public function index()
@@ -51,33 +64,35 @@ class ExpensesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $this->validate($request,
             [
-                'region' =>'required',
-                'item'=>'required',
-                'expense'=>'required',
-                'assigned_date'=>'required',
+                'region_id' => 'required',
+                'county_id' => 'required',
+                'item' => 'required',
+                'expense' => 'required',
+                'assigned_date' => 'required',
             ]);
 
         $expense = new Expense;
-        $expense->region = $request->input('region');
+        $expense->region_id = $request->input('region_id');
+        $expense->county_id = $request->input('county_id');
         $expense->item = $request->input('item');
         $expense->expense = $request->input('expense');
         $expense->assigned_date = $request->input('assigned_date');
         $expense->save();
 
-        return redirect('/expense_add')->with('success','Expense Added');
+        return redirect('/expense_add')->with('success', 'Expense Added');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -88,34 +103,56 @@ class ExpensesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        //
+        $expense = Expense::find($id);
+        return view('hrms.expense.expense_edit')->with('expense', $expense);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,
+            [
+                'item' => 'required',
+                'expense' => 'required',
+                'assigned_date' => 'required',
+            ]);
+
+        $expense = Expense::find($id);
+        $expense->item = $request->input('item');
+        $expense->expense = $request->input('expense');
+        $expense->assigned_date = $request->input('assigned_date');
+        $expense->save();
+
+        return redirect('/expense_list')->with('success', 'Expense  Information Updated');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         //
+    }
+
+    public function doDelete(Request $request)
+    {
+        $expense = Expense::findorFail($request->id);
+        $expense->delete();
+
+        return redirect('/expense_list')->with('success', 'Expense Deleted Successfully');
     }
 }

@@ -1,6 +1,5 @@
 @extends('inc.base')
 
-
 @section('content')
 
     <!-- START CONTENT -->
@@ -20,12 +19,12 @@
                     <li class="breadcrumb-link">
                         <a href=""> Role </a>
                     </li>
-                    <li class="breadcrumb-current-item"> Add Role </li>
+                    <li class="breadcrumb-current-item"> Add Role</li>
                 </ol>
             </div>
         </header>
         <!-- -------------- Content -------------- -->
-        <section id="content" class="table-layout animated fadeIn" >
+        <section id="content" class="table-layout animated fadeIn">
             <!-- -------------- Column Center -------------- -->
             <div class="chute-affix" data-offset-top="200">
                 <div class="row">
@@ -40,28 +39,31 @@
 
                                             {!! Form::open(['action' => 'RolesController@store','method' => 'POST','class' => 'form-horizontal','enctype'=>'multipart/form-data', 'id'=>"custom-form-wizard"]) !!}
 
-                                            <div class="form-group">
+                                            <div class="form-group {{ $errors->has('role') ? ' has-error' : '' }}">
                                                 <label class="col-md-3 control-label"> Role </label>
                                                 <div class="col-md-6">
                                                     {{Form::text('role', '',['class' => 'select2-single form-control','placeholder'=>'Role','required'])}}
+                                                    <small class="text-danger">{{ $errors->first('role') }}</small>
                                                 </div>
                                             </div>
 
-                                            <div class="form-group">
+                                            <div class="form-group {{ $errors->has('description') ? ' has-error' : '' }}">
                                                 <label class="col-md-3 control-label"> Description </label>
                                                 <div class="col-md-6">
                                                     {{Form::textarea('description', '',['class' => 'select2-single form-control','rows'=>'3','id'=>'textarea1','placeholder'=>'Role Description','required'])}}
+                                                    <small class="text-danger">{{ $errors->first('description') }}</small>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label"></label>
                                                 <div class="col-md-2">
-                                                    {{Form::submit('Submit', ['class'=>'btn btn-bordered btn-info btn-block'])}}
-
+                                                    <input class="btn btn-bordered btn-info btn-block" type="submit" name="SUBMIT" value="Submit" onclick="this.value='Submitting ..';this.disabled='disabled'; this.form.submit();" />
+{{--                                                    {{Form::submit('Submit', ['class'=>'btn btn-bordered btn-info btn-block'])}}--}}
                                                 </div>
                                                 <div class="col-md-2">
-                                                    <input type="reset" class="btn btn-bordered btn-success btn-block"  value="Reset" />
+                                                    <input type="reset" class="btn btn-bordered btn-success btn-block"
+                                                           value="Reset"/>
                                                 </div>
                                             </div>
                                             {!! Form::close() !!}

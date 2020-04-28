@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Employee;
 use App\Department;
 use App\Role;
 use Illuminate\Http\Request;
 use App\Directorate;
+use Illuminate\Support\Facades\DB;
+
+//use DB;
 
 
 class DepartmentsController extends Controller
@@ -16,33 +20,27 @@ class DepartmentsController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
-    public function depAdd(){
+
+    public function depAdd()
+    {
 
         $directorate = Directorate::all();
 
-        return view('hrms.directorate.department_add')->with('directorate',$directorate);
+        return view('hrms.directorate.department_add')->with('directorate', $directorate);
 
     }
-/*    public function listShowDir(Request $request)
 
+    public function depList()
     {
 
-        $directorate = Directorate::pluck('name', 'id');
+        $department = Department::orderBy('id', 'desc')->paginate(10);
 
-        $selectedID = 2;
-
-//        return view('hrms.directorate.department_edit', compact('id', 'departments'));
-        return view('hrms.directorate.department_edit')->with('id',$selectedID, 'directorate',$directorate);
-
-    }*/
-
-
-    public function depList(){
-
-        $department = Department::orderBy('id','desc')->paginate(10);
-
-        return view('hrms.directorate.department_list')->with('department',$department);
+        return view('hrms.directorate.department_list')->with('department', $department);
     }
 
     public function index()
@@ -58,26 +56,21 @@ class DepartmentsController extends Controller
     public function create()
     {
 
-//        $directorate = Directorate::all();
-//        $directorate= Employee::orderBy('id','desc')->get();
-
-//        return view('hrms.department.department_add')->with('directorate',$directorate);
-
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $this->validate($request,
             [
-//                'directorate' =>'required',
-                'name' =>'required',
-                'description'=>'required',
+                'directorate' => 'required',
+                'name' => 'required|unique:departments',
+                'description' => 'required',
             ]);
 
         $department = new Department;
@@ -88,13 +81,13 @@ class DepartmentsController extends Controller
 
 //        dd($request);
 
-        return redirect('/department_add')->with('success','Department Added');
+        return redirect('/department_add')->with('success', 'Department Added');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -104,55 +97,52 @@ class DepartmentsController extends Controller
         $directorate = Directorate::all();
         $role = Role::all();
 
-        return view('hrms.directorate.department_show',compact('department','directorate','role'));
-//        return view('hrms.directorate.department_show',compact('department',$department,'directorate',$directorate);
 
-//                return view('hrms.directorate.department_show')->with('department',$department);
+        return view('hrms.directorate.department_show', compact('department', 'directorate', 'role'));
 
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         $department = Department::find($id);
-        return view('hrms.directorate.department_edit')->with('department',$department);
+        return view('hrms.directorate.department_edit')->with('department', $department);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         $this->validate($request,
             [
-                'name' =>'required',
-                'description'=>'required',
+                'directorate' => 'required',
+                'name' => 'required',
+                'description' => 'required',
             ]);
 
         $department = Department::find($id);
-//        dd($department);
-
         $department->directorate = $request->input('directorate');
         $department->name = $request->input('name');
         $department->description = $request->input('description');
         $department->save();
 
-        return redirect('/department_list')->with('success','Department  Information Updated');
+        return redirect('/department_list')->with('success', 'Department  Information Updated');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -160,12 +150,12 @@ class DepartmentsController extends Controller
 
     }
 
-    public function doDelete($id)
+    public function doDelete(Request $request)
     {
-
-        $department = Department::find($id);
+        dd($request);
+        $department = Department::findorFail($request->id);
         $department->delete();
 
-        return redirect('/department_list')->with('success','Department Removed Successfully');
+        return redirect('/department_list')->with('success', 'Department Removed Successfully');
     }
 }

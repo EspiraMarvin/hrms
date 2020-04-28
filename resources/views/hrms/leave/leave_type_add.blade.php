@@ -20,12 +20,12 @@
                     <li class="breadcrumb-link">
                         <a href=""> Leave </a>
                     </li>
-                    <li class="breadcrumb-current-item"> Add Leave Type </li>
+                    <li class="breadcrumb-current-item"> Add Leave Type</li>
                 </ol>
             </div>
         </header>
         <!-- -------------- Content -------------- -->
-        <section id="content" class="table-layout animated fadeIn" >
+        <section id="content" class="table-layout animated fadeIn">
             <!-- -------------- Column Center -------------- -->
             <div class="chute-affix" data-offset-top="200">
                 <div class="row">
@@ -61,7 +61,8 @@
 
                                                 </div>
                                                 <div class="col-md-2">
-                                                    <input type="reset" class="btn btn-bordered btn-success btn-block"  value="Reset" />
+                                                    <input type="reset" class="btn btn-bordered btn-success btn-block"
+                                                           value="Reset"/>
                                                 </div>
                                             </div>
                                             {!! Form::close() !!}

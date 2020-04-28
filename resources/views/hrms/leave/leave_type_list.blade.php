@@ -48,7 +48,9 @@
                                             <th class="text-center">Id</th>
                                             <th class="text-center">Leave Type</th>
                                             <th class="text-center">Description</th>
+                                            @if(Auth::user()->isAdmin())
                                             <th class="text-center">Actions</th>
+                                            @endif
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -59,6 +61,7 @@
                                             <td class="text-center">{{$i+=1}}</td>
                                             <td class="text-center">{{$lev->leave_type}}</td>
                                             <td class="text-center">{{$lev->description}}</td>
+                                            @if(Auth::user()->isAdmin())
                                             <td class="text-center">
                                                 <div class="btn-group text-right">
                                                     <button type="button"
@@ -68,14 +71,15 @@
                                                     </button>
                                                     <ul class="dropdown-menu" role="menu">
                                                         <li>
-                                                            <a href="/edit-leave-type/">Edit</a>
+                                                            <a href="/leaves/{{ $lev->id }}/edit">Edit</a>
                                                         </li>
                                                         <li>
-                                                            <a href="/delete-leave-type/">Delete</a>
+                                                            <a href="/delete-leave-type/{{ $lev->id }}">Delete</a>
                                                         </li>
                                                     </ul>
                                                 </div>
                                             </td>
+                                            @endif
                                         </tr>
                                         @endforeach
 

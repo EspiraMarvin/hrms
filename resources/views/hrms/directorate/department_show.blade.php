@@ -15,24 +15,16 @@
                         <div class="panel-body pn pb5 text-center">
 
                         </div>
-                        <p class="text-center no-margin"><span class="text-muted">Directorate:</span>{{isset($department->directorate) ? $department->directorate:''}}</p>
+                        <p class="text-center no-margin"><span class="text-muted">Directorate:</span> {{isset($department->directorate) ? $department->directorate:''}}</p>
                         <p class="small text-center no-margin"><span class="text-muted">Department:</span> {{isset($department->name) ? $department->name:''}}</p>
                         <p class="small text-center no-margin"><span class="text-muted">Description:</span> {{isset($department->description) ? $department->description:''}}</p>
-
-
-                    </div>-
-                </div>
-
-
-                            </div>
-
-                        </div>
                     </div>
 
                 </div>
-            </div>
-        </div>
 
+            </div>
+
+        </div>
     </section>
 
 @endsection

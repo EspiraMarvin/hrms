@@ -53,6 +53,7 @@
                                                 <th class="text-center">Days</th>
                                                 <th class="text-center">Reason</th>
                                                 <th class="text-center">Remarks</th>
+                                                <th class="text-center">Applied</th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -67,6 +68,7 @@
                                                     <td class="text-center">{{$app->number_of_days}}</td>
                                                     <td class="text-center">{{$app->reason}}</td>
                                                     <td class="text-center">{{$app->remarks}}</td>
+                                                    <td class="text-center">{{date_format(new DateTime($app->created_at), 'd-m-Y')}}</td>
                                                 </tr>
                                             @endforeach
                                             <tr>

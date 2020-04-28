@@ -15,9 +15,8 @@ class CreateTargetsTable extends Migration
     {
         Schema::create('targets', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('employee');
+            $table->integer('employee_id');
             $table->mediumText('targets');
-            $table->string('authority');
             $table->date('assigned_date');
             $table->date('review_date');
             $table->timestamps();

@@ -40,24 +40,27 @@
 
                                             {!! Form::open(['action' => 'DirectorateController@store','method' => 'POST','class' => 'form-horizontal','enctype'=>'multipart/form-data', 'id'=>"custom-form-wizard"]) !!}
 
-                                            <div class="form-group">
+                                            <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
                                                 <label class="col-md-3 control-label"> Directorate Name </label>
                                                 <div class="col-md-6">
                                                     {{Form::text('name', '',['class' => 'select2-single form-control','placeholder'=>'Directorate','required'])}}
+                                                    <small class="text-danger">{{ $errors->first('name') }}</small>
                                                 </div>
                                             </div>
 
-                                            <div class="form-group">
+                                            <div class="form-group {{ $errors->has('description') ? ' has-error' : '' }}">
                                                 <label class="col-md-3 control-label"> Description </label>
                                                 <div class="col-md-6">
                                                     {{Form::textarea('description', '',['class' => 'select2-single form-control','rows'=>'3','id'=>'textarea1','placeholder'=>'Directorate Description','required'])}}
+                                                    <small class="text-danger">{{ $errors->first('description') }}</small>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label"></label>
                                                 <div class="col-md-2">
-                                                    {{Form::submit('Submit', ['class'=>'btn btn-bordered btn-info btn-block'])}}
+                                                    <input class="btn btn-bordered btn-info btn-block" type="submit" name="SUBMIT" value="Submit" onclick="this.value='Submitting ..';this.disabled='disabled'; this.form.submit();" />
+{{--                                                    {{Form::submit('Submit', ['class'=>'btn btn-bordered btn-info btn-block'])}}--}}
                                                 </div>
                                                 <div class="col-md-2">
                                                         <input type="reset" class="btn btn-bordered btn-success btn-block" value="Reset" />

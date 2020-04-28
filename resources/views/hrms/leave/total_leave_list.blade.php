@@ -18,11 +18,10 @@
                     <li class="breadcrumb-link">
                         <a href=""> Leaves </a>
                     </li>
-                    <li class="breadcrumb-current-item"> Total Leave Requests </li>
+                    <li class="breadcrumb-current-item"> Total Leave List</li>
                 </ol>
             </div>
         </header>
-
 
         <!-- -------------- Content -------------- -->
         <section id="content" class="table-layout animated fadeIn">
@@ -36,127 +35,117 @@
                         <div class="box box-success">
                             <div class="panel">
                                 <div class="panel-heading">
-                                    <span class="panel-title hidden-xs"> Total Leave Lists </span><br />
-                                </div><br />
+                                    <div class="float-left col-md-8">
+                                        <span class="panel-title"> Total Leave Lists (No. {{$totalLeave}})</span>
+                                    </div>
+                                    <div class="float-right">
+                                        <a  style="background-color: #06b6ef;color: white"  href="/leave_pending" class="btn btn-default"><i class="fa fa-external-link"> Pending </i></a>
+                                        <a style="background-color: #03b25e;color: white" href="/leave_approved" class="btn btn-success"><i class="fa fa-check"> Approved </i></a>
+                                        <a style="background-color: red;color: white" href="/leave_deny" class="btn btn-danger"><i class="fa fa-times"> Disapproved </i></a>
+                                    </div>
+                                </div><br>
+
                                 <div class="panel-menu allcp-form theme-primary mtn">
                                     <div class="row">
-                                        {!! Form::open() !!}
-                                        <div class="col-md-3">
-{{--                                            <input type="text" class="field form-control" placeholder="query string" style="height:40px" name="string" value="{{$string}}">--}}
-                                            <input type="text" class="field form-control" placeholder="query string" style="height:40px" name="string" value="">
-                                        </div>
-                                        <div class="col-md-3">
-                                            <label class="field select">
-{{--                                                {!! Form::select('column', getLeaveColumns(),$column) !!}--}}
-                                                <i class="arrow double"></i>
-                                            </label>
-                                        </div>
+                                        <form action="/leave_search" method="GET" role="search">
+                                            {{ csrf_field() }}
+                                            <div class="col-md-6">
+                                                <input type="text" class="typeahead form-control"
+                                                       placeholder="Search any column" style="height:40px" value=""
+                                                       name="p" autocomplete="off">
+                                            </div>
 
-                                        <div class="col-md-3">
-                                            <input type="text" id="datepicker1" class="select2-single form-control"
-                                                   name="dateFrom" value="" placeholder="date from"/>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <input type="text" id="datepicker4" class="select2-single form-control"
-                                                   name="dateTo" value="" placeholder="date to"/>
-                                        </div>
+                                            <div class="col-md-2">
+                                                <input type="submit" value="Search" name="button"
+                                                       class="btn btn-primary">
+                                            </div>
 
-                                        <div class="col-md-2"><br />
-                                            <input type="submit" value="Search" name="button" class="btn btn-primary">
-                                        </div>
+                                            <div class="col-md-2">
+                                                <input type="submit" value="Export" name="button"
+                                                       class="btn btn-success">
+                                            </div>
+                                        </form>
 
-                                        <div class="col-md-2"><br />
-                                            <input type="submit" value="Export" name="button" class="btn btn-success">
+                                        <div class="col-md-2">
+                                            <a href="/total_leave_list"><input type="submit" value="Reset"
+                                                                               class="btn btn-warning"></a>
                                         </div>
-                                        {!! Form::close() !!}
-                                        <div class="col-md-2"><br />
-                                            <a href="/total-leave-list" >
-                                                <input type="submit" value="Reset" class="btn btn-warning"></a>
-                                        </div>
-
                                     </div>
                                 </div>
+
+
                                 <div class="panel-body pn">
                                     @include('inc.messages')
 
-{{--                                    @if(count($leaves))--}}
-                                        <div class="table-responsive">
-                                            <table class="table allcp-form theme-warning tc-checkbox-1 fs13">
-                                                <thead>
-                                                <tr class="bg-light">
-                                                    <th class="text-center">Id</th>
-                                                    <th class="text-center">Employee</th>
-{{--                                                    <th class="text-center">Code</th>--}}
-                                                    <th class="text-center">Leave Type</th>
-                                                    <th class="text-center">Date From</th>
-                                                    <th class="text-center">Date To</th>
-                                                    <th class="text-center">Days</th>
-                                                    <th class="text-center">Remarks</th>
-                                                    <th class="text-center">Status</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                <?php $i =0;?>
-                                                @if(count($apply) > 0)
-                                                    @foreach($apply as $app)
+                                    <div class="table-responsive">
+                                        <table class="table allcp-form theme-warning tc-checkbox-1 fs13">
+                                            <thead>
+                                            <tr class="bg-light">
+                                                <th class="text-center">Id</th>
+                                                <th class="text-center">Employee</th>
+                                                <th class="text-center">Leave Type</th>
+                                                <th class="text-center">Date From</th>
+                                                <th class="text-center">Date To</th>
+                                                <th class="text-center">Days</th>
+                                                <th class="text-center">Applied</th>
+                                                <th class="text-center">Status</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <?php $i = 0;?>
+                                            @if(count($apply ?? '') > 0)
+                                                @foreach($apply ?? '' as $app)
                                                     <tr>
                                                         <td class="text-center">{{$i+=1}}</td>
-                                                        <td class="text-center">{{$app->employee_name}}</td>
-{{--                                                        <td class="text-center">{{$app->employee_code}}</td>--}}
-                                                        <td class="text-center">{{$app->leave_type}}</td>
-                                                        <td class="text-center">{{$app->date_from}}</td>
-                                                        <td class="text-center">{{$app->date_to}}</td>
+                                                        <td class="text-center">{{$app->employee->name}}</td>
+                                                        <td class="text-center">{{$app->leaves->leave_type}}</td>
+                                                        <td class="text-center">{{date_format(new DateTime($app->date_from), 'd-m-Y')}}</td>
+                                                        <td class="text-center">{{date_format(new DateTime($app->date_to), 'd-m-Y')}}</td>
                                                         <td class="text-center">{{$app->number_of_days}}</td>
-{{--                                                        <td class="text-center" id="remark-{{$leave->id}}">{{(isset($leave->remarks)) ? $leave->remarks : 'N/A'}}</td>--}}
-                                                        <td class="text-center" id="remark-"></td>
-                                                        <input type="hidden" value="{!! csrf_token() !!}" id="token">
+                                                        <td class="text-center">{{date_format(new DateTime($app->created_at), 'd-m-Y')}}</td>
                                                         <td class="text-center">
-{{--                                                            <div class="btn-group text-right" id="button-{{$leave->id}}">--}}
-                                                            <div class="btn-group text-right" id="button-">
-{{--                                                                @if($leave->status==0)--}}
-                                                                    <button type="button"
-                                                                            class="btn btn-info br2 btn-xs fs12 dropdown-toggle"
-                                                                            data-toggle="dropdown" aria-expanded="false"> Pending
-                                                                        <span class="caret ml5"></span>
-                                                                    </button>
-                                                                    <ul class="dropdown-menu" role="menu">
-                                                                        <li>
-{{--                                                                            <a class="approveClick" data-id="{{$leave->id}}" data-name="approve">Approve</a>--}}
-                                                                            <a class="approveClick" data-id="" data-name="approve">Approve</a>
-                                                                        </li>
-                                                                        <li>
-{{--                                                                            <a class="disapproveClick" data-id="{{$leave->id}}" data-name="disapprove">Disapprove</a>--}}
-                                                                            <a class="disapproveClick" data-id="" data-name="disapprove">Disapprove</a>
-                                                                        </li>
-                                                                    </ul>
-{{--                                                                @elseif($leave->status==1)--}}
-                                                                    <button type="button"
-                                                                            class="btn btn-success br2 btn-xs fs12"
-                                                                            aria-expanded="false"><i class="fa fa-check"> Approved </i>
+                                                            <div class="btn-group text-right">
+                                                                @if($app->status==0)
+                                                                    <button type="button" style="background-color: #06b6ef"
+                                                                            class="btn btn br2 btn-xs fs12"
+                                                                            aria-expanded="false"><i style="color: white"
+                                                                            class="fa fa-external-link">
+                                                                            Pending </i>
 
                                                                     </button>
-{{--                                                                @else--}}
-                                                                    <button type="button"
-                                                                            class="btn btn-danger br2 btn-xs fs12"
-                                                                            aria-expanded="false"> <i class="fa fa-times"> Disapproved </i>
+                                                                @elseif($app->status==1)
+                                                                    <button type="button" style="background-color: #03b25e"
+                                                                            class="btn btn br2 btn-xs fs12"
+                                                                            aria-expanded="false"><i style="color: white"
+                                                                            class="fa fa-check">
+                                                                            Approved </i>
 
                                                                     </button>
-{{--                                                                @endif--}}
+                                                                @else
+                                                                    <button type="button"
+                                                                            class="btn btn br2 btn-xs fs12" style="background-color: #f5393d"
+                                                                            aria-expanded="false"><i style="color: white"
+                                                                            class="fa fa-times">
+                                                                            Disapproved </i>
 
+                                                                    </button>
+                                                                @endif
                                                             </div>
                                                         </td>
                                                     </tr>
                                                 @endforeach
-                                                <tr><td colspan="8">
-{{--                                                        {!! $leaves->render() !!}--}}
+                                                <tr>
+                                                    <td colspan="12">
+                                                        {!! $apply->links() !!}
+                                                        {{--                                                        {!! $apply->links() !!}--}}
                                                     </td>
                                                 </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                     @else
                                         <div class="row text-center">
-                                            <h2>No leavees to show</h2>
+                                            <p>No leaves to show</p>
                                         </div>
                                     @endif
                                 </div>
@@ -166,61 +155,18 @@
                 </div>
             </div>
         </section>
-        <!-- Notification modal -->
 
-        <div class="modal fade" tabindex="-1" role="dialog" id="notification-modal">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div id="modal-header" class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title"></h4>
-                    </div>
-                    <div class="modal-body">
-                        <p></p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
-                    </div>
-                </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
-
-        <!-- Modal -->
-        <div id="remarkModal" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Remark</h4>
-                    </div>
-                    <div class="modal-body">
-                        <p>
-                            <textarea id="remark-text" class="form-control" placeholder="Remarks"></textarea>
-                            <input type="hidden" id="leave_id">
-                            <input type="hidden" id="type">
-
-                        <div id="loader" class="hidden text-center">
-                            <img src="/photos/76.gif" />
-                        </div>
-                        <div id="status-message" class="hidden">
-
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-success" id="proceed-button">Proceed</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-
-        <!-- /Notification Modal -->
     </div>
+
+    <script type="text/javascript">
+        var path = "{{ route('autocomplete') }}";
+        $('input.typeahead').typeahead({
+            source: function (query, process) {
+                return $.get(path, {query: query}, function (data) {
+                    return process(data);
+                });
+            }
+        });
+    </script>
+
 @endsection
-@push('scripts')
-    <script src="/assets/js/custom.js"></script>
-@endpush

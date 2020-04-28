@@ -14,7 +14,7 @@ class AddEmployeeIdToTargets extends Migration
     public function up()
     {
         Schema::table('targets', function (Blueprint $table) {
-            //
+//            $table->integer('employee_id');
         });
     }
 
@@ -26,7 +26,7 @@ class AddEmployeeIdToTargets extends Migration
     public function down()
     {
         Schema::table('targets', function (Blueprint $table) {
-            //
+//            $table->dropColumn('employee_id');
         });
     }
 }

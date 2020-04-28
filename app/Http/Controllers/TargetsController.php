@@ -7,6 +7,7 @@ use App\Employee;
 use App\Role;
 use Illuminate\Http\Request;
 use App\Target;
+use Illuminate\Support\Facades\Auth;
 
 class TargetsController extends Controller
 {
@@ -16,7 +17,13 @@ class TargetsController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function EmpAddTar(){
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    public function EmpAddTar()
+    {
 
         $employee = Employee::all();
 
@@ -32,24 +39,30 @@ class TargetsController extends Controller
 
 
     public function targetList()
-        {
-            $target = Target::orderBy('id','desc')->paginate(10);
+    {
+        $target = Target::with('employee')
+            ->orderBy('id', 'desc')->paginate(10);
 
-            return view('hrms.target.target_assign_list')->with('target',$target);
+//            dd($target->toArray());
+
+        return view('hrms.target.target_assign_list')->with('target', $target);
     }
 
     public function showMyTarget()
     {
-        $target = Target::orderBy('id','desc')->paginate(10);
+        $user = Auth::user();
+//        $targets = $user->employee->targets->paginate(20);
+        $employee_id = $user->employee->id;
+        $targets = Target::wherehas('employee', function ($q) use ($employee_id) {
+            $q->where('employee_id', $employee_id);
+        })->paginate(10);
 
-        return view('hrms.target.target_assign_list')->with('target',$target);
-    }
+//        dd($targets);
+//        $apply = ApplyLeave::where('employee_id', \Auth::user()->id)->orderBy('id','desc')->paginate(15);
 
-    public function showMyLeave()
-    {
+//        $target = Target::orderBy('id','desc')->paginate(10);
 
-        $leaves = EmployeeLeaves::where('user_id', \Auth::user()->id)->paginate(15);
-        return view('hrms.leave.show_my_leaves', compact('leaves'));
+        return view('hrms.target.my_target_list')->with('targets', $targets);
     }
 
     public function index()
@@ -70,37 +83,36 @@ class TargetsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $this->validate($request,
             [
-                'employee' =>'required',
-                'targets' =>'required',
-                'authority'=>'required',
-                'assigned_date'=>'required',
-                'review_date'=>'required',
+                'employee_id' => 'required',
+                'targets' => 'required',
+                'assigned_date' => 'required',
+                'review_date' => 'required',
             ]);
 
 //        dd($request);
 
         $target = new Target;
-        $target->employee = $request->input('employee');
+        $target->employee_id = $request->input('employee_id');
         $target->targets = $request->input('targets');
-        $target->authority = $request->input('authority');
         $target->assigned_date = $request->input('assigned_date');
         $target->review_date = $request->input('review_date');
+//        $target->employee_id = auth()->user()->id;
         $target->save();
 
-        return redirect('/target_assign')->with('success','Target Added');
+        return redirect('/target_assign')->with('success', 'Target Added');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -111,34 +123,51 @@ class TargetsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        //
+        $targetAssign = Target::find($id);
+
+        return view('hrms.target.target_edit', compact(['targetAssign', $targetAssign, 'employee']));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $targetAssign = Target::find($id);
+        $targetAssign->targets = $request->input('targets');
+        $targetAssign->assigned_date = $request->input('assigned_date');
+        $targetAssign->review_date = $request->input('review_date');
+        $targetAssign->save();
+
+        return redirect('/target_assign_list')->with('success', 'Target  Information Updated');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         //
+    }
+
+    public function doDelete(Request $request)
+    {
+        $targetAssign = Target::findorFail($request->id);
+        $targetAssign->delete();
+
+        return redirect('/target_assign_list')->with('success', 'Target Removed Successfully');
     }
 }

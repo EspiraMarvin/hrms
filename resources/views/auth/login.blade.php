@@ -35,7 +35,7 @@
 <body class="utility-page sb-l-c sb-r-c">
 
 <!-- -------------- Body Wrap  -------------- -->
-<div id="main" class="animated fadeIn">
+<div id="main">
 
     <!-- -------------- Main Wrapper -------------- -->
     <section id="content_wrapper">
@@ -48,7 +48,7 @@
 
 
             <!-- -------------- Login Form -------------- -->
-            <div class="allcp-form theme-primary mw320" id="login">
+            <div class="allcp-form theme-primary mw320 animated zoomIn" id="login">
 
                 <div class="text-center mb20">
                     <div class="bg-primary text-center mb20 br3 pv15">

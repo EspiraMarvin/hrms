@@ -15,6 +15,10 @@ class CreateAwardAssignsTable extends Migration
     {
         Schema::create('award_assigns', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('employee_id');
+            $table->integer('award_id');
+            $table->date('date');
+            $table->string('reason');
             $table->timestamps();
         });
     }

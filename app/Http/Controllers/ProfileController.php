@@ -21,12 +21,9 @@ class ProfileController extends Controller
 //        $employee = Employee::where('user_id', \Auth::user()->id)->first();
         $pending = Employee::where('full_final', null)->get();
 
-
         $employee = User::where('id', \Auth::user()->id)->first();
-//        dd($pending);
-        $roles = Role::all();
 
-        return view('profile', compact('employee',$employee,'role',$roles,'pending',$pending));
+        return view('profile', compact('employee',$employee,'pending',$pending));
     }
 
     public function editBank(Request $request)

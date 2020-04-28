@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="78448d03-970e-4b73-8bed-b4f69eb895b5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Procfile" beforeDir="false" afterPath="$PROJECT_DIR$/Procfile" afterDir="false" />
     </list>
@@ -302,7 +301,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588114826108</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Procfile commit">
+      <created>1588115430226</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1588115430226</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -350,10 +356,10 @@
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="326" y="17" width="643" height="687" key="#phpunit.xml/0.0.1280.720/1920.0.1920.1080@0.0.1280.720" timestamp="1585002278688" />
-    <state x="111" y="0" key="CommitChangelistDialog2" timestamp="1588114825067">
+    <state x="111" y="0" key="CommitChangelistDialog2" timestamp="1588115712552">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="111" y="0" key="CommitChangelistDialog2/0.0.1280.720@0.0.1280.720" timestamp="1588114825067" />
+    <state x="111" y="0" key="CommitChangelistDialog2/0.0.1280.720@0.0.1280.720" timestamp="1588115712552" />
     <state x="0" y="140" key="EditFileWatcherDialog" timestamp="1581244799360">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
@@ -391,10 +397,10 @@
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="142" y="4" key="SettingsEditor/0.0.1280.720@0.0.1280.720" timestamp="1581353227184" />
-    <state x="233" y="95" key="Vcs.Push.Dialog.v2" timestamp="1588115415523">
+    <state x="233" y="95" key="Vcs.Push.Dialog.v2" timestamp="1588115448615">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="233" y="95" key="Vcs.Push.Dialog.v2/0.0.1280.720@0.0.1280.720" timestamp="1588115415523" />
+    <state x="233" y="95" key="Vcs.Push.Dialog.v2/0.0.1280.720@0.0.1280.720" timestamp="1588115448615" />
     <state x="341" y="186" key="com.intellij.ide.util.TipDialog" timestamp="1581234830948">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
@@ -407,12 +413,12 @@
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="107" y="0" width="739" height="720" key="find.popup/0.0.1280.720@0.0.1280.720" timestamp="1585215826670" />
-    <state x="297" y="161" key="run.anything.popup" timestamp="1587907406708">
+    <state x="297" y="161" key="run.anything.popup" timestamp="1588115638562">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="297" y="161" key="run.anything.popup/0.0.1280.720/1920.0.1920.1080@0.0.1280.720" timestamp="1585001073756" />
     <state x="2366" y="242" key="run.anything.popup/0.0.1280.720/1920.0.1920.1080@1920.0.1920.1080" timestamp="1585226468218" />
-    <state x="297" y="161" key="run.anything.popup/0.0.1280.720@0.0.1280.720" timestamp="1587907406708" />
+    <state x="297" y="161" key="run.anything.popup/0.0.1280.720@0.0.1280.720" timestamp="1588115638562" />
     <state x="-17" y="41" width="672" height="678" key="search.everywhere.popup" timestamp="1587684253316">
       <screen x="0" y="0" width="1280" height="720" />
     </state>

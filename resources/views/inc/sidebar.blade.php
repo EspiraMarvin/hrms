@@ -38,14 +38,14 @@
                     <a href="/employee_manager">
                         <span class="glyphicon glyphicon-tags"></span> Employee Listing </a>
                 </li>
-                <li>
+                {{--<li>
                     <a href="/supervisor_add">
                         <span class="glyphicon glyphicon-tags"></span> Add Supervisor </a>
                 </li>
                 <li>
                     <a href="/supervisor_list">
                         <span class="glyphicon glyphicon-tags"></span> Supervisor Listing </a>
-                </li>
+                </li>--}}
             </ul>
         </li>
 

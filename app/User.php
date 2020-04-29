@@ -4,7 +4,7 @@ namespace App;
 
 use App\UserRole;
 use App\ApplyLeave;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+//use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
@@ -50,12 +50,22 @@ class User extends Authenticatable
         return $this->hasOne('App\UserRole', 'employee_id', 'id');
     }
 
+    public function isNotAdmin()
+    {
+        $employeeId = Auth::user()->id;
+        $userRole = UserRole::where('employee_id', $employeeId)->first();
+        if($userRole->role_id != 1)
+        {
+            return true;
+        }
+        return false;
+    }
 
     public function isAdmin()
     {
         $employeeId = Auth::user()->id;
         $userRole = UserRole::where('employee_id', $employeeId)->first();
-        if($userRole->role_id === 1)
+        if($userRole->role_id == 1)
         {
             return true;
         }

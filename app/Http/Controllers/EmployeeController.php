@@ -51,7 +51,7 @@ class EmployeeController extends Controller
 //        $supervisor = DB::table('types')->get();
 
 
-        return view('hrms.employee.employee_edit', compact([$role, 'role', $department, 'department', $employee, 'employee', $user, 'user']));
+        return view('hrms.employee.employee_edit', compact($role, 'role', $department, 'department', $employee, 'employee', $user, 'user'));
     }
 
     public function index()

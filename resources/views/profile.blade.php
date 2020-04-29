@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row" style="margin-top: 4px">
-            <a style="margin-left: 5px" href="/dashboard" class="btn col-4">Go Back</a>
+            <a style="margin-left: 5px" href="/dashboard" class="btn btn-danger col-4">Go Back</a>
 
             <a style="background-color: #1fad83;margin-left: 5px;color: white" href="/my_target_list" class="btn btn-success col-4">Check
                 Targets</a>

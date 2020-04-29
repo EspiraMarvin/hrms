@@ -54,7 +54,7 @@ class User extends Authenticatable
     {
         $employeeId = Auth::user()->id;
         $userRole = UserRole::where('employee_id', $employeeId)->first();
-        if($userRole->role_id != 1)
+        if($userRole->role_id == 5)
         {
             return true;
         }

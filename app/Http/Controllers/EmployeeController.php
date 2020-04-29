@@ -65,11 +65,9 @@ class EmployeeController extends Controller
 //          $user = User::find($user_id);
         $totalEmployee = Employee::count();
         $employee = Employee::orderBy('id', 'desc')->paginate(10);
-        $roles = Role::all();
         $supervisor = Employee::all();
 
-        return view('hrms.employee.employee_manager', compact('employee', $employee,
-            'roles',$roles,'supervisor',$supervisor,'totalEmployee', $totalEmployee));
+        return view('hrms.employee.employee_manager', compact('employee', $employee,'supervisor',$supervisor,'totalEmployee', $totalEmployee));
     }
 
     public function bankDetails()

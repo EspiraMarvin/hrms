@@ -50,16 +50,6 @@ class User extends Authenticatable
         return $this->hasOne('App\UserRole', 'employee_id', 'id');
     }
 
-    public function isNotAdmin()
-    {
-        $employeeId = Auth::user()->id;
-        $userRole = UserRole::where('employee_id', $employeeId)->first();
-        if($userRole->role_id == 5)
-        {
-            return true;
-        }
-        return false;
-    }
 
     public function isAdmin()
     {
@@ -69,7 +59,11 @@ class User extends Authenticatable
         {
             return true;
         }
-        return false;
+        elseif ($userRole->role_id != 1)
+        {
+            return false;
+
+        }
     }
 
     public function leaveApprove()

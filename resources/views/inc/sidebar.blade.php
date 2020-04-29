@@ -125,7 +125,7 @@
             </li>
         @endif
 
-        @if(!Auth::user()->isAdmin())
+        @if(Auth::user()->isNotAdmin())
 
         <li>
             <a class="accordion-toggle" href="/dashboard">
@@ -174,7 +174,7 @@
         </li>
         @endif
 
-        @if(!Auth::user()->isAdmin())
+        @if(Auth::user()->isNotAdmin())
             <li>
                 <a class="accordion-toggle" href="/dashboard">
                     <span class="fa fa fa-laptop"></span>
@@ -232,7 +232,7 @@
         </li>
         @endif
 
-        @if(!Auth::user()->isAdmin())
+        @if(Auth::user()->isNotAdmin())
             <li>
                 <a class="accordion-toggle" href="/dashboard">
                     <span class="fa fa-envelope"></span>
@@ -296,7 +296,7 @@
         </li>
         @endif
 
-        @if(!Auth::user()->isAdmin())
+        @if(Auth::user()->isNotAdmin())
             <li>
                 <a class="accordion-toggle" href="/dashboard">
                     <span class="fa fa-arrow-circle-o-up"></span>
@@ -344,7 +344,7 @@
         </li>
         @endif
 
-        @if(!Auth::user()->isAdmin())
+        @if(Auth::user()->isNotAdmin())
             <li>
                 <a class="accordion-toggle" href="/dashboard">
                     <span class="fa fa fa-trophy"></span>

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="78448d03-970e-4b73-8bed-b4f69eb895b5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -292,7 +292,7 @@
       <workItem from="1588013642746" duration="181000" />
       <workItem from="1588074431901" duration="3899000" />
       <workItem from="1588078690159" duration="17984000" />
-      <workItem from="1588156876021" duration="159000" />
+      <workItem from="1588156876021" duration="384000" />
     </task>
     <task id="LOCAL-00001" summary="Procfile commit">
       <created>1588114826107</created>
@@ -329,7 +329,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588119068805</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Procfile commit">
+      <created>1588157066909</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1588157066910</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -379,10 +386,10 @@
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="326" y="17" width="643" height="687" key="#phpunit.xml/0.0.1280.720/1920.0.1920.1080@0.0.1280.720" timestamp="1585002278688" />
-    <state x="111" y="0" key="CommitChangelistDialog2" timestamp="1588119067608">
+    <state x="111" y="0" key="CommitChangelistDialog2" timestamp="1588157065867">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="111" y="0" key="CommitChangelistDialog2/0.0.1280.720@0.0.1280.720" timestamp="1588119067608" />
+    <state x="111" y="0" key="CommitChangelistDialog2/0.0.1280.720@0.0.1280.720" timestamp="1588157065867" />
     <state x="93" y="93" width="1095" height="535" key="DiffContextDialog" timestamp="1588156973838">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
@@ -424,10 +431,10 @@
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="142" y="4" key="SettingsEditor/0.0.1280.720@0.0.1280.720" timestamp="1581353227184" />
-    <state x="233" y="95" key="Vcs.Push.Dialog.v2" timestamp="1588157001763">
+    <state x="233" y="95" key="Vcs.Push.Dialog.v2" timestamp="1588157219652">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="233" y="95" key="Vcs.Push.Dialog.v2/0.0.1280.720@0.0.1280.720" timestamp="1588157001763" />
+    <state x="233" y="95" key="Vcs.Push.Dialog.v2/0.0.1280.720@0.0.1280.720" timestamp="1588157219652" />
     <state x="341" y="186" key="com.intellij.ide.util.TipDialog" timestamp="1581234830948">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
@@ -440,6 +447,10 @@
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="107" y="0" width="739" height="720" key="find.popup/0.0.1280.720@0.0.1280.720" timestamp="1585215826670" />
+    <state x="364" y="153" key="git4idea.merge.GitPullDialog" timestamp="1588157076052">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="364" y="153" key="git4idea.merge.GitPullDialog/0.0.1280.720@0.0.1280.720" timestamp="1588157076052" />
     <state x="297" y="161" key="run.anything.popup" timestamp="1588115638562">
       <screen x="0" y="0" width="1280" height="720" />
     </state>

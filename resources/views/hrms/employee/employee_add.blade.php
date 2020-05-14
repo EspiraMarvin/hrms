@@ -206,6 +206,8 @@
                             </div>
                         </div>
 
+
+
                         <!-- -------------- /section -------------- -->
                     </section>
 
@@ -216,15 +218,17 @@
                         <!-- -------------- /section -------------- -->
 
                         <div class="section">
-                            <label for="input002"><h6 class="mb20 mt40"> Role </h6></label>
-                            <select class="select2-single form-control" name="role_id" id="role_id">
-                                <option value="">Select Role</option>
-                                @if(!empty($role) && count($role) > 0)
-                                    @foreach($role as $rol)
-                                        <option value="{{$rol->id}}">{{$rol->role}}</option>
-                                    @endforeach
-                                @endif
-                            </select>
+                            <div class="form-group">
+                                <label class="field-icon"><i class=""></i></label>&nbsp;
+                                {{Form::label('role','Select Role(s)',['class'=>'mb20 mt40','style'=>'color:black;font-weight:bold'])}}
+                                <select id="done" class="selectpicker form-control" multiple data-done-button="true" name="roles_id[]">
+                                    @if(!empty($role) && count($role) > 0)
+                                        @foreach($role as $rol)
+                                            <option value="{{$rol->id}}">{{$rol->role}}</option>
+                                        @endforeach
+                                    @endif
+                                </select>
+                            </div>
                         </div>
 
                         <div class="section">
@@ -233,35 +237,42 @@
                                     id="probation_period">
                                 <option value="">Select Employment Type</option>
                                 <option value="Permanent">Permanent</option>
-{{--                                <option value="Other">Contract</option>--}}
+                                <option value="Other">Contract</option>
                             </select>
-                            <input type="text" value="Contract (DateFrom - DateTo)" name="employment_type"
+                            <input type="text" value="Contract (mm/dd/yyyy - mm/dd/yyyy)" name="employment_type"
                                    class="form-control probation_text hidden" id="probation_text">
                         </div>
 
                         <div class="section">
-                            <label for="input002"><h6 class="mb20 mt40"> Department </h6></label>
-                            <select class="select2-single form-control" name="department" id="department">
-                                <option value="">Select Department</option>
+                            <div class="form-group">
+                                <label class="field-icon"><i class=""></i></label>&nbsp;
+                                {{Form::label('department','Select Department',['class'=>'mb20 mt40','style'=>'color:black;font-weight:bold'])}}
+                                <select id="done" class="selectpicker form-control" name="department" id="department">
+                                    <option value="">Select Department</option>
                                 @if(!empty($department) && count($department) > 0)
-                                    @foreach($department as $dep)
-                                        <option value="{{$dep->name}}">{{$dep->name}}</option>
-                                    @endforeach
-                                @endif
-                            </select>
+                                        @foreach($department as $dep)
+                                            <option value="{{$dep->id}}">{{$dep->name}}</option>
+                                        @endforeach
+                                    @endif
+                                </select>
+                            </div>
                         </div>
 
                         <div class="section">
-                            <label for="input002"><h6 class="mb20 mt40"> Supervisor </h6></label>
-                            <select class="select2-single form-control" name="supervisor_id" id="supervisor_id">
-                                <option value="">Select Supervisor</option>
-                                @if(!empty($employee) && count($employee) > 0)
-                                    @foreach($employee as $sup)
-                                        <option value="{{$sup->id}}">{{$sup->name}}</option>
-                                    @endforeach
-                                @endif
-                            </select>
+                            <div class="form-group">
+                                <label class="field-icon"><i class=""></i></label>&nbsp;
+                                {{Form::label('supervisor','Select Supervisor',['class'=>'mb20 mt40','style'=>'color:black;font-weight:bold'])}}
+                                <select id="done" class="selectpicker form-control" name="supervisor_id" id="supervisor_id" required>
+                                    <option value="">Select Supervisor</option>
+                                    @if(!empty($supervisor))
+                                        @foreach($supervisor as $sup)
+                                            <option value="{{$sup->id}}">{{$sup->name}}</option>
+                                        @endforeach
+                                    @endif
+                                </select>
+                            </div>
                         </div>
+
 
                         <div class="section">
                             <label class="field-icon"><i class=""></i></label>&nbsp;
@@ -345,7 +356,7 @@
                             <label class="field-icon"><i class="fa fa-calendar"></i></label>&nbsp;
                             {{Form::label('date_of_resignation','Date of Resignation',['class'=>'mb20 mt40','style'=>'color:black;font-weight:bold'])}}
                             <br>
-                            {{Form::date('date_of_resignation', '',['class' => 'gui-input fs13','placeholder'=>'Date of Resignation','id'=>'datepicker6'])}}
+                            {{Form::date('date_of_resignation', '',['class' => 'gui-input fs13','placeholder'=>'Date of Resignation'])}}
                         </div>
 
                         <div class="section">
@@ -358,7 +369,7 @@
                             <label class="field-icon"><i class="fa fa-calendar"></i></label>&nbsp;
                             {{Form::label('last_working_day','Last Working Day',['class'=>'mb20 mt40','style'=>'color:black;font-weight:bold'])}}
                             <br>
-                            {{Form::date('last_working_day', '',['class' => 'gui-input fs13','placeholder'=>'Last Working Day','id'=>'datepicker7'])}}
+                            {{Form::date('last_working_day', '',['class' => 'gui-input fs13','placeholder'=>'Last Working Day'])}}
                         </div>
 
                         <div class="section">
@@ -448,7 +459,7 @@
     {!! Html::script('/assets/allcp/forms/js/jquery.steps.min.js') !!}
 
     <!-- -------------- Theme Scripts -------------- -->
-    {!! Html::script('/assets/js/utility/utility.js') !!}
+{{--    {!! Html::script('/assets/js/utility/utility.js') !!}--}}
     {!! Html::script('/assets/js/demo/demo.js') !!}
     {!! Html::script('/assets/js/main.js') !!}
     {{--    {!! Html::script('/assets/js/demo/widgets_sidebar.js') !!}--}}

@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Department;
-use App\Employee;
-use App\Role;
+use App\User;
 use Illuminate\Http\Request;
 use App\Target;
 use Illuminate\Support\Facades\Auth;
@@ -20,47 +18,48 @@ class TargetsController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-    }
-
-    public function EmpAddTar()
-    {
-
-        $employee = Employee::all();
-
-        return view('hrms.target.target_assign')->with('employee', $employee);
 
     }
 
-    public function targetAdd()
+    public function AddTar()
     {
-        $target = Target::all();
-        return view('hrms.target.target_assign');
+
+       $users = Target::whereHas('user', function ($q) {
+            $q->whereHas('supervisedBy', function ($qq){
+                $qq->where('supervisor_id',Auth::user()->id);
+            });
+        })->with('user')->orderBy('id','desc')->get();
+
+       $employees = User::whereHas('supervisedBy', function ($q){
+           $q->where('supervisor_id',Auth::user()->id);
+       })->get();
+
+        return view('hrms.target.target_assign')->with('employees',$employees,'users',$users);
     }
 
 
     public function targetList()
     {
-        $target = Target::with('employee')
-            ->orderBy('id', 'desc')->paginate(10);
 
-//            dd($target->toArray());
+        $target = Target::whereHas('user', function ($q) {
+            $q->whereHas('supervisedBy', function ($qq){
+                $qq->where('supervisor_id',Auth::user()->id);
+            });
+        })->with('user')->orderBy('id','desc')->paginate(10);
+
 
         return view('hrms.target.target_assign_list')->with('target', $target);
     }
 
     public function showMyTarget()
     {
+
         $user = Auth::user();
-//        $targets = $user->employee->targets->paginate(20);
-        $employee_id = $user->employee->id;
-        $targets = Target::wherehas('employee', function ($q) use ($employee_id) {
-            $q->where('employee_id', $employee_id);
+        $user_id = $user->id;
+        $targets = Target::wherehas('user', function ($q) use ($user_id) {
+            $q->where('user_id', $user_id);
         })->paginate(10);
 
-//        dd($targets);
-//        $apply = ApplyLeave::where('employee_id', \Auth::user()->id)->orderBy('id','desc')->paginate(15);
-
-//        $target = Target::orderBy('id','desc')->paginate(10);
 
         return view('hrms.target.my_target_list')->with('targets', $targets);
     }
@@ -90,20 +89,18 @@ class TargetsController extends Controller
     {
         $this->validate($request,
             [
-                'employee_id' => 'required',
+                'user_id' => 'required',
                 'targets' => 'required',
                 'assigned_date' => 'required',
                 'review_date' => 'required',
             ]);
 
-//        dd($request);
 
         $target = new Target;
-        $target->employee_id = $request->input('employee_id');
+        $target->user_id = $request->input('user_id');
         $target->targets = $request->input('targets');
         $target->assigned_date = $request->input('assigned_date');
         $target->review_date = $request->input('review_date');
-//        $target->employee_id = auth()->user()->id;
         $target->save();
 
         return redirect('/target_assign')->with('success', 'Target Added');
@@ -130,7 +127,7 @@ class TargetsController extends Controller
     {
         $targetAssign = Target::find($id);
 
-        return view('hrms.target.target_edit', compact(['targetAssign', $targetAssign, 'employee']));
+        return view('hrms.target.target_edit', compact('targetAssign', $targetAssign));
     }
 
     /**

@@ -19,7 +19,7 @@ class LeavesTypeTableSeeder extends Seeder
         DB::table('leaves')->insert([
             [
                 'leave_type' => 'Annual Leave',
-                'description' => 'A 30 days leave for each employee',
+                'description' => 'An optional 30 days annual leave for each employee',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
@@ -33,7 +33,7 @@ class LeavesTypeTableSeeder extends Seeder
             [
 
                 'role' => 'Sick Leave',
-                'description' => 'When an employee is in poor state of health that he can not do their duties effectively.',
+                'description' => 'When an employee is in poor state of health that they can`t duties effectively.',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],

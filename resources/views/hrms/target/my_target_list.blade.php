@@ -8,12 +8,12 @@
             <div class="topbar-left">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-icon">
-                        <a href="/dashboard">
+                        <a href="/profile">
                             <span class="fa fa-home"></span>
                         </a>
                     </li>
                     <li class="breadcrumb-active">
-                        <a href="/dashboard"> Dashboard </a>
+                        <a href="/profile"> Profile </a>
                     </li>
                     <li class="breadcrumb-link">
                         <a href=""> Assigned Target </a>
@@ -46,7 +46,6 @@
                                             <tr class="bg-light">
                                                 <th class="text-center">Id</th>
                                                 <th class="text-center">Targets</th>
-                                                <th class="text-center">Issuing Authority(Supervisor)</th>
                                                 <th class="text-center">Date of Assignment</th>
                                                 <th class="text-center">Expected Review Date</th>
                                             </tr>
@@ -58,7 +57,6 @@
                                                     <tr>
                                                         <td class="text-center">{{$i+=1}}</td>
                                                         <td class="text-center">{{$tar->targets}}</td>
-                                                        <td class="text-center">{{$tar->employee->supervisor}}</td>
                                                         <td class="text-center">{{date_format(new DateTime($tar->assigned_date), 'd-m-Y')}}</td>
                                                         <td class="text-center">{{date_format(new DateTime($tar->review_date), 'd-m-Y')}}</td>
                                                     </tr>

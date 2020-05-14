@@ -88,9 +88,9 @@
                                                         <td class="text-center">{{$i+=1}}</td>
                                                         <td class="text-center"><a
                                                                 href="/employee/{{$emp->id}}"> {{$emp->name}}</a></td>
-                                                        <td class="text-center">{{$emp->userrole->role->role}}</td>
+                                                        <td class="text-center">{{$emp->roles[0]->role}}</td>
                                                         <td class="text-center">{{$emp->salary}}</td>
-                                                        <td class="text-center">{{$emp->supervisor}}</td>
+                                                        <td class="text-center">{{$emp->user->supervisedBy[0]->name}}</td>
                                                         <td class="text-center">{{$emp->department}}</td>
                                                         <td class="text-center">{{$emp->duty_station}}</td>
                                                         <td class="text-center">

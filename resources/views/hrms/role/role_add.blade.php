@@ -31,8 +31,10 @@
                     <div class="col-xs-12">
                         <div class="box box-success">
                             <div class="panel">
+                                <div class="panel-heading">
+                                    <span class="panel-title hidden-xs"> Add Role </span>
+                                </div>
                                 <div class="panel-body pn">
-
                                     <div class="table-responsive">
                                         <div class="panel-body p25 pb10">
                                             @include('inc.messages')

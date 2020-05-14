@@ -70,8 +70,6 @@
                                 <div class="panel-body pn">
                                     @include('inc.messages')
 
-{{--                                    <button onclick="myFunction()" >Click Me</button>--}}
-
                                     <div class="table-responsive">
                                         <table class="table allcp-form theme-warning tc-checkbox-1 fs13">
                                             <thead>
@@ -95,9 +93,10 @@
                                                     <tr>
                                                         <td class="text-center">{{$i+=1}}</td>
                                                         <td class="text-center">{{$emp->code}}</td>
-                                                        <td class="text-center"><a href="/employee/{{$emp->id}}"> {{$emp->name}}</a></td>
-                                                        <td class="text-center">{{$emp->userrole->role->role}}</td>
-                                                        <td class="text-center">{{$emp->supervisor_id}}</td>
+                                                        <td class="text-center"><a style=" text-decoration: none"
+                                                                href="/employee/{{$emp->id}}"> {{$emp->name}}</a></td>
+                                                        <td class="text-center">{{$emp->roles[0]->role}}</td>
+                                                        <td class="text-center">{{$emp->user->supervisedBy[0]->name}}</td>
                                                         <td class="text-center">{{$emp->phone_number}}</td>
                                                         <td class="text-center">{{$emp->department}}</td>
                                                         <td class="text-center">{{$emp->duty_station}}</td>

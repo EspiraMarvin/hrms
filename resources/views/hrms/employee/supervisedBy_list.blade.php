@@ -16,9 +16,9 @@
                         <a href="/dashboard"> Dashboard </a>
                     </li>
                     <li class="breadcrumb-link">
-                        <a href=""> Assigned Target </a>
+                        <a href=""> Supervisees </a>
                     </li>
-                    <li class="breadcrumb-current-item"> Target Assignment Listings</li>
+                    <li class="breadcrumb-current-item"> Supervisees Listings</li>
                 </ol>
             </div>
         </header>
@@ -29,13 +29,12 @@
             <!-- -------------- Column Center -------------- -->
             <div class="chute chute-center">
 
-                <!-- -------------- Products Status Table -------------- -->
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="box box-success">
                             <div class="panel">
                                 <div class="panel-heading">
-                                    <span class="panel-title hidden-xs"> Target Assignment Listings </span>
+                                    <span class="panel-title hidden-xs"> Supervisees Lists </span>
                                 </div>
                                 <div class="panel-body pn">
                                     @include('inc.messages')
@@ -45,33 +44,24 @@
                                             <thead>
                                             <tr class="bg-light">
                                                 <th class="text-center">Id</th>
-                                                <th class="text-center">Employee</th>
-                                                <th class="text-center">Targets</th>
-                                                <th class="text-center">Date of Assignment</th>
-                                                <th class="text-center">Expected Review Date</th>
+                                                <th class="text-center">Name</th>
+                                                <th class="text-center">Email Address</th>
                                                 <th class="text-center">Actions</th>
                                             </tr>
                                             </thead>
+
                                             <tbody>
                                             <?php $i = 0;?>
-                                            @if(count($target) > 0)
-                                                @foreach($target as $tar)
+                                            @if(count($employees) > 0)
+                                                @foreach($employees as $emp)
                                                     <tr>
                                                         <td class="text-center">{{$i+=1}}</td>
-                                                        <td class="text-center">{{$tar->user->name}}</td>
-                                                        <td class="text-center">{{$tar->targets}}</td>
-                                                        <td class="text-center">{{date_format(new DateTime($tar->assigned_date), 'd-m-Y')}}</td>
-                                                        <td class="text-center">{{date_format(new DateTime($tar->review_date), 'd-m-Y')}}</td>
+                                                        <td class="text-center">{{$emp->name}}</td>
+                                                        <td class="text-center">{{$emp->email}}</td>
                                                         <td class="text-center">
                                                             <div class="dropdown" role="group" aria-label="...">
-                                                                <a href="target/{{$tar->id}}/edit">
-                                                                    <button type="button" class="btn btn-info br2 btn-xs fs12"
-                                                                            data-toggle="modal" data-target="#edit">
-                                                                        Edit
-                                                                    </button></a>
                                                                 <button type="button" class="btn btn-danger br2 btn-xs fs12"
-                                                                        data-tarid={{$tar->id}} data-employee={{$tar->user->name}}
-                                                                            data-date={{$tar->assigned_date}}
+                                                                        data-roleid={{$emp->id}} data-sup={{$emp->name}}
                                                                             data-toggle="modal" data-target="#delete">Delete</button>
                                                             </div>
                                                         </td>
@@ -81,13 +71,13 @@
                                         </table>
                                         @else
                                             <div class="row text-center">
-                                                <p>No Targets to show</p>
+                                                <p>No supervisees to show</p>
                                             </div>
                                         @endif
+                                        <div class="row text-center">
+                                            {{$employees->links()}}
+                                        </div>
                                     </div>
-                                </div>
-                                <div style="text-align: center">
-                                    {!! $target->links() !!}
                                 </div>
                             </div>
                         </div>
@@ -113,12 +103,11 @@
                     </button>
                 </div>
                 <div style="text-align: center" class="modal-body">
-                    {!! Form::open(['action' => ['TargetsController@doDelete',isset($tar->id) ? $tar->id:'' ],'method' => 'POST','class' => 'form-horizontal','enctype'=>'multipart/form-data', 'id'=>"custom-form-wizard"]) !!}
+                    {!! Form::open(['action' => ['EmployeeController@doDelete',isset($sup->id) ? $sup->id:'' ],'method' => 'POST','class' => 'form-horizontal','enctype'=>'multipart/form-data', 'id'=>"custom-form-wizard"]) !!}
 
-                    {{Form::hidden('id', isset($tar->id) ? $tar->id:'' ,['value' =>'','name' => 'id','id'=>'target_id'])}}
-                    <h6>Are you sure you want to delete target for ?<br><br>
-                        <input style="border: 0" type="text" disabled class="form-control text-center" id="employee"> Issued on
-                        <input style="border: 0" type="text" disabled class="form-control text-center" id="date">
+                    {{Form::hidden('id', isset($sup->id) ? $sup->id:'' ,['value' =>'','name' => 'id','id'=>'sup_id'])}}
+                    <h6>Are you sure you want to delete this ?<br><br>
+                        <input style="border: 0" type="text" disabled class="form-control text-center" id="supervisor">
                     </h6>
 
                     <div class="modal-footer text-center">
@@ -139,14 +128,12 @@
             console.log('modal opened')
 
             var button = $(event.relatedTarget)
-            var target_id = button.data('tarid')
-            var employee = button.data('employee')
-            var date = button.data('date')
+            var role_id = button.data('supid')
+            var role = button.data('role')
             var modal = $(this)
 
-            modal.find('.modal-body #target_id').val(target_id);
-            modal.find('.modal-body #employee').val(employee);
-            modal.find('.modal-body #date').val(date);
+            modal.find('.modal-body #award_id').val(role_id);
+            modal.find('.modal-body #role').val(role);
         })
     </script>
 @endsection

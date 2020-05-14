@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Supervisor;
 use App\UserRole;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Employee;
 use App\User;
@@ -13,6 +14,8 @@ use App\Role;
 use DB;
 use phpDocumentor\Reflection\Types\Nullable;
 use Symfony\Component\Console\Input\Input;
+use function foo\func;
+
 //use Illuminate\Support\Facades\DB;
 
 
@@ -35,9 +38,12 @@ class EmployeeController extends Controller
 
         $role = Role::all();
         $department = Department::all();
-        $employee = Employee::all();
+//        $employee = Employee::all();
+        $supervisor = User::whereHas('roles', function ($q) {
+            $q->where('user_role.role_id',9);
+        })->get();
 
-        return view('hrms.employee.employee_add', compact('role', 'department', 'employee'));
+        return view('hrms.employee.employee_add', compact('role', 'department', 'supervisor',$supervisor));
 
     }
 
@@ -46,23 +52,35 @@ class EmployeeController extends Controller
 
         $role = Role::all();
         $department = Department::all();
-        $employee = Employee::all();
-        $user = User::all();
-//        $supervisor = DB::table('types')->get();
+        $supervisor = User::whereHas('roles', function ($q) {
+            $q->where('user_role.role_id',9);
+        })->get();
 
+        return view('hrms.employee.employee_edit', compact($role, 'role', $department, 'department',$supervisor));
+    }
 
-        return view('hrms.employee.employee_edit', compact($role, 'role', $department, 'department', $employee, 'employee', $user, 'user'));
+    public function listSupervisor()
+    {
+        $supervisor = User::whereHas('roles', function ($q) {
+            $q->where('user_role.role_id',9);
+        })->orderBy('id', 'desc')->paginate(15);
+        return view('hrms.employee.supervisor_list',compact('supervisor',$supervisor));
+    }
+
+    public function showSupervisedBy()
+    {
+        $supervisor = User::all();
+
+        $employees = User::whereHas('supervisor', function ($q){
+            $q->where('supervisor_id',Auth::user()->id);
+        })->orderBy('id', 'desc')->paginate(10);
+//        dd($employees);
+
+        return view('hrms.employee.supervisedBy_list',compact('employees',$employees,'supervisor',$supervisor));
     }
 
     public function index()
     {
-//        $employee = Employee::all();
-//        $employee = Employee::orderBy('id','desc')->get();
-//        $employee = Employee::where('id','1')->get();
-//        $employee = Employee::orderBy('id','desc')->take(1)->get();
-
-//          $user_id = auth()->user('id');
-//          $user = User::find($user_id);
         $totalEmployee = Employee::count();
         $employee = Employee::orderBy('id', 'desc')->paginate(10);
         $supervisor = Employee::all();
@@ -97,8 +115,8 @@ class EmployeeController extends Controller
 
     public function store(Request $request)
     {
-
 //        dd($request);
+
         $this->validate($request,
             [
                 'photo' => 'image|nullable|max:1999',
@@ -166,19 +184,18 @@ class EmployeeController extends Controller
         $employee->user_id = $user->id;
         $employee->save();
 
-        $userRole = new UserRole();
-        $userRole->role_id = $request->role_id;
-        $userRole->employee_id = $employee->id;
-        $userRole->save();
 
-        $supervisor = new Supervisor();
-        $supervisor->supervisor_id = $request->supervisor_id;
-        $supervisor->save();
+        foreach ($request->roles_id as $request->role_id) {
+
+            $user->roles()->attach($request->role_id);
+        }
+
+        $user->supervisedBy()->attach($request->supervisor_id);
 
         return redirect('/employee_add')->with('success', 'Employee  Added');
-
-
     }
+
+
 
     /**
      * Display the specified resource.
@@ -193,7 +210,6 @@ class EmployeeController extends Controller
         return view('hrms.employee.employee_show')->with('employee', $employee);
     }
 
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -202,10 +218,14 @@ class EmployeeController extends Controller
      */
     public function edit($id)
     {
-        $supervisor = User::all();
         $employee = Employee::find($id);
         $roles = Role::all();
         $department = Department::all();
+
+        $supervisor = User::whereHas('roles', function ($q) {
+            $q->where('user_role.role_id',9);
+        })->get();
+
 
         return view('hrms.employee.employee_edit', compact('employee',$employee, 'department',
             $department,'supervisor',$supervisor,'roles',$roles));
@@ -220,6 +240,8 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, $id)
     {
+//        dd($request);
+
         $this->validate($request,
             [
                 'photo' => 'image|nullable|max:1999',
@@ -229,15 +251,12 @@ class EmployeeController extends Controller
                 'status' => 'required',
                 'gender' => 'required',
                 'department' => 'required',
-//                'role_id' => 'required|unique:user_roles',
-//                'employment_type' => 'required',
-//                'duty_station' => 'required',
-//                'date_of_resignation' => 'nullable',
                 'last_working_day' => 'nullable'
 
             ]);
 
 //        dd($request);
+
         //handle file upload
         if ($request->hasFile('photo')) {
             //get filename with the extension
@@ -252,12 +271,17 @@ class EmployeeController extends Controller
             $path = $request->file('photo')->storeAs('public/photos', $fileNameToStore);
         }
 
+        $user           = User::find($id);
+        $user->name     = $request->input('name');
+//        $user->email    = $request->input('email');
+        $user->password = bcrypt('12345678');
+        $user->save();
 
         $employee = Employee::find($id);
         $employee->code = $request->input('code');
         $employee->name = $request->input('name');
         $employee->pf_number = $request->input('pf_number');
-        $employee->email = $request->input('email');
+//        $employee->email = $request->input('email');
         $employee->status = $request->input('status');
         $employee->gender = $request->input('gender');
         $employee->qualification = $request->input('qualification');
@@ -289,12 +313,16 @@ class EmployeeController extends Controller
         }
         $employee->save();
 
+        $user->roles()->detach();
 
-//        $userRole = UserRole::firstOrNew(['employee_id' => $request->employee_id]);
-        $userRole = UserRole::find($id);
-        $userRole->role_id = $request->role_id;
-        $userRole->employee_id = $employee->id;
-        $userRole->save();
+        foreach ($request->roles_id as $request->role_id) {
+
+            $user->roles()->attach($request->role_id);
+        }
+
+
+        $user->supervisedBy()->detach();
+        $user->supervisedBy()->attach($request->supervisor_id);
 
         return redirect('/employee_manager')->with('success', 'Employee  Information Updated');
     }
@@ -323,39 +351,28 @@ class EmployeeController extends Controller
     public function doDelete(Request $request)
     {
         $emp = Employee::findorFail($request->id);
+
+        $emp->roles()->detach();
+        $emp->supervisedBy()->attach($request->supervisor_id);
+
         $emp->delete();
 
         return redirect('/employee_manager')->with('success', 'Employee Removed Successfully');
     }
 
-    public function getPromotionData(Request $request)
+    public function doDeleteSup(Request $request)
     {
-        $result = Employee::with('userrole.role')->where('id', $request->employee_id)->first();
-        if ($result) {
-            $result = ['salary' => $result->salary, 'designation' => $result->userrole->role->name];
+
+        $user = User::whereHas('roles', function ($q) {
+            $q->where('user_role.role_id',9);
+        })->get();
+        if ($user == $request->role_id){
+            $user->delete();
         }
 
-        return json_encode(['status' => 'success', 'data' => $result]);
+        return redirect('/supervisor_list')->with('success', 'Supervisor Removed Successfully');
+
     }
-
-    public function processPromotion(Request $request, $id)
-    {
-
-        $this->validate($request,
-            [
-                'award_id' => 'required|unique:award_assigns',
-            ]);
-
-        $awardAssign = Employee::find($id);
-        $awardAssign->employee = $request->input('employee');
-        $awardAssign->award_id = $request->input('award_id');
-        $awardAssign->date = $request->input('date');
-        $awardAssign->reason = $request->input('reason');
-        $awardAssign->save();
-
-        return redirect('/awardees_listing')->with('success', 'Awardee Information Updated');
-    }
-
 
 //  function to search database
     public function search()
@@ -367,7 +384,6 @@ class EmployeeController extends Controller
             $data = Employee::where('name', 'LIKE', '%' . $q . '%')
                 ->orWhere('code', 'LIKE', '%' . $q . '%')
                 ->orWhere('pf_number', 'LIKE', '%' . $q . '%')
-                ->orWhere('email', 'LIKE', '%' . $q . '%')
                 ->orWhere('status', 'LIKE', '%' . $q . '%')
                 ->orWhere('date_of_joining', 'LIKE', '%' . $q . '%')
                 ->orWhere('phone_number', 'LIKE', '%' . $q . '%')
@@ -389,7 +405,7 @@ class EmployeeController extends Controller
         }
     }
 
-    public function searchPromote()
+  /*  public function searchPromote()
     {
         $employee = Employee::all();
         $q = request()->input('q');
@@ -408,7 +424,7 @@ class EmployeeController extends Controller
         } else {
             return redirect('/promote_add')->with('error', 'Search Input Empty!');
         }
-    }
+    }*/
 
 // autocomplete for employees
     public function autocomplete(Request $request)

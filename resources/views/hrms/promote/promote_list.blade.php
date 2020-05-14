@@ -59,9 +59,9 @@
                                                 @foreach($promotions as $promotion)
                                                     <tr>
                                                         <td class="text-center">{{$i+=1}}</td>
-                                                        <td class="text-center">{{$promotion->employee->name}}</td>
+                                                        <td class="text-center">{{$promotion->user->name}}</td>
                                                         <td class="text-center">{{$promotion->old_designation}}</td>
-                                                        <td class="text-center">{{$promotion->userrole}}</td>
+                                                        <td class="text-center">{{$promotion->user->roles[0]->role}}</td>
                                                         <td class="text-center">{{$promotion->old_salary}}</td>
                                                         <td class="text-center">{{$promotion->new_salary}}</td>
                                                         <td class="text-center">{{date_format(new DateTime($promotion->promotion_date), 'd-m-Y')}}</td>

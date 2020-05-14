@@ -15,23 +15,41 @@ class UserRolesSeeder extends Seeder
     public function run()
     {
         Schema::disableForeignKeyConstraints();
-        DB::table('user_roles')->truncate();
-        DB::table('user_roles')->insert([
+        DB::table('user_role')->truncate();
+        DB::table('user_role')->insert([
             [
                 'role_id' => 1,
-                'employee_id' => 1,
+                'user_id' => 1,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'role_id' => 9,
+                'user_id' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
                 'role_id' => 2,
-                'employee_id' => 2,
+                'user_id' => 2,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'role_id' => 9,
+                'user_id' => 2,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
                 'role_id' => 5,
-                'employee_id' => 3,
+                'user_id' => 3,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'role_id' => 9,
+                'user_id' => 3,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ]

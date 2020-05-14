@@ -29,7 +29,7 @@ class PromoteController extends Controller
 
     public function promoteList()
     {
-        $promotions = Promote::orderBy('id', 'desc')->paginate(15);
+        $promotions = Promote::orderBy('id', 'desc')->paginate(10);
 
         return view('hrms.promote.promote_list', compact('promotions', $promotions));
     }
@@ -56,27 +56,56 @@ class PromoteController extends Controller
      */
     public function storePromotion(Request $request)
     {
+//        dd($request);
+
+        $this->validate($request,
+            [
+                'role_id' => 'required',
+                'promotion_date' => 'required'
+            ]);
 
 //        dd($request);
-        $new_designation = Employee::where('id', $request->new_designation)->first();
-        $process = Employee::where('id', $request->employee_id)->first();
+        $new_designation = Role::where('id', $request->new_designation)->first();
+        $process = Employee::where('id', $request->user_id)->first();
         $process->salary = $request->new_salary;
         $process->save();
 
-//        \DB::table('employees')->where('user_id', $process->user_id)->update(['user_roles' => $request->new_designation]);
+//        dd($new_designation);
 
-        \DB::table('user_roles')->where('employee_id', $process->employee_id)->update(['role_id' => $request->new_designation]);
+        \DB::table('user_role')->where('user_id', $process->user_id)->update(['role_id' => $request->new_designation]);
 
         $promotion = new Promote;
-        $promotion->employee_id = $request->employee_id;
+        $promotion->user_id = $request->user_id;
         $promotion->old_designation = $request->old_designation;
-        $promotion->new_designation = $request->new_designation;
+        $promotion->new_designation = $new_designation;
+//        $promotion->new_designation = $new_designation->name;
         $promotion->old_salary = $request->old_salary;
         $promotion->new_salary = $request->new_salary;
         $promotion->promotion_date = $request->promotion_date;
         $promotion->save();
 
         return redirect('/promote_add')->with('success', 'Employee Promoted Successfully');
+    }
+
+    public function searchPromote()
+    {
+        $employee = Employee::all();
+        $q = request()->input('q');
+
+        if ($q != '') {
+            $data = Employee::where('name', 'LIKE', '%' . $q . '%')
+                ->orderBy('id', 'desc')
+                ->paginate(10)
+                ->setpath('');
+
+            $data->appends(array(
+                'q' => request()->input('q'),
+            ));
+
+            return view('hrms.promote.employee_promote')->with('data', $data);
+        } else {
+            return redirect('/promote_add')->with('error', 'Search Input Empty!');
+        }
     }
 
     /**
@@ -99,11 +128,12 @@ class PromoteController extends Controller
 
     public function edit($id)
     {
-        $employee = Employee::find($id);
-        $roles = Role::all();
+        $user = Employee::find($id);
+        $roles = Role::all()->except('9');
         $departments = Department::all();
 
-        return view('hrms.promote.promote_edit', compact('employee', $employee, 'roles', $roles, 'departments', $departments));
+
+        return view('hrms.promote.promote_edit', compact('user',$user, 'roles', $roles, 'departments', $departments));
     }
 
 

@@ -19,7 +19,11 @@
                         <p class="small text-center no-margin"><span class="text-muted">Department:</span> {{isset($department->name) ? $department->name:''}}</p>
                         <p class="small text-center no-margin"><span class="text-muted">Description:</span> {{isset($department->description) ? $department->description:''}}</p>
                     </div>
-
+                   {{-- @if(isset($totalDep))
+                        @foreach($totalDep as $dep)
+                        <td>{{$dep->name}}</td>
+                        @endforeach
+                    @endif--}}
                 </div>
 
             </div>

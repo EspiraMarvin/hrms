@@ -14,7 +14,7 @@ class AddEmployeeIdToApplyLeaves extends Migration
     public function up()
     {
         Schema::table('apply_leaves', function (Blueprint $table) {
-            $table->integer('employee_id');
+            $table->integer('user_id');
             $table->string('employee_name');
 //            $table->foreign('employee_name')->references('id')->on('users')->onDelete('cascade');
 

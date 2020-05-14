@@ -19,7 +19,7 @@
                         <a href=""> Promotion </a>
                     </li>
                     <li class="breadcrumb-current-item"> Promote</li>
-                    <li class="breadcrumb-current-item"> Promotion Details of {{$employee->name}} </li>
+                    <li class="breadcrumb-current-item"> Promotion Details of {{$user->name}} </li>
                 </ol>
             </div>
         </header>
@@ -40,25 +40,24 @@
                                         <div class="panel-body p25 pb10">
                                             @include('inc.messages')
 
-                                            {!! Form::open(['action' => ['PromoteController@storePromotion',$employee->id],'method' => 'POST','enctype'=>'multipart/form-data','class' => 'form-horizontal','id'=>"custom-form-wizard"]) !!}
+                                            {!! Form::open(['action' => ['PromoteController@storePromotion',$user->id],'method' => 'POST','enctype'=>'multipart/form-data','class' => 'form-horizontal','id'=>"custom-form-wizard"]) !!}
 
-                                            <div class="form-group {{ $errors->has('employee_id') ? ' has-error' : '' }}">
+                                            <div class="form-group {{ $errors->has('user_id') ? ' has-error' : '' }}">
                                                 <label class="col-md-3 control-label"> Employee Name </label>
                                                 <div class="col-md-6">
                                                     <select class="select2-single form-control select-primary"
-                                                            name="employee_id" required>
-                                                        <option value="{{$employee->id}}">{{$employee->name}}</option>
+                                                            name="user_id" required>
+                                                        <option value="{{$user->id}}">{{$user->name}}</option>
                                                     </select>
-                                                    <small class="text-danger">{{ $errors->first('employee_id') }}</small>
+                                                    <small class="text-danger">{{ $errors->first('user_id') }}</small>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label"> Old Designation </label>
                                                 <div class="col-md-6">
-                                                    <input type="text" id="old_designation" value="{{$employee->userrole->role->role}}"
-                                                           class="form-control" name="old_designation" readonly
-                                                           required>
+                                                    <input type="text" id="old_designation" value="{{$user->roles[0]->role}}"
+                                                           class="form-control" name="old_designation" readonly required>
                                                 </div>
                                             </div>
 
@@ -80,7 +79,7 @@
                                                 <label for="datepicker1" class="col-md-3 control-label"> Old
                                                     Salary </label>
                                                 <div class="col-md-6">
-                                                    <input type="text" id="old_salary" value="{{$employee->salary}}"
+                                                    <input type="text" id="old_salary" value="{{$user->salary}}"
                                                            class="form-control" name="old_salary" readonly required>
                                                 </div>
                                             </div>

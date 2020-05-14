@@ -3,20 +3,20 @@
 @section('content')
     <div class="container">
         <div class="row" style="margin-top: 4px">
-            <a style="margin-left: 5px" href="/dashboard" class="btn btn-danger col-4">Go Back</a>
+{{--            <a style="margin-left: 5px" href="/dashboard" class="btn btn-danger col-4">Dashboard</a>--}}
 
-            <a style="background-color: #1fad83;margin-left: 5px;color: white" href="/my_target_list" class="btn btn-success col-4">Check
+            <a style="background-color: #1fad83;margin-left: 5px;color: white" href="/my_target_list" class="btn btn-success col-4">My
                 Targets</a>
 
-            <a style="background-color: #06b6ef;margin-left: 5px;color: white" href="/my_leave_list" class="btn btn-default  col-4">Check
+            <a style="background-color: #06b6ef;margin-left: 5px;color: white" href="/my_leave_list" class="btn btn-default  col-4">My
                 Leaves</a>
 
-            <a style="background-color: #5c2699;margin-left: 5px; color: white" href="/my_assigned_assets" class="btn btn-default col-4">Assets
-                Assigned</a>
+            <a style="background-color: #5c2699;margin-left: 5px; color: white" href="/my_assigned_assets" class="btn btn-default col-4">My
+                Assets</a>
 
-            <a style="background-color: darkmagenta;margin-left: 5px; color: white" href="/my_awards" class="btn btn-default col-4">Awards</a>
+            <a style="background-color: darkmagenta;margin-left: 5px;margin-top: 5px; color: white" href="/my_awards" class="btn btn-default col-4">My Awards</a>
 
-            <a style="background-color: #0c373c;margin-left: 5px; color: white" href="/my_train_invite" class="btn btn-default col-4">Program Invites</a>
+            <a style="background-color: #0c373c;margin-left: 5px;margin-top: 5px; color: white" href="/my_train_invite" class="btn btn-default col-4">My Program Invites</a>
 
         </div>
     </div>
@@ -38,6 +38,81 @@
             <div class="col-md-6">
                 <div class="box box-success">
                     <div class="panel">
+                        <div class="panel-heading">
+                            <div class="panel-heading text-center">
+                                <span style="color: black" class="panel-title">{{isset($employee->name)?$employee->name:''}} Profile &nbsp;&nbsp;</span>
+                                <span>
+                                    <i class="fa fa-cog" data-toggle="modal" data-target="#profile"
+                                       style="font-size: 30px;color: green"
+                                       data-proid="{{$employee->id}}" data-photo="{{$employee->photo}}"
+                                       data-employeecode="{{$employee->code}}"
+                                       data-pfnumber="{{isset($employee->pf_number) ? $employee->pf_number:''}}">
+                                        {{-- data-remarks="{{$app->remarks}}" data-status="{{$app->status}}"--}}
+                                </i> Edit
+                                </span>
+                            </div>
+                        </div>
+                        <div class="panel-body pn pb5">
+                            <hr class="short br-lighter">
+                            <div style="margin-top: -15px">
+                                @if(isset($employee->photo))
+                                    <img style="text-align: center" src="/storage/photos/{{$employee->photo}}" width="250px" height="120px" class="img-responsive center-block">
+                                @else
+                                    <img src="/assets/img/avatars/noimage.png"  width="250px" height="50px" class="img-responsive center-block">
+                                @endif
+                            </div>
+
+                            <hr style="margin-top: 1px;border: 1px">
+
+                            <div class="box-body no-padding">
+                                <table class="table">
+                                    <tbody>
+                                    <tr>
+                                        <td style="width: 10px" class="text-center"><i class="fa fa-key"></i></td>
+{{--                                        <td style="width: 10px" class="text-center"></td>--}}
+                                        <td><strong>Employee ID</strong></td>
+                                        <td style="color: black">{{isset($employee->code) ? $employee->code:''}}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="width: 10px" class="text-center"></td>
+                                        <td><strong>Personal File No</strong></td>
+                                        <td style="color: black">{{isset($employee->pf_number) ? $employee->pf_number:''}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center"><i class="fa fa-cubes"></i></td>
+                                        <td><strong>Role</strong></td>
+                                        <td style="color: black">{{isset($employee->roles[0]->role) ? $employee->roles[0]->role:''}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 10px" class="text-center"></td>
+                                        <td><strong>Department</strong></td>
+                                        <td style="color: black">{{isset($employee->department) ? $employee->department:'' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 10px;background-color: transparent" class="text-center"></td>
+                                        <td><strong>Supervisor</strong></td>
+                                        <td style="color:black">{{isset($employee->user->supervisedBy[0]->name) ? $employee->user->supervisedBy[0]->name:'' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 10px" class="text-center"><i class="fa fa-key"></i></td>
+{{--                                        <td style="width: 10px" class="text-center"></td>--}}
+                                        <td><strong>Job Type</strong></td>
+                                        <td style="color: black">{{isset($employee->employment_type) ? $employee->employment_type:'' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 10px" class="text-center"></td>
+                                        <td class="offset-2"><strong>Employee Status</strong></td>
+                                        <td style="color: black">{{isset($employee->status) ? $employee->status:'' }}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{--<div class="box box-success">
+                    <div class="panel">
                         <div class="panel-heading text-center">
                             <span style="color: black" class="panel-title">{{isset($employee->name)?$employee->name:''}} Profile &nbsp;&nbsp;</span>
                                 <span>
@@ -46,13 +121,13 @@
                                              data-proid="{{$employee->id}}" data-photo="{{$employee->photo}}"
                                              data-employeecode="{{$employee->code}}"
                                              data-pfnumber="{{isset($employee->pf_number) ? $employee->pf_number:''}}">
-{{--                                          data-remarks="{{$app->remarks}}" data-status="{{$app->status}}"--}}
+--}}{{--                                          data-remarks="{{$app->remarks}}" data-status="{{$app->status}}"--}}{{--
                                 </i> Edit
                                 </span>
                         </div>
                         <div class="panel-body pn pb5 text-center">
                             <hr class="short br-lighter">
-                            {{--   <img style="width: 80px" height="80px" class="img-circle img-thumbnail" alt="User Image" src="{{isset($employee->photo) ? $employee->photo: '/public/photos/noimage.jpg'}}">--}}
+                            --}}{{--   <img style="width: 80px" height="80px" class="img-circle img-thumbnail" alt="User Image" src="{{isset($employee->photo) ? $employee->photo: '/public/photos/noimage.jpg'}}">--}}{{--
 
                             @if(isset($employee->photo))
                                 <img style="text-align: center" src="/storage/photos/{{$employee->photo}}" width="250px" height="120px" class="img-responsive center-block">
@@ -60,13 +135,13 @@
                                 <img src="/assets/img/avatars/noimage.png"  width="250px" height="50px" class="img-responsive center-block">
                             @endif
 
-                  {{--          <img width="250px" height="50px" class="img-responsive center-block" alt="User Image"
-                                 src="/storage/photos/{{$employee->photo}}">--}}
+                  --}}{{--          <img width="250px" height="50px" class="img-responsive center-block" alt="User Image"
+                                 src="/storage/photos/{{$employee->photo}}">--}}{{--
 
-                            {{--   <img src="{{isset($employee->photo) ? $employee->photo : '/assets/img/avatars/profile_pic.png'}}" width="80px" height="80px" class="img-circle img-thumbnail" alt="User Image">--}}
+                            --}}{{--   <img src="{{isset($employee->photo) ? $employee->photo : '/assets/img/avatars/profile_pic.png'}}" width="80px" height="80px" class="img-circle img-thumbnail" alt="User Image">--}}{{--
 
                         </div>
-                        {{--                        <hr style="margin-top: -3px;border: 1px solid">--}}
+                        --}}{{--                        <hr style="margin-top: -3px;border: 1px solid">--}}{{--
                         <div class="panel-body pn pb5">
                             <div class="box-body no-padding">
                                 <table class="table" style="margin-top:-4px;text-align: center">
@@ -86,7 +161,7 @@
                                     <tr>
                                         <td style="width: 10px" class="text-center"></td>
                                         <td><strong>Role</strong></td>
-                                        <td style="color: black">{{isset($employee->userrole->role->role) ? $employee->userrole->role->role:''}}</td>
+                                        <td style="color: black">{{isset($employee->roles[0]->role) ? $employee->roles[0]->role:''}}</td>
                                     </tr>
                                     <tr>
                                         <td style="width: 10px" class="text-center"></td>
@@ -94,9 +169,9 @@
                                         <td style="color: black">{{isset($employee->department) ? $employee->department:'' }}</td>
                                     </tr>
                                     <tr>
-                                        <td style="width: 10px" class="text-center"></td>
+                                        <td style="width: 10px;background-color: transparent" class="text-center"></td>
                                         <td><strong>Supervisor</strong></td>
-                                        <td style="color: black">{{isset($employee->supervisor) ? $employee->supervisor:'' }}</td>
+                                        <td style="color:black">{{isset($employee->user->supervisedBy[0]->name) ? $employee->user->supervisedBy[0]->name:'' }}</td>
                                     </tr>
                                     <tr>
                                         <td style="width: 10px" class="text-center"></td>
@@ -113,7 +188,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>--}}
 
                 <div class="box box-success">
                     <div class="panel">
@@ -154,11 +229,6 @@
                                         <td><strong>KRA Pin</strong></td>
                                         <td>{{isset($employee->kra_pin) ? $employee->kra_pin:''}}</td>
                                     </tr>
-                                  {{--  <tr>
-                                        <td style="width: 10px" class="text-center"><i class="fa fa-tags"></i></td>
-                                        <td><strong>PF Status</strong></td>
-                                        <td>{{isset($employee->pf_status) ? $employee->pf_status:''}}</td>
-                                    </tr>--}}
                                     </tbody>
                                 </table>
                             </div>
@@ -222,7 +292,7 @@
                                         <td style="width: 10px" class="text-center"><i class="fa fa-envelope-o"></i>
                                         </td>
                                         <td><strong>Email Address</strong></td>
-                                        <td>{{isset($employee->email)? $employee->email:''}}</td>
+                                        <td>{{isset($employee->user->email)? $employee->user->email:''}}</td>
                                     </tr>
                                     <tr>
                                         <td style="width: 10px" class="text-center"><i class="fa fa-mobile-phone"></i>
@@ -300,7 +370,7 @@
                                     <tr>
                                         <td class="text-center"><i class="fa fa-cubes"></i></td>
                                         <td><strong>Role</strong></td>
-                                        <td>{{$employee->userrole->role->role}}</td>
+                                        <td>{{$employee->roles[0]->role ? $employee->roles[0]->role:''}}</td>
                                     </tr>
                                     <tr>
                                         <td class="text-center"><i class="fa fa-calendar"></i></td>
@@ -379,18 +449,20 @@
                             </div>
                         </div><br>--}}
                         <div class="form-control" style="border: 0;margin-top: -16px">
-                            <div class="col-xs-6 text-center"><h6>Profile Photo: </h6></div>
-                            <div class="col-xs-6">
-                                <input type="hidden" id="photo" name="photo">
+                            <div class="col-xs-5 text-center"><h6>Upload Profile Photo: </h6></div>
+                            <div class="col-xs-7">
+{{--                                <input type="hidden" id="photo" name="photo">--}}
+                                {{Form::file('photo',['class' => 'form-control','placeholder'=>'choose file'])}}
+
                             </div>
                         </div><br>
-                        <div class="form-control" style="border: 0;margin-top: -16px">
+                        <div class="form-control" style="border: 0;margin-top: -6px">
                             <div class="col-xs-6 text-center"><h6>Employee Code: </h6></div>
                             <div class="col-xs-6">
                                 <input style="border: 0" type="text"  class="form-control text-center" id="employee_code">
                             </div>
                         </div><br>
-                        <div class="form-control" style="border: 0;margin-top: -16px">
+                        <div class="form-control" style="border: 0;margin-top: -6px">
                             <div class="col-xs-6 text-center"><h6>Pf Number: </h6></div>
                             <div class="col-xs-6">
                                 <input style="border: 0" type="text" class="form-control text-center" id="pf_number">
@@ -414,13 +486,6 @@
                                 <input style="border: 0" type="text" disabled class="form-control text-center" id="phone">
                             </div>
                         </div><br>
-                        <div class="form-control" style="border: 0;margin-top: -16px">
-                            <div class="col-xs-6 text-center"><h6>Remarks: </h6></div>
-                            <div class="col-xs-6">
-                                <textarea rows="1" cols="10" id="remarks" name="remarks" class="form-control"></textarea>
-                            </div>
-                        </div><br>
-
                     </div>
 
                     <div class="modal-footer" style="margin-top: 10px">
@@ -460,7 +525,7 @@
                             <input type="number" class="form-control text-center" id="account_number" name="account_number">
                         </div>
                     </div><br>
-                    <div class="form-control" style="border: 0;margin-top: -16px">
+                    <div class="form-control" style="border: 0;margin-top: -6px">
                         <div class="col-xs-6 text-center"><h6>Bank Name: </h6></div>
                         <div class="col-xs-6">
                             <input type="text" name="bank_name" class="form-control text-center" id="bank_name">
@@ -512,44 +577,44 @@
                             <input type="text" class="form-control text-center" id="father_name" name="father_name">
                         </div>
                     </div><br>
-                    <div class="form-control" style="border: 0;margin-top: -16px">
+                    <div class="form-control" style="border: 0;margin-top: -6px">
                         <div class="col-xs-6 text-center"><h6>Email Address: </h6></div>
                         <div class="col-xs-6">
                             <input type="email" class="form-control text-center" id="email" name="email">
                         </div>
                     </div><br>
-                    <div class="form-control" style="border: 0;margin-top: -16px">
+                    <div class="form-control" style="border: 0;margin-top: -6px">
                         <div class="col-xs-6 text-center"><h6>Phone Number: </h6></div>
                         <div class="col-xs-6">
                             <input type="number" class="form-control text-center" id="phone" name="phone">
                         </div>
                     </div><br>
-                    <div class="form-control" style="border: 0;margin-top: -16px">
+                    <div class="form-control" style="border: 0;margin-top: -7px">
                         <div class="col-xs-6 text-center"><h6>Emergency Contact: </h6></div>
                         <div class="col-xs-6">
                             <input type="number" class="form-control text-center" id="emergency" name="emergency">
                         </div>
                     </div><br>
-                    <div class="form-control" style="border: 0;margin-top: -16px">
+                    <div class="form-control" style="border: 0;margin-top: -4px">
                         <div class="col-xs-6 text-center"><h6>Qualifications </h6></div>
                         <div class="col-xs-6">
                             <textarea rows="3" cols="10" class="form-control text-center" id="qualification" name="qualification"
                                       placeholder="i.e B.Sc Commerce, B.Tech, MBA,BCA, MCA, BBA, BBA+MBA, BCA+MCA">
                             </textarea>
                         </div>
-                    </div><br>
-                    <div class="form-control" style="border: 0;margin-top: 25px">
+                    </div><br><br>
+                    <div class="form-control" style="border: 0;margin-top: -1px">
                         <div class="col-xs-6 text-center"><h6>Current Address </h6></div>
                         <div class="col-xs-6">
                             <input type="text" class="form-control text-center" id="current_address" name="current_address">
                         </div>
                     </div><br>
-                    <div class="form-control" style="border: 0;margin-top: -16px">
+                    <div class="form-control" style="border: 0;margin-top: -7px">
                         <div class="col-xs-6 text-center"><h6>Permanent Address </h6></div>
                         <div class="col-xs-6">
                             <input type="text" class="form-control text-center" id="permanent_address" name="permanent_address">
                         </div>
-                    </div><br>
+                    </div>
                 </div>
 
                 <div class="modal-footer">
@@ -589,45 +654,37 @@
                             <input type="date" name="date_of_birth" class="form-control text-center" id="date_of_birth">
                         </div>
                     </div><br>
-                    <div class="form-control" style="border: 0;margin-top: -16px">
+                    <div class="form-control" style="border: 0;margin-top: -6px">
                         <div class="col-xs-6 text-center"><h6>Father's Name </h6></div>
                         <div class="col-xs-6">
                             <input type="text" class="form-control text-center" id="father_name" name="father_name">
                         </div>
                     </div><br>
-                    <div class="form-control" style="border: 0;margin-top: -16px">
+                    <div class="form-control" style="border: 0;margin-top: -6px">
                         <div class="col-xs-6 text-center"><h6>Email Address: </h6></div>
                         <div class="col-xs-6">
                             <input type="email" class="form-control text-center" id="email" name="email">
                         </div>
                     </div><br>
-                    <div class="form-control" style="border: 0;margin-top: -16px">
+                    <div class="form-control" style="border: 0;margin-top: -6px">
                         <div class="col-xs-6 text-center"><h6>Phone Number: </h6></div>
                         <div class="col-xs-6">
                             <input type="number" class="form-control text-center" id="phone" name="phone">
                         </div>
                     </div><br>
-                    <div class="form-control" style="border: 0;margin-top: -16px">
+                    <div class="form-control" style="border: 0;margin-top: -6px">
                         <div class="col-xs-6 text-center"><h6>Emergency Contact: </h6></div>
                         <div class="col-xs-6">
                             <input type="number" class="form-control text-center" id="emergency" name="emergency">
                         </div>
                     </div><br>
-                    <div class="form-control" style="border: 0;margin-top: -16px">
-                        <div class="col-xs-6 text-center"><h6>Qualifications </h6></div>
-                        <div class="col-xs-6">
-                            <textarea rows="3" cols="10" class="form-control text-center" id="qualification" name="qualification"
-                                      placeholder="i.e B.Sc Commerce, B.Tech, MBA,BCA, MCA, BBA, BBA+MBA, BCA+MCA">
-                            </textarea>
-                        </div>
-                    </div><br>
-                    <div class="form-control" style="border: 0;margin-top: 25px">
+                    <div class="form-control" style="border: 0;margin-top: -6px">
                         <div class="col-xs-6 text-center"><h6>Current Address </h6></div>
                         <div class="col-xs-6">
                             <input type="text" class="form-control text-center" id="current_address" name="current_address">
                         </div>
                     </div><br>
-                    <div class="form-control" style="border: 0;margin-top: -16px">
+                    <div class="form-control" style="border: 0;margin-top: -6px">
                         <div class="col-xs-6 text-center"><h6>Permanent Address </h6></div>
                         <div class="col-xs-6">
                             <input type="text" class="form-control text-center" id="permanent_address" name="permanent_address">

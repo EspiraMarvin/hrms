@@ -68,15 +68,15 @@
                     <div class="card-body animated zoomIn">
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
-                            @include('inc.messages')
+                            @include('inc.messages2')
 
-                            <div class="panel-body pn mv10">
+                            <div class="panel-body pn mv10 form {{ $errors->has('email') ? ' has-error' : '' }}">
                                 <div class="section">
                                     <label for="email" class="field prepend-icon">
                                         <input type="text" name="email" id="email"
                                                class="gui-input @error('email') is-invalid @enderror" name="email"
                                                value="{{ old('email') }}" autocomplete="off" autofocus
-                                               placeholder="Email Address">
+                                               placeholder="Email Address ">
                                         <label for="email" class="field-icon">
                                             <i class="fa fa-user"></i>
                                         </label>
@@ -84,7 +84,7 @@
                                 </div>
                             </div>
 
-                            <div class="panel-body pn mv10">
+                            <div class="panel-body pn mv10 {{ $errors->has('password') ? ' has-error' : '' }}">
                                 <div class="section">
                                     <label for="password" class="field prepend-icon">
                                         <input type="password" name="password" id="password"

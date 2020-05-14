@@ -6,6 +6,8 @@ use App\Employee;
 use App\Role;
 use App\User;
 use Illuminate\Http\Request;
+//use Illuminate\Support\Facades\DB;
+use DB;
 
 class ProfileController extends Controller
 {
@@ -21,7 +23,7 @@ class ProfileController extends Controller
 //        $employee = Employee::where('user_id', \Auth::user()->id)->first();
         $pending = Employee::where('full_final', null)->get();
 
-        $employee = User::where('id', \Auth::user()->id)->first();
+        $employee = Employee::where('id', \Auth::user()->id)->first();
 
         return view('profile', compact('employee',$employee,'pending',$pending));
     }
@@ -48,6 +50,16 @@ class ProfileController extends Controller
         $personal->current_address = $request->input('current_address');
         $personal->permanent_address = $request->input('permanent_address');
         $personal->save();
+
+        $process = Employee::where('id', $request->id)->first();
+
+        \DB::table('users')->where('id', $process->id)->update(['email' => $request->email]);
+
+       /* $user = User::findorFail($request->id);
+        $user->email = $request->input('email');
+        $user->save();*/
+
+
 
         return redirect('/profile')->with('success', 'Personal Information Updated');
     }

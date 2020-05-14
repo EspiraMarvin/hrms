@@ -34,14 +34,6 @@
                                     <span class="panel-title hidden-xs"> Apply for Leave</span>
                                 </div>
 
-                                <div>
-{{--                                    <p id="para">Some text here</p>--}}
-{{--                                    <button onclick="disable()">blue</button>--}}
-{{--                                    <button onclick="changeColor('red');">red</button>--}}
-{{--                                    <button onclick="disable()">DISABLED</button>--}}
-
-                                </div>
-
                                 <div class="text-center" id="show-leave-count"></div>
                                 <div class="panel-body pn">
                                     <div class="table-responsive">
@@ -126,7 +118,7 @@
                                             <div class="form-group">
                                                 <label for="input002" class="col-md-2 control-label"> Days </label>
                                                 <div class="col-md-10">
-                                                    <input id="total_days" name="number_of_days" value=""
+                                                    <input id="total_days" name="number_of_days"
                                                            readonly="readonly"
                                                            type="text" size="90" class="select2-single form-control"/>
                                                 </div>

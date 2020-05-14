@@ -57,7 +57,8 @@
                                                 @foreach($department as $dep)
                                             <tr>
                                                 <td class="text-center">{{$i+=1}}</td>
-                                                <td class="text-center"><a href="/department/{{$dep->id}}"> {{$dep->name}}</a></td>
+                                                <td class="text-center"><a style=" text-decoration: none"
+                                                        href="/department/{{$dep->id}}"> {{$dep->name}}</a></td>
                                                 <td class="text-center">{{$dep->directorate}}</td>
                                                 <td class="text-center">{{$dep->description}}</td>
                                                 <td class="text-center">

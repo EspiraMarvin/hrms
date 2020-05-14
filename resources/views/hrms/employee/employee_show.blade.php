@@ -58,7 +58,9 @@
                                     <tr>
                                         <td style="width: 10px" class="text-center"></td>
                                         <td><strong>Role</strong></td>
-                                        <td style="color: black">{{isset($employee->userrole->role->role) ? $employee->userrole->role->role:''}}</td>
+                                        <td style="color: black">
+                                        {{isset($employee->roles[0]->role) ? $employee->roles[0]->role:''}}</td>
+{{--                                        {{isset($employee->userrole->role->role) ? $employee->userrole->role->role:''}}</td>--}}
                                     </tr>
                                     <tr>
                                         <td style="width: 10px" class="text-center"></td>
@@ -68,7 +70,7 @@
                                     <tr>
                                         <td style="width: 10px" class="text-center"></td>
                                         <td><strong>Supervisor</strong></td>
-                                        <td style="color: black">{{isset($employee->supervisor) ? $employee->supervisor:'' }}</td>
+                                        <td style="color: black">{{isset($employee->user->supervisedBy[0]->name) ? $employee->user->supervisedBy[0]->name:'' }}</td>
                                     </tr>
                                     <tr>
                                         <td style="width: 10px" class="text-center"></td>
@@ -241,7 +243,7 @@
                                     <tr>
                                         <td class="text-center"><i class="fa fa-cubes"></i></td>
                                         <td><strong>Role</strong></td>
-                                        <td>{{$employee->userrole->role->role}}</td>
+                                        <td>{{$employee->roles[0]->role}}</td>
                                     </tr>
                                     <tr>
                                         <td class="text-center"><i class="fa fa-calendar"></i></td>

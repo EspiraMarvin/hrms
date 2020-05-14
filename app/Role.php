@@ -8,9 +8,10 @@ class Role extends Model
 {
     protected $table = "roles";
 
-    public function employee()
+
+    public function user()
     {
-        return $this->belongsTo(Employee::class);
+        return $this->belongsToMany(User::class,'user_role','role_id','user_id');
 
     }
 }

@@ -18,7 +18,7 @@
                     <li class="breadcrumb-link">
                         <a href=""> Targets </a>
                     </li>
-                    <li class="breadcrumb-current-item">Edit target details of {{$targetAssign->employee->name}} </li>
+                    <li class="breadcrumb-current-item">Edit target details of {{$targetAssign->user->name}} </li>
                 </ol>
             </div>
         </header>
@@ -48,7 +48,7 @@
                                                     <select class="selectpicker form-control" disabled
                                                             name="employee_id">
                                                         <option
-                                                            value="{{$targetAssign->employee_id}}">{{$targetAssign->employee->name}}</option>
+                                                            value="{{$targetAssign->user_id}}">{{$targetAssign->user->name}}</option>
                                                     </select>
                                                     <small class="text-danger">{{ $errors->first('employee_id') }}</small>
                                                 </div>

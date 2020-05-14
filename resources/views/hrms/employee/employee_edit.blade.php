@@ -80,11 +80,11 @@
                             {{Form::text('name', $employee->name,['class' => 'gui-input fs13','placeholder'=>'Employee Name'])}}
                         </div>
 
-                        <div class="section">
+           {{--             <div class="section">
                             <label class="field-icon"><i class="fa fa-envelope"></i></label>&nbsp;
                             {{Form::label('email','Email Address',['class'=>'mb20 mt40','style'=>'color:black;font-weight:bold'])}}
                             {{Form::text('email', $employee->email,['class' => 'gui-input fs13','placeholder'=>'Email Address'])}}
-                        </div>
+                        </div>--}}
 
                         <div class="section">
                             {{Form::label('status','Employee Status',['class'=>'mb20 mt40','style'=>'color:black;font-weight:bold'])}}
@@ -183,6 +183,7 @@
                                 <br>
                                 {{Form::text('permanent_address', $employee->permanent_address,['class' => 'gui-input fs13','placeholder'=>' Permanent Address'])}}
                             </div>
+{{--                            <small class="text-danger">{{ $errors->first('permanent_address') }}</small>--}}
                         </div>
 
                         <!-- -------------- /section -------------- -->
@@ -195,29 +196,32 @@
                         <!-- -------------- /section -------------- -->
 
                         <div class="section">
-                            <label for="input002"><h6 class="mb20 mt40"> Department </h6></label>
-                            <select class="select2-single form-control" name="department" id="department">
-                                @if(empty($employee->department))
-                                    <option value="">Select Department</option>
-                                @else
-                                    <option value="{{$employee->department}}">{{$employee->department}}</option>
-                                @endif
-                                @if(!empty($department) && count($department) > 0)
-                                    @foreach($department as $dep)
-                                        <option value="{{$dep->name}}">{{$dep->name}}</option>
-                                    @endforeach
-                                @endif
-                            </select>
+                            <div class="form-group">
+                                <label class="field-icon"><i class=""></i></label>&nbsp;
+                                {{Form::label('department','Department',['class'=>'mb20 mt40','style'=>'color:black;font-weight:bold'])}}
+                                <select id="done" class="selectpicker form-control" name="department" id="department">
+                                    @if(empty($employee->department))
+                                        <option value="">Select Department</option>
+                                    @else
+                                        <option value="{{$employee->department}}">{{$employee->department}}</option>
+                                    @endif
+                                    @if(!empty($department) && count($department) > 0)
+                                        @foreach($department as $dep)
+                                            <option value="{{$dep->name}}">{{$dep->name}}</option>
+                                        @endforeach
+                                    @endif
+                                </select>
+{{--                                <small class="text-danger">{{ $errors->first('department') }}</small>--}}
+                            </div>
                         </div>
 
-                        <div class="section">
+                       {{-- <div class="section">
                             <label for="input002"><h6 class="mb20 mt40"> Role </h6></label>
                             <select class="select2-single form-control" name="role_id" id="role_id">
-{{--                                <option value="{{$employee->role_id}}">{{$employee->userrole->role->rolerole}}</option>--}}
-                                @if(empty($employee->userrole->role->role))
+                                @if(empty($employee->roles[0]->role))
                                     <option value="">Select Role</option>
                                 @else
-                                    <option value="{{$employee->userrole->role->id}}">{{$employee->userrole->role->role}}</option>
+                                    <option value="{{$employee->roles[0]->id}}">{{$employee->roles[0]->role}}</option>
                                 @endif
                                 @if(!empty($roles) && count($roles) > 0)
                                     @foreach($roles as $role)
@@ -226,16 +230,41 @@
                                 @endif
                             </select>
                         </div>
+--}}
+
+                        <div class="section">
+                            <div class="form-group">
+                                <label class="field-icon"><i class=""></i></label>&nbsp;
+                                {{Form::label('role','Select Role(s)',['class'=>'mb20 mt40','style'=>'color:black;font-weight:bold'])}}
+                                <select id="done" class="selectpicker form-control" multiple data-done-button="true"
+                                        title="{{$employee->roles[0]->role}} &nbsp;
+                                    @if(isset($employee->roles[1]->role) && !empty($employee->roles[1]->role) ? $employee->roles[1]->role:''){{$employee->roles[1]->role}}@endif &nbsp;
+                                    @if(isset($employee->roles[2]->role) && !empty($employee->roles[2]->role) ? $employee->roles[2]->role:''){{$employee->roles[2]->role}}@endif
+                                          " name="roles_id[]" required>
+                                    @if(empty($employee->roles[0]->role))
+                                        <option value="">Select Role</option>
+                                    @else
+                                        <option value="{{$employee->roles[0]->id}}">{{$employee->roles[0]->role}}</option>
+                                    @endif
+                                    @if(!empty($roles) && count($roles) > 0)
+                                        @foreach($roles as $role)
+                                            <option value="{{$role->id}}">{{$role->role}}</option>
+                                        @endforeach
+                                    @endif
+                                </select>
+{{--                                <small class="text-danger">{{ $errors->first('role_id') }}</small>--}}
+                            </div>
+                        </div>
 
                         <div class="section">
                             <label for="input002"><h6 class="mb20 mt40"> Supervisor </h6></label>
                             <select class="select2-single form-control" name="supervisor_id" id="supervisor_id">
-                                @if(empty($employee->supervisor))
+                                @if(empty($employee->user->supervisedBy[0]->name))
                                     <option value="">Select Supervisor</option>
                                 @else
-                                    <option value="{{$employee->supervisor}}">{{$employee->supervisor}}</option>
+                                    <option value="{{$employee->user->supervisedBy[0]->id}}">{{$employee->user->supervisedBy[0]->name}}</option>
                                 @endif
-                                @if(!empty($supervisor) && count($supervisor) > 0)
+                                @if(!empty($supervisor))
                                     @foreach($supervisor as $sup)
                                         <option value="{{$sup->id}}">{{$sup->name}}</option>
                                     @endforeach
@@ -243,12 +272,6 @@
                             </select>
                         </div>
 
-                       {{-- <div class="section">
-                            <label for="input002"><h6 class="mb20 mt40"> Supervisor</h6></label>
-                            <input type="text" class="typeahead form-control" value="{{$employee->supervisor}}"
-                                   name="supervisor" autocomplete="off">
-                        </div>
---}}
                         <div class="section">
                             <div class="form-group">
                                 <label class="field-icon"><i class="fa fa-calendar"></i></label>&nbsp;
@@ -455,6 +478,10 @@
 
     <!-- -------------- jQuery -------------- -->
 
+    {!! Html::script('/assets/js/jquery/jquery-1.11.3.min.js') !!}
+    {!! Html::script('/assets/js/jquery/jquery_ui/jquery-ui.min.js') !!}
+
+
     {!! Html::script('/assets/allcp/forms/js/jquery.spectrum.min.js') !!}
     {!! Html::script('/assets/allcp/forms/js/jquery.stepper.min.js') !!}
 
@@ -464,7 +491,7 @@
     {!! Html::script('/assets/allcp/forms/js/jquery.steps.min.js') !!}
 
     <!-- -------------- Theme Scripts -------------- -->
-    {!! Html::script('/assets/js/utility/utility.js') !!}
+{{--    {!! Html::script('/assets/js/utility/utility.js') !!}--}}
     {!! Html::script('/assets/js/demo/demo.js') !!}
     {!! Html::script('/assets/js/main.js') !!}
 

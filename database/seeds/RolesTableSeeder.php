@@ -65,6 +65,12 @@ class RolesTableSeeder extends Seeder
                 'description' => 'Has all the rights',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
+            ],
+            [
+                'role' => 'Supervisor',
+                'description' => 'Has all the rights',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ]
          ]);
         Schema::enableForeignKeyConstraints();

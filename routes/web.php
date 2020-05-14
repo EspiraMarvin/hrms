@@ -24,8 +24,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['middleware' => ['guest']], function ()
-{
+Route::group(['middleware' => ['guest']], function () {
 
 Route::get('dashboard', ['as' => 'dashboard', 'uses' => 'AuthController@dashboard']);
 
@@ -33,20 +32,29 @@ Route::get('dashboard', ['as' => 'dashboard', 'uses' => 'AuthController@dashboar
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-//Route::get('/home', 'HomeController@index');
+//Route::group(['middleware' => ['auth']], function () {
+//Route::get('employee_add', ['as' => 'employee_add', 'uses' => 'EmployeeController@EmpAddDep']);
+//    // Export routes
+//    route::get('employee_manager/export', function () {
+//        return Excel::download(new \App\Exports\EmployeesExport, 'employees.xlsx');
+//    });
+//});
 
-//Route::get('dashboard', ['as' => 'dashboard', 'uses' => 'AuthController@dashboard']);
 
 Route::get('dashboard', 'AuthController@dashboard');
 
-//Route::get('sidebar', ['as' => 'sidebar', 'uses' => 'LeavesController@sidebarLeave']);
-
+    // Export routes
+Route::get('employee_manager/export', function () {
+        return Excel::download(new \App\Exports\EmployeesExport, 'employees.xlsx');
+    });
 
 //  Employee routes
 
 Route::resource('employee', 'EmployeeController');
 
 Route::put('delete-emp/{id}', ['as' => 'delete-emp', 'uses' => 'EmployeeController@doDelete']);
+
+Route::put('delete-sup/{id}', ['as' => 'delete-sup', 'uses' => 'EmployeeController@doDeleteSup']);
 
 Route::get('employee_add', ['as' => 'employee_add', 'uses' => 'EmployeeController@employee_add']);
 
@@ -55,6 +63,12 @@ Route::get('employee_manager', ['as' => 'employee_manager', 'uses' => 'EmployeeC
 Route::get('employee_bank_details', ['as' => 'employee_bank_details', 'uses' => 'EmployeeController@bankDetails']);
 
 Route::get('employee_add', ['as' => 'employee_add', 'uses' => 'EmployeeController@EmpAddDep']);
+
+Route::get('supervisedBy_list', ['as' => 'supervisedBy_list', 'uses' => 'EmployeeController@showSupervisedBy']);
+
+//    supervisor route
+
+Route::get('supervisor_list','EmployeeController@listSupervisor');
 
 //   profile route
 
@@ -134,7 +148,7 @@ Route::put('delete-target/{id}', ['as' => 'delete-target', 'uses' => 'TargetsCon
 
 Route::get('target_assign', ['as' => 'target_assign', 'uses' => 'TargetsController@targetAdd']);
 
-Route::get('target_assign', ['as' => 'target_assign', 'uses' => 'TargetsController@EmpAddTar']);
+Route::get('target_assign', ['as' => 'target_assign', 'uses' => 'TargetsController@AddTar']);
 
 Route::get('target_assign_list', ['as' => 'target_assign_list', 'uses' => 'TargetsController@targetList']);
 
@@ -250,15 +264,11 @@ Route::get('autocomplete', 'EmployeeController@autocomplete')->name('autocomplet
 
 Route::get('employee_search', ['as' => 'employee_search', 'uses' => 'EmployeeController@search']);
 
-Route::get('employee_promote', ['as' => 'employee_promote', 'uses' => 'EmployeeController@searchPromote']);
+Route::get('employee_promote', ['as' => 'employee_promote', 'uses' => 'PromoteController@searchPromote']);
 
 Route::get('leave_search', ['as' => 'leave_search', 'uses' => 'LeavesController@search']);
 
-// Export routes
 
-route::get('employee_manager/export', function () {
-    return Excel::download(new \App\Exports\EmployeesExport, 'employees.xlsx');
-});
 
 Auth::routes();
 

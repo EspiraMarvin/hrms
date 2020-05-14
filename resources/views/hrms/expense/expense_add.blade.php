@@ -91,13 +91,11 @@
                                                 <label class="col-md-3 control-label"></label>
                                                 <div class="col-md-2">
                                                     <input class="btn btn-bordered btn-info btn-block" type="submit" name="SUBMIT" value="Submit" onclick="this.value='Submitting ..';this.disabled='disabled'; this.form.submit();" />
-{{--                                                    {{Form::submit('Submit', ['class'=>'btn btn-bordered btn-info btn-block'])}}--}}
                                                 </div>
-                                                <div class="col-md-2"><a href="/assign-project">
-                                                        <input type="button"
-                                                               class="btn btn-bordered btn-success btn-block"
-                                                               value="Reset"></a></div>
-                                            </div>
+                                                <div class="col-md-2">
+                                                    <input type="reset" class="btn btn-bordered btn-success btn-block"
+                                                           value="Reset"/>
+                                                </div>
                                         </div>
 
                                         {!! Form::close() !!}
@@ -109,6 +107,7 @@
                 </div>
             </div>
 
+            </div>
         </section>
     </div>
 

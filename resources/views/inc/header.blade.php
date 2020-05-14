@@ -42,10 +42,29 @@
                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                 {{ Auth::user()->name }} <span class="caret"></span>
             </a>
-
-            <div style="text-align: center" class="dropdown-menu dropdown-menu-right animated fadeIn"
+            <div style="text-align: center;margin-top: -18px" class="dropdown-menu dropdown-menu-right animated fadeIn col-md-12"
                  aria-labelledby="navbarDropdown">
                 <a class="dropdown-item btn badge-dark"
+                   href="{{ route('logout') }}"> Change Password
+                </a>
+                <a class="dropdown-item btn badge-dark "
+                   href="{{ route('logout') }}"
+                   onclick="event.preventDefault();
+                           document.getElementById('logout-form').submit();"> {{ __('Logout') }}
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+            </div>
+            <div style="text-align: center;margin-top: -18px" class="dropdown-menu dropdown-menu-right animated fadeIn col-md-12"
+                 aria-labelledby="navbarDropdown">
+                <a class="dropdown-item btn badge-dark"
+                   href="{{ route('logout') }}"> Change Password
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+                <a class="dropdown-item btn badge-dark "
                    href="{{ route('logout') }}"
                    onclick="event.preventDefault();
                            document.getElementById('logout-form').submit();"> {{ __('Logout') }}

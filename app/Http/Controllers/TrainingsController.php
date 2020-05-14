@@ -103,23 +103,23 @@ class TrainingsController extends Controller
         $i = 0;
         try {
 
-            foreach ($request->members_id as $member_id) {
+        foreach ($request->members_id as $member_id) {
 
-                $check = InviteTraining::where(['training_id' => $request->training_id, 'employee_id' => $member_id])->first();
-                if (!$check) {
-                    $invite = new InviteTraining;
-                    $invite->employee_id = $member_id;
-                    $invite->training_id = $request->input('training_id');
-                    $invite->description = $request->input('description');
-                    $invite->datefrom = $request->input('datefrom');
-                    $invite->dateto = $request->input('dateto');
-                    $invite->save();
-                    $i++;
-                }
+            $check = InviteTraining::where(['training_id' => $request->training_id, 'employee_id' => $member_id])->first();
+            if (!$check) {
+                $invite = new InviteTraining;
+                $invite->employee_id = $member_id;
+                $invite->training_id = $request->input('training_id');
+                $invite->description = $request->input('description');
+                $invite->datefrom = $request->input('datefrom');
+                $invite->dateto = $request->input('dateto');
+                $invite->save();
+                $i++;
             }
-        } catch (\Exception $e) {
-            \Log::info($e->getMessage() . ' on ' . $e->getLine() . ' in ' . $e->getFile());
         }
+    } catch (\Exception $e) {
+        \Log::info($e->getMessage() . ' on ' . $e->getLine() . ' in ' . $e->getFile());
+    }
 //        \Session::flash('flash_message', $i . ' out of '. $totalMembers. ' members have been invited for the training!');
 
 

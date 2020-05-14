@@ -2,8 +2,8 @@
 
 namespace App;
 
-use App\UserRole;
 use App\ApplyLeave;
+use App\UserRole;
 //use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -18,6 +18,7 @@ class User extends Authenticatable
      *
      * @var array
      */
+
     protected $fillable = [
         'name', 'email', 'password',
     ];
@@ -45,28 +46,60 @@ class User extends Authenticatable
         return $this->hasOne(Employee::class);
     }
 
-    public function userrole()
+    public function targets()
     {
-        return $this->hasOne('App\UserRole', 'employee_id', 'id');
+        return $this->belongsToMany(Target::class, 'targets','user_id');
+    }
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class, 'user_role','user_id','role_id');
+    }
+
+    public function supervisor()
+    {
+        return $this->belongsToMany(User::class,'supervisor_user','supervisor_id','user_id');
+    }
+
+    public function supervisedBy()
+    {
+        return $this->belongsToMany(User::class,'supervisor_user','user_id','supervisor_id');
     }
 
     public function isAdmin()
     {
-        $employeeId = Auth::user()->id;
-        $userRole = UserRole::where('employee_id', $employeeId)->first();
-        if($userRole && $userRole->role_id == 1)
+        $admin = false;
+        foreach ($this->roles as $role)
         {
-
-            return true;
+            if ($role->id == 1){
+                $admin = true;
+            }
         }
-            return false;
+        return $admin;
 
+    }
+
+    public function isSupervisor()
+    {
+        $supervisor = false;
+        foreach ($this->roles as $role)
+        {
+            if ($role->id == 9){
+                $supervisor = true;
+            }
+        }
+        return $supervisor;
     }
 
     public function leaveApprove()
     {
-        $leave = ApplyLeave::all();
-        if(count($leave) > 0)
+        $approve= ApplyLeave::whereHas('user', function ($q) {
+            $q->whereHas('supervisedBy', function ($qq){
+                $qq->where('supervisor_id',Auth::user()->id);
+            });
+        })->with('user')->orderBy('id','desc')->paginate(10);
+
+        if(count($approve) > 0)
         {
             return true;
         }

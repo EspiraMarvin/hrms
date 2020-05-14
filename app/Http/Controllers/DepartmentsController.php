@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Employee;
 use App\Department;
 use App\Role;
+use App\User;
 use Illuminate\Http\Request;
 use App\Directorate;
 use Illuminate\Support\Facades\DB;
@@ -95,10 +96,16 @@ class DepartmentsController extends Controller
 
         $department = Department::find($id);
         $directorate = Directorate::all();
-        $role = Role::all();
+//        $totalDep = Employee::where('department', 'Dlp')->orderBy('id','desc')->get();
+        $totalDep = Employee::where('department', $department)->orderBy('id','desc')->get();
+//        $co = count($totalDep);
+
+//        dd($co);
+
+//        $totalDep = User::where('department', $department)->orderBy('id','desc')->paginate(15);
 
 
-        return view('hrms.directorate.department_show', compact('department', 'directorate', 'role'));
+        return view('hrms.directorate.department_show', compact('department', 'directorate','totalDep'));
 
     }
 

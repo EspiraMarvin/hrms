@@ -44,12 +44,11 @@
                                             <div class="form-group {{ $errors->has('employee_id') ? ' has-error' : '' }}">
                                                 <label class="col-md-3 control-label"> Select Employee </label>
                                                 <div class="col-md-6">
-                                                    <select id="employee_id" size="2" class=" form-control"
-                                                            name="employee_id" required>
+                                                    <select id="employee_id" size="2" class=" form-control" name="user_id" required>
                                                         <option value="">Select One Employee</option>
-                                                        @if(!empty($employee) && count($employee) > 0)
-                                                            @foreach($employee as $emp)
-                                                                <option value="{{$emp->id}}">{{$emp->name}}</option>
+                                                        @if(!empty($employees) && count($employees) > 0)
+                                                        @foreach($employees as $user)
+                                                                <option value="{{$user->id}}">{{$user->name}}</option>
                                                             @endforeach
                                                         @endif
                                                     </select>

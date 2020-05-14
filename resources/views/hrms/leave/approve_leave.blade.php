@@ -70,17 +70,19 @@
 
                                 <div class="panel-body pn">
                                     @include('inc.messages')
-                                    @if(count($pending ?? '') > 0 && count($pending) == 1)
+
+                                    @if(count($totalLeaves ?? '') > 0 && count($totalLeaves) == 1)
                                         <div class="alert alert-danger text-center" role="alert">
-                                            You have <?php echo count($pending);?> Pending Leave
+                                            You have <?php echo count($totalLeaves);?> Pending Leave
                                             <button type="button" class="close" data-dismiss="alert">&times;</button>
                                         </div>
-                                     @elseif(count($pending ?? '') > 0 && count($pending) > 1)
+                                    @elseif(count($totalLeaves ?? '') > 0 && count($totalLeaves) > 1)
                                         <div class="alert alert-danger text-center" role="alert">
-                                            You have <?php echo count($pending);?> Pending Leaves
+                                            You have <?php echo count($totalLeaves);?> Pending Leaves
                                             <button type="button" class="close" data-dismiss="alert">&times;</button>
                                         </div>
                                     @endif
+
 
                                     <div class="table-responsive">
                                         <table class="table allcp-form theme-warning tc-checkbox-1 fs13">
@@ -103,7 +105,7 @@
                                                 @foreach($approve as $app)
                                                     <tr>
                                                         <td class="text-center">{{$i+=1}}</td>
-                                                        <td class="text-center">{{$app->employee_name}}</td>
+                                                        <td class="text-center">{{$app->user->name}}</td>
                                                         <td class="text-center">{{$app->leaves->leave_type}}</td>
                                                         <td class="text-center">{{date_format(new DateTime($app->date_from),'d-m-Y')}}</td>
                                                         <td class="text-center">{{date_format(new DateTime($app->date_to),'d-m-Y')}}</td>
@@ -117,9 +119,9 @@
                                                                         data-remarks="{{$app->remarks}}" data-status="{{$app->status}}"
                                                                         data-type="{{$app->leaves->leave_type}}" data-name="{{$app->employee_name}}"
                                                                         data-applied="{{date_format(new DateTime($app->created_at), 'd-m-Y H:i:s')}}"
-                                                                        data-department="{{$app->employee->department}}"
-                                                                        data-jobgroup="{{$app->employee->job_group}}"
-                                                                        data-phone="{{$app->employee->phone_number}}"
+{{--                                                                        data-department="{{$app->employee->department}}"--}}
+{{--                                                                        data-jobgroup="{{$app->employee->job_group}}"--}}
+{{--                                                                        data-phone="{{$app->employee->phone_number}}"--}}
                                                                         class="btn btn br2 btn-xs fs12" data-toggle="modal"
                                                                         data-target="#approve">
                                                                     <i class="fa fa-external-link" style="color: white">
@@ -131,9 +133,9 @@
                                                                         data-remarks="{{$app->remarks}}" data-status="{{$app->status}}"
                                                                         data-type="{{$app->leaves->leave_type}}" data-name="{{$app->employee_name}}"
                                                                         data-applied="{{date_format(new DateTime($app->created_at), 'd-m-Y H:i:s')}}"
-                                                                        data-department="{{$app->employee->department}}"
+                                                                       {{-- data-department="{{$app->employee->department}}"
                                                                         data-jobgroup="{{$app->employee->job_group}}"
-                                                                        data-phone="{{$app->employee->phone_number}}"
+                                                                        data-phone="{{$app->employee->phone_number}}"--}}
                                                                         class="btn btn br2 btn-xs fs12" data-toggle="modal"
                                                                         data-target="#approve">
                                                                     <i style="color: white" class="fa fa-check" >
@@ -145,9 +147,9 @@
                                                                         data-remarks="{{$app->remarks}}" data-status="{{$app->status}}"
                                                                         data-type="{{$app->leaves->leave_type}}" data-name="{{$app->employee_name}}"
                                                                         data-applied="{{date_format(new DateTime($app->created_at), 'd-m-Y H:i:s')}}"
-                                                                        data-department="{{$app->employee->department}}"
+                                                          {{--              data-department="{{$app->employee->department}}"
                                                                         data-jobgroup="{{$app->employee->job_group}}"
-                                                                        data-phone="{{$app->employee->phone_number}}"
+                                                                        data-phone="{{$app->employee->phone_number}}"--}}
                                                                         class="btn btn br2 btn-xs fs12" data-toggle="modal"
                                                                         data-target="#approve">
                                                                     <i class="fa fa-times" style="color: white">
@@ -246,9 +248,13 @@
                                                     <option value="1" style="background-color: seagreen">Approve</option>
                                                     <option value="2" style="background-color: red">Disapprove</option>
                                                 @elseif($app->status === 1)
-                                                    <option value="1" id="status" style="background-color: seagreen">Approved</option>
+                                                    <option value="0" style="background-color: #67d3e0">Pending</option>
+                                                    <option value="1" style="background-color: seagreen">Approve</option>
+                                                    <option value="2" style="background-color: red">Disapprove</option>
                                                 @elseif($app->status === 2)
-                                                    <option value="2" id="status" style="background-color: red">Disapproved</option>
+                                                    <option value="0" style="background-color: #67d3e0">Pending</option>
+                                                    <option value="1" style="background-color: seagreen">Approve</option>
+                                                    <option value="2" style="background-color: red">Disapprove</option>
                                                 @endif
                                             </select>
                                         </div>

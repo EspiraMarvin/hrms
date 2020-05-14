@@ -61,7 +61,7 @@
                                             @foreach($status as $app)
                                                 <tr>
                                                     <td class="text-center">{{$i+=1}}</td>
-                                                    <td class="text-center">{{$app->employee->name}}</td>
+                                                    <td class="text-center">{{$app->user->name}}</td>
                                                     <td class="text-center">{{$app->leaves->leave_type}}</td>
                                                     <td class="text-center">{{date_format(new DateTime($app->date_from), 'd-m-Y')}}</td>
                                                     <td class="text-center">{{date_format(new DateTime($app->date_to), 'd-m-Y')}}</td>

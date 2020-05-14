@@ -17,14 +17,9 @@ class Employee extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function role()
+    public function roles()
     {
-        return $this->hasOne(Role::class);
-    }
-
-    public function userrole()
-    {
-        return $this->hasOne(UserRole::class);
+        return $this->belongsToMany(Role::class, 'user_role','user_id','role_id');
     }
 
     public function targets()

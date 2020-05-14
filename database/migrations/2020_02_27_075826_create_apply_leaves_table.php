@@ -20,7 +20,7 @@ class CreateApplyLeavesTable extends Migration
             $table->date('date_to');
             $table->string('time_from');
             $table->string('time_to');
-            $table->string('number_of_days');
+            $table->integer('number_of_days');
             $table->mediumText('reason');
             $table->tinyInteger('status')->default(0)->comment('0 = Pending, 1 = Approved, 2 = Disapproved');
             $table->string('remarks')->default('No Remarks');

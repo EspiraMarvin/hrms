@@ -9,9 +9,9 @@ class ApplyLeave extends Model
     protected $table = "apply_leaves";
 
 
-    public function employee()
+    public function user()
     {
-        return $this->belongsTo(Employee::class);
+        return $this->belongsTo(User::class);
     }
 
     public function leaves()

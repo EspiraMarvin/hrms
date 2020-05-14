@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Target extends Model
 {
-    //
 
-    public function employee()
+    public function user()
     {
-        return $this->belongsTo(Employee::class);
+        return $this->belongsTo(User::class);
     }
+
 }

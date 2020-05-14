@@ -12,21 +12,21 @@ class Promote extends Model
       'name', 'role', 'salary','promotion_date'
      ];*/
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     public function employee()
     {
         return $this->belongsTo(Employee::class);
     }
 
-    public function role()
+    public function roles()
     {
-//        return $this->hasMany(Role::class);
-        return $this->hasMany('App\Role', 'id', 'role_id');
+        return $this->belongsToMany(Role::class, 'user_role','user_id','role_id');
     }
 
-    public function userrole()
-    {
-//        return $this->hasOne(Role::class);
-//        return $this->hasMany(UserRole::class);
-        return $this->hasMany('App\UserRole','id','employee_id');
-    }
+
+
 }

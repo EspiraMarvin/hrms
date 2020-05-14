@@ -38,20 +38,16 @@
                     <a href="/employee_manager">
                         <span class="glyphicon glyphicon-tags"></span> Employee Listing </a>
                 </li>
-                {{--<li>
-                    <a href="/supervisor_add">
-                        <span class="glyphicon glyphicon-tags"></span> Add Supervisor </a>
-                </li>
                 <li>
                     <a href="/supervisor_list">
                         <span class="glyphicon glyphicon-tags"></span> Supervisor Listing </a>
-                </li>--}}
+                </li>
             </ul>
         </li>
 
         <li>
             <a class="accordion-toggle" href="/dashboard">
-                <span class="fa fa-user"></span>
+                <span class="fa fa-th-list"></span>
                 <span class="sidebar-title">Directorate</span>
                 <span class="caret"></span>
             </a>
@@ -101,35 +97,41 @@
             </ul>
         </li>
 
+        @endif
+        @if(Auth::user()->isAdmin() && Auth::user()->isSupervisor())
+
             <li>
                 <a class="accordion-toggle" href="/dashboard">
-                    <span class="fa fa-graduation-cap"></span>
+                    <span class="fa fa-gavel"></span>
                     <span class="sidebar-title">Targets</span>
                     <span class="caret"></span>
                 </a>
                 <ul class="nav sub-nav">
                     <li>
-                        <a href="/target_assign">
-                            <span class="glyphicon glyphicon-book"></span> Assign Target </a>
-                    </li>
-
-                    <li>
                         <a href="/my_target_list">
                             <span class="glyphicon glyphicon-modal-window"></span> My Target List </a>
                     </li>
-                    <li>
-                        <a href="/target_assign_list">
-                            <span class="glyphicon glyphicon-modal-window"></span> Target Listing </a>
-                    </li>
+                    @if(Auth::user()->isSupervisor())
+                        <li>
+                            <a href="/target_assign">
+                                <span class="glyphicon glyphicon-book"></span> Assign Target </a>
+                        </li>
+                        <li>
+                            <a href="/target_assign_list">
+                                <span class="glyphicon glyphicon-calendar"></span> Supervisees Target List</a>
+                        </li>
+                    @endif
                 </ul>
+
             </li>
         @endif
 
-        @if(!Auth::user()->isAdmin())
+
+    @if(!Auth::user()->isAdmin() && Auth::user()->isSupervisor())
 
         <li>
             <a class="accordion-toggle" href="/dashboard">
-                <span class="fa fa-graduation-cap"></span>
+                <span class="fa fa-gavel"></span>
                 <span class="sidebar-title">Targets</span>
                 <span class="caret"></span>
             </a>
@@ -138,9 +140,37 @@
                     <a href="/my_target_list">
                         <span class="glyphicon glyphicon-modal-window"></span> My Target List </a>
                 </li>
+                    <li>
+                        <a href="/target_assign">
+                            <span class="glyphicon glyphicon-book"></span> Assign Target </a>
+                    </li>
+                    <li>
+                        <a href="/target_assign_list">
+                            <span class="glyphicon glyphicon-calendar"></span> Supervisees Target List</a>
+                    </li>
             </ul>
+
         </li>
         @endif
+
+        @if(!Auth::user()->isAdmin() && !Auth::user()->isSupervisor())
+
+            <li>
+                <a class="accordion-toggle" href="/dashboard">
+                    <span class="fa fa-gavel"></span>
+                    <span class="sidebar-title">Targets</span>
+                    <span class="caret"></span>
+                </a>
+                <ul class="nav sub-nav">
+                    <li>
+                        <a href="/my_target_list">
+                            <span class="glyphicon glyphicon-modal-window"></span> My Target List </a>
+                    </li>
+                </ul>
+
+            </li>
+        @endif
+
 
         @if(Auth::user()->isAdmin())
         <li>
@@ -209,12 +239,6 @@
                         <span class="glyphicon glyphicon-calendar"></span> My Leave List </a>
                 </li>
 
-                @if(Auth::user()->isAdmin() && \Auth::user()->leaveApprove())
-                    <li>
-                        <a href="/approve_leave">
-                            <span class="glyphicon glyphicon-calendar"></span> Approve Leave </a>
-                    </li>
-                @endif
 
                 <li>
                     <a href="/leave_type_add">
@@ -244,6 +268,14 @@
                         <a href="/leave_apply">
                             <span class="glyphicon glyphicon-shopping-cart"></span> Apply Leave </a>
                     </li>
+                    @if(Auth::user()->isSupervisor() && \Auth::user()->leaveApprove())
+                        {{--                @if(Auth::user()->isAdmin() && \Auth::user()->leaveApprove() && \Auth::user()->isSupervisor())--}}
+
+                        <li>
+                            <a href="/approve_leave">
+                                <span class="glyphicon glyphicon-calendar"></span> Approve Leave </a>
+                        </li>
+                    @endif
                     <li>
                         <a href="/my_leave_list">
                             <span class="glyphicon glyphicon-calendar"></span> My Leave List </a>
@@ -369,7 +401,7 @@
         @endif
         <li>
             <a class="accordion-toggle" href="#">
-                <span class="fa fa fa-gavel"></span>
+                <span class="fa fa-graduation-cap"></span>
                 <span class="sidebar-title">Trainings</span>
                 <span class="caret"></span>
             </a>

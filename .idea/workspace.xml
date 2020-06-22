@@ -375,7 +375,7 @@
       <workItem from="1592461908393" duration="38441000" />
       <workItem from="1592551329529" duration="598000" />
       <workItem from="1592733792062" duration="607000" />
-      <workItem from="1592819435800" duration="5169000" />
+      <workItem from="1592819435800" duration="8222000" />
     </task>
     <task id="LOCAL-00001" summary="Procfile commit">
       <created>1588114826107</created>
@@ -538,7 +538,28 @@
       <option name="project" value="LOCAL" />
       <updated>1592823542249</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="hrms commit">
+      <created>1592826259310</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1592826259310</updated>
+    </task>
+    <task id="LOCAL-00025" summary="hrms commit">
+      <created>1592826448465</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1592826448465</updated>
+    </task>
+    <task id="LOCAL-00026" summary="hrms commit">
+      <created>1592828005881</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1592828005881</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -611,11 +632,11 @@
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="326" y="17" width="643" height="687" key="#phpunit.xml/0.0.1280.720/1920.0.1920.1080@0.0.1280.720" timestamp="1585002278688" />
-    <state x="111" y="0" key="CommitChangelistDialog2" timestamp="1592823540608">
+    <state x="111" y="0" key="CommitChangelistDialog2" timestamp="1592828004239">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="111" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1590046406972" />
-    <state x="111" y="0" key="CommitChangelistDialog2/0.0.1280.720@0.0.1280.720" timestamp="1592823540608" />
+    <state x="111" y="0" key="CommitChangelistDialog2/0.0.1280.720@0.0.1280.720" timestamp="1592828004239" />
     <state x="93" y="93" width="1095" height="535" key="DiffContextDialog" timestamp="1588158017168">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
@@ -655,10 +676,10 @@
     </state>
     <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1589909200924" />
     <state x="142" y="4" key="SettingsEditor/0.0.1280.720@0.0.1280.720" timestamp="1589261188063" />
-    <state x="233" y="95" key="Vcs.Push.Dialog.v2" timestamp="1592823571093">
+    <state x="233" y="95" key="Vcs.Push.Dialog.v2" timestamp="1592836139370">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="233" y="95" key="Vcs.Push.Dialog.v2/0.0.1280.720@0.0.1280.720" timestamp="1592823571093" />
+    <state x="233" y="95" key="Vcs.Push.Dialog.v2/0.0.1280.720@0.0.1280.720" timestamp="1592836139370" />
     <state x="247" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1592210509530">
       <screen x="0" y="0" width="1280" height="720" />
     </state>

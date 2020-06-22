@@ -3,7 +3,7 @@
 namespace App\Exports;
 
 use App\Employee;
-//use Maatwebsite\Excel\Concerns\FromQuery;
+use Maatwebsite\Excel\Concerns\FromQuery;
 use PhpOffice\PhpSpreadsheet\Shared\Date;
 use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 use Maatwebsite\Excel\Concerns\FromCollection;
@@ -19,12 +19,6 @@ class EmployeesExport implements FromCollection, withMapping, WithHeadings, With
     * @return \Illuminate\Support\Collection
     */
 
-/*    public function query()
-    {
-//        return Employee::all();
-
-        return Employee::select('id','name')->get();
-    }*/
 
     public function collection()
     {
@@ -40,7 +34,6 @@ class EmployeesExport implements FromCollection, withMapping, WithHeadings, With
             $employee->name,
             $employee->code,
             $employee->pf_number,
-            $employee->email,
             $employee->role,
             $employee->supervisor,
             $employee->department,
@@ -79,7 +72,6 @@ class EmployeesExport implements FromCollection, withMapping, WithHeadings, With
             'Name',
             'Code',
             'PF Num',
-            'Email',
             'Role',
             'Supervisor',
             'Department',
@@ -98,7 +90,6 @@ class EmployeesExport implements FromCollection, withMapping, WithHeadings, With
             'KRA Pin',
             'Bank Name',
             'Account Number',
-            'Pf Status',
             'Father`s Name',
             'Qualification',
             'Resignation Date',

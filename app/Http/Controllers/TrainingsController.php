@@ -16,11 +16,6 @@ class TrainingsController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function addTrain()
     {
         return view('hrms.train.train_add');
@@ -28,7 +23,7 @@ class TrainingsController extends Controller
 
     public function trainList()
     {
-        $trains = Training::orderBy('id', 'desc')->paginate(10);
+        $trains = Training::orderBy('id', 'desc')->get();
 
         return view('hrms.train.train_list')->with('trains', $trains);
     }
@@ -44,40 +39,18 @@ class TrainingsController extends Controller
 
     public function trainInviteList()
     {
-        $invites = InviteTraining::orderBy('id', 'desc')->paginate(15);
+        $invites = InviteTraining::orderBy('id', 'desc')->get();
 
         return view('hrms.train.train_invite_list')->with('invites', $invites);
     }
 
     public function myTrainingInvite()
     {
-        $trainingInvite = InviteTraining::where('employee_id', \Auth::user()->id)->orderBy('id', 'desc')->paginate(15);
+        $trainingInvite = InviteTraining::where('employee_id', \Auth::user()->id)->orderBy('id', 'desc')->get();
 
         return view('hrms.train.my_train_invite')->with('trainingInvite', $trainingInvite);
 
     }
-
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
 
 
     public function store(Request $request)

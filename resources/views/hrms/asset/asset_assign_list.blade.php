@@ -41,11 +41,11 @@
                                 <div class="panel-body pn">
                                     @include('inc.messages')
                                     <div class="table-responsive">
-                                        <table class="table allcp-form theme-warning tc-checkbox-1 fs13">
+                                        <table id="example" class="table allcp-form theme-warning tc-checkbox-1 fs13" cellspacing="0" width="100%">
                                             <thead>
                                             <tr class="bg-light">
                                                 <th class="text-center">Id</th>
-                                                {{--                                                <th class="text-center">Region</th>--}}
+                                                <th class="text-center">Region</th>
                                                 <th class="text-center">County</th>
                                                 <th class="text-center">Asset</th>
                                                 <th class="text-center">Issued To</th>
@@ -61,6 +61,7 @@
                                                 @foreach($assets as $ass)
                                                     <tr>
                                                         <td class="text-center">{{$i+=1}}</td>
+                                                        <td class="text-center">{{$ass->region->region}}</td>
                                                         <td class="text-center">{{$ass->county->county}}</td>
                                                         <td class="text-center">{{$ass->asset->asset}}</td>
                                                         <td class="text-center">{{$ass->employee->name}}</td>
@@ -75,16 +76,16 @@
                                                                         Edit
                                                                     </button></a>
                                                                 <button type="button" class="btn btn-danger br2 btn-xs fs12"
-                                                                        data-assetid={{$ass->id}} data-asset={{$ass->asset->asset}}
-                                                                            data-county={{$ass->county->county}} data-authority={{$ass->authority}}
-                                                                            data-toggle="modal" data-target="#delete">Delete</button>
+                                                                        data-assetid="{{$ass->id}}" data-asset="{{$ass->asset->asset}}"
+                                                                        data-county="{{$ass->county->county}}" data-authority="{{$ass->authority}}"
+                                                                        data-toggle="modal" data-target="#delete">Delete</button>
                                                             </div>
                                                         </td>
                                                 @endforeach
                                             </tbody>
                                         </table>
                                         <div style="text-align: center;">
-                                            {!! $assets->links() !!}
+                                            {{--                                            {!! $assets->links() !!}--}}
                                         </div>
                                         @else
                                             <div class="row text-center">
@@ -119,9 +120,9 @@
                     </button>
                 </div>
                 <div style="text-align: center" class="modal-body">
-                    {!! Form::open(['action' => ['ExpensesController@doDelete',isset($exp->id) ? $exp->id:'' ],'method' => 'POST','class' => 'form-horizontal','enctype'=>'multipart/form-data', 'id'=>"custom-form-wizard"]) !!}
+                    {!! Form::open(['action' => ['AssetAssignController@doDelete',isset($ass->id) ? $ass->id:'' ],'method' => 'POST','class' => 'form-horizontal','enctype'=>'multipart/form-data', 'id'=>"custom-form-wizard"]) !!}
 
-                    {{Form::hidden('id', isset($exp->id) ? $exp->id:'' ,['value' =>'','name' => 'id','id'=>'asset_id'])}}
+                    {{Form::hidden('id', isset($ass->id) ? $ass->id:'' ,['value' =>'','name' => 'id','id'=>'asset_id'])}}
                     <h6>Are you sure you want to delete this ?<br><br>
                         <input style="border: 0" type="text" disabled class="form-control text-center" id="asset"> Issued by
                         <input style="border: 0" type="text" disabled class="form-control text-center" id="authority"> For
@@ -159,6 +160,12 @@
         })
     </script>
 
+    <script>
+        // Basic example
+        $(document).ready(function() {
+            $('#example').DataTable();
+        } );
+    </script>
     <script type="text/javascript">
         var path = "{{ route('autocomplete') }}";
         $('input.typeahead').typeahead({

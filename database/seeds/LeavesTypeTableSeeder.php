@@ -18,36 +18,37 @@ class LeavesTypeTableSeeder extends Seeder
         DB::table('leaves')->truncate();
         DB::table('leaves')->insert([
             [
+
                 'leave_type' => 'Annual Leave',
-                'description' => 'An optional 30 days annual leave for each employee',
+                'description' => '30 days leave. Optional annual leave for each employee',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
 
                 'role' => 'Emergency Leave',
-                'description' => 'This is when unexpected event occurs that you can not avail yourself on your duties.',
+                'description' => 'It\'s unplanned for and inevitable. To take care of an urgent situation.',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
 
                 'role' => 'Sick Leave',
-                'description' => 'When an employee is in poor state of health that they can`t duties effectively.',
+                'description' => 'Time off that employees take to address their health and safety needs.',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
 
                 'role' => 'Maternity Leave',
-                'description' => 'A 90 days leave. It`s for the female gender who are going to give birth.',
+                'description' => '90 days leave. For the female employees who are going to deliver.',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
 
                 'role' => 'Paternity Leave',
-                'description' => 'A 10 days leave. It`s for the male gender when their partner is going to give birth.',
+                'description' => '10 days leave. For the male employees to attend to their newborn babies.',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],

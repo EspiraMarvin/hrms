@@ -2,7 +2,6 @@
 
 namespace App;
 
-use App\ApplyLeave;
 use App\UserRole;
 //use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -41,9 +40,25 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'date_of_birth',
+    ];
+
     public function employee()
     {
         return $this->hasOne(Employee::class);
+    }
+
+    public function department()
+    {
+        return $this->belongsTo(Department::class);
+    }
+
+    public function leaves()
+    {
+        return $this->belongsToMany(ApplyLeave::class,'apply_leaves','user_id');
     }
 
     public function targets()
@@ -66,12 +81,14 @@ class User extends Authenticatable
         return $this->belongsToMany(User::class,'supervisor_user','user_id','supervisor_id');
     }
 
+
     public function isAdmin()
     {
+        //manager, HR and administration
         $admin = false;
         foreach ($this->roles as $role)
         {
-            if ($role->id == 1){
+            if ($role->id === 3){
                 $admin = true;
             }
         }
@@ -79,12 +96,23 @@ class User extends Authenticatable
 
     }
 
+    public function isHR()
+    {
+        $hr = false;
+        foreach ($this->roles as $role) {
+            if($role->id == 4){
+                return true;
+            }
+        }
+        return $hr;
+    }
+
     public function isSupervisor()
     {
         $supervisor = false;
         foreach ($this->roles as $role)
         {
-            if ($role->id == 9){
+            if ($role->id == 2){
                 $supervisor = true;
             }
         }
@@ -99,7 +127,7 @@ class User extends Authenticatable
             });
         })->with('user')->orderBy('id','desc')->paginate(10);
 
-        if(count($approve) > 0)
+       if(count($approve) > 0)
         {
             return true;
         }

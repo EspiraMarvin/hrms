@@ -41,7 +41,7 @@
                                 <div class="panel-body pn">
                                     @include('inc.messages')
                                     <div class="table-responsive">
-                                        <table class="table allcp-form theme-warning tc-checkbox-1 fs13">
+                                        <table id="example" class="table allcp-form theme-warning tc-checkbox-1 fs13">
                                             <thead>
                                             <tr class="bg-light">
                                                 <th class="text-center">Id</th>
@@ -70,7 +70,7 @@
                                                                         Edit
                                                                     </button></a>
                                                                 <button type="button" class="btn btn-danger br2 btn-xs fs12"
-                                                                        data-expid={{$exp->id}} data-item={{$exp->item}} data-county={{$exp->county->county}}
+                                                                        data-expid="{{$exp->id}}" data-item="{{$exp->item}}" data-county="{{$exp->county->county}}"
                                                                             data-toggle="modal" data-target="#delete">Delete</button>
                                                             </div>
                                                         </td>
@@ -85,7 +85,7 @@
                                         @endif
                                     </div>
                                     <div class="row text-center">
-                                        {{$expense->links()}}
+{{--                                        {{$expense->links()}}--}}
                                     </div>
                                     {!! Form::close() !!}
                                 </div>
@@ -149,5 +149,11 @@
             modal.find('.modal-body #item').val(item);
             modal.find('.modal-body #county').val(county);
         })
+    </script>
+    <script>
+        // Basic example
+        $(document).ready(function() {
+            $('#example').DataTable();
+        } );
     </script>
 @endsection

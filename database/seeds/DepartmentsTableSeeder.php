@@ -18,16 +18,16 @@ class DepartmentsTableSeeder extends Seeder
         DB::table('departments')->truncate();
         DB::table('departments')->insert([
             [
-                'directorate' => 'Programs and Standards',
-                'name' => 'DLP',
+                'department' => 'DLP',
+                'directorate_id' => '1',
                 'description' => 'Digital Literacy Program',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
 
             [
-                'directorate' => 'Programs and Standards',
-                'name' => 'Ajira',
+                'department' => 'Ajira',
+                'directorate_id' => '1',
                 'description' => 'Youth Empowerment',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),

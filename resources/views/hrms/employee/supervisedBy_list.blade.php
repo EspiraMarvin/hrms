@@ -18,7 +18,7 @@
                     <li class="breadcrumb-link">
                         <a href=""> Supervisees </a>
                     </li>
-                    <li class="breadcrumb-current-item"> Supervisees Listings</li>
+                    <li class="breadcrumb-current-item"> Supervisees Listings for {{ $supervisor->name }}</li>
                 </ol>
             </div>
         </header>
@@ -34,19 +34,19 @@
                         <div class="box box-success">
                             <div class="panel">
                                 <div class="panel-heading">
-                                    <span class="panel-title hidden-xs"> Supervisees Lists </span>
+                                    <span class="panel-title hidden-xs"> Supervisees Lists for {{ $supervisor->name }} </span>
                                 </div>
                                 <div class="panel-body pn">
                                     @include('inc.messages')
 
                                     <div class="table-responsive">
-                                        <table class="table allcp-form theme-warning tc-checkbox-1 fs13">
+                                        <table id="example" class="table allcp-form theme-warning tc-checkbox-1 fs13">
                                             <thead>
                                             <tr class="bg-light">
                                                 <th class="text-center">Id</th>
                                                 <th class="text-center">Name</th>
                                                 <th class="text-center">Email Address</th>
-                                                <th class="text-center">Actions</th>
+                                                <th class="text-center"></th>
                                             </tr>
                                             </thead>
 
@@ -56,14 +56,16 @@
                                                 @foreach($employees as $emp)
                                                     <tr>
                                                         <td class="text-center">{{$i+=1}}</td>
-                                                        <td class="text-center">{{$emp->name}}</td>
+                                                        <td class="text-center"><a style=" text-decoration: none"
+                                                                href="/employee/{{$emp->id}}">{{$emp->name}}</a>
+                                                             </td>
                                                         <td class="text-center">{{$emp->email}}</td>
                                                         <td class="text-center">
-                                                            <div class="dropdown" role="group" aria-label="...">
+                                                            <!-- <div class="dropdown" role="group" aria-label="...">
                                                                 <button type="button" class="btn btn-danger br2 btn-xs fs12"
                                                                         data-roleid={{$emp->id}} data-sup={{$emp->name}}
                                                                             data-toggle="modal" data-target="#delete">Delete</button>
-                                                            </div>
+                                                            </div> -->
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -74,9 +76,6 @@
                                                 <p>No supervisees to show</p>
                                             </div>
                                         @endif
-                                        <div class="row text-center">
-                                            {{$employees->links()}}
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -103,11 +102,12 @@
                     </button>
                 </div>
                 <div style="text-align: center" class="modal-body">
-                    {!! Form::open(['action' => ['EmployeeController@doDelete',isset($sup->id) ? $sup->id:'' ],'method' => 'POST','class' => 'form-horizontal','enctype'=>'multipart/form-data', 'id'=>"custom-form-wizard"]) !!}
+                    {!! Form::open(['action' => ['EmployeeController@doDeleteSupervisee',isset($sup->id) ? $sup->id:'' ],'method' => 'POST','class' => 'form-horizontal','enctype'=>'multipart/form-data', 'id'=>"custom-form-wizard"]) !!}
 
                     {{Form::hidden('id', isset($sup->id) ? $sup->id:'' ,['value' =>'','name' => 'id','id'=>'sup_id'])}}
-                    <h6>Are you sure you want to delete this ?<br><br>
+                    <h6>Are you sure you want to delete this user ?<br><br>
                         <input style="border: 0" type="text" disabled class="form-control text-center" id="supervisor">
+                        <input style="border: 0" type="text" disabled class="form-control text-center" id="name">
                     </h6>
 
                     <div class="modal-footer text-center">
@@ -135,5 +135,11 @@
             modal.find('.modal-body #award_id').val(role_id);
             modal.find('.modal-body #role').val(role);
         })
+    </script>
+    <script>
+        // Basic example
+        $(document).ready(function() {
+            $('#example').DataTable();
+        } );
     </script>
 @endsection

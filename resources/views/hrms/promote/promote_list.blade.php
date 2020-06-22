@@ -48,8 +48,10 @@
                                                 <th class="text-center">Employee</th>
                                                 <th class="text-center">Old Designation</th>
                                                 <th class="text-center">New Designation</th>
+                                                @if(Auth::user()->isAdmin())
                                                 <th class="text-center">Old Salary</th>
                                                 <th class="text-center">New Salary</th>
+                                                @endif
                                                 <th class="text-center">Date of Promotion</th>
                                             </tr>
                                             </thead>
@@ -61,9 +63,18 @@
                                                         <td class="text-center">{{$i+=1}}</td>
                                                         <td class="text-center">{{$promotion->user->name}}</td>
                                                         <td class="text-center">{{$promotion->old_designation}}</td>
-                                                        <td class="text-center">{{$promotion->user->roles[0]->role}}</td>
+                                                        <td class="text-center">
+                                                            {{$promotion->new_designation}}
+                                                           {{-- @if($promotion->user->roles[0]->role === 'Supervisor')
+                                                                {{$promotion->user->roles[1]->role}}
+                                                            @else
+                                                                {{$promotion->user->roles[0]->role}}
+                                                            @endif--}}
+                                                        </td>
+                                                        @if(Auth::user()->isAdmin())
                                                         <td class="text-center">{{$promotion->old_salary}}</td>
                                                         <td class="text-center">{{$promotion->new_salary}}</td>
+                                                        @endif
                                                         <td class="text-center">{{date_format(new DateTime($promotion->promotion_date), 'd-m-Y')}}</td>
                                                     </tr>
                                                 @endforeach
@@ -77,7 +88,7 @@
                                         @endif
                                     </div>
                                     <tr>
-                                        {{--                                        {!! $promotions->render() !!}--}}
+                                        {!! $promotions->links() !!}
                                     </tr>
                                 </div>
                             </div>

@@ -86,7 +86,7 @@
 
         var highColors = [bgSystem, bgSuccess, bgWarning, bgPrimary];
 
-        var chart101 = c3.generate({
+/*        var chart101 = c3.generate({
             bindto: '#donut-chart1',
             color: {
                 pattern: [bgDangerLr, bgSuccessLr, bgPrimaryLr]
@@ -105,7 +105,7 @@
             donut: {
                 title: ""
             }
-        });
+        });*/
 
         var ecomChart = $('#sales_chart1');
         if (ecomChart.length) {
@@ -260,6 +260,7 @@
         var Picker = $('.inline-mp');
 
         // Init FullCalendar
+/*
         Calendar.fullCalendar({
             header: {
                 left: 'prev,next today',
@@ -397,6 +398,7 @@
                 });
             }
         });
+*/
 
         // Link MonthPicker to Calendar after init
 

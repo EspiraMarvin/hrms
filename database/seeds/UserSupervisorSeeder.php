@@ -17,8 +17,14 @@ class UserSupervisorSeeder extends Seeder
         Schema::disableForeignKeyConstraints();
         DB::table('supervisor_user')->truncate();
         DB::table('supervisor_user')->insert([
-          [
+            [
                 'supervisor_id' => 1,
+                'user_id' => 2,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'supervisor_id' => 3,
                 'user_id' => 2,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
@@ -30,7 +36,19 @@ class UserSupervisorSeeder extends Seeder
                 'updated_at' => Carbon::now(),
             ],
             [
+                'supervisor_id' => 3,
+                'user_id' => 1,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
                 'supervisor_id' => 2,
+                'user_id' => 3,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'supervisor_id' => 1,
                 'user_id' => 3,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),

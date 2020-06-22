@@ -6,6 +6,7 @@ use App\Department;
 use App\Employee;
 use App\Promote;
 use App\Role;
+use App\User;
 use Illuminate\Http\Request;
 use DB;
 
@@ -16,11 +17,6 @@ class PromoteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
     public function doPromotion()
     {
@@ -54,37 +50,48 @@ class PromoteController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function storePromotion(Request $request)
+    public function storePromotion(Request $request, $id)
     {
-//        dd($request);
 
         $this->validate($request,
             [
-                'role_id' => 'required',
+                'new_designation' => 'required',
+//                'new_salary' => 'required',
                 'promotion_date' => 'required'
             ]);
 
-//        dd($request);
-        $new_designation = Role::where('id', $request->new_designation)->first();
-        $process = Employee::where('id', $request->user_id)->first();
-        $process->salary = $request->new_salary;
-        $process->save();
+        $user           = User::find($id);
+        $user->save();
 
-//        dd($new_designation);
+        //convert new_designation role id to name of the role
+        $rol = Role::where('id',$request->new_designation)->get();
+        foreach ($rol as $r){
+            $new_role = $r->role;
+        }
 
-        \DB::table('user_role')->where('user_id', $process->user_id)->update(['role_id' => $request->new_designation]);
-
-        $promotion = new Promote;
-        $promotion->user_id = $request->user_id;
-        $promotion->old_designation = $request->old_designation;
-        $promotion->new_designation = $new_designation;
-//        $promotion->new_designation = $new_designation->name;
-        $promotion->old_salary = $request->old_salary;
-        $promotion->new_salary = $request->new_salary;
+        $promotion                    = new Promote();
+        $promotion->user_id           = $request->user_id;
+        $promotion->old_designation   = $request->old_designation;
+        $promotion->new_designation   = $new_role;
+        $promotion->old_salary        = $request->old_salary;
+        $promotion->new_salary        = $request->new_salary;
         $promotion->promotion_date = $request->promotion_date;
         $promotion->save();
 
-        return redirect('/promote_add')->with('success', 'Employee Promoted Successfully');
+        $roles = $user->roles;
+        foreach ($roles as $role){
+            if ($role->id != 2){
+
+                $notSupervisor = $role->id;
+
+                $user->roles()->detach($notSupervisor);
+                $user->roles()->attach($request->new_designation);
+            }
+        }
+
+        \DB::table('employees')->where('user_id', $request->user_id)->update(['salary' => $request->new_salary]);
+
+        return redirect('/promote_add')->with('success', 'Employee Successfully Promoted!');
     }
 
     public function searchPromote()
@@ -129,11 +136,9 @@ class PromoteController extends Controller
     public function edit($id)
     {
         $user = Employee::find($id);
-        $roles = Role::all()->except('9');
-        $departments = Department::all();
+        $roles = Role::all()->except([1,2]);
 
-
-        return view('hrms.promote.promote_edit', compact('user',$user, 'roles', $roles, 'departments', $departments));
+        return view('hrms.promote.promote_edit', compact('user',$user, 'roles', $roles));
     }
 
 
@@ -146,7 +151,8 @@ class PromoteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+
     }
 
     /**

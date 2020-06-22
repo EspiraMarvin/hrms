@@ -19,7 +19,7 @@ class CreateAssetAssignsTable extends Migration
             $table->integer('county_id');
             $table->integer('asset_id');
             $table->integer('employee_id');
-            $table->string('authority');
+            $table->string('authority')->nullable();
             $table->date('assigned_date');
             $table->date('released_date');
             $table->timestamps();

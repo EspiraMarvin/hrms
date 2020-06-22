@@ -15,10 +15,10 @@ class CreatePromotionsTable extends Migration
     {
         Schema::create('promotions', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->Integer('user_id');
+            $table->Integer('user_id')->unsigned();
             $table->string('old_designation');
             $table->string('new_designation');
-            $table->string('old_salary');
+            $table->string('old_salary')->nullable();
             $table->string('new_salary');
             $table->date('promotion_date');
             $table->timestamps();

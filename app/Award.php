@@ -10,10 +10,10 @@ class Award extends Model
 
 //    protected $fillable= ['_token'];
 
-/*    public function user()
+   public function user()
     {
         return $this->belongsTo(User::class);
-    }*/
+    }
 
     public function employee()
     {

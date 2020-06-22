@@ -88,7 +88,7 @@
                             <div class="section">
                                 <label class="field-icon"><i class="fa fa-barcode"></i></label>&nbsp;
                                 {{Form::label('code','Employee Code/ID',['class'=>'mb20 mt40','style'=>'color:black;font-weight:bold'])}}
-                                {{Form::text('code', '',['class' => 'gui-input fs13','placeholder'=>'Employee Code/ID','autocomplete'=>'off'])}}
+                                {{Form::text('code', '',['class' => 'gui-input fs13','placeholder'=>'Employee Code/ID','autocomplete'=>'off','required'])}}
                             </div>
                         </div>
 
@@ -96,21 +96,15 @@
                             <div class="section">
                                 <label class="field-icon"><i class="fa fa-user-secret"></i></label>&nbsp;
                                 {{Form::label('pf_number','Personal File Number',['class'=>'mb20 mt40','style'=>'color:black;font-weight:bold'])}}
-                                {{Form::text('pf_number', '',['class' => 'gui-input fs13','placeholder'=>'Personal File Number','autocomplete'=>'off'])}}
+                                {{Form::text('pf_number', '',['class' => 'gui-input fs13','placeholder'=>'Personal File Number','autocomplete'=>'off','required'])}}
                             </div>
                         </div>
 
                         <div class="section">
                             <label class="field-icon"><i class="fa fa-user"></i></label>&nbsp;
                             {{Form::label('Name','Employee Name',['class'=>'mb20 mt40','style'=>'color:black;font-weight:bold'])}}
-                            {{Form::text('name', '',['class' => 'gui-input fs13','placeholder'=>'Employee Name','autocomplete'=>'off'])}}
+                            {{Form::text('name', '',['class' => 'gui-input fs13','placeholder'=>'Employee Name','autocomplete'=>'off','required'])}}
                         </div>
-
-                      {{--  <div class="section">
-                            <label class="field-icon"><i class="fa fa-envelope"></i></label>&nbsp;
-                            {{Form::label('email','Email Address',['class'=>'mb20 mt40','style'=>'color:black;font-weight:bold'])}}
-                            {{Form::text('email', '',['class' => 'gui-input fs13','placeholder'=>'Email Address','autocomplete'=>'off'])}}
-                        </div>--}}
 
                         <div class="section">
                             {{Form::label('status','Employment status',['class'=>'mb20 mt40','style'=>'color:black;font-weight:bold'])}}
@@ -130,7 +124,7 @@
                             <label class="field-icon"><i class="fa fa-calendar"></i></label>&nbsp;
                             {{Form::label('date_of_birth','Date of Birth',['class'=>'mb20 mt40','style'=>'color:black;font-weight:bold'])}}
                             <br>
-                            {{Form::date('date_of_birth', '',['class' => 'gui-input fs13','placeholder'=>'Date of Joining'])}}
+                            {{Form::date('date_of_birth', '',['class' => 'gui-input fs13','placeholder'=>'Date of Birth'])}}
                         </div>
 
                         <div class="section">
@@ -156,7 +150,7 @@
                                 <label class="field-icon"><i class="fa fa-graduation-cap"></i></label>&nbsp;
                                 {{Form::label('qualification','Qualifications',['class'=>'mb20 mt40','style'=>'color:black;font-weight:bold'])}}
                                 <br>
-                                {{Form::text('qualification', '',['class' => 'gui-input fs13','placeholder'=>'qualification i.e  B.Sc, B.Tech, BCA,MBA, MCA, BBA, BBA+MBA, BCA+MCA, Engineering(B.Tech), Engineering(B.Tech+M.Tech)','autocomplete'=>'off'])}}
+                                {{Form::textarea('qualification', '',['class' => 'select2-single form-control','rows'=>'7'])}}
                             </div>
                         </div>
 
@@ -172,18 +166,9 @@
                         <div class="section">
                             <div class="form-group">
                                 <label class="field-icon"><i class=""></i></label>&nbsp;
-                                {{Form::label('kra_pin','kra_pin',['class'=>'mb20 mt40','style'=>'color:black;font-weight:bold'])}}
+                                {{Form::label('kin_name','Kin`s Name',['class'=>'mb20 mt40','style'=>'color:black;font-weight:bold'])}}
                                 <br>
-                                {{Form::text('kra_pin', '',['class' => 'gui-input fs13','placeholder'=>'KRA Pin Number','autocomplete'=>'off'])}}
-                            </div>
-                        </div>
-
-                        <div class="section">
-                            <div class="form-group">
-                                <label class="field-icon"><i class=""></i></label>&nbsp;
-                                {{Form::label('father_name','Father`s Name',['class'=>'mb20 mt40','style'=>'color:black;font-weight:bold'])}}
-                                <br>
-                                {{Form::text('father_name', '',['class' => 'gui-input fs13','placeholder'=>'Father`s Name','autocomplete'=>'off'])}}
+                                {{Form::text('kin_name', '',['class' => 'gui-input fs13','placeholder'=>'Kin`s Name','autocomplete'=>'off'])}}
                             </div>
                         </div>
 
@@ -224,7 +209,7 @@
                                 <select id="done" class="selectpicker form-control" multiple data-done-button="true" name="roles_id[]">
                                     @if(!empty($role) && count($role) > 0)
                                         @foreach($role as $rol)
-                                            <option value="{{$rol->id}}">{{$rol->role}}</option>
+                                            <option style="margin-top: 8px" value="{{$rol->id}}">{{$rol->role}}</option>
                                         @endforeach
                                     @endif
                                 </select>
@@ -235,34 +220,36 @@
                             <label for="input002"><h6 class="mb20 mt40"> Employment Type </h6></label>
                             <select class="select2-single form-control probation_select" name="employment_type"
                                     id="probation_period">
-                                <option value="">Select Employment Type</option>
-                                <option value="Permanent">Permanent</option>
-                                <option value="Other">Contract</option>
+                                <option value="Permanent" name="employment_type">Permanent</option>
+                                <option value="" name="employment_type">Contract
+                                    <input class="select2-single form-control" type="text"
+                                           value="" placeholder="i.e Contract (05/06/2020 - 08/12/2024)  OR Permanent" name="employment_type">
+                                </option>
                             </select>
-                            <input type="text" value="Contract (mm/dd/yyyy - mm/dd/yyyy)" name="employment_type"
-                                   class="form-control probation_text hidden" id="probation_text">
                         </div>
+
 
                         <div class="section">
                             <div class="form-group">
                                 <label class="field-icon"><i class=""></i></label>&nbsp;
                                 {{Form::label('department','Select Department',['class'=>'mb20 mt40','style'=>'color:black;font-weight:bold'])}}
-                                <select id="done" class="selectpicker form-control" name="department" id="department">
+                                <select id="done" class="selectpicker form-control" name="department_id" id="department_id">
                                     <option value="">Select Department</option>
                                 @if(!empty($department) && count($department) > 0)
                                         @foreach($department as $dep)
-                                            <option value="{{$dep->id}}">{{$dep->name}}</option>
+                                            <option value="{{$dep->id}}">{{$dep->department}}</option>
                                         @endforeach
                                     @endif
                                 </select>
                             </div>
                         </div>
 
+
                         <div class="section">
                             <div class="form-group">
                                 <label class="field-icon"><i class=""></i></label>&nbsp;
-                                {{Form::label('supervisor','Select Supervisor',['class'=>'mb20 mt40','style'=>'color:black;font-weight:bold'])}}
-                                <select id="done" class="selectpicker form-control" name="supervisor_id" id="supervisor_id" required>
+                                {{Form::label('supervisor','Select Supervisors',['class'=>'mb20 mt40','style'=>'color:black;font-weight:bold'])}}
+                                <select id="done" class="selectpicker form-control" multiple data-done-button="true" name="supervisors_id[]" required>
                                     <option value="">Select Supervisor</option>
                                     @if(!empty($supervisor))
                                         @foreach($supervisor as $sup)
@@ -288,19 +275,10 @@
                         </div>
 
                         <div class="section">
-                            <div class="form-group">
-                                <label class="field-icon"><i class="fa fa-group"></i></label>&nbsp;
-                                {{Form::label('job_group','Job Group',['class'=>'mb20 mt40','style'=>'color:black;font-weight:bold'])}}
-                                <br>
-                                {{Form::text('job_group', '',['class' => 'gui-input fs13','placeholder'=>' Job Group'])}}
-                            </div>
-                        </div>
-
-                        <div class="section">
                             <label class="field-icon"><i class="fa fa-money"></i></label>&nbsp;
                             {{Form::label('salary','Salary on Confirmation',['class'=>'mb20 mt40','style'=>'color:black;font-weight:bold'])}}
                             <br>
-                            {{Form::text('salary', '',['class' => 'gui-input fs13','placeholder'=>'KES. e.g 12000'])}}
+                            {{Form::text('salary', '',['class' => 'gui-input fs13','placeholder'=>'KES. e.g 12000','required'])}}
                         </div>
 
                         <!-- -------------- /section -------------- -->
@@ -312,6 +290,15 @@
                     <section class="wizard-section">
 
                         <!-- -------------- /section -------------- -->
+
+                        <div class="section">
+                            <div class="form-group">
+                                <label class="field-icon"><i class=""></i></label>&nbsp;
+                                {{Form::label('kra_pin','kra_pin',['class'=>'mb20 mt40','style'=>'color:black;font-weight:bold'])}}
+                                <br>
+                                {{Form::text('kra_pin', '',['class' => 'gui-input fs13','placeholder'=>'KRA Pin Number','autocomplete'=>'off','required'])}}
+                            </div>
+                        </div>
 
                         <div class="section">
                             <label class="field-icon"><i class="fa fa-list"></i></label>&nbsp;
@@ -327,21 +314,6 @@
                             {{Form::text('bank_name', '',['class' => 'gui-input fs13','placeholder'=>'Bank Name'])}}
                         </div>
 
-
-                        <div class="section">
-                            <label class="field-icon"><i class="fa fa-list"></i></label>&nbsp;
-                            {{Form::label('pf_account_number','PF Account Number',['class'=>'mb20 mt40','style'=>'color:black;font-weight:bold'])}}
-                            <br>
-                            {{Form::number('pf_account_number', '',['class' => 'gui-input fs13','placeholder'=>'PF Account Number'])}}
-                        </div>
-
-                       {{-- <div class="section">
-                            {{Form::label('pf_status','PF Status',['class'=>'mb20 mt40','style'=>'color:black;font-weight:bold'])}}
-                            <br>
-                            {{Form::radio('pf_status','Active', false, ['class'=>'radio','id'=>'pf_status'])}} Active
-                            {{Form::radio('pf_status','Inactive',false,['class'=>'radio','id'=>'pf_status'])}} Inactive
-                        </div>--}}
-
                         {{--             /section -------------- -->--}}
 
                     </section>
@@ -350,7 +322,6 @@
                     <h4 class="wizard-section-title">
                         <i class="fa fa-file-text pr5"></i> Ex Employment Details </h4>
                     <section class="wizard-section">
-
 
                         <div class="section">
                             <label class="field-icon"><i class="fa fa-calendar"></i></label>&nbsp;
@@ -372,12 +343,6 @@
                             {{Form::date('last_working_day', '',['class' => 'gui-input fs13','placeholder'=>'Last Working Day'])}}
                         </div>
 
-                        <div class="section">
-                            {{Form::label('full_final','Full & Final (Joining Formalities)',['class'=>'mb20 mt40','style'=>'color:black;font-weight:bold'])}}
-                            <br>
-                            {{Form::radio('full_final','Yes', false, ['class'=>'radio','id'=>'full_final'])}} Yes
-                            {{Form::radio('full_final','No',false,['class'=>'radio','id'=>'full_final'])}} No
-                        </div>
                     </section>
                 </div>
                 <!-- -------------- /Wizard -------------- -->
@@ -465,18 +430,16 @@
     {{--    {!! Html::script('/assets/js/demo/widgets_sidebar.js') !!}--}}
     {!! Html::script('/assets/js/custom_form_wizard.js') !!}
 
-    {!!  Html::script ('/assets/js/pages/forms-widgets.js')!!}
+{{--    {!!  Html::script ('/assets/js/pages/forms-widgets.js')!!}--}}
     @push('scripts')
 
-        <script src="/assets/js/custom_form_wizard.js"></script>
     @endpush
 
     <!-- -------------- Select2 JS -------------- -->
     <script src="/assets/js/plugins/select2/select2.min.js"></script>
     <script src="/assets/js/function.js"></script>
-    <script src="/assets/js/jquery/jquery-1.11.3.min.js"></script>
+{{--    <script src="/assets/js/jquery/jquery-1.11.3.min.js"></script>--}}
 
     <!-- -------------- /Scripts -------------- -->
-
 
 @endsection

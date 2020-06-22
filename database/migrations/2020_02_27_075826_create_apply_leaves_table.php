@@ -22,7 +22,11 @@ class CreateApplyLeavesTable extends Migration
             $table->string('time_to');
             $table->integer('number_of_days');
             $table->mediumText('reason');
-            $table->tinyInteger('status')->default(0)->comment('0 = Pending, 1 = Approved, 2 = Disapproved');
+            $table->integer('supervisor1_id')->default();
+            $table->integer('supervisor2_id')->default();
+            $table->tinyInteger('status')->default(0)->comment('0 = Pending, 1 = Approved, 2 = Declined');
+            $table->tinyInteger('status1')->default(0)->comment('0 = Pending, 1 = Approved, 2 = Declined');
+            $table->tinyInteger('status2')->default(0)->comment('0 = Pending, 1 = Approved, 2 = Declined');
             $table->string('remarks')->default('No Remarks');
             $table->timestamps();
         });

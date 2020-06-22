@@ -31,6 +31,9 @@
                     <div class="col-xs-12">
                         <div class="box box-success">
                             <div class="panel">
+                                <div class="panel-heading">
+                                    <span class="panel-title hidden-xs"> Add Training Program</span>
+                                </div>
                                 <div class="panel-body pn">
 
                                     <div class="table-responsive">

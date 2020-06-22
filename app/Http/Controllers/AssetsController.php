@@ -3,12 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Asset;
-use App\AssetAssign;
-use App\Employee;
-use App\Region;
-use App\Regions;
+use App\Imports\AssetsImport;
+use App\Exports\AssetsExport;
 use Illuminate\Http\Request;
-use DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AssetsController extends Controller
 {
@@ -17,11 +15,6 @@ class AssetsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
     public function assetAdd()
     {
@@ -37,18 +30,31 @@ class AssetsController extends Controller
 
     public function assetAssignList()
     {
-        $asset = Asset::orderBy('id', 'desc')->paginate(10);
+        $asset = Asset::orderBy('id', 'desc')->paginate(15);
 
         return view('hrms.asset.asset_assign_list')->with('asset', $asset);
     }
 
     public function assetList()
     {
-        $asset = Asset::orderBy('id', 'desc')->paginate(10);
+        $asset = Asset::orderBy('id', 'desc')->paginate(15);
 
         return view('hrms.asset.asset_list')->with('asset', $asset);
     }
 
+    public function importAssets(Request $request)
+    {
+        $request->validate([
+            'import_file' => 'required'
+        ]);
+
+        if ($request->hasFile('import_file')){
+            Excel::import(new AssetsImport, request()->file('import_file'));
+            return redirect('/asset_add')->with('success', 'Assets Imported');
+        }
+
+        return redirect('/asset_add')->with('error', 'No Import File Chosen');
+    }
 
     public function index()
     {
@@ -77,7 +83,6 @@ class AssetsController extends Controller
             [
                 'asset' => 'required',
                 'serial_number' => 'required|unique:assets',
-                'description' => 'required',
             ]);
 
         $asset = new Asset;
@@ -148,6 +153,40 @@ class AssetsController extends Controller
         $asset->delete();
 
         return redirect('/asset_list')->with('success', 'Asset Removed Successfully');
+    }
+
+    //  function to search database
+    public function searchAsset()
+    {
+        $r = request()->input('r');
+
+        if ($r != '') {
+            $data = Asset::where('asset', 'LIKE', '%' . $r . '%')
+                ->orWhere('serial_number', 'LIKE', '%' . $r . '%')
+                ->orderBy('id', 'desc')
+                ->paginate(10)
+                ->setpath('');
+
+            $data->appends(array(
+                'r' => request()->input('r'),
+            ));
+            return view('hrms.asset.asset_search')->with('data', $data);
+        } else {
+            return redirect('/asset_list')->with('warning', 'Search Input Empty!');
+        }
+    }
+    public function export()
+    {
+        return Excel::download(new AssetsExport, 'assets.xlsx');
+    }
+
+
+    public function printPreview()
+    {
+        $assets = Asset::all();
+
+        return view('hrms.asset.printPreview')->with('assets',$assets);
+
     }
 
 }

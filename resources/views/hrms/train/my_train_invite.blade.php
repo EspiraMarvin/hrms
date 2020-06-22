@@ -18,7 +18,7 @@
                     <li class="breadcrumb-link">
                         <a href=""> Leaves </a>
                     </li>
-                    <li class="breadcrumb-current-item"> My Leave List</li>
+                    <li class="breadcrumb-current-item"> My Training Invites List</li>
                 </ol>
             </div>
         </header>
@@ -41,7 +41,7 @@
                                     @include('inc.messages')
 
                                     <div class="table-responsive">
-                                        <table class="table allcp-form theme-warning tc-checkbox-1 fs13">
+                                        <table id="example" class="table allcp-form theme-warning tc-checkbox-1 fs13">
                                             <thead>
                                             <tr class="bg-light">
                                                 <th class="text-center">Id</th>
@@ -75,7 +75,7 @@
                                         </div>
                                     @endif
                                     <div style="text-align: center">
-                                        {!! $trainingInvite->links() !!}
+{{--                                        {!! $trainingInvite->links() !!}--}}
                                     </div>
                                 </div>
                             </div>

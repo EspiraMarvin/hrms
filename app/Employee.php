@@ -12,9 +12,19 @@ class Employee extends Model
 
     protected $table = "employees";
 
+    protected $fillable = [
+        'department_id','code', 'pf_number', 'name','photo','code','pf_number','status','gender',
+        'kra_pin','duty_station','employment_type','salary','account_number','bank_name','user_id'
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function department()
+    {
+        return $this->belongsTo(Department::class);
     }
 
     public function roles()
@@ -65,11 +75,6 @@ class Employee extends Model
     public function invitetraining()
     {
         return $this->hasMany(InviteTraining ::class);
-    }
-
-    public function Promote()
-    {
-        return $this->hasMany(Promote ::class);
     }
 
 }

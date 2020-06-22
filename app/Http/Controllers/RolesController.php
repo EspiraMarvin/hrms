@@ -13,11 +13,6 @@ class RolesController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function addRole()
     {
         return view('hrms.role.role_add');
@@ -25,7 +20,7 @@ class RolesController extends Controller
 
     public function roleList()
     {
-        $roles = Role::orderBy('id', 'asc')->paginate(10);
+        $roles = Role::orderBy('id', 'asc')->get()->except(1);
 
         return view('hrms.role.role_list')->with('roles', $roles);
     }
@@ -53,14 +48,23 @@ class RolesController extends Controller
      */
     public function store(Request $request)
     {
+
         $this->validate($request,
             [
-                'role' => 'required',
-                'description' => 'required',
+                'role' => 'required|unique:roles,role',
             ]);
+
+         if (!empty($request->job_group) && ($request->role === 'Supervisor') || $request->role === 'supervisor'){
+
+             return redirect('/role_add')->with('error', 'Supervisor role does not need an ICTA Job Group !');
+          }else{
+
+             $request->job_group = "System";
+         }
 
         $role = new Role;
         $role->role = $request->input('role');
+        $role->job_group = $request->job_group;
         $role->description = $request->input('description');
         $role->save();
 
@@ -102,11 +106,20 @@ class RolesController extends Controller
         $this->validate($request,
             [
                 'role' => 'required',
-                'description' => 'required',
             ]);
+
+        if (!empty($request->job_group) && ($request->job_group != 'System') && ($request->role === 'Supervisor') || $request->role === 'supervisor'){
+
+            return redirect('/role_list')->with('error', 'Supervisor role does not need an ICTA Job Group !');
+
+        }elseif(!empty($request->job_group)  && ($request->job_group != 'System')  && ($request->role != 'Supervisor') || $request->role != 'supervisor') {
+
+            $request->job_group = $request->input('job_group');
+        }
 
         $role = Role::find($id);
         $role->role = $request->input('role');
+        $role->job_group = $request->job_group;
         $role->description = $request->input('description');
         $role->save();
 

@@ -15,11 +15,6 @@ class DirectorateController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function dirAdd()
     {
 
@@ -38,9 +33,6 @@ class DirectorateController extends Controller
 
     public function index()
     {
-//        $directorate = Directorate::orderBy('id','desc')->paginate(10);
-
-//        return view('hrms.directorate.directorate_list')->with('employee',$directorate);
 
     }
 
@@ -85,8 +77,6 @@ class DirectorateController extends Controller
      */
     public function show($id)
     {
-//        $directorate = Directorate::find($id);
-//        return view('hrms.directorate.directorate_list')->with('directorate',$directorate);
     }
 
     /**

@@ -41,25 +41,24 @@
 
                                             {!! Form::open(['action' => 'TargetsController@store','method' => 'POST','class' => 'form-horizontal','enctype'=>'multipart/form-data', 'id'=>"custom-form-wizard"]) !!}
 
-                                            <div class="form-group {{ $errors->has('employee_id') ? ' has-error' : '' }}">
+                                            <div class="form-group {{ $errors->has('user_id') ? ' has-error' : '' }}">
                                                 <label class="col-md-3 control-label"> Select Employee </label>
                                                 <div class="col-md-6">
-                                                    <select id="employee_id" size="2" class=" form-control" name="user_id" required>
-                                                        <option value="">Select One Employee</option>
+                                                    <select class="selectpicker form-control" name="user_id">
+                                                        <option value="" selected>Select Employee</option>
                                                         @if(!empty($employees) && count($employees) > 0)
-                                                        @foreach($employees as $user)
+                                                            @foreach($employees as $user)
                                                                 <option value="{{$user->id}}">{{$user->name}}</option>
                                                             @endforeach
                                                         @endif
                                                     </select>
-                                                    <small class="text-danger">{{ $errors->first('employee') }}</small>
                                                 </div>
                                             </div>
 
                                             <div class="form-group {{ $errors->has('targets') ? ' has-error' : '' }}">
                                                 <label class="col-md-3 control-label"> Targets </label>
                                                 <div class="col-md-6">
-                                                    {{Form::textarea('targets', '',['class' => 'select2-single form-control','rows'=>'7','id'=>'textarea1','placeholder'=>'Assign Targets eg.(1. Do this.., 2.Do that..)','required'])}}
+                                                    {{Form::textarea('targets', '',['class' => 'select2-single form-control','rows'=>'7','cols'=>'40','id' => 'editor1','placeholder'=>'Assign Targets eg.(1. Do this.., 2.Do that..)','required'])}}
                                                     <small class="text-danger">{{ $errors->first('targets') }}</small>
                                                 </div>
                                             </div>

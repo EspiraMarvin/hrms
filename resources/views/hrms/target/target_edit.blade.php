@@ -57,7 +57,7 @@
                                             <div class="form-group {{ $errors->has('targets') ? ' has-error' : '' }}">
                                                 <label class="col-md-3 control-label"> Targets </label>
                                                 <div class="col-md-6">
-                                                    {{Form::textarea('targets', $targetAssign->targets,['class' => 'select2-single form-control','rows'=>'7','id'=>'textarea1','placeholder'=>'Assign Targets eg.(1. Do this.., 2.Do that..)','required'])}}
+                                                    {{Form::textarea('targets', $targetAssign->targets,['class' => 'select2-single form-control','rows'=>'7','id'=>'editor1','required'])}}
                                                     <small class="text-danger">{{ $errors->first('targets') }}</small>
                                                 </div>
                                             </div>

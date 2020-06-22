@@ -44,7 +44,7 @@
                                                 <label class="col-md-3 control-label"> Search Employee </label>
                                                 <div class="col-md-6">
                                                     {{--                                                    <input type="text" class="typeahead form-control" value="" name="employee" autocomplete="off">--}}
-                                                    <select class="select2-multiple form-control select-primary"
+                                                    <select class="selectpicker form-control"
                                                             name="employee_id" required>
                                                         <option value="" selected>Select One</option>
                                                         @foreach($employees as $emp)

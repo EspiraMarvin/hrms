@@ -8,21 +8,20 @@
             <div class="topbar-left">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-icon">
-                        <a href="/profile">
+                        <a href="/dashboard">
                             <span class="fa fa-home"></span>
                         </a>
                     </li>
                     <li class="breadcrumb-active">
-                        <a href="/profile"> Profile </a>
+                        <a href="/dashboard"> Dashboard </a>
                     </li>
                     <li class="breadcrumb-link">
-                        <a href=""> Leaves </a>
+                        <a href=""> Leave List </a>
                     </li>
                     <li class="breadcrumb-current-item"> My Leave List</li>
                 </ol>
             </div>
         </header>
-
 
         <!-- -------------- Content -------------- -->
         <section id="content" class="table-layout animated fadeIn">
@@ -40,9 +39,9 @@
                                 </div>
                                 <div class="panel-body pn">
                                     @include('inc.messages')
-                                    {!! Form::open(['class' => 'form-horizontal']) !!}
+
                                     <div class="table-responsive">
-                                        <table class="table allcp-form theme-warning tc-checkbox-1 fs13">
+                                        <table id="example" class="table allcp-form theme-warning tc-checkbox-1 fs13">
                                             <thead>
                                             <tr class="bg-light">
                                                 <th class="text-center">Id</th>
@@ -54,59 +53,61 @@
                                                 <th class="text-center">Applied</th>
                                                 <th class="text-center">Remarks</th>
                                                 <th class="text-center">Status</th>
+                                                <th class="text-center"></th>
                                             </tr>
                                             </thead>
                                             <tbody>
                                             <?php $i = 0;?>
-                                            @foreach($apply as $app)
-                                                <tr>
-                                                    <td class="text-center">{{$i+=1}}</td>
-                                                    <td class="text-center">{{$app->leaves->leave_type}}</td>
-                                                    <td class="text-center">{{date_format(new DateTime($app->date_from), 'd-m-Y')}}</td>
-                                                    <td class="text-center">{{date_format(new DateTime($app->date_to), 'd-m-Y')}}</td>
-                                                    <td class="text-center">{{$app->number_of_days}}</td>
-                                                    <td class="text-center">{{$app->reason}}</td>
-                                                    <td class="text-center">{{date_format(new DateTime($app->created_at), 'd-m-Y')}}</td>
-                                                    <td class="text-center">{{$app->remarks}}</td>
-                                                    <td class="text-center">
-                                                        <div class="btn-group text-right">
-                                                            @if($app->status==0)
-                                                                <button type="button" style="background-color: #06b6ef"
-                                                                        class="btn btn br2 btn-xs fs12"
-                                                                        aria-expanded="false"><i style="color: white"
-                                                                        class="fa fa-external-link">
-                                                                        Pending </i>
+                                            @if(count($apply) > 0)
+                                                @foreach($apply as $app)
+                                                    <tr>
+                                                        <td class="text-center">{{$i+=1}}</td>
+                                                        <td class="text-center">{{$app->leaves->leave_type}}</td>
+                                                        <td class="text-center">{{date_format(new DateTime($app->date_from), 'd-m-Y')}}</td>
+                                                        <td class="text-center">{{date_format(new DateTime($app->date_to), 'd-m-Y')}}</td>
+                                                        <td class="text-center">{{$app->number_of_days}}</td>
+                                                        <td class="text-center">{{$app->reason}}</td>
+                                                        <td class="text-center">{{date_format(new DateTime($app->created_at), 'd-m-Y')}}</td>
+                                                        <td class="text-center">{{$app->remarks}}</td>
+                                                        <td class="text-center">
+                                                            <div class="btn-group text-right">
+                                                                @if($app->status1 === 0 && $app->status2 === 0 || $app->status1 === 1 && $app->status2 === 0 || $app->status1 === 0 && $app->status2 === 1)
+                                                                    <button type="button" style="background-color: #06b6ef"
+                                                                            class="btn btn br2 btn-xs fs12"
+                                                                            aria-expanded="false"><i style="color: white"
+                                                                                                     class="fa fa-external-link">
+                                                                            Pending </i>
 
-                                                                </button>
-                                                            @elseif($app->status==1)
-                                                                <button type="button" style="background-color: #1fad83"
-                                                                        class="btn btn br2 btn-xs fs12"
-                                                                        aria-expanded="false"><i style="color: white"
-                                                                        class="fa fa-check">
-                                                                        Approved </i>
+                                                                    </button>
+                                                                @elseif($app->status1 === 1 && $app->status2 === 1)
+                                                                    <button type="button" style="background-color: #1fad83"
+                                                                            class="btn btn br2 btn-xs fs12"
+                                                                            aria-expanded="false"><i style="color: white"
+                                                                                                     class="fa fa-check">
+                                                                            Approved </i>
 
-                                                                </button>
-                                                            @else
-                                                                <button type="button"
-                                                                        class="btn btn br2 btn-xs fs12" style="background-color: #f5393d"
-                                                                        aria-expanded="false"><i style="color: white"
-                                                                        class="fa fa-times">
-                                                                        Disapproved </i>
+                                                                    </button>
+                                                                @else
+                                                                    <button type="button"
+                                                                            class="btn btn br2 btn-xs fs12" style="background-color: #f5393d"
+                                                                            aria-expanded="false"><i style="color: white"
+                                                                                                     class="fa fa-times">
+                                                                            Declined </i>
 
-                                                                </button>
-                                                            @endif
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                            <tr>
-                                            </tr>
+                                                                    </button>
+                                                                @endif
+                                                            </div>
+                                                        </td>
+                                                        <td class="text-center"> </td>
+                                                    </tr>
+                                                @endforeach
                                             </tbody>
                                         </table>
-                                    </div>
-                                    {!! Form::close() !!}
-                                    <div style="text-align: center">
-                                        {!! $apply->links() !!}
+                                        @else
+                                            <div class="row text-center">
+                                                <p>No Leaves to show</p>
+                                            </div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -117,4 +118,5 @@
         </section>
 
     </div>
+
 @endsection

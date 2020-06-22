@@ -8,6 +8,11 @@ class Asset extends Model
 {
     protected $table = "assets";
 
+
+    protected $fillable = [
+        'asset', 'serial_number','description',
+    ];
+
     public function employee()
     {
         return $this->belongsTo(Employee::class);

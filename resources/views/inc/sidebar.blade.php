@@ -1,17 +1,16 @@
 <div class="animated fadeIn">
     <div class="sidebar-widget author-widget">
-        <div class="media">
-            <a href="/profile" class="media-left">
-               {{-- @if(isset(Auth::user()->employee->photo))--}}{{--
-                    <img style="text-align: center" src="/storage/photos/{{$employee->photo}}" width="40px" height="30px" class="img-responsive center-block">
-                @else
-                    <img src="/assets/img/avatars/noimage.png" class="img-responsive ">
-                @endif--}}
+            <a  href="/profile">
+                @if(isset(Auth::user()->employee->photo))
+                    <img src="/storage/photos/{{Auth::user()->employee->photo}}" width="50%" height="30px"
+                         style="margin-left: 12px" class="img-responsive">
+                @endif
             </a>
             <div class="media-body">
-                <div class="media-author"><a href="/profile">{{Auth::user()->name}}</a></div>
+                <div class="media-author">
+                    <a style="text-decoration: none" href="/profile">{{Auth::user()->name}}</a>
+                </div>
             </div>
-        </div>
     </div>
     <!-- -------------- Sidebar Menu  -------------- -->
     <ul class="nav sidebar-menu scrollable">
@@ -41,6 +40,14 @@
                 <li>
                     <a href="/supervisor_list">
                         <span class="glyphicon glyphicon-tags"></span> Supervisor Listing </a>
+                </li>
+                <li>
+                    <a href="/contracts_list">
+                        <span class="glyphicon glyphicon-tags"></span> Contracts Listing </a>
+                </li>
+                <li>
+                    <a href="/contracts_renewal">
+                        <span class="glyphicon glyphicon-tags"></span> Contracts Renewal Listing </a>
                 </li>
             </ul>
         </li>
@@ -81,7 +88,7 @@
 
         <li>
             <a class="accordion-toggle" href="/dashboard">
-                <span class="fa fa-graduation-cap"></span>
+                <span class="fa fa-cubes"></span>
                 <span class="sidebar-title">Roles</span>
                 <span class="caret"></span>
             </a>
@@ -98,7 +105,7 @@
         </li>
 
         @endif
-        @if(Auth::user()->isAdmin() && Auth::user()->isSupervisor())
+        @if(Auth::user()->isAdmin())
 
             <li>
                 <a class="accordion-toggle" href="/dashboard">
@@ -111,6 +118,7 @@
                         <a href="/my_target_list">
                             <span class="glyphicon glyphicon-modal-window"></span> My Target List </a>
                     </li>
+
                     @if(Auth::user()->isSupervisor())
                         <li>
                             <a href="/target_assign">
@@ -121,13 +129,16 @@
                                 <span class="glyphicon glyphicon-calendar"></span> Supervisees Target List</a>
                         </li>
                     @endif
+                        <li>
+                            <a href="/total_targets_list">
+                                <span class="glyphicon glyphicon-calendar"></span> Total Targets List</a>
+                        </li>
                 </ul>
 
             </li>
         @endif
 
-
-    @if(!Auth::user()->isAdmin() && Auth::user()->isSupervisor())
+        @if(!Auth::user()->isAdmin() && Auth::user()->isSupervisor())
 
         <li>
             <a class="accordion-toggle" href="/dashboard">
@@ -234,11 +245,15 @@
                     <a href="/leave_apply">
                         <span class="glyphicon glyphicon-shopping-cart"></span> Apply Leave </a>
                 </li>
+                @if(Auth::user()->isSupervisor() && \Auth::user()->leaveApprove())<li>
+                        <a href="/approve_leave">
+                            <span class="glyphicon glyphicon-calendar"></span> Approve Leave </a>
+                    </li>
+                @endif
                 <li>
                     <a href="/my_leave_list">
                         <span class="glyphicon glyphicon-calendar"></span> My Leave List </a>
                 </li>
-
 
                 <li>
                     <a href="/leave_type_add">
@@ -269,7 +284,6 @@
                             <span class="glyphicon glyphicon-shopping-cart"></span> Apply Leave </a>
                     </li>
                     @if(Auth::user()->isSupervisor() && \Auth::user()->leaveApprove())
-                        {{--                @if(Auth::user()->isAdmin() && \Auth::user()->leaveApprove() && \Auth::user()->isSupervisor())--}}
 
                         <li>
                             <a href="/approve_leave">
@@ -400,7 +414,7 @@
             </li>
         @endif
         <li>
-            <a class="accordion-toggle" href="#">
+            <a class="accordion-toggle" href="/dashboard">
                 <span class="fa fa-graduation-cap"></span>
                 <span class="sidebar-title">Trainings</span>
                 <span class="caret"></span>
@@ -421,15 +435,20 @@
                     <a href="/train_invite">
                         <span class="fa fa-desktop"></span> Training Invite </a>
                 </li>
+
+                <li>
+                    <a href="/my_train_invite">
+                        <span eclass="fa fa-desktop"></span>My Training Invites </a>
+                </li>
+
                 {{--            @endif--}}
                 <li>
                     <a href="/train_invite_list">
-                        <span class="fa fa-clipboard"></span> Invitation Listings </a>
+                        <span class="fa fa-clipboard"></span>Training Invitation Listings </a>
                 </li>
             </ul>
         </li>
 
-        <p> &nbsp; </p>
     </ul>
 </div>
 <!-- -------------- /Sidebar Menu  -------------- -->

@@ -19,10 +19,6 @@ class AssetAssignController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
     public function assignAsset()
     {
@@ -30,7 +26,6 @@ class AssetAssignController extends Controller
         $employees = Employee::all();
         $regions = DB::table('regions')->pluck("region", "id");
 
-//   dd($employee);
         return view('hrms.asset.asset_assign', compact('asset', 'employees', $employees, 'regions'));
     }
 
@@ -40,9 +35,9 @@ class AssetAssignController extends Controller
         return json_encode($counties);
     }
 
-    public function assetAssignList($id)
+    public function assetAssignList()
     {
-        $assets = AssetAssign::orderBy('id', 'desc')->paginate(15);
+        $assets = AssetAssign::orderBy('id', 'desc')->get();
 
         return view('hrms.asset.asset_assign_list', compact('assets', $assets));
     }
@@ -90,7 +85,7 @@ class AssetAssignController extends Controller
                 'county_id' => 'required',
                 'asset_id' => 'required|unique:asset_assigns',
                 'employee_id' => 'required',
-                'authority' => 'required',
+//                'authority' => 'required',
                 'assigned_date' => 'required',
                 'released_date' => 'required',
 
@@ -179,7 +174,6 @@ class AssetAssignController extends Controller
 
     public function doDelete(Request $request)
     {
-        dd($request);
         $assetAssign = AssetAssign::findorFail($request->id);
         $assetAssign->delete();
 

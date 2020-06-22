@@ -41,7 +41,7 @@
                                     @include('inc.messages')
 
                                     <div class="table-responsive">
-                                        <table class="table allcp-form theme-warning tc-checkbox-1 fs13">
+                                        <table id="example" class="table allcp-form theme-warning tc-checkbox-1 fs13">
                                             <thead>
                                             <tr class="bg-light">
                                                 <th class="text-center">Id</th>
@@ -58,17 +58,21 @@
                                                 @foreach($supervisor as $sup)
                                                     <tr>
                                                         <td class="text-center">{{$i+=1}}</td>
-                                                        <td class="text-center">{{$sup->name}}</td>
+                                                        <td class="text-center">{{isset($sup->name) ? $sup->name: ''}}</td>
                                                         <td class="text-center">
                                                             <a style="text-decoration: none"
-                                                               href="/supervisedBy_list">Supervisees
+                                                               href="/supervisedBy_list/{{isset($sup->id) ? $sup->id:''}}">Supervisees
                                                             </a>
                                                         </td>
-                                                        <td class="text-center">{{$sup->email}}</td>
+                                                        <td class="text-center">{{isset($sup->email) ? $sup->email:''}}</td>
                                                         <td class="text-center">
                                                             <div class="dropdown" role="group" aria-label="...">
                                                                 <button type="button" class="btn btn-danger br2 btn-xs fs12"
-                                                                        data-roleid={{$sup->id}} data-sup={{$sup->name}}
+                                                                        data-userid="{{isset($sup->id) ? $sup->id:''}}"
+                                                                        data-name="{{isset($sup->name) ? $sup->name:''}}"
+                                                                        data-roleid="{{isset($sup->roles[0]->id) ? $sup->roles[0]->id:''}}"
+                                                                        data-supervisorid="{{isset($sup->supervisedBy[0]->id) ? $sup->supervisedBy[0]->id:''}}"
+                                                                        data-role="{{isset($sup->roles[0]->role) ? $sup->roles[0]->role:''}}"
                                                                             data-toggle="modal" data-target="#delete">Delete</button>
                                                             </div>
                                                         </td>
@@ -81,9 +85,6 @@
                                                 <p>No supervisors to show</p>
                                             </div>
                                         @endif
-                                        <div class="row text-center">
-                                            {{$supervisor->links()}}
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -110,13 +111,21 @@
                     </button>
                 </div>
                 <div style="text-align: center" class="modal-body">
-                    {!! Form::open(['action' => ['EmployeeController@doDelete',isset($sup->id) ? $sup->id:'' ],'method' => 'POST','class' => 'form-horizontal','enctype'=>'multipart/form-data', 'id'=>"custom-form-wizard"]) !!}
+                    {!! Form::open(['action' => ['EmployeeController@doDeleteSup',isset($sup->id) ? $sup->id:'' ],'method' => 'POST','class' => 'form-horizontal','enctype'=>'multipart/form-data', 'id'=>"custom-form-wizard"]) !!}
 
-                    {{Form::hidden('id', isset($sup->id) ? $sup->id:'' ,['value' =>'','name' => 'id','id'=>'sup_id'])}}
-                    <h6>Are you sure you want to delete this ?<br><br>
-                        <input style="border: 0" type="text" disabled class="form-control text-center" id="supervisor">
-                    </h6>
+                    {{Form::hidden('id', isset($sup->id) ? $sup->id:'' ,['value' =>'','name' => 'id','id'=>'user_id'])}}
+                    {{Form::hidden('id', isset($sup->roles[0]->id) ? $sup->roles[0]->id:'' ,['value' =>'','name' => 'role_id','id'=>'role_id'])}}
+{{--                    {{Form::hidden('id', isset($sup->roles[0]->role) ? $sup->roles[0]->role:'' ,['value' =>'','name' => 'role_id','id'=>'role_id'])}}--}}
 
+                    <h6>Are you sure you want to delete this user as Supervisor ? </h6>
+                    <input style="border: 0" type="text" disabled class="form-control text-center" name="name" id="name"><br>
+                {{--    role
+                    <input style="border: 0" type="text" disabled class="form-control text-center" name="role" id="role">
+                    user_id
+                    <input style="border: 0" type="text" disabled class="form-control text-center" name="user_id" id="user_id">
+                    role_id
+                    <input style="border: 0" type="text" disabled class="form-control text-center" name="role_id" id="role_id">
+--}}
                     <div class="modal-footer text-center">
                         <button type="button" class="btn btn-success" data-dismiss="modal">Cancel</button> &nbsp;&nbsp;
                         <input class="btn btn-danger" type="submit" name="SUBMIT" value="Yes Delete" onclick="this.value='Deleting ..';this.disabled='disabled'; this.form.submit();" />
@@ -135,12 +144,24 @@
             console.log('modal opened')
 
             var button = $(event.relatedTarget)
-            var role_id = button.data('supid')
+            var user_id = button.data('userid')
+            var role_id = button.data('roleid')
+            var supervisor_id = button.data('supervisorid')
             var role = button.data('role')
+            var name = button.data('name')
             var modal = $(this)
 
-            modal.find('.modal-body #award_id').val(role_id);
+            modal.find('.modal-body #user_id').val(user_id);
+            modal.find('.modal-body #role_id').val(role_id);
+            modal.find('.modal-body #supervisor_id').val(supervisor_id);
             modal.find('.modal-body #role').val(role);
+            modal.find('.modal-body #name').val(name);
         })
+    </script>
+    <script>
+        // Basic example
+        $(document).ready(function() {
+            $('#example').DataTable();
+        } );
     </script>
 @endsection

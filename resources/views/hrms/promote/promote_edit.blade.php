@@ -46,7 +46,7 @@
                                                 <label class="col-md-3 control-label"> Employee Name </label>
                                                 <div class="col-md-6">
                                                     <select class="select2-single form-control select-primary"
-                                                            name="user_id" required>
+                                                            name="user_id" readonly required>
                                                         <option value="{{$user->id}}">{{$user->name}}</option>
                                                     </select>
                                                     <small class="text-danger">{{ $errors->first('user_id') }}</small>
@@ -56,15 +56,30 @@
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label"> Old Designation </label>
                                                 <div class="col-md-6">
-                                                    <input type="text" id="old_designation" value="{{$user->roles[0]->role}}"
-                                                           class="form-control" name="old_designation" readonly required>
+                                                    <?php
+                                                    if (isset($user->roles[0]->role)){
+
+                                                    if ($user->roles[0]->role != "Supervisor"){?>
+
+                                                        <input type="text" id="old_designation"
+                                                               value="{{$user->roles[0]->role ? $user->roles[0]->role:''}}"
+                                                               class="form-control" name="old_designation" readonly required>
+
+                                                    <?php  }else{    ?>
+                                                        <input type="text" id="old_designation"
+                                                               value="{{$user->roles[1]->role ? $user->roles[1]->role:''}}"
+                                                               class="form-control" name="old_designation" readonly required>
+{{--                                                    {{isset($emp->roles[1]->role) ? $emp->roles[1]->role:''}}--}}
+                                                    <?php }
+                                                    } ?>
+
                                                 </div>
                                             </div>
 
                                             <div class="form-group {{ $errors->has('new_designation') ? ' has-error' : '' }}">
                                                 <label class="col-md-3 control-label"> Select New Role </label>
                                                 <div class="col-md-6">
-                                                    <select class="select2-single form-control select-primary"
+                                                    <select class="selectpicker form-control"
                                                             name="new_designation" required>
                                                         <option value="" selected>Select New Role</option>
                                                         @foreach($roles as $role)

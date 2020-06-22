@@ -10,7 +10,7 @@
 {{--    <meta name="csrf_token" content="{{csrf_token()}}">--}}
 
 <!-- -------------- Fonts -------------- -->
-    <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700'>
+    <link rel='stylesheet' type='text/css' href='assets/font.css'>
 
     <!-- -------------- Icomoon -------------- -->
     <link rel="stylesheet" type="text/css" href="/assets/fonts/icomoon/icomoon.css">
@@ -20,7 +20,6 @@
     <link rel="stylesheet" type="text/css" href="/assets/js/plugins/magnific/magnific-popup.css">
 
     <!-- -------------- Plugins -------------- -->
-    <link rel="stylesheet" type="text/css" href="/assets/js/plugins/c3charts/c3.min.css">
 
     <!-- -------------- CSS - theme -------------- -->
     <link rel="stylesheet" type="text/css" href="/assets/skin/default_skin/css/theme.css">
@@ -53,12 +52,11 @@
 
 <!-- -------------- IE8 HTML5 support  -------------- -->
     <!--[if lt IE 9]>-->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-    <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
+    <script src="/assets/jquery.js"></script>
+    <script src="/assets/bootstrap3-typeahead.min.js"></script>
+    <script src="/assets/html5shiv.js"></script>
+    <script src="/assets/respond.min.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
 
 
 </head>
@@ -126,6 +124,7 @@
             </div>
         </div>
     </footer>
+
     <!-- -------------- /Page Footer -------------- -->
 
 </div>
@@ -135,6 +134,8 @@
 <!-- -------------- Scripts -------------- -->
 
 <!-- -------------- jQuery -------------- -->
+<script src="/js/jquery.printPage.js"></script>
+
 <script src="/assets/js/jquery/jquery_ui/jquery-ui.min.js"></script>
 
 
@@ -156,65 +157,40 @@
 
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-108812473-2"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-168809633-1"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-        dataLayer.push(arguments);
-    }
-
+    function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
-    gtag('config', 'UA-108812473-2');
+    gtag('config', 'UA-168809633-1');
 </script>
 
 
 <script src="/assets/js/pages/allcp_forms-elements.js"></script>
 
 @stack('scripts')
-
-</body>
-</html>
-
 {{--<script src="/assets/js/jquery/jquery-1.11.3.min.js"></script>--}}
-{{--<script src="/assets/js/jquery/jquery-2.2.4.min.js"></script>--}}
+{{--<script src="/assets/js/custom_form_wizard.js"></script>--}}
+</body>
+<script src="http://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
 
-<!--jquery for modal-->
-{{--    <script src="https://code.jquery.com/jquery-2.1.0.js" integrity="sha256-D6d1KSapXjq2tfZ6Ie9AYozkRHyB3fT2ys9mO2+4Wvc=" crossorigin="anonymous"></script>--}}
+<script src="/assets/dataTables.min.js"></script>
+<script src="/assets/dataTables.bootstrap4.min.js"></script>
 
-<!--/jquery for modal-->
+<script>
+    // Basic example
+    $(document).ready(function() {
+        $('#example').DataTable();
+    } );
+</script>
+{{--<script src="//cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>--}}
+<script>
+    CKEDITOR.replace( 'editor1' );
+</script>
 
-{{--
-<!---------    sweet alert---------->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
---}}
-
-{{--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />--}}
-
-<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/boostrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/boostrap.min.css"/>
--->
-
-
-<!-- -------------- HighCharts Plugin -------------- -->
-{{--
-<script src="/assets/js/plugins/highcharts/highcharts.js"></script>
-<script src="/assets/js/plugins/c3charts/d3.min.js"></script>
-<script src="/assets/js/plugins/c3charts/c3.min.js"></script>
---}}
-
-<!-- -------------- Simple Circles Plugin -------------- -->
-
-<!-- -------------- Maps JSs -------------- -->
-
-
-<!-- -------------- FullCalendar Plugin -------------- -->
-{{--<script src="/assets/js/plugins/fullcalendar/lib/moment.min.js"></script>
-<script src="/assets/js/plugins/fullcalendar/fullcalendar.min.js"></script>--}}
-
-<!-- -------------- Date/Month - Pickers -------------- -->
-{{--<script src="/assets/allcp/forms/js/jquery-ui-monthpicker.min.js"></script>--}}
-{{--<script src="/assets/allcp/forms/js/jquery-ui-datepicker.min.js"></script>--}}
-
+{{--    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">--}}
+{{--        <script src="https://code.jquery.com/jquery-3.3.1.js"></script>--}}
+{{--<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>--}}
+{{--<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>--}}
+</html>

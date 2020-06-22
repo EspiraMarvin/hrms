@@ -18,7 +18,7 @@
                     <li class="breadcrumb-link">
                         <a href=""> Awards </a>
                     </li>
-                    <li class="breadcrumb-current-item"> Awards Listings </li>
+                    <li class="breadcrumb-current-item"> Awardees Listings </li>
                 </ol>
             </div>
         </header>
@@ -36,13 +36,13 @@
                         <div class="box box-success">
                             <div class="panel">
                                 <div class="panel-heading">
-                                    <span class="panel-title hidden-xs"> Role Lists </span>
+                                    <span class="panel-title hidden-xs"> Awardees Lists </span>
                                 </div>
                                 <div class="panel-body pn">
                                     @include('inc.messages')
 
                                     <div class="table-responsive">
-                                        <table class="table allcp-form theme-warning tc-checkbox-1 fs13">
+                                        <table id="example" class="table allcp-form theme-warning tc-checkbox-1 fs13">
                                             <thead>
                                             <tr class="bg-light">
                                                 <th class="text-center">Id</th>
@@ -91,7 +91,7 @@
                                         </div>
                                         @endif
                                         <div class="row text-center">
-                                            {{$awards->links()}}
+{{--                                            {{$awards->links()}}--}}
                                         </div>
                                     </div>
                                 </div>

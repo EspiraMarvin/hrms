@@ -66,7 +66,7 @@
                                                                         Edit
                                                                     </button></a>
                                                                 <button type="button" class="btn btn-danger br2 btn-xs fs12"
-                                                                        data-dirid={{$dir->id}} data-name={{$dir->name}}
+                                                                        data-dirid="{{$dir->id}}" data-name="{{$dir->name}}"
                                                                             data-toggle="modal" data-target="#delete">Delete</button>
                                                             </div>
                                                         </td>

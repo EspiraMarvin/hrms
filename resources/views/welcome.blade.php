@@ -6,14 +6,14 @@
     <meta charset="utf-8">
     <title>ICTA - Human Resource Management System</title>
     <meta name="keywords" content=""/>
-    <meta name="description" content="Alliance - A Responsive HTML5 Admin UI Framework">
+{{--    <meta name="csrf-tokem" content="{{ csrf_token() }}">--}}
+    <meta name="description" content="HUMAN RESOURCE MANAGEMENT SYSTEM -ICT-AUTHORITY">
     <meta name="author" content="ThemeREX">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- -------------- Fonts -------------- -->
-    <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700'>
-    <link href='https://fonts.googleapis.com/css?family=Lato:400,300,300italic,400italic,700,700italic' rel='stylesheet'
-          type='text/css'>
+    <link rel='stylesheet' type='text/css' href='assets/font.css'>
+
 
     <!-- -------------- CSS - theme -------------- -->
     <link rel="stylesheet" type="text/css" href="assets/skin/default_skin/css/theme.css">
@@ -26,8 +26,6 @@
 
     <!-- -------------- IE8 HTML5 support  -------------- -->
     <!--[if lt IE 9]>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
 
@@ -63,20 +61,22 @@
 
                 <div class="panel mw320">
 
-                    {{--                                    <div class="card-header">{{ __('Login') }}</div>--}}
-
                     <div class="card-body animated zoomIn">
                         <form method="POST" action="{{ route('login') }}">
+{{--                        {!! Form::open(['action' => 'AuthController@doLogin','method' => 'POST','class' => 'form-horizontal','enctype'=>'multipart/form-data', 'id'=>"custom-form-wizard"]) !!}--}}
                             @csrf
-                            @include('inc.messages2')
-
-                            <div class="panel-body pn mv10 form {{ $errors->has('email') ? ' has-error' : '' }}">
+                            <div class="panel-body pn mv10">
+                                <div class="col-6">
+                                    @include('inc.messages')
+                                </div>
                                 <div class="section">
                                     <label for="email" class="field prepend-icon">
                                         <input type="text" name="email" id="email"
                                                class="gui-input @error('email') is-invalid @enderror" name="email"
                                                value="{{ old('email') }}" autocomplete="off" autofocus
                                                placeholder="Email Address ">
+                                        <small class="text-danger">{{ $errors->first('email') }}</small>
+
                                         <label for="email" class="field-icon">
                                             <i class="fa fa-user"></i>
                                         </label>
@@ -84,12 +84,14 @@
                                 </div>
                             </div>
 
-                            <div class="panel-body pn mv10 {{ $errors->has('password') ? ' has-error' : '' }}">
+                            <div class="panel-body pn mv10">
                                 <div class="section">
                                     <label for="password" class="field prepend-icon">
                                         <input type="password" name="password" id="password"
                                                class="gui-input @error('password') is-invalid @enderror" name="password"
                                                autocomplete="off" autofocus placeholder="Password">
+                                        <small class="text-danger">{{ $errors->first('password') }}</small>
+
                                         <label for="password" class="field-icon">
                                             <i class="fa fa-lock"></i>
                                         </label>
@@ -106,26 +108,22 @@
                                     </div>
                                 </div>
                                 <div style="float: right; margin-right: 20px">
-                                    <button type="submit" class="btn btn-primary">
-                                        {{ __('Login') }}
-                                    </button>
+{{--                                    <input class="btn btn-bordered btn-primary btn-block" type="submit" name="SUBMIT" value="Submit" onclick="this.value='Submitting ..';this.disabled='disabled'; this.form.submit();" />--}}
+                                    <button type="submit" class="btn btn-primary">Login</button>
                                 </div>
                             </div>
 
-                            {{--<div class="form-group row mb-0">
-                                <div class=" offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        {{ __('Login') }}
-                                    </button>
+                            <div class="form-group row mb-0">
 
-                                  --}}{{--  @if (Route::has('password.request'))
-                                        <a class="btn btn-link" href="{{ route('password.request') }}">
-                                            {{ __('Forgot Your Password?') }}
-                                        </a>
-                                    @endif--}}{{--
-                                </div>
-                            </div>--}}
+                                @if (Route::has('password.request'))
+                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                        {{ __('Forgot Your Password?') }}
+                                    </a>
+                                @endif
+                            </div>
+
                         </form>
+{{--                        {!! Form::close() !!}--}}
                     </div>
                 </div>
 
@@ -171,12 +169,13 @@
         // Init CanvasBG
         CanvasBG.init({
             Loc: {
-                x: window.innerWidth / 5,
+                x: window.innerWidth / 3,
                 y: window.innerHeight / 10
             }
         });
 
     });
+
 </script>
 
 <!-- -------------- /Scripts -------------- -->

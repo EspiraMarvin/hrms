@@ -58,11 +58,11 @@
                                                 </div>
                                             </div>
 
-                                            <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
+                                            <div class="form-group {{ $errors->has('department') ? ' has-error' : '' }}">
                                                 <label class="col-md-3 control-label"> Department Name </label>
                                                 <div class="col-md-6">
-                                                    {{Form::text('name', $department->name,['class' => 'select2-single form-control','placeholder'=>'Department','required'])}}
-                                                    <small class="text-danger">{{ $errors->first('name') }}</small>
+                                                    {{Form::text('department', $department->department,['class' => 'select2-single form-control','placeholder'=>'Department','required'])}}
+                                                    <small class="text-danger">{{ $errors->first('department') }}</small>
                                                 </div>
                                             </div>
 

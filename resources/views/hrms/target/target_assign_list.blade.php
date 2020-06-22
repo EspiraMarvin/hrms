@@ -18,7 +18,7 @@
                     <li class="breadcrumb-link">
                         <a href=""> Assigned Target </a>
                     </li>
-                    <li class="breadcrumb-current-item"> Target Assignment Listings</li>
+                    <li class="breadcrumb-current-item"> Supervisees Target Assignment List</li>
                 </ol>
             </div>
         </header>
@@ -35,13 +35,13 @@
                         <div class="box box-success">
                             <div class="panel">
                                 <div class="panel-heading">
-                                    <span class="panel-title hidden-xs"> Target Assignment Listings </span>
+                                    <span class="panel-title hidden-xs">  Supervisees Target Assignment List </span>
                                 </div>
                                 <div class="panel-body pn">
                                     @include('inc.messages')
 
                                     <div class="table-responsive">
-                                        <table class="table allcp-form theme-warning tc-checkbox-1 fs13">
+                                        <table id="example" class="table allcp-form theme-warning tc-checkbox-1 fs13">
                                             <thead>
                                             <tr class="bg-light">
                                                 <th class="text-center">Id</th>
@@ -59,7 +59,7 @@
                                                     <tr>
                                                         <td class="text-center">{{$i+=1}}</td>
                                                         <td class="text-center">{{$tar->user->name}}</td>
-                                                        <td class="text-center">{{$tar->targets}}</td>
+                                                        <td class="text-center">{!!$tar->targets!!}</td>
                                                         <td class="text-center">{{date_format(new DateTime($tar->assigned_date), 'd-m-Y')}}</td>
                                                         <td class="text-center">{{date_format(new DateTime($tar->review_date), 'd-m-Y')}}</td>
                                                         <td class="text-center">
@@ -70,8 +70,8 @@
                                                                         Edit
                                                                     </button></a>
                                                                 <button type="button" class="btn btn-danger br2 btn-xs fs12"
-                                                                        data-tarid={{$tar->id}} data-employee={{$tar->user->name}}
-                                                                            data-date={{$tar->assigned_date}}
+                                                                        data-tarid="{{$tar->id}}" data-employee="{{$tar->user->name}}"
+                                                                            data-date="{{$tar->assigned_date}}"
                                                                             data-toggle="modal" data-target="#delete">Delete</button>
                                                             </div>
                                                         </td>
@@ -87,7 +87,7 @@
                                     </div>
                                 </div>
                                 <div style="text-align: center">
-                                    {!! $target->links() !!}
+{{--                                    {!! $target->links() !!}--}}
                                 </div>
                             </div>
                         </div>
@@ -149,4 +149,5 @@
             modal.find('.modal-body #date').val(date);
         })
     </script>
+
 @endsection

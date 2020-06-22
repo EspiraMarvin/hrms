@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Employee;
 use App\Department;
 use App\Role;
+use App\Target;
 use App\User;
 use Illuminate\Http\Request;
 use App\Directorate;
@@ -20,12 +21,6 @@ class DepartmentsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
 
     public function depAdd()
     {
@@ -44,6 +39,19 @@ class DepartmentsController extends Controller
         return view('hrms.directorate.department_list')->with('department', $department);
     }
 
+    public function showMemberTargets($id)
+    {
+        $employee = User::find($id);
+
+
+//      Get user targets
+        $targets = Target::wherehas('user', function ($q) use ($employee) {
+            $q->where('user_id', $employee->id);
+        })->get();
+
+        return view('hrms.directorate.memberTarget',compact('targets',$targets,'employee',$employee));
+
+    }
     public function index()
     {
         //
@@ -67,20 +75,19 @@ class DepartmentsController extends Controller
      */
     public function store(Request $request)
     {
+
         $this->validate($request,
             [
-                'directorate' => 'required',
-                'name' => 'required|unique:departments',
+                'directorate_id' => 'required',
+                'department' => 'required|unique:departments',
                 'description' => 'required',
             ]);
 
-        $department = new Department;
-        $department->directorate = $request->input('directorate');
-        $department->name = $request->input('name');
-        $department->description = $request->input('description');
-        $department->save();
-
-//        dd($request);
+        $dep = new Department;
+        $dep->directorate_id = $request->input('directorate_id');
+        $dep->department = $request->input('department');
+        $dep->description = $request->input('description');
+        $dep->save();
 
         return redirect('/department_add')->with('success', 'Department Added');
     }
@@ -93,20 +100,11 @@ class DepartmentsController extends Controller
      */
     public function show($id)
     {
-
         $department = Department::find($id);
-        $directorate = Directorate::all();
-//        $totalDep = Employee::where('department', 'Dlp')->orderBy('id','desc')->get();
-        $totalDep = Employee::where('department', $department)->orderBy('id','desc')->get();
-//        $co = count($totalDep);
+        $members = Department::find($id)->employees;
+        $count= Department::find($id)->employees->count();
 
-//        dd($co);
-
-//        $totalDep = User::where('department', $department)->orderBy('id','desc')->paginate(15);
-
-
-        return view('hrms.directorate.department_show', compact('department', 'directorate','totalDep'));
-
+        return view('hrms.directorate.department_show', compact('department','members',$members,'count',$count));
     }
 
     /**
@@ -132,34 +130,22 @@ class DepartmentsController extends Controller
     {
         $this->validate($request,
             [
-                'directorate' => 'required',
-                'name' => 'required',
+                'directorate_id' => 'required',
+                'department' => 'required',
                 'description' => 'required',
             ]);
 
         $department = Department::find($id);
-        $department->directorate = $request->input('directorate');
-        $department->name = $request->input('name');
+        $department->directorate_id = $request->input('directorate_id');
+        $department->department = $request->input('department');
         $department->description = $request->input('description');
         $department->save();
 
         return redirect('/department_list')->with('success', 'Department  Information Updated');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-
-    }
-
     public function doDelete(Request $request)
     {
-        dd($request);
         $department = Department::findorFail($request->id);
         $department->delete();
 

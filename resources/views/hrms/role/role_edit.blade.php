@@ -48,6 +48,27 @@
                                                 </div>
                                             </div>
 
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label"> Job Group </label>
+                                                <div class="col-md-6">
+                                                <select class="selectpicker form-control" name="job_group">
+                                                    <option value="{{$role->job_group}}" name="employment_type">{{$role->job_group}}</option>
+                                                    <option value="ICTA 1">ICTA 1</option>
+                                                    <option value="ICTA 2">ICTA 2</option>
+                                                    <option value="ICTA 3">ICTA 3</option>
+                                                    <option value="ICTA 4">ICTA 4</option>
+                                                    <option value="ICTA 5">ICTA 5</option>
+                                                    <option value="ICTA 6">ICTA 6</option>
+                                                    <option value="ICTA 7">ICTA 7</option>
+                                                    <option value="ICTA 8">ICTA 8</option>
+                                                    <option value="ICTA 9">ICTA 9</option>
+                                                    <option value="ICTA 10">ICTA 10</option>
+{{--                                                    <option value="ICTA 11">ICTA 11</option>--}}
+{{--                                                    <option value="ICTA 12">ICTA 12</option>--}}
+                                                </select>
+                                                </div>
+                                            </div>
+
                                             <div class="form-group {{ $errors->has('description') ? ' has-error' : '' }}">
                                                 <label class="col-md-3 control-label"> Description </label>
                                                 <div class="col-md-6">

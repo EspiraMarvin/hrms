@@ -4,18 +4,15 @@ namespace App\Http\Controllers;
 
 use App\ApplyLeave;
 use App\Employee;
-use App\Role;
 use App\User;
-use http\Env\Url;
 use Illuminate\Http\Request;
 use App\Leave;
-//use DB;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use DateTime;
 use Carbon\Carbon;
-use function Sodium\compare;
+use App\Mail\LeaveApproval;
+use Illuminate\Support\Facades\Mail;
 
 //use mysql_xdevapi\RowResult;
 
@@ -28,18 +25,17 @@ class LeavesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
     public function applyLeave()
     {
+
         $employee = Employee::findorFail(Auth::user()->id);
-        if ($employee->gender === 'Female') {
+        $getSupervisor_id = $employee->user->supervisedBy[0]->id;
+
+        if ($employee->gender === 'Female' || 'female') {
             $leave = Leave::all()->except(5);
 
-            return view('hrms.leave.leave_apply', compact('leave', $leave));
+            return view('hrms.leave.leave_apply', compact('leave', $leave,'getSupervisor_id',$getSupervisor_id));
         }else
         {
             $leave = Leave::all()->except(4);
@@ -50,44 +46,57 @@ class LeavesController extends Controller
 
     public function approveLeaveList()
     {
+        //display leaves applied by the supervisees to the supervisor
+        $approv = ApplyLeave::whereHas('user', function ($q) {
+            $q->whereHas('supervisedBy', function ($qq){
+                $qq->where('supervisor_id',Auth::user()->id
+                );
+            });
+        })->with('user')->get();
 
+        //get loggedIn user ID /which is the supervisor_id
+        $supervisorLoggedInId = $user = Auth::user()->id;
+
+        foreach ($approv as $app) {
+
+            $sup1 = $app->user->supervisor[0]->id;
+            $sup2 = $app->user->supervisor[1]->id;
+            if ($sup1 === $supervisorLoggedInId) {
+
+                $totalLeaves =  ApplyLeave::whereHas('user', function ($q) {
+                    $q->whereHas('supervisedBy', function ($qq){
+                        $qq->where('supervisor_id',Auth::user()->id);
+                    });
+                })->with('user')
+                    ->where('status1', 0)
+                    ->count();
+
+            }elseif($sup2 === $supervisorLoggedInId){
+                $totalLeaves =  ApplyLeave::whereHas('user', function ($q) {
+                    $q->whereHas('supervisedBy', function ($qq){
+                        $qq->where('supervisor_id',Auth::user()->id);
+                    });
+                })->with('user')
+                    ->where('status2', 0)
+                    ->count();
+            }
+        }
+
+        //display leaves applied by the supervisees to the supervisor
         $approve = ApplyLeave::whereHas('user', function ($q) {
             $q->whereHas('supervisedBy', function ($qq){
                 $qq->where('supervisor_id',Auth::user()->id);
             });
         })->with('user')->orderBy('id','desc')->paginate(10);
 
-        $totalLeaves = ApplyLeave::where('status',0)->get();
 
         return view('hrms.leave.approve_leave',compact('approve', $approve,'totalLeaves',$totalLeaves));
-    }
-
-    public function statusPending()
-    {
-
-        $status = ApplyLeave::where('status', 0)->orderBy('id','desc')->paginate(15);
-
-        return view('hrms.leave.leave_pending')->with('status',$status);
-    }
-
-    public function statusApprove()
-    {
-        $status = ApplyLeave::where('status', 1)->orderBy('id','desc')->paginate(15);
-
-        return view('hrms.leave.leave_approved')->with('status',$status);
-    }
-
-    public function statusDeny()
-    {
-        $status = ApplyLeave::where('status', 2)->orderBy('id','desc')->paginate(15);
-
-        return view('hrms.leave.leave_deny')->with('status',$status);
     }
 
     public function myLeaveList()
     {
 
-        $apply = ApplyLeave::where('user_id', \Auth::user()->id)->orderBy('id', 'desc')->paginate(15);
+        $apply = ApplyLeave::where('user_id', \Auth::user()->id)->orderBy('id', 'desc')->get();
 
         return view('hrms.leave.my_leave_list')->with('apply', $apply);
     }
@@ -108,25 +117,18 @@ class LeavesController extends Controller
     {
 
         $totalLeave = ApplyLeave::count();
-        $apply = ApplyLeave::orderBy('id', 'desc')->paginate(10);
+        $apply = ApplyLeave::orderBy('id', 'desc')->get();
 
         return view('hrms.leave.total_leave_list', compact(['apply', $apply,'totalLeave',$totalLeave]));
     }
 
     public function LeaveTypeAdd()
     {
-
         $leaveType = Leave::all();
 
         return view('hrms.leave.leave_apply', compact(['leaveType', $leaveType]));
     }
 
-    public function index()
-    {
-        $apply = ApplyLeave::orderBy('id', 'desc')->paginate(10);
-
-        return view('hrms.leave.total_leave_list')->with('employee', $apply);
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -145,11 +147,27 @@ class LeavesController extends Controller
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      * @throws \Exception
      */
+  /*  public function sendLeaveFeedback()
+    {
+        $applied = ApplyLeave::whereHas('user', function ($q) {
+            $q->where('user_id', Auth::user()->id);
+        })->latest('created_at')->first();
 
+       dd($applied);
+//        $userMail = $employee->user->email;
+
+        Mail::to($userMail)->send(new LeaveApproval());
+
+    }*/
 
     public function apply(Request $request)
     {
+
 //        dd($request);
+        $employee = Employee::findorFail(Auth::user()->id);
+        $getSupervisorOne = $employee->user->supervisedBy[0]->id;
+        $getSupervisorTwo = $employee->user->supervisedBy[1]->id;
+
         $this->validate($request,
             [
                 'leave_type_id' => 'required',
@@ -161,98 +179,195 @@ class LeavesController extends Controller
                 'reason' => 'required',
             ]);
 
-        $days = explode('days leave', $request->number_of_days);
-        if (sizeof($days) < 2) {
-            $days = explode('day leave', $request->number_of_days);
+        $date1 = Carbon::createMidnightDate($request->date_from);
+        $date2 = Carbon::createMidnightDate($request->date_to);
+
+        $diffInDays = $date1->diffInDays($date2); //diff in days
+        $noOfWeekendDays = $date1->diffInWeekendDays($date2); //no of weekends in the between the dates
+
+        $dayss = $diffInDays - $noOfWeekendDays;
+
+        //check if user applies a past date
+        $today = Carbon::today();
+        $date = Carbon::parse($today, 'UTC');
+
+        if ($date > $request->date_from){
+
+            return redirect('/leave_apply')->with('error', 'You selected a past date !');
         }
-        $dayss = $this->wordsToNumber($days[0]);
+        if ($date < $request->date_to){
 
-        $lea = $request->input('leave_type_id');
+            $year = date_format(new DateTime($request->date_to), 'Y');
+            if ($year !=  date('Y')){
 
-                if ($lea === '1') {
+                return redirect('/leave_apply')->with('error', 'Annual Leave is Applied Only to this Year !');
+            }
 
-                     if ($dayss > 30) {
-                        return redirect('/leave_apply')->with('success', 'Annual leaves Should NOT exceed 30 days');
-                    }else{
+        }
 
-                         $check = ApplyLeave::where([
-                             'user_id' => auth()->user()->id,
-                             'leave_type_id' => $request->leave_type_id,
-                             'status' => '1'
-                         ])->get();
+        if($dayss === 0){
 
-                         $sumDaysWent = ApplyLeave::where([
-                             'user_id' => auth()->user()->id,
-                             'leave_type_id' => $request->leave_type_id,
-                             'status' => '1'
-                         ])
-                             ->sum('number_of_days');
+            return redirect('/leave_apply')->with('error', 'Leave days cannot be zero !');
+        }
 
-                         foreach ($check as $c)
-                         {
+        //check if user has already applied any type of leave that is still pending
+        $applied = ApplyLeave::whereHas('user', function ($q) {
+            $q->where('user_id', Auth::user()->id);
+        })->latest('created_at')->first();
 
-                             $year = date_format(new DateTime($c->created_at), 'Y');
-                             if ($year === date('Y')){
+            if(($applied != null ) && ($applied->status1 === 0) && ($applied->status2 === 0)
+                || $applied != null && ($applied->status1 === 1) && ($applied->status2 === 0)
+                || $applied != null && ($applied->status1 === 0) && ($applied->status2 === 1)){
 
-                                 if ($sumDaysWent <  31){
-                                     $defaultAnnualDays = 30;
-                                     $remDays = $defaultAnnualDays - $sumDaysWent;
+                return redirect('/leave_apply')->with('error', 'Leave already applied Wait Approval !');
 
-                                     if ($remDays < $dayss){
+            }elseif ($request->leave_type_id === '1') {
 
-                                         return redirect('/leave_apply')->with('success', 'You Completed your Annual Leave for the Year');
-                                     }
-                                 }
-                             }
-                         }
+                // number of approved annual leaves in the database
+                $check = ApplyLeave::where([
+                    'user_id' => auth()->user()->id,
+                    'leave_type_id' => $request->leave_type_id,
+                    'status1' => '1',
+                    'status2' => '1'
+                ])->get();
 
-                     }
-                } elseif ($lea === '4') {
 
-                    if ($dayss > 90) {
-                        return redirect('/leave_apply')->with('success', 'Maternity leaves Should NOT exceed 90 days');
+//          empty object because there will be no pending leave as the as user cannot
+//           apply leave if he's  not yet approved/disapprove by his supervisor
+
+                // sum of the number of approved annual leaves the user went in the then current year
+                $sumDaysWent = ApplyLeave::where([
+                    'user_id' => auth()->user()->id,
+                    'leave_type_id' => $request->leave_type_id,
+                    'status1' => '1',
+                    'status2' => '1',
+                ])->sum('number_of_days');
+
+                foreach ($check as $c)
+                {
+                    // check job group
+                    $jobGroup1 = $c->user->roles[0]->job_group;
+                    $jobGroup2 = $c->user->roles[1]->job_group;
+
+                    if ($jobGroup1 != 'System'){
+                        $jobGroup = $jobGroup1;
+                    }elseif($jobGroup1 === 'System' || $jobGroup1 === ''){
+                        $jobGroup = $jobGroup2;
                     }
-                } elseif ($lea === '5') {
 
-                    if ($dayss > 10) {
-                        return redirect('/leave_apply')->with('success', 'Paternity leaves Should NOT exceed 10 days');
+                    //get format of the year in years(eg 2020) when the user applied for the leave
+                    $year = date_format(new DateTime($c->created_at), 'Y');
+
+//                    dd($year);
+                    //check if user applied leave the same year as the then current year.
+                    if ($year === date('Y')){
+
+                        // user job group to determine user no of days for annual leave
+                        if ( $jobGroup === "ICTA 1") {
+
+                            if ($year === date('Y')) {
+                                if ($sumDaysWent <=  45){
+
+                                    $defaultAnnualDays = 45;
+
+                                    $remDays = $defaultAnnualDays - $sumDaysWent;
+
+                                    if ($remDays < $dayss){
+
+                                        return redirect('/leave_apply')->with('error', 'You are exceeding your Annual Leave for the Year !');
+                                    }
+                                }else {
+
+                                    return redirect('/leave_apply')->with('error', 'Apply annual leave using current Year Dates Or your annual leave may have expired !');
+                                }
+
+                            }
+                        }elseif ($jobGroup != "ICTA 1") {
+
+                            if ($sumDaysWent <= 30) {
+
+                                $defaultAnnualDays = 30;
+
+                                $remDays = $defaultAnnualDays - $sumDaysWent;
+
+                                if ($remDays < $dayss) {
+
+                                    return redirect('/leave_apply')->with('error', 'You are exceeding your Annual Leave for the Year !');
+                                }
+                            } else {
+
+                                return redirect('/leave_apply')->with('error', 'Apply annual leave using current Year Dates Or your annual leave may have expired !');
+                            }
+                        }
+
+                    }elseif($year != date('Y')){
+
+                        return redirect('/leave_apply')->with('error', 'Apply annual leave using current Year Dates !');
+
                     }
                 }
+            } elseif ($request->leave_type_id === '4') {
+                if ($dayss > 90) {
+                    return redirect('/leave_apply')->with('error', 'Maternity leaves Should NOT exceed 90 days');
+                }
+            } elseif ($request->leave_type_id === '5') {
+                if ($dayss > 10) {
 
+                    return redirect('/leave_apply')->with('error', 'Paternity leaves Should NOT exceed 10 days');
+                }
+            }
 
-                    $apply = new ApplyLeave();
-                    $apply->user_id = auth()->user()->id;
-                    $apply->employee_name = auth()->user()->name;
-                    $apply->leave_type_id = $lea;
-                    $apply->date_from = $request->input('date_from');
-                    $apply->date_to = $request->input('date_to');
-                    $apply->time_from = $request->input('time_from');
-                    $apply->time_to = $request->input('time_to');
-                    $apply->number_of_days = $dayss;
-                    $apply->reason = $request->input('reason');
-                    $apply->status = '0';
-                    $apply->save();
+//            dd($employee->user->email);
+            $apply = new ApplyLeave();
+            $apply->user_id = auth()->user()->id;
+            $apply->employee_name = auth()->user()->name;
+            $apply->leave_type_id = $request->leave_type_id;
+            $apply->date_from = $request->input('date_from');
+            $apply->date_to = $request->input('date_to');
+            $apply->time_from = $request->input('time_from');
+            $apply->time_to = $request->input('time_to');
+            $apply->number_of_days = $dayss;
+            $apply->supervisor1_id = $getSupervisorOne;
+            $apply->supervisor2_id = $getSupervisorTwo;
+            $apply->reason = $request->input('reason');
+            $apply->save();
 
 
         return redirect('/leave_apply')->with('success', 'Leave Application Successful');
-
     }
 
 
     public function approveLeave(Request $request)
     {
+        //display leaves applied by the supervisees to the supervisor
+        $approve = ApplyLeave::whereHas('user', function ($q) {
+            $q->whereHas('supervisedBy', function ($qq){
+                $qq->where('supervisor_id',Auth::user()->id, function ($qqq){
+                    $qqq->where(['status1', 0, 'status2', 0]);
+                });
+            });
+        })->with('user')->get();
 
-        $this->validate($request,
-            [
-                'status' => 'required|integer|gt:0',
-            ]);
+        foreach ($approve as $app){
 
-//        dd($request);
-        $approve = ApplyLeave::findorFail($request->id);
-        $approve->remarks = $request->input('remarks');
-        $approve->status = $request->input('status');
-        $approve->save();
+            $sup1 = $app->user->supervisor[0]->id;
+            $sup2 = $app->user->supervisor[1]->id;
+            $supervisorLoggedInId =  $user = Auth::user()->id;
 
+            if ($sup1 === $supervisorLoggedInId){
+                $approve = ApplyLeave::findorFail($request->id);
+                $approve->remarks = $request->input('remarks');
+                $approve->status1 = $request->status;
+                $approve->save();
+            }elseif($sup2 === $supervisorLoggedInId){
+
+                $approve = ApplyLeave::findorFail($request->id);
+                $approve->remarks = $request->input('remarks');
+                $approve->status2 = $request->status;
+                $approve->save();
+            }
+
+        }
         return redirect('/approve_leave')->with('success', 'Leave Approved Successfully');
     }
 
@@ -291,9 +406,9 @@ class LeavesController extends Controller
      */
     public function edit($id)
     {
-        /*$leaveType = Leave::find($id);
+        $leaveType = Leave::find($id);
 
-        return view('hrms.leave.leave_type_edit')->with('leaveType', $leaveType);*/
+        return view('hrms.leave.leave_type_edit')->with('leaveType', $leaveType);
     }
 
     /**
@@ -334,10 +449,8 @@ class LeavesController extends Controller
 
 
 //  function to search database
-
     public function search()
     {
-
         $userId = User::whereHas('supervisedBy', function ($q){
             $q->where('supervisor_id',Auth::user()->id);
         })->pluck('id');
@@ -362,95 +475,8 @@ class LeavesController extends Controller
             return view('hrms.leave.leave_search', compact('data', $data));
 
         } else {
-            return redirect('/total_leave_list')->with('error', 'Search Input Empty!');
+            return redirect('/approve_leave')->with('warning', 'Search Input Empty!');
         }
-    }
-
-    function wordsToNumber($data)
-    {
-        // Replace all number words with an equivalent numeric value
-        $data = strtr(
-            $data,
-            array(
-                'zero' => '0',
-                'a' => '1',
-                'one' => '1',
-                'two' => '2',
-                'three' => '3',
-                'four' => '4',
-                'five' => '5',
-                'six' => '6',
-                'seven' => '7',
-                'eight' => '8',
-                'nine' => '9',
-                'ten' => '10',
-                'eleven' => '11',
-                'twelve' => '12',
-                'thirteen' => '13',
-                'fourteen' => '14',
-                'fifteen' => '15',
-                'sixteen' => '16',
-                'seventeen' => '17',
-                'eighteen' => '18',
-                'nineteen' => '19',
-                'twenty' => '20',
-                'thirty' => '30',
-                'forty' => '40',
-                'fourty' => '40', // common misspelling
-                'fifty' => '50',
-                'sixty' => '60',
-                'seventy' => '70',
-                'eighty' => '80',
-                'ninety' => '90',
-                'hundred' => '100',
-                'thousand' => '1000',
-                'million' => '1000000',
-                'billion' => '1000000000',
-                'and' => '',
-            )
-        );
-
-        // Coerce all tokens to numbers
-        $parts = array_map(
-            function ($val) {
-                return floatval($val);
-            },
-            preg_split('/[\s-]+/', $data)
-        );
-
-        $stack = new \SplStack(); //Current work stack
-        $sum = 0; // Running total
-        $last = null;
-
-        foreach ($parts as $part) {
-            if (!$stack->isEmpty()) {
-                // We're part way through a phrase
-                if ($stack->top() > $part) {
-                    // Decreasing step, e.g. from hundreds to ones
-                    if ($last >= 1000) {
-                        // If we drop from more than 1000 then we've finished the phrase
-                        $sum += $stack->pop();
-                        // This is the first element of a new phrase
-                        $stack->push($part);
-                    } else {
-                        // Drop down from less than 1000, just addition
-                        // e.g. "seventy one" -> "70 1" -> "70 + 1"
-                        $stack->push($stack->pop() + $part);
-                    }
-                } else {
-                    // Increasing step, e.g ones to hundreds
-                    $stack->push($stack->pop() * $part);
-                }
-            } else {
-                // This is the first element of a new phrase
-                $stack->push($part);
-            }
-
-            // Store the last processed part
-            $last = $part;
-        }
-
-        return $sum + $stack->pop();
     }
 
 }

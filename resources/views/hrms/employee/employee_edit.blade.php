@@ -40,7 +40,7 @@
             <!-- -------------- Spec Form -------------- -->
             <div class="allcp-form">
 
-                {!! Form::open(['action' => ['EmployeeController@update',$employee->id],'method' => 'POST','enctype'=>'multipart/form-data', 'id'=>"custom-form-wizard"]) !!}
+                {!! Form::open(['action' => ['EmployeeController@update',$employee->id],'method' => 'POST','enctype'=>'multipart/form-data','id'=>'live_form']) !!}
                 <div class="wizard steps-bg steps-left">
 
                     <!-- -------------- step 1 -------------- -->
@@ -62,7 +62,7 @@
                             <div class="section">
                                 <label class="field-icon"><i class="fa fa-barcode"></i></label>&nbsp;
                                 {{Form::label('code','Employee Code/ID',['class'=>'mb20 mt40','style'=>'color:black;font-weight:bold'])}}
-                                {{Form::text('code', $employee->code,['class' => 'gui-input fs13','placeholder'=>'Employee Code'])}}
+                                {{Form::text('code', isset($employee->code) ? $employee->code:'',['class' => 'gui-input fs13','placeholder'=>'Employee Code'])}}
                             </div>
                         </div>
 
@@ -70,21 +70,15 @@
                             <div class="section">
                                 <label class="field-icon"><i class="fa fa-user-secret"></i></label>
                                 {{Form::label('pf_number','Personal File Number',['class'=>'mb20 mt40','style'=>'color:black;font-weight:bold'])}}
-                                {{Form::text('pf_number', $employee->pf_number,['class' => 'gui-input fs13','placeholder'=>'Personal File Number'])}}
+                                {{Form::text('pf_number', isset($employee->pf_number) ? $employee->pf_number:'',['class' => 'gui-input fs13','placeholder'=>'Personal File Number'])}}
                             </div>
                         </div>
 
                         <div class="section">
                             <label class="field-icon"><i class="fa fa-user"></i></label>&nbsp;
                             {{Form::label('Name','Employee Name',['class'=>'mb20 mt40','style'=>'color:black;font-weight:bold'])}}
-                            {{Form::text('name', $employee->name,['class' => 'gui-input fs13','placeholder'=>'Employee Name'])}}
+                            {{Form::text('name', isset($employee->name) ? $employee->name:'',['class' => 'gui-input fs13','placeholder'=>'Employee Name'])}}
                         </div>
-
-           {{--             <div class="section">
-                            <label class="field-icon"><i class="fa fa-envelope"></i></label>&nbsp;
-                            {{Form::label('email','Email Address',['class'=>'mb20 mt40','style'=>'color:black;font-weight:bold'])}}
-                            {{Form::text('email', $employee->email,['class' => 'gui-input fs13','placeholder'=>'Email Address'])}}
-                        </div>--}}
 
                         <div class="section">
                             {{Form::label('status','Employee Status',['class'=>'mb20 mt40','style'=>'color:black;font-weight:bold'])}}
@@ -118,7 +112,7 @@
                             <label class="field-icon"><i class="fa fa-calendar"></i></label>&nbsp;
                             {{Form::label('date_of_birth','Date of Birth',['class'=>'mb20 mt40','style'=>'color:black;font-weight:bold'])}}
                             <br>
-                            {{Form::date('date_of_birth', $employee->date_of_birth,['class' => 'gui-input fs13','placeholder'=>'Date of Joining','id'=>'datepicker1'])}}
+                            {{Form::date('date_of_birth', isset($employee->date_of_birth) ? $employee->date_of_birth:'',['class' => 'gui-input fs13','placeholder'=>'Date of Joining','id'=>'datepicker1'])}}
                         </div>
 
 
@@ -127,7 +121,7 @@
                                 <label class="field-icon"><i class="fa fa-mobile-phone"></i></label>&nbsp;
                                 {{Form::label('phone_number','Mobile Number',['class'=>'mb20 mt40','style'=>'color:black;font-weight:bold'])}}
                                 <br>
-                                {{Form::number('phone_number', $employee->phone_number,['class' => 'gui-input fs13','placeholder'=>'Mobile Number'])}}
+                                {{Form::number('phone_number', isset($employee->phone_number) ? $employee->phone_number:'',['class' => 'gui-input fs13','placeholder'=>'Mobile Number'])}}
                             </div>
                         </div>
 
@@ -136,7 +130,7 @@
                                 <label class="field-icon"><i class="fa fa-graduation-cap"></i></label>&nbsp;
                                 {{Form::label('qualification','Qualification',['class'=>'mb20 mt40','style'=>'color:black;font-weight:bold'])}}
                                 <br>
-                                {{Form::text('qualification', $employee->qualification,['class' => 'gui-input fs13','placeholder'=>'qualification i.e  B.Sc, B.Tech, BCA, MBA, MCA, BBA, BBA+MBA, BCA+MCA, Engineering(B.Tech), Engineering(B.Tech+M.Tech)'])}}
+                                {{Form::textarea('qualification', $employee->qualification,['class' => 'select2-single form-control','rows'=>'7','id'=>'editor1','required'])}}
                             </div>
                         </div>
 
@@ -145,25 +139,16 @@
                                 <label class="field-icon"><i class="fa fa-mobile-phone"></i></label>&nbsp;
                                 {{Form::label('emergency_number','Emergency Number',['class'=>'mb20 mt40','style'=>'color:black;font-weight:bold'])}}
                                 <br>
-                                {{Form::number('emergency_number', $employee->emergency_number,['class' => 'gui-input fs13','placeholder'=>'Emergency Number'])}}
+                                {{Form::number('emergency_number', isset($employee->emergency_number) ? $employee->emergency_number:'',['class' => 'gui-input fs13','placeholder'=>'Emergency Number'])}}
                             </div>
                         </div>
 
                         <div class="section">
                             <div class="form-group">
                                 <label class="field-icon"><i class=""></i></label>&nbsp;
-                                {{Form::label('kra_pin','kra_pin',['class'=>'mb20 mt40','style'=>'color:black;font-weight:bold'])}}
+                                {{Form::label('kin_name','Kin`s Name',['class'=>'mb20 mt40','style'=>'color:black;font-weight:bold'])}}
                                 <br>
-                                {{Form::text('kra_pin', $employee->kra_pin,['class' => 'gui-input fs13','placeholder'=>'KRA Pin Number'])}}
-                            </div>
-                        </div>
-
-                        <div class="section">
-                            <div class="form-group">
-                                <label class="field-icon"><i class=""></i></label>&nbsp;
-                                {{Form::label('father_name','Father`s Name',['class'=>'mb20 mt40','style'=>'color:black;font-weight:bold'])}}
-                                <br>
-                                {{Form::text('father_name', $employee->father_name,['class' => 'gui-input fs13','placeholder'=>'Father`s Name'])}}
+                                {{Form::text('kin_name', isset($employee->kin_name) ? $employee->kin_name: '',['class' => 'gui-input fs13','placeholder'=>'Kin`s Name'])}}
                             </div>
                         </div>
 
@@ -172,7 +157,7 @@
                                 <label class="field-icon"><i class="fa fa-map-marker"></i></label>&nbsp;
                                 {{Form::label('current_address','Current Address',['class'=>'mb20 mt40','style'=>'color:black;font-weight:bold'])}}
                                 <br>
-                                {{Form::text('current_address', $employee->current_address,['class' => 'gui-input fs13','placeholder'=>'Current Address'])}}
+                                {{Form::text('current_address', isset($employee->current_address) ? $employee->current_address:'',['class' => 'gui-input fs13','placeholder'=>'Current Address'])}}
                             </div>
                         </div>
 
@@ -181,7 +166,7 @@
                                 <label class="field-icon"><i class="fa fa-map-marker"></i></label>&nbsp;
                                 {{Form::label('permanent_address','Permanent Address',['class'=>'mb20 mt40','style'=>'color:black;font-weight:bold'])}}
                                 <br>
-                                {{Form::text('permanent_address', $employee->permanent_address,['class' => 'gui-input fs13','placeholder'=>' Permanent Address'])}}
+                                {{Form::text('permanent_address', isset($employee->permanent_address) ? $employee->permanent_address:'',['class' => 'gui-input fs13','placeholder'=>' Permanent Address'])}}
                             </div>
 {{--                            <small class="text-danger">{{ $errors->first('permanent_address') }}</small>--}}
                         </div>
@@ -199,77 +184,57 @@
                             <div class="form-group">
                                 <label class="field-icon"><i class=""></i></label>&nbsp;
                                 {{Form::label('department','Department',['class'=>'mb20 mt40','style'=>'color:black;font-weight:bold'])}}
-                                <select id="done" class="selectpicker form-control" name="department" id="department">
-                                    @if(empty($employee->department))
+                                <select id="done" class="selectpicker form-control" name="department_id" id="department_id">
+                                    @if(isset($employee->roles[0]->role) && $employee->roles[0]->role === 'CEO' || isset($employee->roles[1]->role) && $employee->roles[1]->role === 'CEO')
+                                        <option value="">NULL</option>
+                                    @endif
+                                    @if(empty($employee->department->department))
                                         <option value="">Select Department</option>
                                     @else
-                                        <option value="{{$employee->department}}">{{$employee->department}}</option>
+                                        <option value="{{$employee->department->id}}">{{$employee->department->department}}</option>
                                     @endif
                                     @if(!empty($department) && count($department) > 0)
                                         @foreach($department as $dep)
-                                            <option value="{{$dep->name}}">{{$dep->name}}</option>
+                                            <option value="{{$dep->id}}">{{$dep->department}}</option>
                                         @endforeach
                                     @endif
                                 </select>
-{{--                                <small class="text-danger">{{ $errors->first('department') }}</small>--}}
                             </div>
                         </div>
-
-                       {{-- <div class="section">
-                            <label for="input002"><h6 class="mb20 mt40"> Role </h6></label>
-                            <select class="select2-single form-control" name="role_id" id="role_id">
-                                @if(empty($employee->roles[0]->role))
-                                    <option value="">Select Role</option>
-                                @else
-                                    <option value="{{$employee->roles[0]->id}}">{{$employee->roles[0]->role}}</option>
-                                @endif
-                                @if(!empty($roles) && count($roles) > 0)
-                                    @foreach($roles as $role)
-                                        <option value="{{$role->id}}">{{$role->role}}</option>
-                                    @endforeach
-                                @endif
-                            </select>
-                        </div>
---}}
 
                         <div class="section">
                             <div class="form-group">
                                 <label class="field-icon"><i class=""></i></label>&nbsp;
                                 {{Form::label('role','Select Role(s)',['class'=>'mb20 mt40','style'=>'color:black;font-weight:bold'])}}
                                 <select id="done" class="selectpicker form-control" multiple data-done-button="true"
-                                        title="{{$employee->roles[0]->role}} &nbsp;
-                                    @if(isset($employee->roles[1]->role) && !empty($employee->roles[1]->role) ? $employee->roles[1]->role:''){{$employee->roles[1]->role}}@endif &nbsp;
-                                    @if(isset($employee->roles[2]->role) && !empty($employee->roles[2]->role) ? $employee->roles[2]->role:''){{$employee->roles[2]->role}}@endif
-                                          " name="roles_id[]" required>
-                                    @if(empty($employee->roles[0]->role))
-                                        <option value="">Select Role</option>
-                                    @else
-                                        <option value="{{$employee->roles[0]->id}}">{{$employee->roles[0]->role}}</option>
-                                    @endif
-                                    @if(!empty($roles) && count($roles) > 0)
+                                        name="roles_id[]"   title="{{isset($employee->roles[0]->role) ? $employee->roles[0]->role:''}}
+                                    {{isset($employee->roles[1]->role) ? $employee->roles[1]->role:''}}"
+                                        title="{{isset($employee->roles[0]->role) ? $employee->roles[0]->role:''}},
+                                    {{isset($employee->roles[1]->role) ? $employee->roles[1]->role:''}}">
+                                @if(!empty($roles) && count($roles) > 0)
                                         @foreach($roles as $role)
                                             <option value="{{$role->id}}">{{$role->role}}</option>
                                         @endforeach
                                     @endif
                                 </select>
-{{--                                <small class="text-danger">{{ $errors->first('role_id') }}</small>--}}
                             </div>
                         </div>
 
+
                         <div class="section">
-                            <label for="input002"><h6 class="mb20 mt40"> Supervisor </h6></label>
-                            <select class="select2-single form-control" name="supervisor_id" id="supervisor_id">
-                                @if(empty($employee->user->supervisedBy[0]->name))
-                                    <option value="">Select Supervisor</option>
-                                @else
-                                    <option value="{{$employee->user->supervisedBy[0]->id}}">{{$employee->user->supervisedBy[0]->name}}</option>
-                                @endif
-                                @if(!empty($supervisor))
-                                    @foreach($supervisor as $sup)
-                                        <option value="{{$sup->id}}">{{$sup->name}}</option>
-                                    @endforeach
-                                @endif
-                            </select>
+                            <div class="form-group">
+                                <label class="field-icon"><i class=""></i></label>&nbsp;
+                                {{Form::label('supervisor','Select Supervisors(2)',['class'=>'mb20 mt40','style'=>'color:black;font-weight:bold'])}}
+                                <select id="done" class="selectpicker form-control" multiple data-done-button="true" name="supervisors_id[]"
+                                        title="@if(isset($employee->user->supervisedBy[0]->name)  ? $employee->user->supervisedBy[0]->name:'') {{$employee->user->supervisedBy[0]->name}}, @endif
+                                        @if(isset($employee->user->supervisedBy[1]->name)  ? $employee->user->supervisedBy[1]->name:'') {{$employee->user->supervisedBy[1]->name}} @endif">
+                                    @if(!empty($supervisor))
+                                        @foreach($supervisor as $sup)
+                                            <option value="{{$sup->id}}">{{$sup->name}}</option>
+                                        @endforeach
+                                    @endif
+                                </select>
+                            </div>
                         </div>
 
                         <div class="section">
@@ -294,25 +259,17 @@
                             {{Form::date('posted_date', $employee->posted_date,['class' => 'gui-input fs13','placeholder'=>'Posted Date'])}}
                         </div>
 
-                        <div class="section">
+                       <div class="section">
                             <label for="input002"><h6 class="mb20 mt40"> Employment Type </h6></label>
                             <select class="select2-single form-control probation_select" name="employment_type"
                                     id="probation_period">
                                 <option value="" name="employment_type">{{$employee->employment_type}}</option>
                                 <option value="Permanent" name="employment_type">Permanent</option>
-                                <option value="" name="employment_type">Contract<input
-                                        class="select2-single form-control" type="text"
-                                        value="{{$employee->employment_type}}" name="employment_type"></option>
+                                <option value="" name="employment_type">Contract
+                                    <input class="select2-single form-control" type="text"
+                                        value="{{$employee->employment_type}}" placeholder="i.e Contract (05/06/2020 - 08/12/2024)  OR Permanent" name="employment_type">
+                                </option>
                             </select>
-                        </div>
-
-                        <div class="section">
-                            <div class="form-group">
-                                <label class="field-icon"><i class="fa fa-group"></i></label>&nbsp;
-                                {{Form::label('job_group','Job Group',['class'=>'mb20 mt40','style'=>'color:black;font-weight:bold'])}}
-                                <br>
-                                {{Form::text('job_group', $employee->job_group,['class' => 'gui-input fs13','placeholder'=>' Job Group'])}}
-                            </div>
                         </div>
 
                         <div class="section">
@@ -322,45 +279,6 @@
                         </div>
 
                         <!-- -------------- /section -------------- -->
-                    </section>
-
-                    <!-- -------------- step 3 -------------- -->
-                    <h4 class="wizard-section-title">
-                        <i class="fa fa-file-text pr5"></i> Banking Details</h4>
-                    <section class="wizard-section">
-
-
-                        <!-- -------------- /section -------------- -->
-                        <div class="section">
-                            <label class="field-icon"><i class="fa fa-list"></i></label>&nbsp;
-                            {{Form::label('account_number','Bank Account Number',['class'=>'mb20 mt40','style'=>'color:black;font-weight:bold'])}}
-                            <br>
-                            {{Form::number('account_number', $employee->account_number,['class' => 'gui-input fs13','placeholder'=>'Bank Account Number'])}}
-                        </div>
-
-                        <div class="section">
-                            <label class="field-icon"><i class="fa fa-columns"></i></label>&nbsp;
-                            {{Form::label('bank_name','Bank Name ',['class'=>'mb20 mt40','style'=>'color:black;font-weight:bold'])}}
-                            <br>
-                            {{Form::text('bank_name', $employee->bank_name,['class' => 'gui-input fs13','placeholder'=>'Bank Name'])}}
-                        </div>
-
-                        {{--<div class="section">
-                            {{Form::label('pf_status','PF Status',['class'=>'mb20 mt40','style'=>'color:black;font-weight:bold'])}}
-                            <br>
-                            @if($employee->pf_status == 'Active')
-                                {{Form::radio('pf_status','Active', true, ['class'=>'radio','id'=>''])}} Active
-                                &nbsp; &nbsp;
-                                {{Form::radio('pf_status','Inactive',false,['class'=>'radio','id'=>''])}} Inactive
-                            @else
-                                {{Form::radio('pf_status','Active', false,['class'=>'radio','id'=>''])}} Active
-                                &nbsp;&nbsp;
-                                {{Form::radio('pf_status','Inactive',true,['class'=>'radio','id'=>''])}} Inactive
-                            @endif
-                        </div>--}}
-
-                        {{--              /section -------------- -->--}}
-
                     </section>
 
 
@@ -385,22 +303,9 @@
                             <label class="field-icon"><i class="fa fa-calendar"></i></label>&nbsp;
                             {{Form::label('last_working_day','Last Working Day',['class'=>'mb20 mt40','style'=>'color:black;font-weight:bold'])}}
                             <br>
-                            {{Form::date('last_working_day', $employee->last_working_day,['class' => 'gui-input fs13','placeholder'=>'Last Working Day','id'=>'datepicker7'])}}
+                            {{Form::date('last_working_day', $employee->last_working_day,['class' => 'gui-input fs13','placeholder'=>'Last Working Day'])}}
                         </div>
 
-                        {{--<div class="section">
-                            {{Form::label('full_final','Full & Final (Joining Formalities)',['class'=>'mb20 mt40','style'=>'color:black;font-weight:bold'])}}
-                            <br>
-                            @if($employee->pf_status == 'Active')
-                                {{Form::radio('full_final','Yes', true, ['class'=>'radio','id'=>''])}} Yes
-                                &nbsp; &nbsp;
-                                {{Form::radio('full_final','No',false,['class'=>'radio','id'=>''])}} No
-                            @else
-                                {{Form::radio('full_final','Yes', false,['class'=>'radio','id'=>''])}} Yes
-                                &nbsp;&nbsp;
-                                {{Form::radio('full_final','No',true,['class'=>'radio','id'=>''])}} No
-                            @endif
-                        </div>--}}
                         <div class="section">
                             <div class="" style="margin-right: 25px; text-align: right">
                                 {!! Form::submit('Submit',['class' => 'btn btn-primary btn-lg']) !!}
@@ -501,6 +406,4 @@
     <script src="/assets/js/function.js"></script>
 
     <!-- -------------- /Scripts -------------- -->
-
-
 @endsection

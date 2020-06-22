@@ -42,6 +42,10 @@
 
                                             {!! Form::open(['action' => 'LeavesController@apply','method' => 'POST','class' => 'form-horizontal','enctype'=>'multipart/form-data', 'id'=>"custom-form-wizard"]) !!}
                                             @csrf
+{{--name="getSupervisor_id"--}}
+                                            {{Form::hidden('id', isset($getSupervisor_id) ? $getSupervisor_id:'' ,['value' =>'','name' => 'supervisor_id','id'=>'supervisor_id'])}}
+                                            {{Form::hidden('id', isset($getSupervisor_id) ? $getSupervisor_id:'' ,['value' =>'','name' => 'supervisor_id','id'=>'supervisor_id'])}}
+
                                             <div class="form-group {{ $errors->has('leave_type_id') ? ' has-error' : '' }}">
                                                 <label class="col-md-2 control-label"> Leave Type </label>
                                                 <div class="col-md-10">

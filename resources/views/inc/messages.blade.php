@@ -1,51 +1,43 @@
-{{--@if(count($errors) > 0)
-    @foreach($errors->all() as $error)
-        <div style="text-align: center" class="alert alert-danger animated fadeInUp">
-            {{$error}}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    @endforeach
-@endif--}}
-
-{{--
-@if(count($errors) > 0)
-        <div style="text-align: center" class="alert alert-danger animated fadeInUp">
-            Check Error
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
+@if ($message = Session::get('success'))
+    <div  style="text-align: center" class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <strong style="text-align: center">{{ $message }}</strong>
+    </div>
 @endif
---}}
 
+@if ($message = Session::get('error'))
+    <div  style="text-align: center" class="alert alert-danger">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <strong style="text-align: center">{{ $message }}</strong>
+    </div>
+@endif
 
+@if ($message = Session::get('warning'))
+    <div  style="text-align: center" class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <strong style="text-align: center">{{ $message }}</strong>
+    </div>
+@endif
 
-@if(session('success'))
-    <div style="text-align: center" class="alert alert-success animated fadeInUp">
-        {{session('success')}}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
+@if ($message = Session::get('info'))
+    <div style="text-align: center" class="alert alert-info">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <strong style="text-align: center">{{ $message }}</strong>
+    </div>
+@endif
+
+@if ($errors->any())
+    <div style="text-align: center" class="alert alert-danger">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        Please check the form below for errors
     </div>
 @endif
 
 
-@if(session('error'))
-    <div style="text-align: center" class="alert alert-danger alert-dismissible fade show">
-        {{session('error')}}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-@endif
-
-
-<script>
+{{--<script>
     const alertHTML = '<div class="alert">Alert!!!</div>';
     document.body.insertAdjacentHTML('beforeend', alertHTML);
     setTimeout(() => document.querySelector('.alert').classList.add('hide'), 4000);
-</script>
+</script>--}}
 
 

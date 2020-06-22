@@ -1,4 +1,22 @@
 <?php return array (
+  'barryvdh/laravel-dompdf' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Barryvdh\\DomPDF\\ServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'PDF' => 'Barryvdh\\DomPDF\\Facade',
+    ),
+  ),
+  'cyber-duck/laravel-excel' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Cyberduck\\LaravelExcel\\ExcelServiceProvider',
+    ),
+  ),
   'facade/ignition' => 
   array (
     'providers' => 

@@ -40,27 +40,27 @@
 
                                             {!! Form::open(['action' => 'DepartmentsController@store','method' => 'POST','class' => 'form-horizontal','enctype'=>'multipart/form-data', 'id'=>"custom-form-wizard"]) !!}
 
-                                            <div class="form-group {{ $errors->has('directorate') ? ' has-error' : '' }}">
+                                            <div class="form-group {{ $errors->has('directorate_id') ? ' has-error' : '' }}">
                                                 <label class="col-md-3 control-label"> Select Directorate </label>
                                                 <div class="col-md-6">
                                                     <select class="selectpicker form-control"
-                                                            name="directorate" required>
+                                                            name="directorate_id" required>
                                                         <option value="" selected>Select One</option>
                                                           @if(!empty($directorate) && count($directorate) > 0)
                                                               @foreach($directorate as $dir)
-                                                                  <option value="{{$dir->name}}">{{$dir->name}}</option>
+                                                                  <option value="{{$dir->id}}">{{$dir->name}}</option>
                                                               @endforeach
                                                           @endif
                                                     </select>
-                                                    <small class="text-danger">{{ $errors->first('directorate') }}</small>
+                                                    <small class="text-danger">{{ $errors->first('directorate_id') }}</small>
                                                 </div>
                                             </div>
 
-                                            <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
+                                            <div class="form-group {{ $errors->has('department') ? ' has-error' : '' }}">
                                                 <label class="col-md-3 control-label"> Department Name </label>
                                                 <div class="col-md-6">
-                                                    {{Form::text('name', '',['class' => 'select2-single form-control','placeholder'=>'Department','required'])}}
-                                                    <small class="text-danger">{{ $errors->first('name') }}</small>
+                                                    {{Form::text('department', '',['class' => 'select2-single form-control','placeholder'=>'Department'])}}
+                                                    <small class="text-danger">{{ $errors->first('department') }}</small>
                                                 </div>
                                             </div>
 

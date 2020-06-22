@@ -31,10 +31,24 @@
                         <div class="box box-success">
                             <div class="panel">
                                 <div class="panel-heading">
-                                    <span class="panel-title hidden-xs"> Add Asset </span>
+                                    <span class="panel-title hidden-xs col-md-6"> Add Asset </span>
+                                    <div class="col-md-6">
+                                        <form action="{{ url('import-asset') }}" method="POST" enctype="multipart/form-data">
+                                            {{ csrf_field() }}
+                                            <div style="border: 0px">
+                                                <div class="col-sm-7">
+                                                    <input type="file" class="gui-input fs13" name="import_file" id="import_file">
+                                                </div>
+                                                <div class="col-sm-5" >
+                                                    <input class="btn btn-primary" type="submit" name="SUBMIT"
+                                                           value="Import Assets" onclick="this.value='Importing ..';this.disabled='disabled'; this.form.submit();" />
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
 
-                                <div class="panel-body pn">
+                                <div class="panel-body pn mt70">
                                     <div class="table-responsive">
                                         <div class="panel-body p25 pb10">
                                             @include('inc.messages')

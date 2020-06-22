@@ -41,7 +41,7 @@
                                     @include('inc.messages')
 
                                     <div class="table-responsive">
-                                        <table class="table allcp-form theme-warning tc-checkbox-1 fs13">
+                                        <table id="example" class="table allcp-form theme-warning tc-checkbox-1 fs13">
                                             <thead>
                                             <tr class="bg-light">
                                                 <th class="text-center">Id</th>
@@ -87,7 +87,7 @@
                                             </div>
                                         @endif
                                         <div class="row text-center">
-                                            {{$invites->links()}}
+{{--                                            {{$invites->links()}}--}}
                                         </div>
                                     </div>
                                 </div>
@@ -148,4 +148,5 @@
             modal.find('.modal-body #employee').val(employee);
         })
     </script>
+
 @endsection

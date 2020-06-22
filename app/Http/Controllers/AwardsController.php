@@ -16,10 +16,6 @@ class AwardsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
     public function addAward()
     {
@@ -27,7 +23,7 @@ class AwardsController extends Controller
         return view('hrms.award.award_add');
     }
 
-    public function assingAward()
+    public function assignAward()
     {
 
         $employees = Employee::all();
@@ -39,7 +35,7 @@ class AwardsController extends Controller
     public function awardList()
     {
 
-        $awards = Award::orderBy('id','desc')->paginate(5);
+        $awards = Award::orderBy('id','desc')->get();
 
         return view('hrms.award.award_list')->with('awards', $awards);
     }
@@ -47,7 +43,7 @@ class AwardsController extends Controller
     public function awardeesList()
     {
 
-        $awards = AwardAssign::orderBy('id', 'desc')->paginate(10);
+        $awards = AwardAssign::orderBy('id', 'desc')->get();
 
         return view('hrms.award.awardees_listing')->with('awards', $awards);
     }
@@ -64,28 +60,6 @@ class AwardsController extends Controller
         return view('hrms.award.my_awards')->with('awards', $awards);
 
     }
-
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
 
     public function store(Request $request)
     {
@@ -110,7 +84,7 @@ class AwardsController extends Controller
         $this->validate($request,
             [
                 'employee_id' => 'required',
-                'award_id' => 'required|unique:award_assigns',
+                'award_id' => 'required',
                 'date' => 'required',
                 'reason' => 'required',
             ]);
@@ -124,17 +98,6 @@ class AwardsController extends Controller
 
         return redirect('/award_assign')->with('success', 'Award Assigned Successful');
 
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**

@@ -36,14 +36,14 @@
                         <div class="box box-success">
                             <div class="panel">
                                 <div class="panel-heading">
-                                    <span class="panel-title hidden-xs"> Role Lists </span>
+                                    <span class="panel-title hidden-xs"> Award Lists </span>
                                 </div>
                                 <div class="panel-body pn">
-                                    @include('inc.messages2')
+                                    @include('inc.messages')
 
 
                                     <div class="table-responsive">
-                                        <table class="table allcp-form theme-warning tc-checkbox-1 fs13">
+                                        <table id="example" class="table allcp-form theme-warning tc-checkbox-1 fs13">
                                             <thead>
                                             <tr class="bg-light">
                                                 <th class="text-center">Id</th>
@@ -88,7 +88,7 @@
                                             </div>
                                         @endif
                                         <div class="row text-center">
-                                            {{$awards->links()}}
+{{--                                            {{$awards->links()}}--}}
                                         </div>
                                     </div>
                                 </div>
@@ -102,7 +102,7 @@
 
 
     <!-- Modal Edit -->
-    <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter" aria-hidden="true">
+    <div class="modal fadeIn" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div style="background-color: #67d3e0" class="modal-header">
@@ -114,7 +114,6 @@
                 {!! Form::open(['action' => ['AwardsController@update',isset($award->id) ? $award->id:'' ],'method' => 'POST','class' => 'form-horizontal','enctype'=>'multipart/form-data', 'id'=>"custom-form-wizard"]) !!}
                 <div class="modal-body">
                     {{Form::hidden('id', isset($award->id) ? $award->id:'' ,['value' =>'','name' => 'id','id'=>'award_id'])}}
-                    {{--  <input type="hidden" name="id" id="award_id" value="">--}}
                         <div class="form-group {{ $errors->has('award') ? ' has-error' : '' }}">
                             <label class="control-label"> Award </label>
                             <input type="text" class="select2-single form-control" name="award" id="award">
@@ -142,7 +141,7 @@
     <!-- /Modal -->
 
     <!-- Modal Delete-->
-    <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter"
+    <div class="modal fadeIn" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter"
          aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -203,5 +202,11 @@
             modal.find('.modal-body #award_id').val(award_id);
             modal.find('.modal-body #award').val(award);
         })
+    </script>
+    <script>
+        // Basic example
+        $(document).ready(function() {
+            $('#example').DataTable();
+        } );
     </script>
 @endsection

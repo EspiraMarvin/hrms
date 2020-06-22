@@ -2,7 +2,6 @@
 
 namespace App;
 
-use App\Employee;
 use Illuminate\Database\Eloquent\Model;
 
 class Promote extends Model
@@ -26,7 +25,6 @@ class Promote extends Model
     {
         return $this->belongsToMany(Role::class, 'user_role','user_id','role_id');
     }
-
 
 
 }

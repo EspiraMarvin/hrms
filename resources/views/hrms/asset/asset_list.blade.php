@@ -36,7 +36,47 @@
                         <div class="box box-success">
                             <div class="panel">
                                 <div class="panel-heading">
-                                    <span class="panel-title hidden-xs"> Assets Lists </span>
+                                    <span class="panel-title hidden-xs"> Assets List </span>
+                                </div><br>
+
+                                <div class="panel-menu allcp-form theme-primary mtn">
+                                    <div class="row">
+                                        <form action="/asset_search" method="GET" role="search">
+                                            {{ csrf_field() }}
+                                            <div class="col-md-4">
+                                                <input type="text" class="typeahead form-control"
+                                                       placeholder="Search any column" style="height:40px" value=""
+                                                       name="r" autocomplete="off">
+                                            </div>
+
+                                            <div class="col-md-2" style="margin-top: -2px">
+                                                <input type="submit" value="Search" name="button"
+                                                       class="btn btn-primary">
+                                            </div>
+
+                                            <div class="col-md-2" style="margin-top: -2px">
+                                                <input type="reset"
+                                                       style="height: 40px"
+                                                       value="Reset" name="button" class="btn btn-warning">
+                                            </div>
+                                        </form>
+
+                                            <div class="col-md-2" style="margin-top: -2px;margin-right: -2px">
+                                                <button class="btn btn-success">
+                                                    <a style="text-decoration: none;color: white" href="asset-export">EXPORT</a>
+                                                </button>
+                                            </div>
+
+                                            <div class="col-md-2" style="margin-top: -2px;margin-right: -2px">
+                                                <a class="btnprn btn btn btn-info"
+                                                   onclick="myFunction()"
+                                                   style="color: white; height: 40px" href="{{ url('printPreviewAsset') }}" >
+                                                    <span class="glyphicon glyphicon-print"></span>&nbsp; Print
+                                                </a>
+                                            </div>
+
+
+                                    </div>
                                 </div>
                                 <div class="panel-body pn">
                                     @include('inc.messages')
@@ -58,7 +98,6 @@
                                                 @foreach($asset as $ass)
                                                     <tr>
                                                         <td class="text-center">{{$i+=1}}</td>
-
                                                         <td class="text-center">{{$ass->asset}}</td>
                                                         <td class="text-center">{{$ass->serial_number}}</td>
                                                         <td class="text-center">{{$ass->description}}</td>
@@ -70,20 +109,25 @@
                                                                         Edit
                                                                     </button></a>
                                                                 <button type="button" class="btn btn-danger br2 btn-xs fs12"
-                                                                        data-assid={{$ass->id}} data-asset={{$ass->asset}}
-                                                                            data-serial={{$ass->serial_number}}
+                                                                        data-assid="{{$ass->id}}" data-asset="{{$ass->asset}}"
+                                                                            data-serial="{{$ass->serial_number}}"
                                                                             data-toggle="modal" data-target="#delete">Delete</button>
                                                             </div>
                                                         </td>
                                                     </tr>
                                                 @endforeach
                                                 <tr>
+                                                    <td colspan="12">
+                                                        {!! $asset->links() !!}
+                                                    </td>
+                                                </tr>
+
                                                 </tr>
                                             </body>
                                         </table>
                                     </div>
                                     @else
-                                        <h2 style="text-align: center">No assets found</h2>
+                                        <p style="text-align: center">No assets found</p>
                                     @endif
                                 </div>
                             </div>
@@ -114,8 +158,9 @@
                     {!! Form::open(['action' => ['AssetsController@doDelete',isset($ass->id) ? $ass->id:'' ],'method' => 'POST','class' => 'form-horizontal','enctype'=>'multipart/form-data', 'id'=>"custom-form-wizard"]) !!}
 
                     {{Form::hidden('id', isset($ass->id) ? $ass->id:'' ,['value' =>'','name' => 'id','id'=>'asset_id'])}}
-                    <h6>Are you sure you want to delete this ?<br><br>
+                    <h6>Are you sure you want to delete this Asset?<br><br>
                         <input style="border: 0" type="text" disabled class="form-control text-center" id="asset">
+                        With serial number
                         <input style="border: 0" type="text" disabled class="form-control text-center" id="serial">
                     </h6>
 
@@ -147,5 +192,10 @@
             modal.find('.modal-body #serial').val(serial);
         })
     </script>
-
+    {{--    print script--}}
+    <script>
+        $(document).ready(function () {
+            $('.btnprn').printPage();
+        })
+    </script>
 @endsection

@@ -14,11 +14,6 @@ class ExpensesController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function getRegions()
     {
         $regions = DB::table('regions')->pluck("region", "id");
@@ -41,7 +36,7 @@ class ExpensesController extends Controller
     public function expenseList()
     {
 
-        $expense = Expense::orderBy('id', 'desc')->paginate(10);
+        $expense = Expense::orderBy('id', 'desc')->get();
 
         return view('hrms.expense.expense_list')->with('expense', $expense);
     }

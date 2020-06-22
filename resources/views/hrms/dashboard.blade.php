@@ -38,11 +38,10 @@
                         <div class="panel-body">
                             <div class="row pv10">
                                 <div class="col-xs-5 ph10">
-                                    <img src="/assets/img/pages/clipart2.png" class="img-responsive mauto" alt=""/>
+                                    <span style="font-size: 60px" class="fa fa-group"></span>
                                 </div>
                                 <div class="col-xs-7 pl5">
-                                    <h3 class="text-muted"><a style=" text-decoration: none" href="/employee_manager"> EMPLOYEE MANAGER</a></h3>
-                                    {{--<h2 class="fs50 mt5 mbn">385</h2>--}}
+                                    <h3 class="text-muted"><a style=" text-decoration: none" href="/employee_manager"> EMPLOYEE <br>MANAGER</a></h3>
                                 </div>
                             </div>
                         </div>
@@ -52,8 +51,9 @@
                     <div class="panel panel-tile">
                         <div class="panel-body">
                             <div class="row pv10">
-                                <div class="col-xs-5 ph10"><img src="/assets/img/pages/clipart0.png"
-                                                                class="img-responsive mauto" alt=""/></div>
+                                <div class="col-xs-5 ph10">
+                                    <span style="font-size: 60px" class="fa fa-envelope"></span>
+                                </div>
                                 <div class="col-xs-7 pl5">
                                     <h3 class="text-muted"><a style=" text-decoration: none" href="/total_leave_list"> LEAVE <br/> MANAGER </a></h3>
                                 </div>
@@ -65,9 +65,9 @@
                     <div class="panel panel-tile">
                         <div class="panel-body">
                             <div class="row pv10">
-                                <div class="col-xs-5 ph10"><img src="/assets/img/pages/Laptop Sketch-64x64"
-                                                                class="img-responsive mauto"
-                                                                style="height: 100px; width: 100px;" alt=""/></div>
+                                <div class="col-xs-5 ph10">
+                                    <span style="font-size: 60px" class="fa fa fa-laptop"></span>
+                                </div>
                                 <div class="col-xs-7 pl5">
                                     <h3 class="text-muted"><a style=" text-decoration: none" href="/asset_assign_list/%7Bid%7D"> ASSET <br/> MANAGER
                                         </a></h3>
@@ -80,9 +80,9 @@
                     <div class="panel panel-tile">
                         <div class="panel-body">
                             <div class="row pv10">
-                                <div class="col-xs-5 ph10"><img src="/assets/img/pages/dollar.jpg"
-                                                                class="img-responsive mauto"
-                                                                style="height: 100px; width: 100px;" alt=""/></div>
+                                <div class="col-xs-5 ph10">
+                                    <span  style="font-size: 60px" class="fa fa-money"></span>
+                                </div>
                                 <div class="col-xs-7 pl5">
                                     <h3 class="text-muted"><a style=" text-decoration: none" href="/expense_list"> EXPENSE <br/> MANAGER </a></h3>
                                 </div>
@@ -91,19 +91,50 @@
                     </div>
                 </div>
 
-                <div class="col-sm-12 col-xl-3">
+                <div class="col-sm-6 col-xl-3">
                     <div class="panel panel-tile">
                         <div class="panel-body">
                             <div class="row pv10">
-                                <div class="col-xs-5 ph10"><img src="/assets/img/pages/clipart6.png"
-                                                                class="img-responsive mauto" alt=""/></div>
+                                <div class="col-xs-5 ph10">
+                                    <span style="font-size: 60px" class="fa fa-gavel"></span>
+                                </div>
                                 <div class="col-xs-7 pl5">
-                                    <h3 class="text-muted"><a style=" text-decoration: none" href="/target_assign_list"> TARGET MANAGER </a></h3>
+                                    <h3 class="text-muted"><a style=" text-decoration: none" href="/target_assign_list"> TARGET <br/> MANAGER </a></h3>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="panel panel-tile">
+                            <div class="panel-body">
+                                <div class="row pv10">
+                                    <div class="col-xs-5 ph10">
+                                        <span style="font-size: 60px" class="fa fa-graduation-cap"></span>
+                                    </div>
+                                    <div class="col-xs-7 pl5">
+                                        <h3 class="text-muted"><a style=" text-decoration: none" href="/awardees_listing"> TRAINING <br/> MANAGER </a></h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-xl-3">
+                        <div class="panel panel-tile">
+                            <div class="panel-body">
+                                <div class="row pv10">
+                                    <div class="col-xs-5 ph10">
+                                        <span style="font-size: 60px" class="fa fa fa-trophy"></span>
+                                    </div>
+                                    <div class="col-xs-7 pl5">
+                                        <h3 class="text-muted"><a style=" text-decoration: none" href="/awardees_listing"> AWARD <br> MANAGER </a></h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 @endif
 
                 @if(!Auth::user()->isAdmin())
@@ -111,8 +142,9 @@
                             <div class="panel panel-tile">
                                 <div class="panel-body">
                                     <div class="row pv10">
-                                        <div class="col-xs-5 ph10"><img src="/assets/img/pages/clipart0.png"
-                                                                        class="img-responsive mauto" alt=""/></div>
+                                        <div class="col-xs-5 ph10">
+                                            <span style="font-size: 60px" class="fa fa-envelope"></span>
+                                        </div>
                                         <div class="col-xs-7 pl5">
                                             <h3 class="text-muted"><a style=" text-decoration: none" href="/my_leave_list"> LEAVE <br/> MANAGER </a></h3>
                                         </div>
@@ -125,10 +157,12 @@
                             <div class="panel panel-tile">
                                 <div class="panel-body">
                                     <div class="row pv10">
-                                        <div class="col-xs-5 ph10"><img src="/assets/img/pages/clipart6.png"
-                                                                        class="img-responsive mauto" alt=""/></div>
+                                        <div class="col-xs-5 ph10">
+                                            <span style="font-size: 60px" class="fa fa fa-laptop"></span>
+                                        </div>
                                         <div class="col-xs-7 pl5">
-                                            <h3 class="text-muted"><a style=" text-decoration: none" href="/my_target_list"> TARGET MANAGER </a></h3>
+                                            <h3 class="text-muted"><a style=" text-decoration: none" href="/my_assigned_assets"> ASSET <br/> MANAGER
+                                                </a></h3>
                                         </div>
                                     </div>
                                 </div>
@@ -139,20 +173,50 @@
                             <div class="panel panel-tile">
                                 <div class="panel-body">
                                     <div class="row pv10">
-                                        <div class="col-xs-5 ph10"><img src="/assets/img/pages/Laptop Sketch-64x64"
-                                                                        class="img-responsive mauto"
-                                                                        style="height: 100px; width: 100px;" alt=""/></div>
+                                        <div class="col-xs-5 ph10">
+                                            <span style="font-size: 60px" class="fa fa-gavel"></span>
+                                        </div>
                                         <div class="col-xs-7 pl5">
-                                            <h3 class="text-muted"><a style=" text-decoration: none" href="/my_assigned_assets"> ASSET <br/> MANAGER
-                                                </a></h3>
+                                            <h3 class="text-muted"><a style=" text-decoration: none" href="/my_target_list"> TARGET <br> MANAGER </a></h3>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                @endif
 
+                        <div class="col-sm-6 col-xl-3">
+                            <div class="panel panel-tile">
+                                <div class="panel-body">
+                                    <div class="row pv10">
+                                        <div class="col-xs-5 ph10">
+                                            <span style="font-size: 60px" class="fa fa-graduation-cap"></span>
+                                        </div>
+                                        <div class="col-xs-7 pl5">
+                                            <h3 class="text-muted"><a style=" text-decoration: none" href="/my_train_invite"> TRAINING <br/> MANAGER </a></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-xl-3">
+                            <div class="panel panel-tile">
+                                <div class="panel-body">
+                                    <div class="row pv10">
+                                        <div class="col-xs-5 ph10">
+                                            <span style="font-size: 60px" class="fa fa fa-trophy"></span>
+                                        </div>
+                                        <div class="col-xs-7 pl5">
+                                            <h3 class="text-muted"><a style=" text-decoration: none" href="/my_awards"> AWARD <br/> MANAGER </a></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                @endif
 
             </div>
         </div>

@@ -1,6 +1,12 @@
 @extends('inc.base')
 
 @section('content')
+    <style>
+        .dataTables_paginate paging_simple_numbers{
+            text-align: center;
+        }
+    </style>
+
     <!-- START CONTENT -->
     <div class="content">
 
@@ -41,11 +47,12 @@
                                     @include('inc.messages')
 
                                     <div class="table-responsive">
-                                        <table class="table allcp-form theme-warning tc-checkbox-1 fs13">
+                                        <table id="example" class="table allcp-form theme-warning tc-checkbox-1 fs13">
                                             <thead>
                                             <tr class="bg-light">
                                                 <th class="text-center">Id</th>
                                                 <th class="text-center">Role</th>
+                                                <th class="text-center">Job Group</th>
                                                 <th class="text-center">Description</th>
                                                 <th class="text-center">Actions</th>
                                             </tr>
@@ -58,6 +65,7 @@
                                                     <tr>
                                                         <td class="text-center">{{$i+=1}}</td>
                                                         <td class="text-center">{{$role->role}}</td>
+                                                        <td class="text-center">{{$role->job_group}}</td>
                                                         <td class="text-center">{{$role->description}}</td>
                                                         <td class="text-center">
                                                             <div class="dropdown" role="group" aria-label="...">
@@ -67,7 +75,7 @@
                                                                         Edit
                                                                     </button></a>
                                                                 <button type="button" class="btn btn-danger br2 btn-xs fs12"
-                                                                        data-roleid={{$role->id}} data-role={{$role->role}}
+                                                                        data-roleid="{{$role->id}}" data-role="{{$role->role}}"
                                                                             data-toggle="modal" data-target="#delete">Delete</button>
                                                             </div>
                                                         </td>
@@ -81,7 +89,7 @@
                                             </div>
                                         @endif
                                         <div class="row text-center">
-                                            {{$roles->links()}}
+{{--                                            {{$roles->links()}}--}}
                                         </div>
                                     </div>
                                 </div>
@@ -112,9 +120,8 @@
                     {!! Form::open(['action' => ['RolesController@doDelete',isset($role->id) ? $role->id:'' ],'method' => 'POST','class' => 'form-horizontal','enctype'=>'multipart/form-data', 'id'=>"custom-form-wizard"]) !!}
 
                     {{Form::hidden('id', isset($role->id) ? $role->id:'' ,['value' =>'','name' => 'id','id'=>'role_id'])}}
-                    <h6>Are you sure you want to delete this ?<br><br>
-                        <input style="border: 0" type="text" disabled class="form-control text-center" id="role">
-                    </h6>
+                    <h6>Are you sure you want to delete this ?</h6>
+                    <input style="border: 0" type="text" disabled class="form-control text-center" id="role">
 
                     <div class="modal-footer text-center">
                         <button type="button" class="btn btn-success" data-dismiss="modal">Cancel</button> &nbsp;&nbsp;
@@ -142,4 +149,5 @@
             modal.find('.modal-body #role').val(role);
         })
     </script>
+
 @endsection

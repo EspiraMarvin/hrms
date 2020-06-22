@@ -15,9 +15,9 @@
                         <a href="/dashboard"> Dashboard </a>
                     </li>
                     <li class="breadcrumb-link">
-                        <a href="/employee_manager"> Employees </a>
+                        <a href="/employee_manager"> Promotions </a>
                     </li>
-                    <li class="breadcrumb-current-item"> Employee Manager</li>
+                    <li class="breadcrumb-current-item"> Employee Promote</li>
                 </ol>
             </div>
         </header>
@@ -88,11 +88,16 @@
                                                         <td class="text-center">{{$i+=1}}</td>
                                                         <td class="text-center"><a
                                                                 href="/employee/{{$emp->id}}"> {{$emp->name}}</a></td>
-                                                        <td class="text-center">{{$emp->roles[0]->role}}</td>
-                                                        <td class="text-center">{{$emp->salary}}</td>
-                                                        <td class="text-center">{{$emp->user->supervisedBy[0]->name}}</td>
-                                                        <td class="text-center">{{$emp->department}}</td>
-                                                        <td class="text-center">{{$emp->duty_station}}</td>
+                                                        <td class="text-center">
+                                                            @if(isset($emp->roles[0]->role) != 'Supervisor')
+                                                                {{isset($emp->roles[0]->role) ? $emp->roles[0]->role:''}}
+                                                            @else
+                                                                {{isset($emp->roles[1]->role) ? $emp->roles[1]->role:''}}
+                                                            @endif
+                                                        <td class="text-center">{{isset($emp->salary) ? $emp->salary:''}}</td>
+                                                        <td class="text-center">{{isset($emp->user->supervisedBy[0]->name) ? $emp->user->supervisedBy[0]->name:''}}</td>
+                                                        <td class="text-center">{{isset($emp->department->department) ? $emp->department->department:''}}</td>
+                                                        <td class="text-center">{{isset($emp->duty_station) ? $emp->duty_station:''}}</td>
                                                         <td class="text-center">
                                                             <div class="btn-group text-right">
                                                                 <button type="button"

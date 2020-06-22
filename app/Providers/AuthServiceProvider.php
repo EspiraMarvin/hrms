@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Role;
+use App\Employee;
+use App\User;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -25,19 +28,26 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-//        Gate::define('employee_add', 'EmployeeController@EmpAddDep');
-//        Gate::define('access-admin', function ($user) {
-//            return $user->isAdmin;
+        $this->defineGates();
 
-            /*return false;
-            $admin = false;
-            foreach ($this->roles as $role)
-            {
-                if ($role->id == 1){
-                    $admin = true;
-                }
-            }
-            return $admin;*/
-//        });
+    }
+
+    public function defineGates()
+    {
+        Gate::define('access-admin', function ($user){
+            return $user->isAdmin();
+        });
+
+        Gate::define('access-hr', function ($user){
+            return $user->isHR();
+        });
+
+        Gate::define('access-supervisor', function ($user){
+            return $user->isSupervisor();
+        });
+
+        Gate::define('access-normal', function ($user){
+            return $user->isNormalUser();
+        });
     }
 }

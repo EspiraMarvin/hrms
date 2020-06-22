@@ -15,28 +15,21 @@ class TargetsController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-
-    }
-
     public function AddTar()
     {
-
-       $users = Target::whereHas('user', function ($q) {
-            $q->whereHas('supervisedBy', function ($qq){
-                $qq->where('supervisor_id',Auth::user()->id);
-            });
-        })->with('user')->orderBy('id','desc')->get();
-
        $employees = User::whereHas('supervisedBy', function ($q){
            $q->where('supervisor_id',Auth::user()->id);
        })->get();
 
-        return view('hrms.target.target_assign')->with('employees',$employees,'users',$users);
+        return view('hrms.target.target_assign')->with('employees',$employees);
     }
 
+    public function totalTargetsList()
+    {
+        $targets = Target::all();
+
+        return view('hrms.target.total_targets_list')->with('targets',$targets);
+    }
 
     public function targetList()
     {
@@ -45,7 +38,7 @@ class TargetsController extends Controller
             $q->whereHas('supervisedBy', function ($qq){
                 $qq->where('supervisor_id',Auth::user()->id);
             });
-        })->with('user')->orderBy('id','desc')->paginate(10);
+        })->with('user')->orderBy('id','desc')->get();
 
 
         return view('hrms.target.target_assign_list')->with('target', $target);
@@ -58,7 +51,7 @@ class TargetsController extends Controller
         $user_id = $user->id;
         $targets = Target::wherehas('user', function ($q) use ($user_id) {
             $q->where('user_id', $user_id);
-        })->paginate(10);
+        })->get();
 
 
         return view('hrms.target.my_target_list')->with('targets', $targets);
@@ -165,6 +158,6 @@ class TargetsController extends Controller
         $targetAssign = Target::findorFail($request->id);
         $targetAssign->delete();
 
-        return redirect('/target_assign_list')->with('success', 'Target Removed Successfully');
+        return redirect('/target_assign_list')->with('success', 'Target Delete Successful');
     }
 }

@@ -36,7 +36,7 @@
                         <div class="box box-success">
                             <div class="panel">
                                 <div class="panel-heading">
-                                    <span class="panel-title hidden-xs"> Total Leave Lists </span><br/>
+                                    <span class="panel-title hidden-xs"> Approve Leave Lists </span><br/>
                                 </div>
                                 <br/>
 
@@ -54,31 +54,28 @@
                                                 <input type="submit" value="Search" name="button"
                                                        class="btn btn-primary">
                                             </div>
-
                                             <div class="col-md-2">
-                                                <input type="submit" value="Export" name="button"
-                                                       class="btn btn-success">
+                                                <input type="reset"
+                                                       style="height: 40px"
+                                                       value="Reset" name="button" class="btn btn-warning">
                                             </div>
                                         </form>
 
-                                        <div class="col-md-2">
-                                            <a href="/total_leave_list"><input type="submit" value="Reset"
-                                                                               class="btn btn-warning"></a>
-                                        </div>
+
                                     </div>
                                 </div>
 
                                 <div class="panel-body pn">
                                     @include('inc.messages')
 
-                                    @if(count($totalLeaves ?? '') > 0 && count($totalLeaves) == 1)
+                                    @if($totalLeaves > 0 && $totalLeaves === 1)
                                         <div class="alert alert-danger text-center" role="alert">
-                                            You have <?php echo count($totalLeaves);?> Pending Leave
+                                            You have {{$totalLeaves}} Pending Leave
                                             <button type="button" class="close" data-dismiss="alert">&times;</button>
                                         </div>
-                                    @elseif(count($totalLeaves ?? '') > 0 && count($totalLeaves) > 1)
+                                    @elseif($totalLeaves > 0 && $totalLeaves > 1)
                                         <div class="alert alert-danger text-center" role="alert">
-                                            You have <?php echo count($totalLeaves);?> Pending Leaves
+                                            You have {{$totalLeaves}} Pending Leaves
                                             <button type="button" class="close" data-dismiss="alert">&times;</button>
                                         </div>
                                     @endif
@@ -96,6 +93,8 @@
                                                 <th class="text-center">Days</th>
                                                 <th class="text-center">Reason</th>
                                                 <th class="text-center">Applied</th>
+                                                <th class="text-center">Sup1</th>
+                                                <th class="text-center">Sup2</th>
                                                 <th class="text-center">Action</th>
                                             </tr>
                                             </thead>
@@ -112,48 +111,64 @@
                                                         <td class="text-center">{{$app->number_of_days}}</td>
                                                         <td class="text-center">{{$app->reason}}</td>
                                                         <td class="text-center">{{$app->created_at}}</td>
+                                                        @if($app->status1 === 0)
+                                                            <td class="text-center">Pending</td>
+                                                        @elseif($app->status1 === 1)
+                                                            <td class="text-center">Approved</td>
+                                                        @else
+                                                            <td class="text-center">Declined</td>
+                                                        @endif
+                                                        @if($app->status2 === 0)
+                                                            <td class="text-center">Pending</td>
+                                                        @elseif($app->status2 === 1)
+                                                            <td class="text-center">Approved</td>
+                                                        @else
+                                                            <td class="text-center">Declined</td>
+                                                        @endif
                                                         <td class="text-center">
-                                                            @if($app->status === 0)
+                                                            @if($totalLeaves > 0 && $app->status1 === 0 && $app->status2 === 0
+                                                                || $totalLeaves > 0 && $app->status1 === 1 && $app->status2 === 0
+                                                                || $totalLeaves > 0 && $app->status1 === 0 && $app->status2 === 1
+                                                                || $totalLeaves > 0 && $app->status1 === 2 && $app->status2 === 0
+                                                                || $totalLeaves > 0 && $app->status1 === 0 && $app->status2 === 2)
                                                                 <button type="button" style="height: 30px;background-color: #06b6ef"
-                                                                        data-appid="{{$app->id}}" data-employeeid="{{$app->employee_id}}"
-                                                                        data-remarks="{{$app->remarks}}" data-status="{{$app->status}}"
+                                                                        data-appid="{{$app->id}}" data-userid="{{$app->user_id}}"
+                                                                        data-phone="{{$app->user->employee->phone_number}}"
+                                                                        data-remarks="{{$app->remarks}}" data-status="{{$app->status1}}"
                                                                         data-type="{{$app->leaves->leave_type}}" data-name="{{$app->employee_name}}"
                                                                         data-applied="{{date_format(new DateTime($app->created_at), 'd-m-Y H:i:s')}}"
-{{--                                                                        data-department="{{$app->employee->department}}"--}}
-{{--                                                                        data-jobgroup="{{$app->employee->job_group}}"--}}
-{{--                                                                        data-phone="{{$app->employee->phone_number}}"--}}
                                                                         class="btn btn br2 btn-xs fs12" data-toggle="modal"
                                                                         data-target="#approve">
                                                                     <i class="fa fa-external-link" style="color: white">
                                                                         Pending </i>
                                                                 </button>
-                                                            @elseif($app->status === 1)
+                                                            @elseif($app->status1 === 1 && $app->status2 === 1)
                                                                 <button type="button" disabled style="height: 30px;background-color: #03b25e"
-                                                                        data-appid="{{$app->id}}" data-employeeid="{{$app->employee_id}}"
+                                                                        data-appid="{{$app->id}}" data-userid="{{$app->user_id}}"
                                                                         data-remarks="{{$app->remarks}}" data-status="{{$app->status}}"
                                                                         data-type="{{$app->leaves->leave_type}}" data-name="{{$app->employee_name}}"
                                                                         data-applied="{{date_format(new DateTime($app->created_at), 'd-m-Y H:i:s')}}"
-                                                                       {{-- data-department="{{$app->employee->department}}"
-                                                                        data-jobgroup="{{$app->employee->job_group}}"
-                                                                        data-phone="{{$app->employee->phone_number}}"--}}
                                                                         class="btn btn br2 btn-xs fs12" data-toggle="modal"
                                                                         data-target="#approve">
                                                                     <i style="color: white" class="fa fa-check" >
                                                                         Approved </i>
                                                                 </button>
-                                                            @elseif($app->status === 2)
+                                                            @elseif($totalLeaves === 0 &&  $app->status1 === 2 && $app->status2 === 2 || $totalLeaves > 0 && $app->status1 === 1 && $app->status2 === 2 || $totalLeaves > 0 && $app->status1 === 2 && $app->status2 === 1)
                                                                 <button type="button" disabled style="height: 30px;background-color: #f5393d"
-                                                                        data-appid="{{$app->id}}" data-employeeid="{{$app->employee_id}}"
+                                                                        data-appid="{{$app->id}}" data-userid="{{$app->user_id}}"
                                                                         data-remarks="{{$app->remarks}}" data-status="{{$app->status}}"
                                                                         data-type="{{$app->leaves->leave_type}}" data-name="{{$app->employee_name}}"
                                                                         data-applied="{{date_format(new DateTime($app->created_at), 'd-m-Y H:i:s')}}"
-                                                          {{--              data-department="{{$app->employee->department}}"
-                                                                        data-jobgroup="{{$app->employee->job_group}}"
-                                                                        data-phone="{{$app->employee->phone_number}}"--}}
                                                                         class="btn btn br2 btn-xs fs12" data-toggle="modal"
                                                                         data-target="#approve">
                                                                     <i class="fa fa-times" style="color: white">
-                                                                        Disapproved </i>
+                                                                        Declined </i>
+                                                                </button>
+                                                            @elseif($app->status1 === 1 && $app->status2 === 2 || $app->status1 === 2 && $app->status2 === 1)
+                                                                <button type="button" disabled style="height: 30px;background-color: #f5393d"
+                                                                        class="btn btn br2 btn-xs fs12">
+                                                                    <i class="fa fa-times" style="color: white">
+                                                                        Conflict </i>
                                                                 </button>
                                                             @endif
                                                         </td>
@@ -200,68 +215,46 @@
 
                                     {!! Form::open(['action' => ['LeavesController@approveLeave', isset($app->id) ? $app->id:''],'method' => 'POST','class' => 'form-horizontal','enctype'=>'multipart/form-data','class' => 'form-horizontal','id'=>"custom-form-wizard"]) !!}
                                     {{Form::hidden('id', isset($app->id) ? $app->id:'' ,['value' =>'','name' => 'id','id'=>'app_id'])}}
-                                    {{Form::hidden('id', isset($app->employee_id) ? $app->employee_id:'' ,['value' =>'','name' => 'employee_id','id'=>'employee_id'])}}
+                                    {{Form::hidden('id', isset($app->user_id) ? $app->user_id:'' ,['value' =>'','name' => 'user_id','id'=>'user_id'])}}
                                     {{--                    <input type="hidden" name="id" id="app_id" value="">--}}
                                     <div class="form-control" style="border: 0;margin-top: -16px">
-                                        <div class="col-xs-6 text-center"><h6>Leave Type: </h6></div>
-                                        <div class="col-xs-6">
+                                        <div class="col-xs-4 text-center"><h6>Leave Type: </h6></div>
+                                        <div class="col-xs-8">
                                             <input style="border: 0" type="text" disabled class="form-control text-center" id="type">
                                         </div>
                                     </div><br>
-                                    <div class="form-control" style="border: 0;margin-top: -16px">
-                                        <div class="col-xs-6 text-center"><h6>Applied on: </h6></div>
-                                        <div class="col-xs-6">
+                                    <div class="form-control" style="border: 0;">
+                                        <div class="col-xs-4 text-center"><h6>Applied on: </h6></div>
+                                        <div class="col-xs-8">
                                             <input style="border: 0" type="text" disabled class="form-control text-center" id="applied">
                                         </div>
                                     </div><br>
-                                    <div class="form-control" style="border: 0;margin-top: -16px">
-                                        <div class="col-xs-6 text-center"><h6>Department: </h6></div>
-                                        <div class="col-xs-6">
-                                            <input style="border: 0" type="text" disabled class="form-control text-center" id="department">
+                                    <div class="form-control" style="border: 0;">
+                                        <div class="col-xs-4 text-center"><h6>Phone No: </h6></div>
+                                        <div class="col-xs-8">
+                                            <input style="border: 0" type="number" disabled class="form-control text-center" id="phone_number">
                                         </div>
                                     </div><br>
-                                    <div class="form-control" style="border: 0;margin-top: -16px">
-                                        <div class="col-xs-6 text-center"><h6>Job Group: </h6></div>
-                                        <div class="col-xs-6">
-                                            <input style="border: 0" type="text" disabled class="form-control text-center" id="jobgroup">
-                                        </div>
-                                    </div><br>
-                                    <div class="form-control" style="border: 0;margin-top: -16px">
-                                        <div class="col-xs-6 text-center"><h6>Phone No: </h6></div>
-                                        <div class="col-xs-6">
-                                            <input style="border: 0" type="text" disabled class="form-control text-center" id="phone">
-                                        </div>
-                                    </div><br>
-                                    <div class="form-control" style="border: 0;margin-top: -16px">
-                                        <div class="col-xs-6 text-center"><h6>Remarks: </h6></div>
-                                        <div class="col-xs-6">
+                                    <div class="form-control" style="border: 0;">
+                                        <div class="col-xs-4 text-center"><h6>Remarks: </h6></div>
+                                        <div class="col-xs-8">
                                             <textarea rows="1" cols="10" id="remarks" name="remarks" class="form-control"></textarea>
                                         </div>
                                     </div><br>
-                                    <div class="form-control" style="border: 0;margin-top: -16px">
-                                        <div class="col-xs-6 text-center"><h6>Status: </h6></div>
-                                        <div class="col-xs-6">
+                                    <div class="form-control text-center" style="border: 0;">
+                                        <div class="col-xs-4 text-center"><h6>Status: </h6></div>
+                                        <div class="col-xs-8">
                                             <select name="status" style="height: 30px; text-align: center" id="status"
                                                     class="btn btn-info br2 btn-xs fs14 dropdown-toggle form-control">
-                                                @if($app->status === 0)
-                                                    <option value="0" style="background-color: #67d3e0">Pending</option>
+                                                    <option value="0" style="background-color: #67d3e0;">Pending</option>
                                                     <option value="1" style="background-color: seagreen">Approve</option>
                                                     <option value="2" style="background-color: red">Disapprove</option>
-                                                @elseif($app->status === 1)
-                                                    <option value="0" style="background-color: #67d3e0">Pending</option>
-                                                    <option value="1" style="background-color: seagreen">Approve</option>
-                                                    <option value="2" style="background-color: red">Disapprove</option>
-                                                @elseif($app->status === 2)
-                                                    <option value="0" style="background-color: #67d3e0">Pending</option>
-                                                    <option value="1" style="background-color: seagreen">Approve</option>
-                                                    <option value="2" style="background-color: red">Disapprove</option>
-                                                @endif
                                             </select>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="modal-footer" style="margin-top: 10px">
+                                <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                     <button type="submit" value="Submit" class="btn btn-primary">Submit</button>
                                 </div>
@@ -284,12 +277,10 @@
             var button = $(event.relatedTarget)
 
             var app_id = button.data('appid')
-            var employee_id = button.data('employeeid')
+            var user_id = button.data('userid')
             var type = button.data('type')
             var name = button.data('name')
             var applied = button.data('applied')
-            var department = button.data('department')
-            var jobgroup = button.data('jobgroup')
             var phone = button.data('phone')
             var remarks = button.data('remarks')
             var status = button.data('status')
@@ -297,12 +288,10 @@
 
             modal.find('.modal-header #name').val(name);
             modal.find('.modal-body #app_id').val(app_id);
-            modal.find('.modal-body #employee_id').val(employee_id);
+            modal.find('.modal-body #user_id').val(user_id);
             modal.find('.modal-body #type').val(type);
             modal.find('.modal-body #applied').val(applied);
-            modal.find('.modal-body #department').val(department);
-            modal.find('.modal-body #jobgroup').val(jobgroup);
-            modal.find('.modal-body #phone').val(phone);
+            modal.find('.modal-body #phone_number').val(phone);
             modal.find('.modal-body #remarks').val(remarks);
             modal.find('.modal-body #status').val(status);
         })
@@ -317,11 +306,6 @@
                 });
             }
         });
-    </script>
-    <script>
-        const alertHTML = '<div class="alert"></div>';
-        document.body.insertAdjacentHTML('beforeend', alertHTML);
-        setTimeout(() => document.querySelector('.alert').classList.add('hide'), 4000);
     </script>
 @endsection
 

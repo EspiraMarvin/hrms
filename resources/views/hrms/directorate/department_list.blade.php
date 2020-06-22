@@ -58,8 +58,8 @@
                                             <tr>
                                                 <td class="text-center">{{$i+=1}}</td>
                                                 <td class="text-center"><a style=" text-decoration: none"
-                                                        href="/department/{{$dep->id}}"> {{$dep->name}}</a></td>
-                                                <td class="text-center">{{$dep->directorate}}</td>
+                                                        href="/department/{{$dep->id}}"> {{$dep->department}}</a></td>
+                                                <td class="text-center">{{$dep->directorate->name}}</td>
                                                 <td class="text-center">{{$dep->description}}</td>
                                                 <td class="text-center">
                                                     <div class="dropdown" role="group" aria-label="...">
@@ -69,7 +69,7 @@
                                                                 Edit
                                                             </button></a>
                                                         <button type="button" class="btn btn-danger br2 btn-xs fs12"
-                                                                data-depid={{$dep->id}} data-dir={{$dep->directorate}}
+                                                                data-depid="{{$dep->id}}" data-dep="{{$dep->department}}"
                                                                     data-toggle="modal" data-target="#delete">Delete</button>
                                                     </div>
                                                 </td>
@@ -78,7 +78,6 @@
 
                                             <tr><td colspan="10">
                                                     {!! $department->render() !!}
-{{--                                                    {{$department->links()}}--}}
                                                 </td>
                                             </tr>
 
@@ -99,7 +98,7 @@
         </section>
     </div>
     <!-- Modal Delete-->
-    <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter"
+    <div class="modal fadeIn" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter"
          aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -116,9 +115,8 @@
                     {!! Form::open(['action' => ['DepartmentsController@doDelete',isset($dep->id) ? $dep->id:'' ],'method' => 'POST','class' => 'form-horizontal','enctype'=>'multipart/form-data', 'id'=>"custom-form-wizard"]) !!}
 
                     {{Form::hidden('id', isset($dep->id) ? $dep->id:'' ,['value' =>'','name' => 'id','id'=>'dep_id'])}}
-                    <h6>Are you sure you want to delete this ?<br><br>
-                        <input style="border: 0" type="text" disabled class="form-control text-center" id="dir">
-                    </h6>
+                    Are you sure you want to delete this ?<br>
+                    <input style="border: 0" type="text" disabled class="form-control text-center" id="dep">
                     <div class="modal-footer text-center">
                         <button type="button" class="btn btn-success" data-dismiss="modal">Cancel</button> &nbsp;&nbsp;
                         <input class="btn btn-danger" type="submit" name="SUBMIT" value="Yes Delete" onclick="this.value='Deleting ..';this.disabled='disabled'; this.form.submit();" />
@@ -138,11 +136,11 @@
 
             var button = $(event.relatedTarget)
             var dep_id = button.data('depid')
-            var dir = button.data('dir')
+            var dep = button.data('dep')
             var modal = $(this)
 
             modal.find('.modal-body #dep_id').val(dep_id);
-            modal.find('.modal-body #dir').val(dir);
+            modal.find('.modal-body #dep').val(dep);
         })
     </script>
 @endsection

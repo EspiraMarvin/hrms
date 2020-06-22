@@ -2,171 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="78448d03-970e-4b73-8bed-b4f69eb895b5" name="Default Changelist" comment="hrms commit">
-      <change afterPath="$PROJECT_DIR$/C:/xampp/htdocs/hrms/storage/logs/laravel.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Contracts.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Exports/AssetsExport.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Imports/AssetsImport.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Imports/SelectUserSheet.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mail/LeaveApproval.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/dompdf.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/.idea/assets.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/.idea/deployment.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/bootstrap3-typeahead.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/ckeditor.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/dataTables.bootstrap4.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/dataTables.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/font.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/fonts/font-awesome/mem5YaGs126MiZpBA-UNirkOUuhp.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/html5shiv.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/jquery.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/respond.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/jquery.printPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/auth/change-password.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/hrms/asset/asset_search.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/hrms/asset/printPreview.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/hrms/employee/contract_renewal.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/hrms/employee/contracts_list.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/hrms/employee/employee_bank.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/hrms/employee/pdf.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/hrms/employee/printPreview.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/hrms/target/total_targets_list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/hrms.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/hrms.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cxampphtdocshrmsstoragelogs/laravel.log" beforeDir="false" afterPath="$PROJECT_DIR$/Cxampphtdocshrmsstoragelogs/laravel.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Asset.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Asset.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Award.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Award.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/County.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/County.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Department.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Department.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Directorate.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Directorate.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Employee.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Employee.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Exceptions/Handler.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Exceptions/Handler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Exports/EmployeesExport.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Exports/EmployeesExport.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AssetAssignController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AssetAssignController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AssetsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AssetsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AwardsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AwardsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DepartmentsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DepartmentsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DirectorateController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DirectorateController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ExpensesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ExpensesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LeavesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LeavesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProfileController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PromoteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PromoteController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RolesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RolesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TargetsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TargetsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TodosController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TrainingsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TrainingsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Imports/UsersImport.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Imports/UsersImport.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Leave.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Leave.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Promote.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Promote.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Region.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Region.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Role.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Role.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Supervisor.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Todo.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/UserRole.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bootstrap/cache/packages.php" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap/cache/packages.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bootstrap/cache/services.php" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap/cache/services.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_10_121918_create_employees_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_10_121918_create_employees_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_20_120918_create_roles_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_20_120918_create_roles_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_20_121450_create_assets_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_20_121450_create_assets_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_23_131823_add_user_id_to_employees.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_23_131823_add_user_id_to_employees.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_23_162636_create_departments_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_23_162636_create_departments_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_25_210119_create_asset_assigns_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_25_210119_create_asset_assigns_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_27_075826_create_apply_leaves_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_27_075826_create_apply_leaves_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_03_04_130224_create_promotions_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_03_04_130224_create_promotions_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_03_09_105639_create_user_roles_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_03_21_102231_add_employee_id_to_targets.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_04_12_205257_create_leave_applies_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_06_17_172501_create_contracts_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/DepartmentsTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DepartmentsTableSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/EmployeesTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/EmployeesTableSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/LeavesTypeTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/LeavesTypeTableSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/RolesTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/RolesTableSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/UserRolesSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/UserRolesSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/UserSupervisorSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/UserSupervisorSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/UsersTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/UsersTableSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/fonts/font-awesome/font-awesome.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/fonts/font-awesome/font-awesome.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/avatars/profile_pic.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/pages/Laptop Sketch-64x64" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/pages/clipart0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/pages/clipart2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/pages/clipart5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/pages/clipart6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/pages/dollar.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/custom.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/custom.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/pages/dashboard1.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/pages/dashboard1.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/pages/forms-widgets.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/pages/forms-widgets.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/passwords/confirm.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/confirm.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/hrms/asset/asset_add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/hrms/asset/asset_add.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/hrms/asset/asset_assign.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/hrms/asset/asset_assign.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/hrms/asset/asset_assign_list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/hrms/asset/asset_assign_list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/hrms/asset/asset_list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/hrms/asset/asset_list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/hrms/award/award_assign.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/hrms/award/award_assign.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/hrms/award/award_list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/hrms/award/award_list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/hrms/award/awardees_listing.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/hrms/award/awardees_listing.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/hrms/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/hrms/dashboard.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/hrms/directorate/department_add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/hrms/directorate/department_add.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/hrms/directorate/department_edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/hrms/directorate/department_edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/hrms/directorate/department_list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/hrms/directorate/department_list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/hrms/directorate/department_show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/hrms/directorate/department_show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/hrms/directorate/directorate_list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/hrms/directorate/directorate_list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/hrms/employee/employee_add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/hrms/employee/employee_add.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/hrms/employee/employee_bank_details.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/hrms/employee/employee_bank_details.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/hrms/employee/employee_edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/hrms/employee/employee_edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/hrms/employee/employee_manager.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/hrms/employee/employee_manager.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/hrms/employee/employee_show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/hrms/employee/employee_show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/hrms/employee/supervisedBy_list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/hrms/employee/supervisedBy_list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/hrms/employee/supervisor_list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/hrms/employee/supervisor_list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/hrms/expense/expense_list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/hrms/expense/expense_list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/hrms/leave/approve_leave.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/hrms/leave/approve_leave.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/hrms/leave/leave_apply.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/hrms/leave/leave_apply.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/hrms/leave/leave_approved.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/hrms/directorate/memberTarget.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/hrms/leave/leave_deny.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/hrms/leave/leave_pending.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/hrms/leave/my_leave_list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/hrms/leave/my_leave_list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/hrms/leave/total_leave_list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/hrms/leave/total_leave_list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/hrms/promote/employee_promote.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/hrms/promote/employee_promote.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/hrms/promote/promote_edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/hrms/promote/promote_edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/hrms/promote/promote_list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/hrms/promote/promote_list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/hrms/role/role_add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/hrms/role/role_add.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/hrms/role/role_edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/hrms/role/role_edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/hrms/role/role_list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/hrms/role/role_list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/hrms/target/my_target_list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/hrms/target/my_target_list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/hrms/target/target_assign.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/hrms/target/target_assign.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/hrms/target/target_assign_list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/hrms/target/target_assign_list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/hrms/target/target_edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/hrms/target/target_edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/hrms/train/my_train_invite.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/hrms/train/my_train_invite.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/hrms/train/train_add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/hrms/train/train_add.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/hrms/train/train_invite_list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/hrms/train/train_invite_list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/hrms/train/train_list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/hrms/train/train_list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/inc/base.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/inc/base.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/inc/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/inc/header.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/inc/messages.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/inc/messages.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/inc/messages2.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/inc/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/inc/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/profile.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -537,7 +375,7 @@
       <workItem from="1592461908393" duration="38441000" />
       <workItem from="1592551329529" duration="598000" />
       <workItem from="1592733792062" duration="607000" />
-      <workItem from="1592819435800" duration="2176000" />
+      <workItem from="1592819435800" duration="3617000" />
     </task>
     <task id="LOCAL-00001" summary="Procfile commit">
       <created>1588114826107</created>
@@ -686,7 +524,14 @@
       <option name="project" value="LOCAL" />
       <updated>1592503055796</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="hrms commit">
+      <created>1592822793148</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1592822793148</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -759,11 +604,11 @@
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="326" y="17" width="643" height="687" key="#phpunit.xml/0.0.1280.720/1920.0.1920.1080@0.0.1280.720" timestamp="1585002278688" />
-    <state x="111" y="0" key="CommitChangelistDialog2" timestamp="1592821479992">
+    <state x="111" y="0" key="CommitChangelistDialog2" timestamp="1592822878609">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="111" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1590046406972" />
-    <state x="111" y="0" key="CommitChangelistDialog2/0.0.1280.720@0.0.1280.720" timestamp="1592821479992" />
+    <state x="111" y="0" key="CommitChangelistDialog2/0.0.1280.720@0.0.1280.720" timestamp="1592822878609" />
     <state x="93" y="93" width="1095" height="535" key="DiffContextDialog" timestamp="1588158017168">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
@@ -803,10 +648,10 @@
     </state>
     <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1589909200924" />
     <state x="142" y="4" key="SettingsEditor/0.0.1280.720@0.0.1280.720" timestamp="1589261188063" />
-    <state x="233" y="95" key="Vcs.Push.Dialog.v2" timestamp="1592821232880">
+    <state x="233" y="95" key="Vcs.Push.Dialog.v2" timestamp="1592822999689">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="233" y="95" key="Vcs.Push.Dialog.v2/0.0.1280.720@0.0.1280.720" timestamp="1592821232880" />
+    <state x="233" y="95" key="Vcs.Push.Dialog.v2/0.0.1280.720@0.0.1280.720" timestamp="1592822999689" />
     <state x="247" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1592210509530">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
@@ -824,17 +669,17 @@
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="364" y="153" key="git4idea.merge.GitPullDialog/0.0.1280.720@0.0.1280.720" timestamp="1589486732913" />
-    <state x="457" y="207" key="git4idea.ui.GitTagDialog" timestamp="1592821494365">
+    <state x="457" y="207" key="git4idea.ui.GitTagDialog" timestamp="1592822925650">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="457" y="207" key="git4idea.ui.GitTagDialog/0.0.1280.720@0.0.1280.720" timestamp="1592821494365" />
-    <state x="297" y="161" key="run.anything.popup" timestamp="1592416589305">
+    <state x="457" y="207" key="git4idea.ui.GitTagDialog/0.0.1280.720@0.0.1280.720" timestamp="1592822925650" />
+    <state x="297" y="161" key="run.anything.popup" timestamp="1592822319403">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="297" y="152" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1590047107576" />
     <state x="297" y="161" key="run.anything.popup/0.0.1280.720/1920.0.1920.1080@0.0.1280.720" timestamp="1592416589305" />
     <state x="2366" y="242" key="run.anything.popup/0.0.1280.720/1920.0.1920.1080@1920.0.1920.1080" timestamp="1585226468218" />
-    <state x="297" y="161" key="run.anything.popup/0.0.1280.720@0.0.1280.720" timestamp="1592231887020" />
+    <state x="297" y="161" key="run.anything.popup/0.0.1280.720@0.0.1280.720" timestamp="1592822319403" />
     <state x="-17" y="41" width="672" height="678" key="search.everywhere.popup" timestamp="1592493200511">
       <screen x="0" y="0" width="1280" height="720" />
     </state>

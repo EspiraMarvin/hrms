@@ -36,15 +36,17 @@
     <!-- -------------- Main Wrapper -------------- -->
     <section id="content_wrapper">
 
+        <div class="container">
+
         <div id="canvas-wrapper">
             <canvas id="demo-canvas"></canvas>
         </div>
         <!-- -------------- Content -------------- -->
-        <section id="content">
+        <div id="content">
 
 
             <!-- -------------- Login Form -------------- -->
-            <div class="allcp-form theme-primary mw320 animated zoomIn" id="login">
+            <div class="allcp-form theme-primary mw320 animated zoomIn" id="login" style="margin-top: 24px">
 
                 <div class="text-center mb20">
                     <div class="bg-primary text-center mb20 br3 pv15">
@@ -127,6 +129,8 @@
 
                 <!-- -------------- /Panel -------------- -->
             </div>
+        </div>
+        </div>
             <!-- -------------- /Spec Form -------------- -->
         </section>
         <!-- -------------- /Content -------------- -->

@@ -47,7 +47,7 @@
             <div class="container">
 
             <!-- -------------- Login Form -------------- -->
-            <div class="allcp-form theme-primary mw320 animated zoomIn" id="login">
+            <div class="allcp-form theme-primary mw320 animated zoomIn" id="login" style="margin-top: 24px">
 
                 <div class="text-center mb20">
                     <div class="bg-primary text-center mb20 br3 pv15">

@@ -34,8 +34,9 @@
 <!-- -------------- Body Wrap  -------------- -->
 <div id="main" class="animated fadeIn">
 
+
     <!-- -------------- Main Wrapper -------------- -->
-    <section id="content_wrapper">
+    <section  id="content_wrapper">
 
         <div id="canvas-wrapper">
             <canvas id="demo-canvas"></canvas>
@@ -43,6 +44,7 @@
         <!-- -------------- Content -------------- -->
         <section id="content">
 
+            <div class="container">
 
             <!-- -------------- Login Form -------------- -->
             <div class="allcp-form theme-primary mw320 animated zoomIn" id="login">
@@ -128,6 +130,8 @@
                 </div>
 
                 <!-- -------------- /Panel -------------- -->
+            </div>
+
             </div>
             <!-- -------------- /Spec Form -------------- -->
         </section>

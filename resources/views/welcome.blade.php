@@ -69,7 +69,7 @@
                             @csrf
                             <div class="panel-body pn mv10">
                                 <div class="col-6">
-                                    @include('inc.messages')
+{{--                                    @include('inc.messages')--}}
                                 </div>
                                 <div class="section">
                                     <label for="email" class="field prepend-icon">

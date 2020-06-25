@@ -18,7 +18,7 @@ class UserRolesSeeder extends Seeder
         DB::table('user_role')->truncate();
         DB::table('user_role')->insert([
             [
-                'role_id' => 1,
+                'role_id' => 2,
                 'user_id' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),

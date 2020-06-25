@@ -115,7 +115,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row mb-0">
+                          {{--  <div class="form-group row mb-0">
 
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
@@ -123,7 +123,7 @@
                                     </a>
                                 @endif
                             </div>
-
+--}}
                         </form>
 {{--                        {!! Form::close() !!}--}}
                     </div>

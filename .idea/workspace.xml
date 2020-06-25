@@ -4,7 +4,11 @@
     <list default="true" id="78448d03-970e-4b73-8bed-b4f69eb895b5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/C:/xampp/htdocs/hrms/storage/logs/laravel.log" beforeDir="false" afterPath="$PROJECT_DIR$/C:/xampp/htdocs/hrms/storage/logs/laravel.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/RolesTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/RolesTableSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/seeds/UserRolesSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/UserRolesSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/UsersTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/UsersTableSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hr-mgmt-system/Procfile" beforeDir="false" afterPath="$PROJECT_DIR$/hr-mgmt-system/Procfile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +65,7 @@
         <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/hr-mgmt-system" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.2">
     <include_path>
@@ -376,7 +380,7 @@
       <workItem from="1592551329529" duration="598000" />
       <workItem from="1592733792062" duration="607000" />
       <workItem from="1592819435800" duration="10949000" />
-      <workItem from="1593075421610" duration="19967000" />
+      <workItem from="1593075421610" duration="30756000" />
     </task>
     <task id="LOCAL-00001" summary="Procfile commit">
       <created>1588114826107</created>
@@ -693,7 +697,14 @@
       <option name="project" value="LOCAL" />
       <updated>1593107867063</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="hrms commit">
+      <created>1593109377850</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1593109377851</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -766,11 +777,11 @@
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="326" y="17" width="643" height="687" key="#phpunit.xml/0.0.1280.720/1920.0.1920.1080@0.0.1280.720" timestamp="1585002278688" />
-    <state x="111" y="0" key="CommitChangelistDialog2" timestamp="1593107865778">
+    <state x="111" y="0" key="CommitChangelistDialog2" timestamp="1593109376402">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="111" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1590046406972" />
-    <state x="111" y="0" key="CommitChangelistDialog2/0.0.1280.720@0.0.1280.720" timestamp="1593107865778" />
+    <state x="111" y="0" key="CommitChangelistDialog2/0.0.1280.720@0.0.1280.720" timestamp="1593109376402" />
     <state x="93" y="93" width="1095" height="535" key="DiffContextDialog" timestamp="1588158017168">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
@@ -810,10 +821,10 @@
     </state>
     <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1589909200924" />
     <state x="142" y="4" key="SettingsEditor/0.0.1280.720@0.0.1280.720" timestamp="1589261188063" />
-    <state x="233" y="95" key="Vcs.Push.Dialog.v2" timestamp="1593107933819">
+    <state x="233" y="95" key="Vcs.Push.Dialog.v2" timestamp="1593127394416">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="233" y="95" key="Vcs.Push.Dialog.v2/0.0.1280.720@0.0.1280.720" timestamp="1593107933819" />
+    <state x="233" y="95" key="Vcs.Push.Dialog.v2/0.0.1280.720@0.0.1280.720" timestamp="1593127394416" />
     <state x="247" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1592210509530">
       <screen x="0" y="0" width="1280" height="720" />
     </state>

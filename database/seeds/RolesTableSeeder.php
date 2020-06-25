@@ -1,5 +1,6 @@
 <?php
 
+use App\Role;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use \Illuminate\Support\Facades\DB;
@@ -16,28 +17,23 @@ class RolesTableSeeder extends Seeder
     {
         Schema::disableForeignKeyConstraints();
         DB::table('roles')->truncate();
+        Role::create([
+            'role' => 'Admin',
+            'job_group' => 'System',
+            'description' => 'Has all the rights',
+        ]);
+        Role::create([
+            'role' => 'Supervisor',
+            'job_group' => 'System',
+            'description' => 'Oversees tasks and approve leaves',
+        ]);
+        Role::create([
+            'role' => 'Manager, HR & Administration',
+            'job_group' => 'ICTA 4',
+            'description' => '',
+        ]);
         DB::table('roles')->insert([
-            [
-                'role' => 'Admin',
-                'job_group' => 'System',
-                'description' => 'Has all the rights',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-            ],
-            [
-                'role' => 'Supervisor',
-                'job_group' => 'System',
-                'description' => 'Oversees tasks and approve leaves',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-            ],
-            [
-                'role' => 'Manager, HR & Administration',
-                'job_group' => 'ICTA 4',
-                'description' => '',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-            ],
+
             [
                 'role' => 'CEO',
                 'job_group' => 'ICTA 1',

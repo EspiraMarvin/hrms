@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="78448d03-970e-4b73-8bed-b4f69eb895b5" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/C:/xampp/htdocs/hrms/storage/logs/laravel.log" beforeDir="false" afterPath="$PROJECT_DIR$/C:/xampp/htdocs/hrms/storage/logs/laravel.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/RolesTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/RolesTableSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/UserRolesSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/UserRolesSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/UsersTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/UsersTableSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hr-mgmt-system/Procfile" beforeDir="false" afterPath="$PROJECT_DIR$/hr-mgmt-system/Procfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hr-mgmt-system" beforeDir="false" afterPath="$PROJECT_DIR$/hr-mgmt-system" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +62,7 @@
         <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/hr-mgmt-system" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.2">
     <include_path>
@@ -380,7 +377,7 @@
       <workItem from="1592551329529" duration="598000" />
       <workItem from="1592733792062" duration="607000" />
       <workItem from="1592819435800" duration="10949000" />
-      <workItem from="1593075421610" duration="30756000" />
+      <workItem from="1593075421610" duration="32027000" />
     </task>
     <task id="LOCAL-00001" summary="Procfile commit">
       <created>1588114826107</created>
@@ -704,7 +701,14 @@
       <option name="project" value="LOCAL" />
       <updated>1593109377851</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="hrms commit">
+      <created>1593127506444</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1593127506444</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -777,11 +781,11 @@
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="326" y="17" width="643" height="687" key="#phpunit.xml/0.0.1280.720/1920.0.1920.1080@0.0.1280.720" timestamp="1585002278688" />
-    <state x="111" y="0" key="CommitChangelistDialog2" timestamp="1593109376402">
+    <state x="111" y="0" key="CommitChangelistDialog2" timestamp="1593128755541">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="111" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1590046406972" />
-    <state x="111" y="0" key="CommitChangelistDialog2/0.0.1280.720@0.0.1280.720" timestamp="1593109376402" />
+    <state x="111" y="0" key="CommitChangelistDialog2/0.0.1280.720@0.0.1280.720" timestamp="1593128755541" />
     <state x="93" y="93" width="1095" height="535" key="DiffContextDialog" timestamp="1588158017168">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
@@ -821,10 +825,10 @@
     </state>
     <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1589909200924" />
     <state x="142" y="4" key="SettingsEditor/0.0.1280.720@0.0.1280.720" timestamp="1589261188063" />
-    <state x="233" y="95" key="Vcs.Push.Dialog.v2" timestamp="1593127394416">
+    <state x="233" y="95" key="Vcs.Push.Dialog.v2" timestamp="1593127552011">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="233" y="95" key="Vcs.Push.Dialog.v2/0.0.1280.720@0.0.1280.720" timestamp="1593127394416" />
+    <state x="233" y="95" key="Vcs.Push.Dialog.v2/0.0.1280.720@0.0.1280.720" timestamp="1593127552011" />
     <state x="247" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1592210509530">
       <screen x="0" y="0" width="1280" height="720" />
     </state>

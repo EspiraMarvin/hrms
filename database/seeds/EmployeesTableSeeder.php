@@ -20,7 +20,7 @@ class EmployeesTableSeeder extends Seeder
         DB::table('employees')->truncate();
         DB::table('employees')->insert([
             [
-                'department_id' => '1',
+                'department_id' => 1,
                 'photo' => 'noimage.jpg',
                 'code' => '479922',
                 'pf_number'=> 'ADMIN0001',
@@ -50,7 +50,7 @@ class EmployeesTableSeeder extends Seeder
                 'updated_at' => Carbon::now(),
             ],
             [
-                'department_id' => null,
+                'department_id' => 1,
                 'photo' => 'noimage.jpg',
                 'code' => '7439822',
                 'pf_number'=> 'CEO001',
@@ -80,7 +80,7 @@ class EmployeesTableSeeder extends Seeder
                 'updated_at' => Carbon::now(),
             ],
             [
-                'department_id' => '1',
+                'department_id' => 2,
                 'photo' => 'noimage.jpg',
                 'code' => '9230923',
                 'pf_number'=> 'HR0001',

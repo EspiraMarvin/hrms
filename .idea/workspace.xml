@@ -3,9 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="78448d03-970e-4b73-8bed-b4f69eb895b5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/C:/xampp/htdocs/hrms/storage/logs/laravel.log" beforeDir="false" afterPath="$PROJECT_DIR$/C:/xampp/htdocs/hrms/storage/logs/laravel.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hr-mgmt-system" beforeDir="false" afterPath="$PROJECT_DIR$/hr-mgmt-system" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/C:/xampp/htdocs/hrms/storage/logs/laravel.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Procfile" beforeDir="false" afterPath="$PROJECT_DIR$/Procfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bootstrap/cache/packages.php" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap/cache/packages.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bootstrap/cache/services.php" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap/cache/services.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/logs/laravel.log" beforeDir="false" afterPath="$PROJECT_DIR$/storage/logs/laravel.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,7 +190,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PhpStorm 2019.3.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
@@ -378,6 +382,8 @@
       <workItem from="1592733792062" duration="607000" />
       <workItem from="1592819435800" duration="10949000" />
       <workItem from="1593075421610" duration="32027000" />
+      <workItem from="1593129722411" duration="2182000" />
+      <workItem from="1593158812111" duration="1213000" />
     </task>
     <task id="LOCAL-00001" summary="Procfile commit">
       <created>1588114826107</created>
@@ -790,26 +796,26 @@
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="93" y="93" width="1095" height="535" key="DiffContextDialog/0.0.1280.720@0.0.1280.720" timestamp="1588158017168" />
-    <state x="421" y="117" key="FileChooserDialogImpl" timestamp="1591624842256">
+    <state x="421" y="117" key="FileChooserDialogImpl" timestamp="1593129794567">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="421" y="117" key="FileChooserDialogImpl/0.0.1280.720@0.0.1280.720" timestamp="1591624842256" />
-    <state width="1237" height="98" key="GridCell.Tab.0.bottom" timestamp="1588365048257">
+    <state x="421" y="117" key="FileChooserDialogImpl/0.0.1280.720@0.0.1280.720" timestamp="1593129794567" />
+    <state width="1237" height="98" key="GridCell.Tab.0.bottom" timestamp="1593129895464">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state width="1237" height="98" key="GridCell.Tab.0.bottom/0.0.1280.720@0.0.1280.720" timestamp="1588365048257" />
-    <state width="1237" height="98" key="GridCell.Tab.0.center" timestamp="1588365048257">
+    <state width="1237" height="98" key="GridCell.Tab.0.bottom/0.0.1280.720@0.0.1280.720" timestamp="1593129895464" />
+    <state width="1237" height="98" key="GridCell.Tab.0.center" timestamp="1593129895464">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state width="1237" height="98" key="GridCell.Tab.0.center/0.0.1280.720@0.0.1280.720" timestamp="1588365048257" />
-    <state width="1237" height="98" key="GridCell.Tab.0.left" timestamp="1588365048257">
+    <state width="1237" height="98" key="GridCell.Tab.0.center/0.0.1280.720@0.0.1280.720" timestamp="1593129895464" />
+    <state width="1237" height="98" key="GridCell.Tab.0.left" timestamp="1593129895463">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state width="1237" height="98" key="GridCell.Tab.0.left/0.0.1280.720@0.0.1280.720" timestamp="1588365048257" />
-    <state width="1237" height="98" key="GridCell.Tab.0.right" timestamp="1588365048257">
+    <state width="1237" height="98" key="GridCell.Tab.0.left/0.0.1280.720@0.0.1280.720" timestamp="1593129895463" />
+    <state width="1237" height="98" key="GridCell.Tab.0.right" timestamp="1593129895464">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state width="1237" height="98" key="GridCell.Tab.0.right/0.0.1280.720@0.0.1280.720" timestamp="1588365048257" />
+    <state width="1237" height="98" key="GridCell.Tab.0.right/0.0.1280.720@0.0.1280.720" timestamp="1593129895464" />
     <state x="581" y="200" key="NewPhpClassDialog" timestamp="1591631556921">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
@@ -820,11 +826,12 @@
     <state x="485" y="345" width="327" height="150" key="NewPhpFileDialog/0.0.1280.680@0.0.1280.680" timestamp="1589906470764" />
     <state x="473" y="384" key="NewPhpFileDialog/0.0.1280.720/1920.0.1920.1080@0.0.1280.720" timestamp="1592411162813" />
     <state x="485" y="365" width="327" height="151" key="NewPhpFileDialog/0.0.1280.720@0.0.1280.720" timestamp="1592056302007" />
-    <state x="142" y="0" key="SettingsEditor" timestamp="1589909200924">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state x="142" y="4" key="SettingsEditor" timestamp="1593159047301">
+      <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1589909200924" />
-    <state x="142" y="4" key="SettingsEditor/0.0.1280.720@0.0.1280.720" timestamp="1589261188063" />
+    <state x="142" y="4" key="SettingsEditor/0.0.1280.720/1920.0.1920.1080@0.0.1280.720" timestamp="1593159047301" />
+    <state x="142" y="4" key="SettingsEditor/0.0.1280.720@0.0.1280.720" timestamp="1593129826712" />
     <state x="233" y="95" key="Vcs.Push.Dialog.v2" timestamp="1593127552011">
       <screen x="0" y="0" width="1280" height="720" />
     </state>

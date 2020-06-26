@@ -24,7 +24,7 @@ class UsersTableSeeder extends Seeder
             'email_verified_at' => Carbon::now(),
             'password' => bcrypt('12345678'),
             ]);
-        $user->roles()->attach([2,1]);
+        $user->roles()->attach([2,3]);
         $user->supervisedBy()->attach([2,3]);
 
         $user = User::create([
@@ -33,7 +33,7 @@ class UsersTableSeeder extends Seeder
                 'email_verified_at' => Carbon::now(),
                 'password' => bcrypt('12345678')
             ]);
-        $user->roles()->attach([2,3]);
+        $user->roles()->attach([2,4]);
         $user->supervisedBy()->attach([1,3]);
 
 
@@ -43,7 +43,7 @@ class UsersTableSeeder extends Seeder
                'email_verified_at' => Carbon::now(),
                'password' => bcrypt('12345678')
            ]);
-        $user->roles()->attach([2,1]);
+        $user->roles()->attach([2,5]);
         $user->supervisedBy()->attach([1,2]);
 
 

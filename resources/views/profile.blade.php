@@ -29,12 +29,12 @@
                             <hr class="short br-lighter">
                             <div class="content_img">
 
-                                <img src="{{isset($employee->photo) ? $employee->photo : '/assets/noimage.png'}}" width="80px" height="80px"
-                                     data-toggle="modal" data-target="#profilePic"
+                                <img src="{{isset($employee->photo) ? $employee->photo : 'public/assets/noimage.png'}}" width="80px" height="80px"
+                                     data-toggle="modal" data-target="#profilePic" class="img-responsive center-block"
                                      data-id="{{isset($employee->id)}}" data-photo="{{isset($employee->photo)}}"
                                 >
                                {{-- @if(!isset($employee->photo))
-                                    <img
+                                    <imghr
                                         data-toggle="modal" data-target="#profilePic"
                                         data-id="{{$employee->id}}" data-photo="{{$employee->photo}}"
                                         style="text-align: center"

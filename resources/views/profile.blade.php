@@ -40,9 +40,8 @@
                                     data-toggle="modal" data-target="#profilePic"
                                     data-id="{{isset($employee->id)}}" data-photo="{{isset($employee->photo)}}"
                                     style="text-align: center"
-                                    class="img-responsive center-block"
-                                    src="/storage/photos/{{isset($employee->photo) ? $employee->photo : '/assets/img/avatars/noimage.png'}}"  width="80px" height="120px" >
-
+                                    src="/storage/photos/{{isset($employee->photo) ? $employee->photo : '/assets/img/avatars/noimage.png'}}" width="70%" height="140x"
+                                    class="img-responsive center-block">
                                 <div>Click Image To Change</div>
                                 {{--  @if(isset($employee->photo))
                                     <img

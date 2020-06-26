@@ -28,21 +28,12 @@
                         <div class="panel-body pn pb5">
                             <hr class="short br-lighter">
                             <div class="content_img">
-                                @if(isset($employee->photo))
                                     <img
                                         data-toggle="modal" data-target="#profilePic"
-                                        data-id="{{$employee->id}}" data-photo="{{$employee->photo}}"
+                                        data-id="{{isset($employee->id)}}" data-photo="{{isset($employee->photo)}}"
                                         style="text-align: center"
-                                        src="/storage/photos/{{$employee->photo}}" width="70%" height="140x"
+                                        src="/storage/photos/{{isset($employee->photo) ? $employee->photo : '/assets/noimage.png'}}" width="70%" height="120x"
                                         class="img-responsive center-block">
-                                @else
-                                    <img src="/assets/img/avatars/noimage.png"  width="70%" height="120px" class="img-responsive center-block">
-                                @endif
-
-                                <img src="/storage/photos/{{isset($employee->photo) ? $employee->photo : 'public/assets/noimage.png'}}" width="80px" height="120px"
-                                     data-toggle="modal" data-target="#profilePic" class="img-responsive center-block"
-                                     data-id="{{isset($employee->id)}}" data-photo="{{isset($employee->photo)}}">
-
                                 <div>Click Image To Change</div>
 
                                 {{--<img

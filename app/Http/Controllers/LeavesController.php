@@ -36,7 +36,7 @@ class LeavesController extends Controller
             $leave = Leave::all()->except(5);
 
             return view('hrms.leave.leave_apply', compact('leave', $leave,'getSupervisor_id',$getSupervisor_id));
-        }else
+        }elseif($employee->gender === 'Male' || 'male')
         {
             $leave = Leave::all()->except(4);
             return view('hrms.leave.leave_apply', compact('leave', $leave));

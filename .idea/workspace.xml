@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="78448d03-970e-4b73-8bed-b4f69eb895b5" name="Default Changelist" comment="hrms commit">
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -377,7 +378,7 @@
       <workItem from="1592819435800" duration="10949000" />
       <workItem from="1593075421610" duration="32027000" />
       <workItem from="1593129722411" duration="2182000" />
-      <workItem from="1593158812111" duration="1933000" />
+      <workItem from="1593158812111" duration="2906000" />
     </task>
     <task id="LOCAL-00001" summary="Procfile commit">
       <created>1588114826107</created>
@@ -846,6 +847,10 @@
     </state>
     <state x="233" y="95" key="Vcs.Push.Dialog.v2/0.0.1280.720/1920.0.1920.1080@0.0.1280.720" timestamp="1593160976350" />
     <state x="233" y="95" key="Vcs.Push.Dialog.v2/0.0.1280.720@0.0.1280.720" timestamp="1593127552011" />
+    <state x="93" y="93" width="1095" height="535" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1593162039962">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="93" y="93" width="1095" height="535" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1280.720/1920.0.1920.1080@0.0.1280.720" timestamp="1593162039962" />
     <state x="247" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1592210509530">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
@@ -863,6 +868,10 @@
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="364" y="153" key="git4idea.merge.GitPullDialog/0.0.1280.720@0.0.1280.720" timestamp="1589486732913" />
+    <state x="315" y="226" key="git4idea.rebase.GitRebaseDialog" timestamp="1593162036192">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="315" y="226" key="git4idea.rebase.GitRebaseDialog/0.0.1280.720/1920.0.1920.1080@0.0.1280.720" timestamp="1593162036192" />
     <state x="457" y="207" key="git4idea.ui.GitTagDialog" timestamp="1592822925650">
       <screen x="0" y="0" width="1280" height="720" />
     </state>

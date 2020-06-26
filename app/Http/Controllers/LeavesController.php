@@ -31,13 +31,17 @@ class LeavesController extends Controller
 
         $employee = Employee::findorFail(Auth::user()->id);
         $getSupervisor_id = $employee->user->supervisedBy[0]->id;
+        $getGender = $employee->gender;
 
-        if ($employee->gender === 'Female' || 'female') {
+
+
+        if ($getGender === "Female" || $getGender === "female") {
+
             $leave = Leave::all()->except(5);
-
             return view('hrms.leave.leave_apply', compact('leave', $leave,'getSupervisor_id',$getSupervisor_id));
-        }elseif($employee->gender === 'Male' || 'male')
-        {
+        }
+        if($getGender == "Male" || $getGender == "male") {
+
             $leave = Leave::all()->except(4);
             return view('hrms.leave.leave_apply', compact('leave', $leave));
         }

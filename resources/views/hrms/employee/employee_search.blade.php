@@ -71,12 +71,11 @@
                                             <thead>
                                             <tr class="bg-light">
                                                 <th class="text-center">Id</th>
-                                                <th class="text-center">Code</th>
+                                                <th class="text-center">PF No.</th>
                                                 <th class="text-center">Name</th>
                                                 <th class="text-center">Role</th>
-                                                <th class="text-center">Joining Date</th>
                                                 <th class="text-center">Supervisor</th>
-                                                <th class="text-center">Mobile Number</th>
+                                                <th class="text-center">P.Number</th>
                                                 <th class="text-center">Department</th>
                                                 <th class="text-center">Duty Station</th>
                                                 <th class="text-center">Date Posted</th>
@@ -90,32 +89,42 @@
                                                 @foreach($data as $emp)
                                                     <tr>
                                                         <td class="text-center">{{$i+=1}}</td>
-                                                        <td class="text-center">{{ $emp->code}}</td>
+                                                        <td class="text-center">{{isset($emp->pf_number) ? $emp->pf_number: ''}}</td>
                                                         <td class="text-center"><a href="/employee/{{$emp->id}}"> {{$emp->name}}</a></td>
-                                                        <td class="text-center">{{$emp->role}}</td>
-                                                        <td class="text-center">{{date_format(new DateTime($emp->date_of_joining), 'd-m-Y')}}</td>
-                                                        <td class="text-center">{{$emp->supervisor}}</td>
-                                                        <td class="text-center">{{$emp->phone_number}}</td>
-                                                        <td class="text-center">{{$emp->department}}</td>
-                                                        <td class="text-center">{{$emp->duty_station}}</td>
-                                                        <td class="text-center">{{date_format(new DateTime($emp->posted_date), 'd-m-Y')}}</td>
                                                         <td class="text-center">
-                                                            <div class="btn-group text-right">
-                                                                <button type="button"
-                                                                        class="btn btn-info br2 btn-xs fs12 dropdown-toggle"
-                                                                        data-toggle="dropdown" aria-expanded="false">
-                                                                    Action
-                                                                    <span class="caret ml5"></span>
+                                                            @if(isset($emp->roles[1]->role))
+                                                                {{isset($emp->roles[1]->role) ? $emp->roles[1]->role:''}}
+                                                            @elseif(!isset($emp->roles[1]->role))
+                                                                {{isset($emp->roles[0]->role) ? $emp->roles[0]->role:''}}
+                                                            @endif
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <a style="text-decoration: none"
+                                                               href="/supervisedBy_list/{{isset($emp->user->supervisedBy[0]->id) ? $emp->user->supervisedBy[0]->id:''}}/">
+                                                                {{isset($emp->user->supervisedBy[0]->name) ? $emp->user->supervisedBy[0]->name:''}}
+                                                            </a>
+                                                            <hr style="margin-top: 5px;margin-bottom: 5px">
+                                                            <a style="text-decoration: none"
+                                                               href="/supervisedBy_list/{{isset($emp->user->supervisedBy[1]->id) ? $emp->user->supervisedBy[1]->id:''}}/">
+                                                                {{isset($emp->user->supervisedBy[1]->name) ? $emp->user->supervisedBy[1]->name:''}}
+                                                            </a>
+                                                        </td>
+                                                        <td class="text-center">{{isset($emp->phone_number) ? $emp->phone_number: ''}}</td>
+                                                        <td class="text-center">
+                                                            <a style="text-decoration: none" href="/department/{{isset($emp->department->id) ? $emp->department->id:''}}">{{isset($emp->department->department) ? $emp->department->department:''}}</a>
+                                                        </td>
+                                                        <td class="text-center">{{isset($emp->duty_station) ? $emp->duty_station:''}}</td>
+                                                        <td class="text-center">{{date_format(new DateTime(isset($emp->posted_date)), 'd-m-Y')}}</td>
+                                                        <td class="text-center">
+                                                                <a href="/employee/{{$emp->id}}/edit">
+                                                                    <button type="button" class="btn btn-info br2 btn-xs fs12"
+                                                                            data-toggle="modal" data-target="#edit">Edit
+                                                                    </button>
+                                                                </a>
+                                                                <button type="button" class="btn btn-danger br2 btn-xs fs12"
+                                                                        data-empid="{{$emp->id}}" data-name="{{$emp->name}}" data-code="{{$emp->code}}"
+                                                                        data-toggle="modal" data-target="#delete">Delete
                                                                 </button>
-                                                                <ul class="dropdown-menu" role="menu">
-                                                                    <li>
-                                                                        <a href="/employee/{{$emp->id}}/edit">Edit</a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="/delete-emp/{{$emp->id}}">Delete</a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -139,6 +148,57 @@
             </div>
         </section>
     </div>
+
+
+    <!-- Modal Delete-->
+    <div class="modal fadeIn" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div style="background-color: lightpink" class="modal-header">
+                    <h5 class="modal-title text-center" id="exampleModalCenter">
+                        Delete Confirmation
+                    </h5>
+                    <button style="font-size: 30px; margin-top: -30px" type="button" class="close" data-dismiss="modal"
+                            aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div style="text-align: center" class="modal-body">
+                    {!! Form::open(['action' => ['EmployeeController@doDelete',isset($emp->id) ? $emp->id:'' ],'method' => 'POST','class' => 'form-horizontal','enctype'=>'multipart/form-data', 'id'=>"custom-form-wizard"]) !!}
+
+                    {{Form::hidden('id', isset($emp->id) ? $emp->id:'' ,['value' =>'','name' => 'id','id'=>'emp_id'])}}
+                    <h6>Are you sure you want to delete this ? </h6>
+                    <input style="border: 0" type="text" disabled class="form-control text-center" id="name">
+
+                    <div class="modal-footer text-center">
+                        <button type="button" class="btn btn-success" data-dismiss="modal">Cancel</button> &nbsp;&nbsp;
+                        <input class="btn btn-danger" type="submit" name="SUBMIT" value="Yes Delete" onclick="this.value='Deleting ..';this.disabled='disabled'; this.form.submit();" />
+                    </div>
+                    {{Form::hidden('_method','PUT')}}
+                    {!! Form::close() !!}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Modal -->
+
+
+    {{--    delete user--}}
+    <script>
+        $('#delete').on('show.bs.modal', function (event) {
+
+            var button = $(event.relatedTarget)
+            var employee_id = button.data('empid')
+            var name = button.data('name')
+            var code = button.data('code')
+            var modal = $(this)
+
+            modal.find('.modal-body #emp_id').val(employee_id);
+            modal.find('.modal-body #name').val(name);
+            modal.find('.modal-body #code').val(code);
+        })
+    </script>
 
 
     <script type="text/javascript">

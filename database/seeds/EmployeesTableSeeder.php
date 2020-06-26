@@ -48,7 +48,7 @@ class EmployeesTableSeeder extends Seeder
                 'user_id' => 1,
             ],
             [
-                'department_id' => 1,
+                'department_id' => null,
                 'photo' => 'noimage.jpg',
                 'code' => '7439822',
                 'pf_number'=> 'CEO001',

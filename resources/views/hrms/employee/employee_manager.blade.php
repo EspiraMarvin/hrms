@@ -117,7 +117,7 @@
                                                 @foreach($employee ?? '' as $emp)
                                                     <tr>
                                                         <td class="text-center">{{$i+=1}}</td>
-                                                        <td class="text-center">{{$emp->pf_number}}</td>
+                                                        <td class="text-center">{{isset($emp->pf_number) ? $emp->pf_number:'' }}</td>
                                                         <td class="text-center"><a style=" text-decoration: none"
                                                                 href="/employee/{{$emp->id}}"> {{$emp->name}}</a></td>
                                                         <td class="text-center">
@@ -144,14 +144,15 @@
                                                         <td class="text-center">{{isset($emp->duty_station) ? $emp->duty_station:''}}</td>
                                                         <td class="text-center">{{date_format(new DateTime($emp->posted_date), 'd-m-Y')}}</td>
                                                         <td class="text-center">
-                                                                    <a href="/employee/{{$emp->id}}/edit">
-                                                                        <button type="button" class="btn btn-info br2 btn-xs fs12"
-                                                                                 data-toggle="modal" data-target="#edit">Edit
-                                                                         </button></a>
-                                                                          <button type="button" class="btn btn-danger br2 btn-xs fs12"
-                                                                                  data-empid="{{$emp->id}}" data-name="{{$emp->name}}" data-code="{{$emp->code}}"
-                                                                                      data-toggle="modal" data-target="#delete">Delete
-                                                                          </button>
+                                                            <a href="/employee/{{$emp->id}}/edit">
+                                                                <button type="button" class="btn btn-info br2 btn-xs fs12"
+                                                                        data-toggle="modal" data-target="#edit">Edit
+                                                                </button>
+                                                            </a>
+                                                            <button type="button" class="btn btn-danger br2 btn-xs fs12"
+                                                                    data-empid="{{$emp->id}}" data-name="{{$emp->name}}" data-code="{{$emp->code}}"
+                                                                    data-toggle="modal" data-target="#delete">Delete
+                                                            </button>
                                                         </td>
                                                     </tr>
                                                 @endforeach

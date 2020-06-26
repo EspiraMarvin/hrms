@@ -28,13 +28,6 @@
                         <div class="panel-body pn pb5">
                             <hr class="short br-lighter">
                             <div class="content_img">
-                      {{--              <img
-                                        data-toggle="modal" data-target="#profilePic"
-                                        data-id="{{isset($employee->id)}}" data-photo="{{isset($employee->photo)}}"
-                                        style="text-align: center"
-                                        src="/storage/photos/{{isset($employee->photo) ? $employee->photo : '/assets/noimage.png'}}" width="70%" height="120x"
-                                        class="img-responsive center-block">
-                                <div>Click Image To Change</div>--}}
 
                                <img
                                     data-toggle="modal" data-target="#profilePic"

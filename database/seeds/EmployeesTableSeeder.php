@@ -46,8 +46,6 @@ class EmployeesTableSeeder extends Seeder
                 'notice_period' => null,
                 'last_working_day' => null,
                 'user_id' => 1,
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
             ],
             [
                 'department_id' => 1,
@@ -76,8 +74,6 @@ class EmployeesTableSeeder extends Seeder
                 'notice_period' => null,
                 'last_working_day' => null,
                 'user_id' => 2,
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
             ],
             [
                 'department_id' => 2,
@@ -106,8 +102,6 @@ class EmployeesTableSeeder extends Seeder
                 'notice_period' => null,
                 'last_working_day' => null,
                 'user_id' => 3,
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
             ]
         ]);
         Schema::enableForeignKeyConstraints();

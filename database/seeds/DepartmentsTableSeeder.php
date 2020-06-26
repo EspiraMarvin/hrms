@@ -21,16 +21,12 @@ class DepartmentsTableSeeder extends Seeder
                 'department' => 'DLP',
                 'directorate_id' => '1',
                 'description' => 'Digital Literacy Program',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
             ],
 
             [
                 'department' => 'Ajira',
                 'directorate_id' => '1',
                 'description' => 'Youth Empowerment',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
             ]
         ]);
         Schema::enableForeignKeyConstraints();

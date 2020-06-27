@@ -90,7 +90,7 @@
                                                     <tr>
                                                         <td class="text-center">{{$i+=1}}</td>
                                                         <td class="text-center">{{isset($emp->pf_number) ? $emp->pf_number: ''}}</td>
-                                                        <td class="text-center"><abash href="/employee/{{$emp->id}}"> {{$emp->name}}</abash></td>
+                                                        <td class="text-center"><a href="/employee/{{$emp->id}}"> {{$emp->name}}</a></td>
                                                         <td class="text-center">
                                                             @if(isset($emp->roles[1]->role))
                                                                 {{isset($emp->roles[1]->role) ? $emp->roles[1]->role:''}}

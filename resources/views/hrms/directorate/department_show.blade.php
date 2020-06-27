@@ -49,10 +49,10 @@
                                                         {{$member->name}}</a>
                                                 </td>
                                                 <td class="text-center">
-                                                    @if(isset($member->roles[0]->role) != 'Supervisor')
-                                                        {{isset($emp->roles[0]->role) ? $emp->roles[0]->role:''}}
-                                                    @else
+                                                    @if(isset($member->roles[1]->role))
                                                         {{isset($member->roles[1]->role) ? $member->roles[1]->role:''}}
+                                                    @elseif(!isset($member->roles[1]->role))
+                                                        {{isset($member->roles[0]->role) ? $member->roles[0]->role:''}}
                                                     @endif
                                                 </td>
                                                 <td class="text-center">

@@ -453,7 +453,7 @@ class EmployeeController extends Controller
         $employee->last_working_day = $request->input('last_working_day');
         if ($request->hasFile('photo')) {
 
-                $employee->photo = $fileNameToStore;
+            $employee->photo = $fileNameToStore;
         }
 
         $employee->save();

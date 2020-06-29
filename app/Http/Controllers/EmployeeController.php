@@ -459,17 +459,16 @@ class EmployeeController extends Controller
         $employee->save();
 
         //check is roles have been changed
-        if(isset($request->roles_id)){
+        if (isset($request->roles_id)){
 
-            //if roles change is requested detach all the roles of the user
             $user->roles()->detach();
-
-            // then attach the requested roles
-            foreach ($request->roles_id as $request->role_id) {
-
-                $user->roles()->attach($request->role_id);
-            }
         }
+
+        foreach ($request->roles_id as $request->role_id){
+
+            $user->roles()->attach($request->role_id);
+        }
+
 
         if(isset($request->supervisors_id)){
 

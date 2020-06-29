@@ -112,7 +112,6 @@
                                 <div class="row pv10">
                                     <div class="col-xs-5 ph10">
                                         <span style="font-size: 60px" class="fa fa-graduation-cap"></span>
-{{--                                        <span></span>--}}
                                     </div>
                                     <div class="col-xs-7 pl5">
                                         <h3 class="text-muted"><a style=" text-decoration: none" href="/train_invite_list"> TRAINING <br/> MANAGER </a></h3>

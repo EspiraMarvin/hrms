@@ -36,7 +36,7 @@
                         <div class="box box-success">
                             <div class="panel">
                                 <div class="panel-heading">
-                                    <span class="panel-title hidden-xs"> Assets List->[Total No. {{$totalAssets}}] </span>
+                                    <span class="panel-title hidden-xs"> Assets List [Total No. {{$totalAssets}}] </span>
                                 </div><br>
 
                                 <div class="panel-menu allcp-form theme-primary mtn">

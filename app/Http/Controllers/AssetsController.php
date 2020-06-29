@@ -38,8 +38,8 @@ class AssetsController extends Controller
     public function assetList()
     {
         $asset = Asset::orderBy('id', 'desc')->paginate(15);
-
         $totalAssets = Asset::count();
+
         return view('hrms.asset.asset_list',compact('asset', $asset,'totalAssets',$totalAssets));
     }
 

@@ -369,9 +369,7 @@ class EmployeeController extends Controller
             $path = $request->file('photo')->storeAs('public/photos', $fileNameToStore);
         }
 
-
-
-            $user           = User::find($id);
+        $user = User::find($id);
         $user->save();
 
 
@@ -460,13 +458,9 @@ class EmployeeController extends Controller
 
         $employee->save();
 
-
         if(isset($request->roles_id)){
 
-            if (!empty($user->roles_id)){
-
-                $user->roles()->detach();
-            }
+            $user->roles()->detach();
 
             foreach ($request->roles_id as $request->role_id) {
 

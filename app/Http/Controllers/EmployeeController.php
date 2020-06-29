@@ -458,6 +458,7 @@ class EmployeeController extends Controller
 
         $employee->save();
 
+        //check is roles have been changed
         if(isset($request->roles_id)){
 
             $user->roles()->detach();

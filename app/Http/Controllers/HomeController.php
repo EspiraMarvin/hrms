@@ -25,8 +25,7 @@ class HomeController extends Controller
     public function index()
     {
         $user = User::findorFail(Auth::user()->id);
-        //official date
 
-        return view('home',compact('user'));
+        return view('home',compact($user));
     }
 }

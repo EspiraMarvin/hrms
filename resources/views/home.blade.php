@@ -4,6 +4,7 @@
         <section id="content" class="pn animated fadeIn">
 
             <div class="center-block mt10 mw800 text-center p20">
+            
                 <h3 class="animated zoomIn"> Welcome &nbsp;{{Auth::user()->name}}<br></h3>
 
                     <h6 class="form-group" style="margin-top: 40px;font-size: 20px; background-color: black; color: white">

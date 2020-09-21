@@ -97,7 +97,6 @@ class EmployeeController extends Controller
     {
         $employees = Employee::where('employment_type','!=','Permanent')->get();
 
-//        dd($employees);
         // no of contracts
         $contractsNumber = Employee::where('employment_type','!=','Permanent')->count();
 
@@ -196,7 +195,6 @@ class EmployeeController extends Controller
         } else {
             $fileNameToStore = 'noimage.jpg';
         }
-
 
         $user           = new User;
         $user->name     = $request->name;

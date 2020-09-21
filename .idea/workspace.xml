@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="78448d03-970e-4b73-8bed-b4f69eb895b5" name="Default Changelist" comment="">
+    <list default="true" id="78448d03-970e-4b73-8bed-b4f69eb895b5" name="Default Changelist" comment="hrms commit">
+      <change afterPath="$PROJECT_DIR$/public/assets/image.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/DepartmentsTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DepartmentsTableSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/EmployeesTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/EmployeesTableSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/LeavesTypeTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/LeavesTypeTableSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/UserRolesSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/UserRolesSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/avatars/license.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/inc/base.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/inc/base.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/logs/laravel.log" beforeDir="false" afterPath="$PROJECT_DIR$/storage/logs/laravel.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,10 +189,10 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/assets" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PhpStorm 2019.3.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
@@ -198,6 +202,8 @@
       <recent name="C:\xampp\htdocs\hrms\resources\views\hrms\employee" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\hrms\public\assets" />
+      <recent name="C:\xampp\htdocs\hrms\storage\app\public\photos" />
       <recent name="C:\xampp\htdocs\hrms\app\Http\Controllers" />
       <recent name="C:\xampp\htdocs\hrms\public\assets\fonts\font-awesome" />
       <recent name="C:\xampp\htdocs\hrms\public\assets\img\avatars" />
@@ -382,251 +388,21 @@
       <workItem from="1593075421610" duration="32027000" />
       <workItem from="1593129722411" duration="2182000" />
       <workItem from="1593158812111" duration="8803000" />
-    </task>
-    <task id="LOCAL-00005" summary="Procfile commit">
-      <created>1588119068805</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1588119068805</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Procfile commit">
-      <created>1588157066909</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1588157066910</updated>
-    </task>
-    <task id="LOCAL-00007" summary="env commit">
-      <created>1588157285677</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1588157285677</updated>
-    </task>
-    <task id="LOCAL-00008" summary="env commit">
-      <created>1588157713488</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1588157713488</updated>
-    </task>
-    <task id="LOCAL-00009" summary="color button change">
-      <created>1588161017133</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1588161017133</updated>
-    </task>
-    <task id="LOCAL-00010" summary=" color button change">
-      <created>1588161196820</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1588161196820</updated>
-    </task>
-    <task id="LOCAL-00011" summary="welcome page remove forgot password">
-      <created>1588163004788</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1588163004788</updated>
-    </task>
-    <task id="LOCAL-00012" summary="sidebar supervisor changes">
-      <created>1588166207757</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1588166207757</updated>
-    </task>
-    <task id="LOCAL-00013" summary="sidebar commit">
-      <created>1588169468081</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1588169468081</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Model User.php  commit">
-      <created>1588169518327</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1588169518327</updated>
-    </task>
-    <task id="LOCAL-00015" summary="User model commit">
-      <created>1588170714103</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1588170714103</updated>
-    </task>
-    <task id="LOCAL-00016" summary="User model commit">
-      <created>1588171341240</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1588171341240</updated>
-    </task>
-    <task id="LOCAL-00017" summary="sidebar commit">
-      <created>1588171364397</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1588171364397</updated>
-    </task>
-    <task id="LOCAL-00018" summary="user model commit">
-      <created>1588173230414</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1588173230414</updated>
-    </task>
-    <task id="LOCAL-00019" summary="hrms commit">
-      <created>1589478384728</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1589478384728</updated>
-    </task>
-    <task id="LOCAL-00020" summary="hrms commit">
-      <created>1590046410701</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1590046410701</updated>
-    </task>
-    <task id="LOCAL-00021" summary="hrms commit">
-      <created>1592503055796</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1592503055796</updated>
-    </task>
-    <task id="LOCAL-00022" summary="hrms commit">
-      <created>1592822793148</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1592822793148</updated>
-    </task>
-    <task id="LOCAL-00023" summary="hrms commit">
-      <created>1592823542249</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1592823542249</updated>
-    </task>
-    <task id="LOCAL-00024" summary="hrms commit">
-      <created>1592826259310</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1592826259310</updated>
-    </task>
-    <task id="LOCAL-00025" summary="hrms commit">
-      <created>1592826448465</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1592826448465</updated>
-    </task>
-    <task id="LOCAL-00026" summary="hrms commit">
-      <created>1592828005881</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1592828005881</updated>
-    </task>
-    <task id="LOCAL-00027" summary="hrms commit">
-      <created>1592836215912</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1592836215912</updated>
-    </task>
-    <task id="LOCAL-00028" summary="hrms commit">
-      <created>1592849589166</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1592849589168</updated>
-    </task>
-    <task id="LOCAL-00029" summary="hrms commit">
-      <created>1593077027405</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1593077027405</updated>
-    </task>
-    <task id="LOCAL-00030" summary="hrms commit">
-      <created>1593078104023</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1593078104023</updated>
-    </task>
-    <task id="LOCAL-00031" summary="hrms commit">
-      <created>1593078533409</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1593078533409</updated>
-    </task>
-    <task id="LOCAL-00032" summary="hrms commit">
-      <created>1593079137966</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1593079137966</updated>
-    </task>
-    <task id="LOCAL-00033" summary="hrms commit">
-      <created>1593079310227</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1593079310227</updated>
-    </task>
-    <task id="LOCAL-00034" summary="hrms commit">
-      <created>1593081024165</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1593081024165</updated>
-    </task>
-    <task id="LOCAL-00035" summary="hrms commit">
-      <created>1593089584841</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1593089584841</updated>
-    </task>
-    <task id="LOCAL-00036" summary="hrms commit">
-      <created>1593094367258</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1593094367258</updated>
-    </task>
-    <task id="LOCAL-00037" summary="hrms commit">
-      <created>1593094519870</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1593094519870</updated>
-    </task>
-    <task id="LOCAL-00038" summary="hrms commit">
-      <created>1593095060232</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1593095060232</updated>
-    </task>
-    <task id="LOCAL-00039" summary="hrms commit">
-      <created>1593095081283</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1593095081283</updated>
+      <workItem from="1593187032792" duration="42000" />
+      <workItem from="1593192355324" duration="7048000" />
+      <workItem from="1593249361896" duration="5282000" />
+      <workItem from="1593264768432" duration="308000" />
+      <workItem from="1593422233963" duration="5230000" />
+      <workItem from="1593595025214" duration="4902000" />
+      <workItem from="1593718100626" duration="1031000" />
+      <workItem from="1594014579605" duration="20707000" />
+      <workItem from="1594124216937" duration="13429000" />
+      <workItem from="1594163020166" duration="619000" />
+      <workItem from="1594298542560" duration="2610000" />
+      <workItem from="1594315906736" duration="344000" />
+      <workItem from="1595342597439" duration="1423000" />
+      <workItem from="1596281251788" duration="651000" />
+      <workItem from="1600673816079" duration="891000" />
     </task>
     <task id="LOCAL-00040" summary="hrms commit">
       <created>1593096855337</created>
@@ -726,7 +502,252 @@
       <option name="project" value="LOCAL" />
       <updated>1593169913582</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="hrms commit">
+      <created>1593174928229</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1593174928229</updated>
+    </task>
+    <task id="LOCAL-00055" summary="hrms commit">
+      <created>1593178905662</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1593178905662</updated>
+    </task>
+    <task id="LOCAL-00056" summary="hrms commit">
+      <created>1593179053295</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1593179053295</updated>
+    </task>
+    <task id="LOCAL-00057" summary="hrms commit">
+      <created>1593179296226</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1593179296226</updated>
+    </task>
+    <task id="LOCAL-00058" summary="hrms commit">
+      <created>1593179522983</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1593179522984</updated>
+    </task>
+    <task id="LOCAL-00059" summary="hrms commit">
+      <created>1593179642648</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1593179642648</updated>
+    </task>
+    <task id="LOCAL-00060" summary="hrms commit">
+      <created>1593179772172</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1593179772172</updated>
+    </task>
+    <task id="LOCAL-00061" summary="hrms commit">
+      <created>1593180143150</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1593180143150</updated>
+    </task>
+    <task id="LOCAL-00062" summary="hrms commit">
+      <created>1593180477763</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1593180477763</updated>
+    </task>
+    <task id="LOCAL-00063" summary="hrms commit">
+      <created>1593180658572</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1593180658572</updated>
+    </task>
+    <task id="LOCAL-00064" summary="hrms commit">
+      <created>1593180877531</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1593180877531</updated>
+    </task>
+    <task id="LOCAL-00065" summary="hrms commit">
+      <created>1593181359335</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1593181359335</updated>
+    </task>
+    <task id="LOCAL-00066" summary="hrms commit">
+      <created>1593181917025</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1593181917025</updated>
+    </task>
+    <task id="LOCAL-00067" summary="hrms commit">
+      <created>1593182289387</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1593182289387</updated>
+    </task>
+    <task id="LOCAL-00068" summary="hrms commit">
+      <created>1593182465888</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1593182465888</updated>
+    </task>
+    <task id="LOCAL-00069" summary="hrms commit">
+      <created>1593182658688</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1593182658688</updated>
+    </task>
+    <task id="LOCAL-00070" summary="hrms commit">
+      <created>1593183024504</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1593183024504</updated>
+    </task>
+    <task id="LOCAL-00071" summary="hrms commit">
+      <created>1593199373915</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1593199373920</updated>
+    </task>
+    <task id="LOCAL-00072" summary="hrms commit">
+      <created>1593256646069</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1593256646070</updated>
+    </task>
+    <task id="LOCAL-00073" summary="hrms commit">
+      <created>1593256942660</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1593256942660</updated>
+    </task>
+    <task id="LOCAL-00074" summary="hrms commit">
+      <created>1593257259017</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1593257259017</updated>
+    </task>
+    <task id="LOCAL-00075" summary="hrms commit">
+      <created>1593258102962</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1593258102962</updated>
+    </task>
+    <task id="LOCAL-00076" summary="hrms commit">
+      <created>1593258442372</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1593258442372</updated>
+    </task>
+    <task id="LOCAL-00077" summary="hrms commit">
+      <created>1593264910930</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1593264910930</updated>
+    </task>
+    <task id="LOCAL-00078" summary="hrms commit">
+      <created>1593423316653</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1593423316655</updated>
+    </task>
+    <task id="LOCAL-00079" summary="hrms commit">
+      <created>1593423513849</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1593423513849</updated>
+    </task>
+    <task id="LOCAL-00080" summary="hrms commit">
+      <created>1593424157795</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1593424157795</updated>
+    </task>
+    <task id="LOCAL-00081" summary="hrms commit">
+      <created>1593425513280</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1593425513280</updated>
+    </task>
+    <task id="LOCAL-00082" summary="hrms commit">
+      <created>1593425795088</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1593425795088</updated>
+    </task>
+    <task id="LOCAL-00083" summary="hrms commit">
+      <created>1593426160776</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1593426160776</updated>
+    </task>
+    <task id="LOCAL-00084" summary="hrms commit">
+      <created>1593426531025</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1593426531025</updated>
+    </task>
+    <task id="LOCAL-00085" summary="hrms commit">
+      <created>1593426906828</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1593426906828</updated>
+    </task>
+    <task id="LOCAL-00086" summary="hrms commit">
+      <created>1593427356741</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1593427356741</updated>
+    </task>
+    <task id="LOCAL-00087" summary="hrms commit">
+      <created>1593718288110</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1593718288111</updated>
+    </task>
+    <task id="LOCAL-00088" summary="hrms commit">
+      <created>1593718483225</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1593718483225</updated>
+    </task>
+    <option name="localTasksCounter" value="89" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -788,27 +809,24 @@
     </state>
     <state x="371" y="103" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1589910122060" />
     <state x="371" y="109" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.720@0.0.1280.720" timestamp="1586389763626" />
-    <state x="371" y="117" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1592497038984">
+    <state x="371" y="117" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1593422847943">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="371" y="111" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.680@0.0.1280.680" timestamp="1590058786265" />
     <state x="371" y="117" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.720/1920.0.1280.720@0.0.1280.720" timestamp="1587891811450" />
     <state x="371" y="117" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.720/1920.0.1920.1080@0.0.1280.720" timestamp="1592418631708" />
-    <state x="371" y="117" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.720@0.0.1280.720" timestamp="1592497038984" />
-    <state x="326" y="17" width="643" height="687" key="#phpunit.xml" timestamp="1585002278688">
-      <screen x="0" y="0" width="1280" height="720" />
-    </state>
-    <state x="326" y="17" width="643" height="687" key="#phpunit.xml/0.0.1280.720/1920.0.1920.1080@0.0.1280.720" timestamp="1585002278688" />
-    <state x="111" y="0" key="CommitChangelistDialog2" timestamp="1593169910984">
+    <state x="371" y="117" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.720@0.0.1280.720" timestamp="1593422847943" />
+    <state x="111" y="0" key="CommitChangelistDialog2" timestamp="1593718480736">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="111" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1590046406972" />
-    <state x="111" y="0" key="CommitChangelistDialog2/0.0.1280.720/1920.0.1920.1080@0.0.1280.720" timestamp="1593169910984" />
-    <state x="111" y="0" key="CommitChangelistDialog2/0.0.1280.720@0.0.1280.720" timestamp="1593128755541" />
-    <state x="93" y="93" width="1095" height="535" key="DiffContextDialog" timestamp="1588158017168">
+    <state x="111" y="0" key="CommitChangelistDialog2/0.0.1280.720/1920.0.1920.1080@0.0.1280.720" timestamp="1593718480736" />
+    <state x="111" y="0" key="CommitChangelistDialog2/0.0.1280.720@0.0.1280.720" timestamp="1593427355740" />
+    <state x="93" y="93" width="1038" height="594" key="DiffContextDialog" timestamp="1593423502167">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="93" y="93" width="1095" height="535" key="DiffContextDialog/0.0.1280.720@0.0.1280.720" timestamp="1588158017168" />
+    <state x="152" y="96" width="1038" height="594" key="DiffContextDialog/0.0.1280.720/1920.0.1920.1080@0.0.1280.720" timestamp="1593257284811" />
+    <state x="93" y="93" width="1095" height="535" key="DiffContextDialog/0.0.1280.720@0.0.1280.720" timestamp="1593423502167" />
     <state x="421" y="117" key="FileChooserDialogImpl" timestamp="1593129794567">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
@@ -829,14 +847,14 @@
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state width="1237" height="98" key="GridCell.Tab.0.right/0.0.1280.720@0.0.1280.720" timestamp="1593129895464" />
-    <state x="121" y="61" key="MergeDialog" timestamp="1593162631728">
+    <state x="121" y="61" key="MergeDialog" timestamp="1593718348713">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="121" y="61" key="MergeDialog/0.0.1280.720/1920.0.1920.1080@0.0.1280.720" timestamp="1593162631728" />
-    <state x="354" y="78" key="MultipleFileMergeDialog" timestamp="1593162631735">
+    <state x="121" y="61" key="MergeDialog/0.0.1280.720/1920.0.1920.1080@0.0.1280.720" timestamp="1593718348713" />
+    <state x="354" y="78" key="MultipleFileMergeDialog" timestamp="1593718381935">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="354" y="78" key="MultipleFileMergeDialog/0.0.1280.720/1920.0.1920.1080@0.0.1280.720" timestamp="1593162631735" />
+    <state x="354" y="78" key="MultipleFileMergeDialog/0.0.1280.720/1920.0.1920.1080@0.0.1280.720" timestamp="1593718381935" />
     <state x="581" y="200" key="NewPhpClassDialog" timestamp="1591631556921">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
@@ -847,17 +865,21 @@
     <state x="485" y="345" width="327" height="150" key="NewPhpFileDialog/0.0.1280.680@0.0.1280.680" timestamp="1589906470764" />
     <state x="473" y="384" key="NewPhpFileDialog/0.0.1280.720/1920.0.1920.1080@0.0.1280.720" timestamp="1592411162813" />
     <state x="485" y="365" width="327" height="151" key="NewPhpFileDialog/0.0.1280.720@0.0.1280.720" timestamp="1592056302007" />
-    <state x="142" y="4" key="SettingsEditor" timestamp="1593159047301">
+    <state x="488" y="84" key="RollbackChangesDialog" timestamp="1593257195582">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="488" y="84" key="RollbackChangesDialog/0.0.1280.720/1920.0.1920.1080@0.0.1280.720" timestamp="1593257195582" />
+    <state x="142" y="4" key="SettingsEditor" timestamp="1593422254018">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1589909200924" />
     <state x="142" y="4" key="SettingsEditor/0.0.1280.720/1920.0.1920.1080@0.0.1280.720" timestamp="1593159047301" />
-    <state x="142" y="4" key="SettingsEditor/0.0.1280.720@0.0.1280.720" timestamp="1593129826712" />
-    <state x="233" y="95" key="Vcs.Push.Dialog.v2" timestamp="1593169927463">
+    <state x="142" y="4" key="SettingsEditor/0.0.1280.720@0.0.1280.720" timestamp="1593422254018" />
+    <state x="233" y="95" key="Vcs.Push.Dialog.v2" timestamp="1593718502611">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="233" y="95" key="Vcs.Push.Dialog.v2/0.0.1280.720/1920.0.1920.1080@0.0.1280.720" timestamp="1593169927463" />
-    <state x="233" y="95" key="Vcs.Push.Dialog.v2/0.0.1280.720@0.0.1280.720" timestamp="1593127552011" />
+    <state x="233" y="95" key="Vcs.Push.Dialog.v2/0.0.1280.720/1920.0.1920.1080@0.0.1280.720" timestamp="1593718502611" />
+    <state x="233" y="95" key="Vcs.Push.Dialog.v2/0.0.1280.720@0.0.1280.720" timestamp="1593427428303" />
     <state x="93" y="93" width="1095" height="535" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1593162039962">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
@@ -866,11 +888,12 @@
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="247" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1280.720@0.0.1280.720" timestamp="1592210509530" />
-    <state x="450" y="264" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1588786975283">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state x="450" y="279" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1593718270708">
+      <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="450" y="264" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1588786975283" />
-    <state x="450" y="279" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.720@0.0.1280.720" timestamp="1587889678873" />
+    <state x="450" y="279" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.720/1920.0.1920.1080@0.0.1280.720" timestamp="1593718270708" />
+    <state x="450" y="279" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.720@0.0.1280.720" timestamp="1593425774238" />
     <state x="107" y="0" width="739" height="720" key="find.popup" timestamp="1585215826670">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
@@ -887,6 +910,10 @@
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="457" y="207" key="git4idea.ui.GitTagDialog/0.0.1280.720@0.0.1280.720" timestamp="1592822925650" />
+    <state x="304" y="210" key="git4idea.ui.GitUnstashDialog" timestamp="1593718516064">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="304" y="210" key="git4idea.ui.GitUnstashDialog/0.0.1280.720/1920.0.1920.1080@0.0.1280.720" timestamp="1593718516064" />
     <state x="297" y="161" key="run.anything.popup" timestamp="1592822319403">
       <screen x="0" y="0" width="1280" height="720" />
     </state>

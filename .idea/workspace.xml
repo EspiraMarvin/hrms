@@ -1,17 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="78448d03-970e-4b73-8bed-b4f69eb895b5" name="Default Changelist" comment="hrms commit">
-      <change afterPath="$PROJECT_DIR$/public/assets/image.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+    <list default="true" id="78448d03-970e-4b73-8bed-b4f69eb895b5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/img/avatars/license.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/inc/base.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/inc/base.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/logs/laravel.log" beforeDir="false" afterPath="$PROJECT_DIR$/storage/logs/laravel.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -402,14 +394,7 @@
       <workItem from="1594315906736" duration="344000" />
       <workItem from="1595342597439" duration="1423000" />
       <workItem from="1596281251788" duration="651000" />
-      <workItem from="1600673816079" duration="891000" />
-    </task>
-    <task id="LOCAL-00040" summary="hrms commit">
-      <created>1593096855337</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1593096855337</updated>
+      <workItem from="1600673816079" duration="1135000" />
     </task>
     <task id="LOCAL-00041" summary="hrms commit">
       <created>1593097141757</created>
@@ -747,7 +732,14 @@
       <option name="project" value="LOCAL" />
       <updated>1593718483225</updated>
     </task>
-    <option name="localTasksCounter" value="89" />
+    <task id="LOCAL-00089" summary="hrms commit">
+      <created>1600674773133</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1600674773134</updated>
+    </task>
+    <option name="localTasksCounter" value="90" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -786,42 +778,16 @@
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="233" y="20" key="#Notifications/0.0.1280.720@0.0.1280.720" timestamp="1592508510979" />
-    <state x="349" y="0" key="#PHP" timestamp="1590659716588">
-      <screen x="0" y="0" width="1280" height="720" />
-    </state>
-    <state x="349" y="0" key="#PHP/0.0.1280.720@0.0.1280.720" timestamp="1590659716588" />
-    <state x="361" y="36" key="#analytics.js" timestamp="1586390082853">
-      <screen x="0" y="0" width="1280" height="720" />
-    </state>
-    <state x="361" y="36" key="#analytics.js/0.0.1280.720@0.0.1280.720" timestamp="1586390082853" />
-    <state x="96" y="17" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1591624850493">
-      <screen x="0" y="0" width="1280" height="720" />
-    </state>
-    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1590058750865" />
-    <state x="96" y="17" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.720@0.0.1280.720" timestamp="1591624850493" />
-    <state x="407" y="165" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1591789327558">
-      <screen x="0" y="0" width="1280" height="720" />
-    </state>
-    <state x="407" y="165" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.720/1920.0.1920.1080@0.0.1280.720" timestamp="1591789327558" />
-    <state x="407" y="165" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.720@0.0.1280.720" timestamp="1589892051952" />
-    <state x="371" y="103" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1589910122060">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="371" y="103" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1589910122060" />
-    <state x="371" y="109" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.720@0.0.1280.720" timestamp="1586389763626" />
     <state x="371" y="117" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1593422847943">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="371" y="111" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.680@0.0.1280.680" timestamp="1590058786265" />
-    <state x="371" y="117" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.720/1920.0.1280.720@0.0.1280.720" timestamp="1587891811450" />
     <state x="371" y="117" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.720/1920.0.1920.1080@0.0.1280.720" timestamp="1592418631708" />
     <state x="371" y="117" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.720@0.0.1280.720" timestamp="1593422847943" />
-    <state x="111" y="0" key="CommitChangelistDialog2" timestamp="1593718480736">
+    <state x="111" y="0" key="CommitChangelistDialog2" timestamp="1600674770300">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="111" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1590046406972" />
     <state x="111" y="0" key="CommitChangelistDialog2/0.0.1280.720/1920.0.1920.1080@0.0.1280.720" timestamp="1593718480736" />
-    <state x="111" y="0" key="CommitChangelistDialog2/0.0.1280.720@0.0.1280.720" timestamp="1593427355740" />
+    <state x="111" y="0" key="CommitChangelistDialog2/0.0.1280.720@0.0.1280.720" timestamp="1600674770300" />
     <state x="93" y="93" width="1038" height="594" key="DiffContextDialog" timestamp="1593423502167">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
@@ -847,22 +813,19 @@
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state width="1237" height="98" key="GridCell.Tab.0.right/0.0.1280.720@0.0.1280.720" timestamp="1593129895464" />
-    <state x="121" y="61" key="MergeDialog" timestamp="1593718348713">
+    <state x="121" y="61" key="MergeDialog" timestamp="1600674861512">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="121" y="61" key="MergeDialog/0.0.1280.720/1920.0.1920.1080@0.0.1280.720" timestamp="1593718348713" />
-    <state x="354" y="78" key="MultipleFileMergeDialog" timestamp="1593718381935">
+    <state x="121" y="61" key="MergeDialog/0.0.1280.720@0.0.1280.720" timestamp="1600674861512" />
+    <state x="354" y="78" key="MultipleFileMergeDialog" timestamp="1600674861519">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="354" y="78" key="MultipleFileMergeDialog/0.0.1280.720/1920.0.1920.1080@0.0.1280.720" timestamp="1593718381935" />
-    <state x="581" y="200" key="NewPhpClassDialog" timestamp="1591631556921">
-      <screen x="0" y="0" width="1280" height="720" />
-    </state>
-    <state x="581" y="200" key="NewPhpClassDialog/0.0.1280.720@0.0.1280.720" timestamp="1591631556921" />
+    <state x="354" y="78" key="MultipleFileMergeDialog/0.0.1280.720@0.0.1280.720" timestamp="1600674861519" />
     <state x="473" y="384" width="327" height="150" key="NewPhpFileDialog" timestamp="1592411162813">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="485" y="345" width="327" height="150" key="NewPhpFileDialog/0.0.1280.680@0.0.1280.680" timestamp="1589906470764" />
     <state x="473" y="384" key="NewPhpFileDialog/0.0.1280.720/1920.0.1920.1080@0.0.1280.720" timestamp="1592411162813" />
     <state x="485" y="365" width="327" height="151" key="NewPhpFileDialog/0.0.1280.720@0.0.1280.720" timestamp="1592056302007" />
     <state x="488" y="84" key="RollbackChangesDialog" timestamp="1593257195582">
@@ -872,14 +835,13 @@
     <state x="142" y="4" key="SettingsEditor" timestamp="1593422254018">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1589909200924" />
     <state x="142" y="4" key="SettingsEditor/0.0.1280.720/1920.0.1920.1080@0.0.1280.720" timestamp="1593159047301" />
     <state x="142" y="4" key="SettingsEditor/0.0.1280.720@0.0.1280.720" timestamp="1593422254018" />
-    <state x="233" y="95" key="Vcs.Push.Dialog.v2" timestamp="1593718502611">
+    <state x="233" y="95" key="Vcs.Push.Dialog.v2" timestamp="1600674816775">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="233" y="95" key="Vcs.Push.Dialog.v2/0.0.1280.720/1920.0.1920.1080@0.0.1280.720" timestamp="1593718502611" />
-    <state x="233" y="95" key="Vcs.Push.Dialog.v2/0.0.1280.720@0.0.1280.720" timestamp="1593427428303" />
+    <state x="233" y="95" key="Vcs.Push.Dialog.v2/0.0.1280.720@0.0.1280.720" timestamp="1600674816775" />
     <state x="93" y="93" width="1095" height="535" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1593162039962">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
@@ -891,17 +853,8 @@
     <state x="450" y="279" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1593718270708">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="450" y="264" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1588786975283" />
     <state x="450" y="279" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.720/1920.0.1920.1080@0.0.1280.720" timestamp="1593718270708" />
     <state x="450" y="279" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.720@0.0.1280.720" timestamp="1593425774238" />
-    <state x="107" y="0" width="739" height="720" key="find.popup" timestamp="1585215826670">
-      <screen x="0" y="0" width="1280" height="720" />
-    </state>
-    <state x="107" y="0" width="739" height="720" key="find.popup/0.0.1280.720@0.0.1280.720" timestamp="1585215826670" />
-    <state x="364" y="153" key="git4idea.merge.GitPullDialog" timestamp="1589486732913">
-      <screen x="0" y="0" width="1280" height="720" />
-    </state>
-    <state x="364" y="153" key="git4idea.merge.GitPullDialog/0.0.1280.720@0.0.1280.720" timestamp="1589486732913" />
     <state x="315" y="226" key="git4idea.rebase.GitRebaseDialog" timestamp="1593162036192">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
@@ -917,15 +870,11 @@
     <state x="297" y="161" key="run.anything.popup" timestamp="1592822319403">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="297" y="152" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1590047107576" />
     <state x="297" y="161" key="run.anything.popup/0.0.1280.720/1920.0.1920.1080@0.0.1280.720" timestamp="1592416589305" />
-    <state x="2366" y="242" key="run.anything.popup/0.0.1280.720/1920.0.1920.1080@1920.0.1920.1080" timestamp="1585226468218" />
     <state x="297" y="161" key="run.anything.popup/0.0.1280.720@0.0.1280.720" timestamp="1592822319403" />
     <state x="-17" y="41" width="672" height="678" key="search.everywhere.popup" timestamp="1592493200511">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="-17" y="39" width="672" height="641" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1589909197073" />
-    <state x="-17" y="41" width="672" height="678" key="search.everywhere.popup/0.0.1280.720/1920.0.1920.1080@0.0.1280.720" timestamp="1591806596191" />
     <state x="-17" y="41" width="672" height="678" key="search.everywhere.popup/0.0.1280.720@0.0.1280.720" timestamp="1592493200511" />
   </component>
 </project>

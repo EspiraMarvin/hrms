@@ -10,3 +10,5 @@
  php artisan migrate:fresh --seed
  
  php artisan serve
+
+![alt text](https://github.com/EspiraMarvin/hrms/public/assets/image.png?raw=true)

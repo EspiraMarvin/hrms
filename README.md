@@ -12,3 +12,7 @@
  php artisan serve
 
 ![](public/assets/image.png)
+
+<!--- or this way to add images --->
+
+<!--- <img src="public/assets/image.png  ---> 

@@ -11,4 +11,4 @@
  
  php artisan serve
 
-![alt text](https://github.com/EspiraMarvin/hrms/public/assets/image.png?raw=true)
+![](public/assets/image.png)
